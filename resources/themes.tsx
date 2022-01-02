@@ -12,14 +12,14 @@ const colours = {
 
 const themes: { [key: string]: Partial<DefaultTheme> } = {
   light: {
-    is: "light",
+    name: "light",
     main: colours.white,
     text: colours.almostBlack,
     accent: colours.red,
     reverseMain: colours.almostBlack,
   },
   dark: {
-    is: "dark",
+    name: "dark",
     main: colours.almostBlack,
     text: colours.almostWhite,
     accent: colours.red,

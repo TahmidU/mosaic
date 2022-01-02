@@ -9,5 +9,5 @@ export interface ITheme {
 }
 
 export interface IGlobalContext {
-  theme: Theme;
+  theme: ITheme;
 }
