@@ -27,9 +27,28 @@ const themes: { [key: string]: Partial<DefaultTheme> } = {
   },
 };
 
+const fontSize = {
+  xxxsmall: "8px",
+  xxsmall: "11px",
+  xsmall: "13px",
+  small: "14px",
+  medium: "16px",
+  big: "18px",
+  xbig: "20px",
+  xxbig: "24px",
+};
+
+const fonts = {
+  main: {
+    roboto: '"Roboto", sans-serif',
+  },
+};
+
 export default function getTheme(themeSelect: Theme): DefaultTheme {
   return {
     ...colours,
+    fonts,
+    fontSize,
     ...themes[themeSelect],
   };
 }
