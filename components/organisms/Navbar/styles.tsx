@@ -1,3 +1,4 @@
+import { BsSearch } from "react-icons/bs";
 import styled from "styled-components";
 
 export const NavbarContainer = styled.div`
@@ -31,5 +32,16 @@ export const MenuContainer = styled.div`
 `;
 MenuContainer.displayName = "MenuContainer";
 
-export const OptionsContainer = styled.div``;
+export const OptionsContainer = styled.div`
+  display: inline-flex;
+  align-items: center;
+  margin-right: 2%;
+`;
 OptionsContainer.displayName = "OptionsContainer";
+
+export const SearchIcon = styled(BsSearch)`
+  width: 28px;
+  height: auto;
+  cursor: pointer;
+`;
+SearchIcon.displayName = "SearchIcon";

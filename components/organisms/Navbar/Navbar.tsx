@@ -5,6 +5,7 @@ import {
   MenuContainer,
   NavbarContainer,
   OptionsContainer,
+  SearchIcon,
 } from "./styles";
 
 import Image from "next/image";
@@ -25,7 +26,9 @@ export default function Navbar({}: NavbarProps): ReactElement {
           <button>People</button>
         </MenuContainer>
       </div>
-      <OptionsContainer></OptionsContainer>
+      <OptionsContainer>
+        <SearchIcon />
+      </OptionsContainer>
     </NavbarContainer>
   );
 }
