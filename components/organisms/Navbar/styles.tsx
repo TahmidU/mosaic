@@ -18,6 +18,7 @@ NavbarContainer.displayName = "NavbarContainer";
 
 export const LogoContainer = styled.div`
   cursor: pointer;
+  margin: 0 3rem 0 1.25rem;
 `;
 LogoContainer.displayName = "LogoContainer";
 
@@ -26,7 +27,8 @@ export const MenuContainer = styled.div`
     all: unset;
     font-family: ${({ theme }) => theme.fonts.main.roboto};
     font-size: ${({ theme }) => theme.fontSize.xbig};
-    margin: 0 1rem;
+    font-weight: bold;
+    margin: 0 2rem;
     cursor: pointer;
   }
 `;

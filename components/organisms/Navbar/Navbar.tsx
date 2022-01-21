@@ -8,7 +8,6 @@ import {
   SearchIcon,
 } from "./styles";
 
-import Image from "next/image";
 import { ReactElement } from "react";
 
 interface NavbarProps {}
