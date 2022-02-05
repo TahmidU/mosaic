@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 
 import {
-  HamburgerMenuIcon,
   LogoContainer,
   MenuContainer,
   NavbarContainer,
@@ -28,7 +27,6 @@ export default function Navbar({}: NavbarProps): ReactElement {
       </div>
       <OptionsContainer>
         <SearchIcon />
-        <HamburgerMenuIcon />
       </OptionsContainer>
     </NavbarContainer>
   );

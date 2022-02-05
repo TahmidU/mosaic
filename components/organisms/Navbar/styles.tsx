@@ -32,10 +32,6 @@ export const MenuContainer = styled.div`
     margin: 0 2rem;
     cursor: pointer;
   }
-
-  @media (max-width: 961px) {
-    display: none;
-  }
 `;
 MenuContainer.displayName = "MenuContainer";
 
@@ -50,25 +46,5 @@ export const SearchIcon = styled(BsSearch)`
   width: 28px;
   height: auto;
   cursor: pointer;
-
-  @media (max-width: 961px) {
-    display: none;
-  }
 `;
 SearchIcon.displayName = "SearchIcon";
-
-export const HamburgerMenuIcon = styled(AiOutlineMenu)`
-  display: none;
-  width: 28px;
-  height: auto;
-  color: ${({ theme }) => theme.reverseMain};
-  padding: 2px;
-  border-radius: 4px;
-  border: 1px solid ${({ theme }) => theme.reverseMain};
-  cursor: pointer;
-
-  @media (max-width: 961px) {
-    display: block;
-  }
-`;
-HamburgerMenuIcon.displayName = "HamburgerMenuIcon";
