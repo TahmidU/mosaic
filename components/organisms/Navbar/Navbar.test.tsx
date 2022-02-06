@@ -9,6 +9,6 @@ test("Navigation Options", () => {
   const { getByText } = render(<Navbar />);
 
   expect(getByText("Movies")).toBeDefined();
-  expect(getByText("TV Shows")).toBeDefined();
+  expect(getByText("TV Show")).toBeDefined();
   expect(getByText("People")).toBeDefined();
 });
