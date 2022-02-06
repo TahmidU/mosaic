@@ -8,7 +8,8 @@
     "lint": "next lint",
     "jest": "jest",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@types/stack-utils": "^2.0.1",
@@ -43,7 +44,8 @@
     "jest": "^27.4.5",
     "jest-styled-components": "^7.0.8",
     "storybook-addon-styled-component-theme": "^2.0.0",
-    "typescript": "4.5.4"
+    "typescript": "4.5.4",
+    "husky": "^7.0.0"
   },
   "version": "0.0.0"
 }
