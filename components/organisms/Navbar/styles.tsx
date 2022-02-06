@@ -1,4 +1,3 @@
-import { AiOutlineMenu } from "react-icons/ai";
 import { BsSearch } from "react-icons/bs";
 import styled from "styled-components";
 
@@ -26,8 +25,9 @@ LogoContainer.displayName = "LogoContainer";
 export const MenuContainer = styled.div`
   button {
     all: unset;
-    font-family: ${({ theme }) => theme.fonts.main.roboto};
-    font-size: ${({ theme }) => theme.fontSize.xbig};
+
+    ${({ theme }) => theme.fonts.main.big};
+
     font-weight: bold;
     margin: 0 2rem;
     cursor: pointer;

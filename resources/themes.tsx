@@ -1,7 +1,9 @@
+import { IColours, IFonts } from "../types/theme";
+
 import { DefaultTheme } from "styled-components";
 import { Theme } from "../types/context";
 
-const colours = {
+const colours: IColours = {
   almostBlack: "#261B00",
   red: "#EA2321",
   crimson: "#812626",
@@ -27,20 +29,20 @@ const themes: { [key: string]: Partial<DefaultTheme> } = {
   },
 };
 
-const fontSize = {
-  xxxsmall: "8px",
-  xxsmall: "11px",
-  xsmall: "13px",
-  small: "14px",
-  medium: "16px",
-  big: "18px",
-  xbig: "20px",
-  xxbig: "24px",
-};
-
-const fonts = {
+const fonts: IFonts = {
   main: {
-    roboto: '"Roboto", sans-serif',
+    small: `font-family: "Roboto", sans-serif;
+    font-size: 11px;`,
+    regular: `font-family: "Roboto", sans-serif;
+      font-size: 14px;`,
+    medium: `font-family: "Roboto", sans-serif;
+    font-size: 16px;`,
+    mediumBig: `font-family: "Roboto", sans-serif;
+    font-size: 18px;`,
+    big: `font-family: "Roboto", sans-serif;
+    font-size: 20px;`,
+    bigger: `font-family: "Roboto", sans-serif;
+    font-size: 24px;`,
   },
 };
 
@@ -48,7 +50,6 @@ export default function getTheme(themeSelect: Theme): DefaultTheme {
   return {
     ...colours,
     fonts,
-    fontSize,
     ...themes[themeSelect],
   };
 }
