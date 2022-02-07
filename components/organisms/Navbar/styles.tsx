@@ -6,7 +6,7 @@ export const NavbarContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  min-height: 68px;
+  min-height: 80px;
   height: auto;
 
   div:first-child {
@@ -18,7 +18,12 @@ NavbarContainer.displayName = "NavbarContainer";
 
 export const LogoContainer = styled.div`
   cursor: pointer;
-  margin: 0 3rem 0 1.25rem;
+  margin: 0 0rem 0 1.25rem;
+
+  svg {
+    width: 70%;
+    height: auto;
+  }
 `;
 LogoContainer.displayName = "LogoContainer";
 
@@ -26,7 +31,11 @@ export const MenuContainer = styled.div`
   button {
     all: unset;
 
-    ${({ theme }) => theme.fonts.main.big};
+    ${({ theme }) => theme.fonts.main.bigger};
+
+    :first-child {
+      margin: 0 2rem 0 0;
+    }
 
     font-weight: bold;
     margin: 0 2rem;
