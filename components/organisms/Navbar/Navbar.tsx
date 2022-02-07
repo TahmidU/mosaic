@@ -8,6 +8,7 @@ import {
   SearchIcon,
 } from "./styles";
 
+import Logo from "../../../img/Logo";
 import { ReactElement } from "react";
 
 interface NavbarProps {}
@@ -17,7 +18,7 @@ export default function Navbar({}: NavbarProps): ReactElement {
     <NavbarContainer>
       <div>
         <LogoContainer>
-          <img alt="logo" src="/logo/logo.png" />
+          <Logo />
         </LogoContainer>
         <MenuContainer>
           <button>Movies</button>

@@ -4,7 +4,7 @@ import { DefaultTheme } from "styled-components";
 import { Theme } from "../types/context";
 
 const colours: IColours = {
-  almostBlack: "#261B00",
+  almostBlack: "#211f1b",
   red: "#EA2321",
   crimson: "#812626",
   white: "#FFFFFF",
