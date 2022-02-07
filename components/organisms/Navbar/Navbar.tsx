@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 
 import {
-  LogoContainer,
   MenuContainer,
   NavbarContainer,
   OptionsContainer,
