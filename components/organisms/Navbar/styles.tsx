@@ -18,7 +18,7 @@ export const NavbarContainer = styled.div`
     width: 100%;
 
     > svg {
-      width: 10%;
+      width: 165px;
       height: auto;
       margin: 0 3rem 0 1.25rem;
       cursor: pointer;
@@ -26,17 +26,6 @@ export const NavbarContainer = styled.div`
   }
 `;
 NavbarContainer.displayName = "NavbarContainer";
-
-export const LogoContainer = styled.div`
-  cursor: pointer;
-  margin: 0 0 0 1.25rem;
-
-  svg {
-    width: 40%;
-    height: auto;
-  }
-`;
-LogoContainer.displayName = "LogoContainer";
 
 export const MenuContainer = styled.div`
   button {
