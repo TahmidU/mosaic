@@ -17,9 +17,7 @@ export default function Navbar({}: NavbarProps): ReactElement {
   return (
     <NavbarContainer>
       <div>
-        <LogoContainer>
-          <Logo />
-        </LogoContainer>
+        <Logo />
         <MenuContainer>
           <button>Movies</button>
           <button>TV Shows</button>
