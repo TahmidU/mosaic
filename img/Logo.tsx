@@ -96,7 +96,7 @@ const Logo = (props: any) => (
         fontWeight: "bold",
       }}
     >
-      {"MOSIAC"}
+      {"MOSAIC"}
     </text>
   </svg>
 );

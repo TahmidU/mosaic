@@ -2,7 +2,7 @@ import "../styles/globals.css";
 
 import type { AppProps } from "next/app";
 import GlobalContext from "../context/GlobalContext";
-import Layout from "../components/organisms/Layout/Layout";
+import Layout from "../components/organisms/Layout";
 import React from "react";
 import { ThemeProvider } from "styled-components";
 import useTheme from "../hooks/useTheme";
