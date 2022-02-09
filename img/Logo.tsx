@@ -1,6 +1,8 @@
 import * as React from "react";
 
-const Logo = (props: any) => (
+import { SVGProps } from "react";
+
+const Logo = (props: SVGProps<SVGSVGElement>) => (
   <svg
     viewBox="0 0 168 40"
     xmlns="http://www.w3.org/2000/svg"

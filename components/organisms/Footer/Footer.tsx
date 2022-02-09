@@ -1,6 +1,6 @@
-import { FooterContainer, MosaicContainer, MovieDBContainer } from "./styles";
-
+import { FooterContainer } from "./styles";
 import Logo from "../../../img/Logo";
+import MDBLogo from "../../../img/MDBLogo";
 import { ReactElement } from "react";
 
 interface FooterProps {}
@@ -9,13 +9,14 @@ export default function Footer({}: FooterProps): ReactElement {
   return (
     <FooterContainer>
       <div>
-        <MosaicContainer>
+        <div>
           <Logo />
           <span>@2022 Mosaic, Ltd. All rights reserved</span>
-        </MosaicContainer>
-        <MovieDBContainer>
+        </div>
+        <div>
           <span>Powered by</span>
-        </MovieDBContainer>
+          <MDBLogo />
+        </div>
       </div>
       <div>
         <span>Product</span>
