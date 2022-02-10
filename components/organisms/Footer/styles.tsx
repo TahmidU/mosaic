@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const FooterContainer = styled.div`
   display: grid;
   grid-auto-flow: row;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 0.2fr 0.8fr;
   width: 100%;
   align-items: start;
   justify-content: center;
@@ -16,6 +16,7 @@ export const FooterContainer = styled.div`
     flex-direction: column;
   }
 
+  // Logos
   > div:first-child {
     margin: 0.2rem 0;
 
@@ -33,23 +34,47 @@ export const FooterContainer = styled.div`
     }
   }
 
-  > div:not(:first-child) {
-    ${({ theme }) => theme.fonts.main.mediumBig};
+  // Links
+  > div:nth-child(2) {
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-columns: 0.18fr 0.18fr 0.18fr 0.18fr auto;
+    grid-template-areas: "product community support company .";
 
-    > span:first-child {
-      ${({ theme }) => theme.fonts.main.massive};
-      font-weight: bold;
-      margin: 0 0 0.5rem 0;
+    > div:first-child {
+      grid-area: product;
     }
 
-    span:not(:first-child) {
-      margin: 0.2rem 0;
-      cursor: pointer;
-      width: fit-content;
+    > div:nth-child(2) {
+      grid-area: community;
+    }
 
-      &:hover {
-        text-decoration: underline;
+    > div:nth-child(3) {
+      grid-area: support;
+    }
+
+    > div:nth-child(4) {
+      grid-area: company;
+    }
+
+    div {
+      ${({ theme }) => theme.fonts.main.mediumBig};
+
+      > span:first-child {
+        ${({ theme }) => theme.fonts.main.massive};
         font-weight: bold;
+        margin: 0 0 0.5rem 0;
+      }
+
+      span:not(:first-child) {
+        margin: 0.2rem 0;
+        cursor: pointer;
+        width: fit-content;
+
+        &:hover {
+          text-decoration: underline;
+          font-weight: bold;
+        }
       }
     }
   }

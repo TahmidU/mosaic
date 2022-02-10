@@ -44,7 +44,7 @@ const fonts: IFonts = {
     bigger: `font-family: "Roboto", sans-serif;
     font-size: 24px;`,
     massive: `font-family: "Roboto", sans-serif;
-    font-size: 42px;`,
+    font-size: 32px;`,
   },
 };
 
