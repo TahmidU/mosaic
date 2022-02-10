@@ -15,5 +15,6 @@ export interface IFonts {
     mediumBig: string;
     big: string;
     bigger: string;
+    massive: string;
   };
 }

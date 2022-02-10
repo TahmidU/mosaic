@@ -43,6 +43,8 @@ const fonts: IFonts = {
     font-size: 20px;`,
     bigger: `font-family: "Roboto", sans-serif;
     font-size: 24px;`,
+    massive: `font-family: "Roboto", sans-serif;
+    font-size: 32px;`,
   },
 };
 
