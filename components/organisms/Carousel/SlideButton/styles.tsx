@@ -24,8 +24,3 @@ RightArrow.displayName = "RightArrow";
 
 export const LeftArrow = styled(BsArrowLeft)``;
 LeftArrow.displayName = "LeftArrow";
-
-export const AnimatedCircle = styled(motion.circle)`
-  position: absolute;
-`;
-AnimatedCircle.displayName = "AnimatedCircle";
