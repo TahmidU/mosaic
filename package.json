@@ -14,7 +14,7 @@
   "dependencies": {
     "@types/stack-utils": "^2.0.1",
     "@types/styled-components": "^5.1.19",
-    "framer-motion": "^6.2.6",
+    "framer-motion": "4.1.17",
     "next": "12.0.7",
     "react": "17.0.2",
     "react-dom": "17.0.2",

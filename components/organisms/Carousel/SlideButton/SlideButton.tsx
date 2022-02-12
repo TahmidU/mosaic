@@ -1,10 +1,11 @@
+import { AnimatedCircle, Container, RightArrow } from "./styles";
+
 import { ReactElement } from "react";
-import { RightArrow } from "./styles";
 
 export default function SlideButton(): ReactElement {
   return (
-    <div>
+    <Container>
       <RightArrow />
-    </div>
+    </Container>
   );
 }

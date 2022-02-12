@@ -7,5 +7,9 @@ const payload = {
 };
 export default payload;
 
-export const Basic = (args: any) => <SlideButton {...args} />;
+export const Basic = (args: any) => (
+  <div>
+    <SlideButton {...args} />
+  </div>
+);
 Basic.args = {};
