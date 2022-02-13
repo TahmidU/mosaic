@@ -1,4 +1,4 @@
-import { AnimatedCircle, Container, RightArrow } from "./styles";
+import { Container, RightArrow } from "./styles";
 
 import { ReactElement } from "react";
 

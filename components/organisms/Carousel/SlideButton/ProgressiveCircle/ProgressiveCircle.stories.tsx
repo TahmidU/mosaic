@@ -8,4 +8,9 @@ const payload = {
 export default payload;
 
 export const Basic = (args: any) => <ProgressiveCircle {...args} />;
-Basic.args = {};
+Basic.args = {
+  width: 60,
+  height: 60,
+  radius: 60,
+  strokeWidth: 10,
+};
