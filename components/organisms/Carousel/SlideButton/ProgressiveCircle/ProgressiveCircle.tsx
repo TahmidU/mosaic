@@ -9,6 +9,8 @@ interface ProgressiveCircleProps {
   radius: number;
   strokeWidth: number;
   duration?: number;
+  show?: boolean;
+  className?: string;
 }
 
 export default function ProgressiveCircle({
@@ -16,12 +18,12 @@ export default function ProgressiveCircle({
   height,
   radius,
   strokeWidth,
-  duration = 3,
+  duration = 1.75,
+  show = true,
+  className,
 }: ProgressiveCircleProps): ReactElement {
-  console.log(produceProgressiveCircleAnimVariant(radius));
-
   return (
-    <Container width={width} height={height}>
+    <Container width={width} height={height} className={className}>
       <AnimatedCircle
         cx={`${width / 2}`}
         cy={`${height / 2}`}
@@ -29,7 +31,7 @@ export default function ProgressiveCircle({
         strokeWidth={strokeWidth}
         initial="hide"
         variants={produceProgressiveCircleAnimVariant(radius)}
-        animate="show"
+        animate={show ? "show" : "hide"}
         transition={{ duration: duration }}
       />
     </Container>

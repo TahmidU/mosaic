@@ -7,10 +7,13 @@ const payload = {
 };
 export default payload;
 
-export const Basic = (args: any) => <ProgressiveCircle {...args} />;
+export const Basic = (args: any) => (
+  <ProgressiveCircle {...args} style={{ top: "100px", right: "50%" }} />
+);
 Basic.args = {
-  width: 60,
-  height: 60,
-  radius: 60,
-  strokeWidth: 10,
+  width: 30,
+  height: 30,
+  radius: 30,
+  strokeWidth: 4,
+  duration: 1.75,
 };

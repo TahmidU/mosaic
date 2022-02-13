@@ -10,8 +10,6 @@ export const Container = styled.svg<{
   height: ${({ height }) => `${height}px`};
   transform: rotate(-90deg);
   overflow: visible;
-  top: 100px;
-  right: 50%;
 `;
 Container.displayName = "Container";
 
