@@ -12,23 +12,21 @@ interface ProgressiveBarProps {
 
 export default function ProgressiveBar({
   duration = 3,
-  trigger = () => {
-    console.log("Done!");
-  },
+  trigger = () => {},
   pause = false,
 }: ProgressiveBarProps): ReactElement {
   const barControls = useAnimation();
 
   useEffect(() => {
     if (!pause) {
-      barControls.set({
-        width: "0%",
-      });
       barControls.start(() => ({
         width: "100%",
       }));
     } else {
       barControls.stop();
+      barControls.set({
+        width: "0%",
+      });
     }
   }, [pause]);
 
