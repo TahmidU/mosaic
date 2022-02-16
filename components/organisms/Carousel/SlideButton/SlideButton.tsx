@@ -1,13 +1,22 @@
-import { Container, HoverAnimationCircle, RightArrow } from "./styles";
+import {
+  Container,
+  HoverAnimationCircle,
+  LeftArrow,
+  RightArrow,
+} from "./styles";
 import { ReactElement, useLayoutEffect, useRef, useState } from "react";
 
 import { ContainerAnimVariant } from "./animation-variants";
 
+type Variant = "right" | "left";
+
 interface SlideButtonProps {
   className?: string;
+  variant?: Variant;
 }
 
 export default function SlideButton({
+  variant = "right",
   className,
 }: SlideButtonProps): ReactElement {
   const [showCircleAnim, setShowCircleAnim] = useState(false);
@@ -40,7 +49,8 @@ export default function SlideButton({
       onMouseEnter={() => setShowCircleAnim(true)}
       onMouseLeave={() => setShowCircleAnim(false)}
     >
-      <RightArrow />
+      {variant === "left" && <LeftArrow />}
+      {variant === "right" && <RightArrow />}
       <HoverAnimationCircle
         radius={containerSize.width}
         width={containerSize.width}

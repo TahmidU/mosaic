@@ -28,6 +28,7 @@ export default function ProgressiveBar({
         width: "0%",
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pause]);
 
   return (

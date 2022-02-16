@@ -18,13 +18,14 @@ Container.displayName = "Container";
 
 export const RightArrow = styled(BsArrowRight)`
   width: 100%;
-  //width: 26px;
-  //max-width: 117px;
   height: auto;
 `;
 RightArrow.displayName = "RightArrow";
 
-export const LeftArrow = styled(BsArrowLeft)``;
+export const LeftArrow = styled(BsArrowLeft)`
+  width: 100%;
+  height: auto;
+`;
 LeftArrow.displayName = "LeftArrow";
 
 export const HoverAnimationCircle = styled(ProgressiveCircle)`
