@@ -19,14 +19,10 @@ export default function ProgressiveBar({
 
   useEffect(() => {
     if (!pause) {
-      barControls.start(() => ({
-        width: "100%",
-      }));
+      barControls.start(() => progressiveBarAnimVariant.full);
     } else {
       barControls.stop();
-      barControls.set({
-        width: "0%",
-      });
+      barControls.set(progressiveBarAnimVariant.none);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pause]);
