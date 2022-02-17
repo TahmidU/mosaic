@@ -1,11 +1,12 @@
+import { Indicator } from "./styles";
 import { ReactElement } from "react";
 
-interface StepStatusProps {}
+interface StepStatusProps {
+  enabled?: boolean;
+}
 
-export default function StepStatus({}: StepStatusProps): ReactElement {
-  return (
-    <div>
-      <div></div>
-    </div>
-  );
+export default function StepStatus({
+  enabled = false,
+}: StepStatusProps): ReactElement {
+  return <Indicator enabled={enabled} />;
 }

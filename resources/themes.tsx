@@ -1,15 +1,25 @@
-import { IColours, IFonts } from "../types/theme";
+import { ICColours, IColours, IFonts } from "../types/theme";
 
+import Color from "color";
 import { DefaultTheme } from "styled-components";
 import { Theme } from "../types/context";
 
 const colours: IColours = {
   almostBlack: "#211f1b",
-  red: "#EA2321",
+  red: "#FD1C1C",
   crimson: "#812626",
   white: "#FFFFFF",
   almostWhite: "#e8e8e8",
   black: "#000000",
+};
+
+const cColours: ICColours = {
+  cAlmostBlack: Color(colours.almostBlack),
+  cRed: Color(colours.red),
+  cCrimson: Color(colours.crimson),
+  cWhite: Color(colours.white),
+  cAlmostWhite: Color(colours.almostWhite),
+  cBlack: Color(colours.black),
 };
 
 const themes: { [key: string]: Partial<DefaultTheme> } = {
@@ -51,6 +61,7 @@ const fonts: IFonts = {
 export default function getTheme(themeSelect: Theme): DefaultTheme {
   return {
     ...colours,
+    ...cColours,
     fonts,
     ...themes[themeSelect],
   };

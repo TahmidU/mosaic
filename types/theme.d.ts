@@ -1,3 +1,4 @@
+//import 'styled-components';
 export interface IColours {
   almostBlack: string;
   red: string;
@@ -18,3 +19,21 @@ export interface IFonts {
     massive: string;
   };
 }
+
+export interface ICColours {
+  cAlmostBlack: Color<string>;
+  cRed: Color<string>;
+  cCrimson: Color<string>;
+  cWhite: Color<string>;
+  cAlmostWhite: Color<string>;
+  cBlack: Color<string>;
+}
+
+/** 
+ * Styled-Components types
+declare module 'styled-components' {
+  export interface DefaultTheme {
+     borderRadius: string;
+     color: string;
+  }
+}*/

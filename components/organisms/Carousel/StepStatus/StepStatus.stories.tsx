@@ -8,4 +8,6 @@ const payload = {
 export default payload;
 
 export const Basic = (args: any) => <StepStatus {...args} />;
-Basic.args = {};
+Basic.args = {
+  enabled: false,
+};
