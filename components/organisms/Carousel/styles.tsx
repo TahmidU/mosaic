@@ -12,8 +12,8 @@ export const Container = styled.div`
 Container.displayName = "Container";
 
 export const CarouselContainer = styled.div`
-  width: 80%;
-  height: 862px;
+  width: 1280px;
+  height: 720px;
   position: relative;
   border-radius: 12px;
 `;
