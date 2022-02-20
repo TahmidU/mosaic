@@ -9,11 +9,13 @@ import {
   TextStyle,
 } from "./styles";
 
-import { ReactElement, useState } from "react";
+import { ReactElement, useState, useEffect } from "react";
 import ProgressiveBar from "./ProgressiveBar";
 
 export default function Carousel(): ReactElement {
   const [loading, setLoading] = useState(true);
+
+  useEffect(() => {}, []);
 
   return (
     <CarouselMainContainer>
