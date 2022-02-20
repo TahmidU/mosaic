@@ -7,8 +7,12 @@ import styled from "styled-components";
 export const Container = styled(motion.div)`
   cursor: pointer;
   position: relative;
-  width: 26px;
-  height: 26px;
+  width: 36px;
+  height: 36px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   svg {
     position: absolute;

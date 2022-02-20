@@ -4,7 +4,13 @@ import {
   LeftArrow,
   RightArrow,
 } from "./styles";
-import { ReactElement, useLayoutEffect, useRef, useState } from "react";
+import {
+  ReactElement,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
 
 import { ContainerAnimVariant } from "./animation-variants";
 
@@ -26,17 +32,32 @@ export default function SlideButton({
   });
   const containerRef = useRef<HTMLDivElement>(null);
 
-  useLayoutEffect(() => {
-    if (containerRef && containerRef.current) {
-      setContainerSize({
-        width: Number(
-          window.getComputedStyle(containerRef.current)?.width.split("p")[0]
-        ),
-        height: Number(
-          window.getComputedStyle(containerRef.current)?.height.split("p")[0]
-        ),
-      });
-    }
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      if (containerRef && containerRef.current) {
+        setContainerSize({
+          width: Number(
+            window.getComputedStyle(containerRef.current)?.width.split("p")[0]
+          ),
+          height: Number(
+            window.getComputedStyle(containerRef.current)?.height.split("p")[0]
+          ),
+        });
+      }
+    });
+
+    return window.removeEventListener("resize", () => {
+      if (containerRef && containerRef.current) {
+        setContainerSize({
+          width: Number(
+            window.getComputedStyle(containerRef.current)?.width.split("p")[0]
+          ),
+          height: Number(
+            window.getComputedStyle(containerRef.current)?.height.split("p")[0]
+          ),
+        });
+      }
+    });
   }, [containerRef]);
 
   return (

@@ -1,7 +1,15 @@
-import { CarouselContainer, Container, ImageStyle, TextStyle } from "./styles";
+import {
+  CarouselContainer,
+  Container,
+  ImageStyle,
+  LinearGradient,
+  NextBtn,
+  SlideBtn,
+  TextStyle,
+} from "./styles";
 
 import { ImageLoader } from "next/image";
-import { ReactElement } from "react";
+import { ReactElement, useState } from "react";
 import SlideButton from "./SlideButton";
 
 export default function Carousel(): ReactElement {
@@ -10,16 +18,23 @@ export default function Carousel(): ReactElement {
     return `https://image.tmdb.org/t/p/w${width}${src}`;
   }
 
+  const [loading, setLoading] = useState(true);
+
   return (
     <Container>
-      <SlideButton variant="left" />
+      <SlideBtn variant="left" />
       <CarouselContainer>
+        {!loading && <LinearGradient />}
         <ImageStyle
-          loader={myLoader}
-          src="/1Rr5SrvHxMXHu5RjKpaMba8VTzi.jpg"
-          width={1280}
-          height={720}
+          src="https://image.tmdb.org/t/p/w1280/1Rr5SrvHxMXHu5RjKpaMba8VTzi.jpg"
+          blurDataURL="https://image.tmdb.org/t/p/w300/1Rr5SrvHxMXHu5RjKpaMba8VTzi.jpg"
+          placeholder="blur"
+          width={1920}
+          height={1080}
           layout="responsive"
+          onLoadingComplete={() => {
+            setLoading(false);
+          }}
         />
         <TextStyle>
           <p>Title</p>
@@ -29,7 +44,7 @@ export default function Carousel(): ReactElement {
           </p>
         </TextStyle>
       </CarouselContainer>
-      <SlideButton variant="right" />
+      <NextBtn variant="right" />
     </Container>
   );
 }
