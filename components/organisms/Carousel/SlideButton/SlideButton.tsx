@@ -32,31 +32,29 @@ export default function SlideButton({
   });
   const containerRef = useRef<HTMLDivElement>(null);
 
+  function handleProgressiveCircleAnim(ref: HTMLDivElement) {
+    ref &&
+      setContainerSize({
+        width: Number(window.getComputedStyle(ref).width.split("p")[0]),
+        height: Number(window.getComputedStyle(ref).height.split("p")[0]),
+      });
+  }
+
   useEffect(() => {
+    containerRef &&
+      containerRef.current &&
+      handleProgressiveCircleAnim(containerRef.current);
+
     window.addEventListener("resize", () => {
-      if (containerRef && containerRef.current) {
-        setContainerSize({
-          width: Number(
-            window.getComputedStyle(containerRef.current)?.width.split("p")[0]
-          ),
-          height: Number(
-            window.getComputedStyle(containerRef.current)?.height.split("p")[0]
-          ),
-        });
-      }
+      containerRef &&
+        containerRef.current &&
+        handleProgressiveCircleAnim(containerRef.current);
     });
 
     return window.removeEventListener("resize", () => {
-      if (containerRef && containerRef.current) {
-        setContainerSize({
-          width: Number(
-            window.getComputedStyle(containerRef.current)?.width.split("p")[0]
-          ),
-          height: Number(
-            window.getComputedStyle(containerRef.current)?.height.split("p")[0]
-          ),
-        });
-      }
+      containerRef &&
+        containerRef.current &&
+        handleProgressiveCircleAnim(containerRef.current);
     });
   }, [containerRef]);
 
@@ -78,6 +76,8 @@ export default function SlideButton({
         height={containerSize.height}
         strokeWidth={1}
         show={showCircleAnim}
+        fillColourFrom="#FFFFFF"
+        fillColourTo="#FFFFFF"
       />
     </Container>
   );

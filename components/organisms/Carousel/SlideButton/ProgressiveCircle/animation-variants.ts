@@ -1,12 +1,18 @@
-export function produceProgressiveCircleAnimVariant(radius: number) {
+export function produceProgressiveCircleAnimVariant(
+  radius: number,
+  fillColourFrom: string,
+  fillColourTo: string
+) {
   return {
     show: {
-      opacity: 1,
+      strokeOpacity: 1,
       strokeDashoffset: 0,
+      fill: fillColourTo,
     },
     hide: {
-      opacity: 0,
+      strokeOpacity: 0,
       strokeDashoffset: Math.ceil(2 * Math.PI * radius),
+      fill: fillColourFrom,
     },
   };
 }

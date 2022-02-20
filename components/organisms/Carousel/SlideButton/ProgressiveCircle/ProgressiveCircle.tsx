@@ -10,6 +10,8 @@ interface ProgressiveCircleProps {
   strokeWidth: number;
   duration?: number;
   show?: boolean;
+  fillColourFrom?: string;
+  fillColourTo?: string;
   className?: string;
 }
 
@@ -20,6 +22,8 @@ export default function ProgressiveCircle({
   strokeWidth,
   duration = 1.75,
   show = true,
+  fillColourFrom = "transparent",
+  fillColourTo = "transparent",
   className,
 }: ProgressiveCircleProps): ReactElement {
   return (
@@ -30,7 +34,11 @@ export default function ProgressiveCircle({
         r={radius}
         strokeWidth={strokeWidth}
         initial="hide"
-        variants={produceProgressiveCircleAnimVariant(radius)}
+        variants={produceProgressiveCircleAnimVariant(
+          radius,
+          fillColourFrom,
+          fillColourTo
+        )}
         animate={show ? "show" : "hide"}
         transition={{ duration: duration }}
       />

@@ -32,9 +32,22 @@ export interface ICColours {
 
 declare module "styled-components" {
   export interface DefaultTheme {
-    colours: IColours;
+    almostBlack: string;
+    red: string;
+    crimson: string;
+    white: string;
+    almostWhite: string;
+    black: string;
+
     fonts: IFonts;
-    cColours: ICColours;
+
+    cAlmostBlack: Color<string>;
+    cRed: Color<string>;
+    cCrimson: Color<string>;
+    cWhite: Color<string>;
+    cAlmostWhite: Color<string>;
+    cBlack: Color<string>;
+
     name: Theme;
     main: string;
     text: string;

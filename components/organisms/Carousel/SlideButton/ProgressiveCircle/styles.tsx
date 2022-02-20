@@ -19,7 +19,6 @@ export const AnimatedCircle = styled(motion.circle)<{
   r: number;
 }>`
   position: absolute;
-  fill: transparent;
   stroke: ${({ theme }) => theme.almostBlack};
   stroke-width: ${({ strokeWidth }) => strokeWidth};
   stroke-dasharray: ${({ r }) => Math.ceil(2 * Math.PI * r)};
