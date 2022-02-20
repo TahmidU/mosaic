@@ -8,12 +8,14 @@ interface ProgressiveBarProps {
   duration?: number;
   trigger?: () => void;
   pause?: boolean;
+  className?: string;
 }
 
 export default function ProgressiveBar({
   duration = 3,
   trigger = () => {},
   pause = false,
+  className,
 }: ProgressiveBarProps): ReactElement {
   const barControls = useAnimation();
 
@@ -29,6 +31,7 @@ export default function ProgressiveBar({
 
   return (
     <Bar
+      className={className}
       initial="none"
       animate={barControls}
       variants={progressiveBarAnimVariant}

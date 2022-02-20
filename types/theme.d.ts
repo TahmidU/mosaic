@@ -18,6 +18,7 @@ export interface IFonts {
     big: string;
     bigger: string;
     massive: string;
+    humongous: string;
   };
 }
 

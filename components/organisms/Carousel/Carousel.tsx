@@ -1,36 +1,31 @@
 import {
   CarouselContainer,
-  Container,
+  CarouselMainContainer,
   ImageStyle,
   LinearGradient,
   NextBtn,
-  SlideBtn,
+  PrevBtn,
+  ProgBar,
   TextStyle,
 } from "./styles";
 
-import { ImageLoader } from "next/image";
 import { ReactElement, useState } from "react";
-import SlideButton from "./SlideButton";
+import ProgressiveBar from "./ProgressiveBar";
 
 export default function Carousel(): ReactElement {
-  function myLoader({ src, width }: { src: string; width: number }) {
-    console.log(width);
-    return `https://image.tmdb.org/t/p/w${width}${src}`;
-  }
-
   const [loading, setLoading] = useState(true);
 
   return (
-    <Container>
-      <SlideBtn variant="left" />
+    <CarouselMainContainer>
+      <PrevBtn variant="left" strokeWidth={4} />
       <CarouselContainer>
         {!loading && <LinearGradient />}
         <ImageStyle
-          src="https://image.tmdb.org/t/p/w1280/1Rr5SrvHxMXHu5RjKpaMba8VTzi.jpg"
+          src="https://image.tmdb.org/t/p/original/1Rr5SrvHxMXHu5RjKpaMba8VTzi.jpg"
           blurDataURL="https://image.tmdb.org/t/p/w300/1Rr5SrvHxMXHu5RjKpaMba8VTzi.jpg"
           placeholder="blur"
-          width={1920}
-          height={1080}
+          width={1280}
+          height={720}
           layout="responsive"
           onLoadingComplete={() => {
             setLoading(false);
@@ -42,9 +37,13 @@ export default function Carousel(): ReactElement {
             Description, Excepteur velit in proident eu cillum qui reprehenderit
             dolor est.
           </p>
+          <p>RELEASE DATE: DD/MM/YYYY</p>
         </TextStyle>
       </CarouselContainer>
-      <NextBtn variant="right" />
-    </Container>
+      <NextBtn variant="right" strokeWidth={4} />
+      <ProgBar>
+        <ProgressiveBar duration={15} />
+      </ProgBar>
+    </CarouselMainContainer>
   );
 }

@@ -55,6 +55,8 @@ const fonts: IFonts = {
     font-size: 24px;`,
     massive: `font-family: "Roboto", sans-serif;
     font-size: 32px;`,
+    humongous: `font-family: "Roboto", sans-serif;
+    font-size: 72px;`,
   },
 };
 

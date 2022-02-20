@@ -2,16 +2,21 @@ import Image from "next/image";
 import styled from "styled-components";
 import SlideButton from "./SlideButton";
 
-export const Container = styled.div`
+export const Container = styled.div``;
+Container.displayName = "Container";
+
+export const CarouselMainContainer = styled.div`
   display: flex;
   flex-direction: row;
-  width: 100%;
+  width: auto;
+  max-width: 1280px;
   height: auto;
+  max-height: 720px;
   justify-content: space-evenly;
   align-items: center;
   position: relative;
 `;
-Container.displayName = "Container";
+CarouselMainContainer.displayName = "CarouselMainContainer";
 
 export const LinearGradient = styled.div`
   position: absolute;
@@ -21,18 +26,19 @@ export const LinearGradient = styled.div`
   border-radius: 48px;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   background: linear-gradient(
-    73.03deg,
-    rgba(0, 0, 0, 0.25) 60.99%,
-    rgba(0, 0, 0, 0) 99.38%
+    359.99deg,
+    rgba(0, 0, 0, 0.75) 31.25%,
+    rgba(0, 0, 0, 0.1125) 60.94%,
+    rgba(0, 0, 0, 0) 99.99%
   ) !important;
 `;
 LinearGradient.displayName = "LinearGradient";
 
 export const CarouselContainer = styled.div`
   width: 100%;
-  max-width: 1378px;
+  max-width: 1280px;
   height: fit-content;
-  max-height: 775px;
+  max-height: 720px;
   position: relative;
 
   > span:nth-child(2) {
@@ -45,23 +51,57 @@ export const ImageStyle = styled(Image)``;
 ImageStyle.displayName = "ImageStyle";
 
 export const TextStyle = styled.div`
-  position: absolute;
-  z-index: 1;
+  color: ${({ theme }) => theme.main};
 
   > p:first-child {
+    position: absolute;
+    z-index: 10;
+    ${({ theme }) => theme.fonts.main.humongous};
+    font-weight: bolder;
+    top: 50%;
+    left: 2%;
   }
 
   > p:nth-child(2) {
+    position: absolute;
+    z-index: 10;
+    ${({ theme }) => theme.fonts.main.massive};
+    top: 68%;
+    left: 2%;
+  }
+
+  > p:nth-child(3) {
+    position: absolute;
+    z-index: 10;
+    ${({ theme }) => theme.fonts.main.massive};
+    top: 75%;
+    left: 2%;
   }
 `;
 TextStyle.displayName = "TextStyle";
 
 export const SlideBtn = styled(SlideButton)`
-  width: 36px;
-  height: 36px;
+  width: 28px;
+  height: 28px;
+  position: absolute;
+  z-index: 10;
 `;
 SlideBtn.displayName = "SlideBtn";
 
 export const NextBtn = styled(SlideBtn)`
-  position: absolute;
+  right: 35px;
 `;
+NextBtn.displayName = "NextBtn";
+
+export const PrevBtn = styled(SlideBtn)`
+  left: 35px;
+`;
+PrevBtn.displayName = "PrevBtn";
+
+export const ProgBar = styled.div`
+  position: absolute;
+  z-index: 11;
+  bottom: 0;
+  width: 94%;
+`;
+ProgBar.displayName = "ProgBar";

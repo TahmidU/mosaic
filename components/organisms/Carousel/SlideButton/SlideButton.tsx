@@ -19,10 +19,12 @@ type Variant = "right" | "left";
 interface SlideButtonProps {
   className?: string;
   variant?: Variant;
+  strokeWidth?: number;
 }
 
 export default function SlideButton({
   variant = "right",
+  strokeWidth = 1,
   className,
 }: SlideButtonProps): ReactElement {
   const [showCircleAnim, setShowCircleAnim] = useState(false);
@@ -74,7 +76,7 @@ export default function SlideButton({
         radius={containerSize.width}
         width={containerSize.width}
         height={containerSize.height}
-        strokeWidth={1}
+        strokeWidth={strokeWidth}
         show={showCircleAnim}
         fillColourFrom="#FFFFFF"
         fillColourTo="#FFFFFF"
