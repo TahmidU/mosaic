@@ -1,4 +1,5 @@
-//import 'styled-components';
+import "styled-components";
+import { Theme } from "./context";
 export interface IColours {
   almostBlack: string;
   red: string;
@@ -29,11 +30,15 @@ export interface ICColours {
   cBlack: Color<string>;
 }
 
-/** 
- * Styled-Components types
-declare module 'styled-components' {
+declare module "styled-components" {
   export interface DefaultTheme {
-     borderRadius: string;
-     color: string;
+    colours: IColours;
+    fonts: IFonts;
+    cColours: ICColours;
+    name: Theme;
+    main: string;
+    text: string;
+    accent: string;
+    reverseMain: string;
   }
-}*/
+}
