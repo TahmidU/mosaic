@@ -9,13 +9,19 @@ import {
   TextStyle,
 } from "./styles";
 
-import { ReactElement, useState, useEffect } from "react";
+import { ReactElement, useState, useEffect, useContext } from "react";
 import ProgressiveBar from "./ProgressiveBar";
+import GlobalContext from "../../../context/GlobalContext";
+import CarouselRequests from "./request";
 
 export default function Carousel(): ReactElement {
   const [loading, setLoading] = useState(true);
+  const { axiosInstance } = useContext(GlobalContext);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    const requests = CarouselRequests(axiosInstance.api);
+    requests && requests?.getDiscoverMovie();
+  }, []);
 
   return (
     <CarouselMainContainer>
