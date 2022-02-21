@@ -2,7 +2,11 @@ import Image from "next/image";
 import styled from "styled-components";
 import SlideButton from "./SlideButton";
 
-export const Container = styled.div``;
+export const Container = styled.div`
+  display: grid;
+  grid-template-columns: 0.7fr 0.3fr;
+  margin: 2rem 1rem;
+`;
 Container.displayName = "Container";
 
 export const CarouselMainContainer = styled.div`
@@ -51,14 +55,18 @@ export const ImageStyle = styled(Image)``;
 ImageStyle.displayName = "ImageStyle";
 
 export const TextStyle = styled.div`
+  position: absolute;
   color: ${({ theme }) => theme.main};
+  top: 55%;
+  left: 2%;
+  width: 100%;
 
   > p:first-child {
     position: absolute;
     z-index: 10;
     ${({ theme }) => theme.fonts.main.humongous};
     font-weight: bolder;
-    top: 50%;
+    top: -40px;
     left: 2%;
   }
 
@@ -66,7 +74,7 @@ export const TextStyle = styled.div`
     position: absolute;
     z-index: 10;
     ${({ theme }) => theme.fonts.main.massive};
-    top: 68%;
+    top: 80px;
     left: 2%;
   }
 
@@ -74,7 +82,7 @@ export const TextStyle = styled.div`
     position: absolute;
     z-index: 10;
     ${({ theme }) => theme.fonts.main.massive};
-    top: 75%;
+    top: 160px;
     left: 2%;
   }
 `;
@@ -102,6 +110,6 @@ export const ProgBar = styled.div`
   position: absolute;
   z-index: 11;
   bottom: 0;
-  width: 94%;
+  width: calc(100% - 80px);
 `;
 ProgBar.displayName = "ProgBar";
