@@ -21,7 +21,9 @@ export default function Carousel(): ReactElement {
 
   useEffect(() => {
     const requests = CarouselRequests(axiosInstance.api);
-    requests && requests?.getDiscoverMovie();
+    //requests && requests?.getDiscoverMovie();
+    requests && requests?.foo();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

@@ -5,15 +5,17 @@ export default function useAuth() {
   const api = useMemo(
     () =>
       axios.create({
-        baseURL: `https://api.themoviedb.org/3`,
-        params: {
-          api_key: process.env.NEXT_PUBLIC_MOVIE_DB_API_KEY,
-        },
+        baseURL: `/api`,
       }),
     []
   );
 
-  console.log(process.env.NEXT_PUBLIC_MOVIE_DB_API_KEY);
+  //console.log(process.env.NEXT_PUBLIC_MOVIE_DB_API_KEY);
+  /**
+   *         params: {
+          api_key: "",
+        },
+   */
 
   return {
     api,

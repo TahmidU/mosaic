@@ -9,7 +9,12 @@ export default function CarouselRequests(APIInstance: AxiosInstance) {
       .catch((err) => console.log(err));
   }
 
+  function foo() {
+    return APIInstance.get("/discover").then((data) => console.log(data));
+  }
+
   return {
     getDiscoverMovie,
+    foo,
   };
 }
