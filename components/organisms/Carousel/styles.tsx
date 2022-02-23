@@ -60,6 +60,10 @@ export const TextStyle = styled.div`
     ${({ theme }) => theme.fonts.main.massive};
     top: 80px;
     left: 2%;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
   > p:nth-child(3) {

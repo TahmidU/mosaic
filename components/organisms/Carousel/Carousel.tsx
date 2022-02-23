@@ -14,9 +14,10 @@ import ProgressiveBar from "./ProgressiveBar";
 import GlobalContext from "../../../context/GlobalContext";
 import CarouselRequests from "./request";
 import { IDiscoverMovie } from "../../../types/api/discover";
+import CarouselImage from "./CarouselImage";
 
 export default function Carousel(): ReactElement {
-  //const [loading, setLoading] = useState(true);
+  const [step, setStep] = useState(0);
   const [carouselData, setCarouselData] = useState<IDiscoverMovie[]>([]);
   const { axiosInstance } = useContext(GlobalContext);
 
@@ -27,8 +28,6 @@ export default function Carousel(): ReactElement {
       setCarouselData(data.results);
     });
 
-    //requests && requests?.getDiscoverMovie();
-    //requests && requests?.foo();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -39,14 +38,24 @@ export default function Carousel(): ReactElement {
       <CarouselMainContainer>
         <PrevBtn variant="left" strokeWidth={4} />
         <CarouselContainer>
-          <ImageContainer></ImageContainer>
+          <ImageContainer>
+            {carouselData.map((movies, index) => {
+              return (
+                <CarouselImage
+                  key={index}
+                  imageURL={movies.backdrop_path}
+                  disabled={step !== index}
+                />
+              );
+            })}
+          </ImageContainer>
           <TextStyle>
-            <p>Title</p>
+            <p>{carouselData[step] ? carouselData[step].title : ""}</p>
+            <p>{carouselData[step] ? carouselData[step].overview : ""}</p>
             <p>
-              Description, Excepteur velit in proident eu cillum qui
-              reprehenderit dolor est.
+              RELEASE DATE:{" "}
+              {carouselData[step] ? carouselData[step].release_date : ""}
             </p>
-            <p>RELEASE DATE: DD/MM/YYYY</p>
           </TextStyle>
         </CarouselContainer>
         <NextBtn variant="right" strokeWidth={4} />
