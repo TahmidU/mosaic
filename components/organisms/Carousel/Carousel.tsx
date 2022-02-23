@@ -2,14 +2,13 @@ import {
   CarouselContainer,
   CarouselMainContainer,
   Container,
-  ImageStyle,
-  LinearGradient,
+  ImageContainer,
   NextBtn,
   PrevBtn,
   ProgBar,
   TextStyle,
 } from "./styles";
-import Image from "next/image";
+
 import { ReactElement, useState, useEffect, useContext } from "react";
 import ProgressiveBar from "./ProgressiveBar";
 import GlobalContext from "../../../context/GlobalContext";
@@ -17,7 +16,7 @@ import CarouselRequests from "./request";
 import { IDiscoverMovie } from "../../../types/api/discover";
 
 export default function Carousel(): ReactElement {
-  const [loading, setLoading] = useState(true);
+  //const [loading, setLoading] = useState(true);
   const [carouselData, setCarouselData] = useState<IDiscoverMovie[]>([]);
   const { axiosInstance } = useContext(GlobalContext);
 
@@ -40,22 +39,7 @@ export default function Carousel(): ReactElement {
       <CarouselMainContainer>
         <PrevBtn variant="left" strokeWidth={4} />
         <CarouselContainer>
-          {!loading && <LinearGradient />}
-          <ImageStyle>
-            <Image
-              alt="Carousel"
-              src="https://image.tmdb.org/t/p/original/1Rr5SrvHxMXHu5RjKpaMba8VTzi.jpg"
-              blurDataURL="https://image.tmdb.org/t/p/w300/1Rr5SrvHxMXHu5RjKpaMba8VTzi.jpg"
-              placeholder="blur"
-              width={1280}
-              height={720}
-              layout="responsive"
-              onLoadingComplete={() => {
-                setLoading(false);
-              }}
-            />
-          </ImageStyle>
-
+          <ImageContainer></ImageContainer>
           <TextStyle>
             <p>Title</p>
             <p>
