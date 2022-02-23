@@ -1,33 +1,26 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import axios from "axios";
-import payload from "../../components/atoms/Button/Button.stories";
+import axios, { AxiosError } from "axios";
 
-//https://api.themoviedb.org/3
-export default function handle(req: NextApiRequest, res: NextApiResponse) {
+async function handle(req: NextApiRequest, res: NextApiResponse) {
   switch (req.method) {
     case "GET":
-      axios
-        .get(
-          `https://api.themoviedb.org/3/discover/movie?language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate&api_key=${process.env.MOVIE_DB_API_KEY}`
-        )
-        .then((data) => {
-          res.json(data.data);
-        })
-        .catch((err) => {
-          console.log(err);
-          res.status(500).json({
-            status: false,
-            error: err,
-            message: "Internal Server Error",
-            payload: {},
-          });
+      try {
+        const results = await axios({
+          method: "get",
+          headers: { "Content-type": "application/json" },
+          url: `${process.env.MOVIE_DB_WEB_URL}/discover/movie?language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate&api_key=${process.env.MOVIE_DB_API_KEY}`,
         });
+        res.status(results.status).json(results.data);
+      } catch (error) {
+        const err = error as AxiosError;
+        res.status(err.response?.status || 500).json(err.response?.data);
+      }
       break;
     default:
       res.setHeader("Allow", ["GET"]);
       res.status(405).end("Method not Allowed");
       break;
   }
-
-  //res.status(200).json({ stuff: process.env.MOVIE_DB_API_KEY });
 }
+
+export default handle;

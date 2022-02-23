@@ -14,8 +14,3 @@ export interface IDiscoverMovie {
   vote_average: number;
   vote_count: number;
 }
-
-export interface IDiscoverMovies {
-  page: number;
-  results: Partial<IDiscoverMovie[]>;
-}
