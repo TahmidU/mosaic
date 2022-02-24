@@ -8,16 +8,18 @@ import {
   ProgBar,
   TextStyle,
 } from "./styles";
+import { ReactElement, useContext, useEffect, useState } from "react";
 
-import { ReactElement, useState, useEffect, useContext } from "react";
-import ProgressiveBar from "./ProgressiveBar";
-import GlobalContext from "../../../context/GlobalContext";
-import CarouselRequests from "./request";
-import { IDiscoverMovie } from "../../../types/api/discover";
 import CarouselImage from "./CarouselImage";
+import CarouselRequests from "./request";
+import GlobalContext from "../../../context/GlobalContext";
+import { IDiscoverMovie } from "../../../types/api/discover";
+import ProgressiveBar from "./ProgressiveBar";
 
 export default function Carousel(): ReactElement {
   const [step, setStep] = useState(0);
+  const [carouselTimerPause, setCarouselTimerPause] = useState(false);
+  const [carouselTimerReset, setCarouselTimerReset] = useState(false);
   const [carouselData, setCarouselData] = useState<IDiscoverMovie[]>([]);
   const { axiosInstance } = useContext(GlobalContext);
 
@@ -31,11 +33,17 @@ export default function Carousel(): ReactElement {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  console.log(`${step} ${carouselData.length}`);
+  function setResetToFalse() {
+    setCarouselTimerReset(false);
+  }
 
-  function handleSlideChange(next: boolean) {
+  function handleSlideChange(next: boolean, clicked: boolean = false) {
+    if (clicked) {
+      setCarouselTimerReset(true);
+    }
+
     if (next) {
-      setStep((_step) => (_step < carouselData.length - 1 ? _step + 1 : _step));
+      setStep((_step) => (_step <= 10 ? _step + 1 : 0));
     } else {
       setStep((_step) => (_step < 1 ? _step : _step - 1));
     }
@@ -48,7 +56,7 @@ export default function Carousel(): ReactElement {
           variant="left"
           strokeWidth={4}
           onClick={() => {
-            handleSlideChange(false);
+            handleSlideChange(false, true);
           }}
         />
         <CarouselContainer>
@@ -76,7 +84,7 @@ export default function Carousel(): ReactElement {
           variant="right"
           strokeWidth={4}
           onClick={() => {
-            handleSlideChange(true);
+            handleSlideChange(true, true);
           }}
         />
         <ProgBar>
@@ -85,6 +93,9 @@ export default function Carousel(): ReactElement {
             trigger={() => {
               handleSlideChange(true);
             }}
+            pause={carouselTimerPause}
+            reset={carouselTimerReset}
+            setResetToFalse={setResetToFalse}
           />
         </ProgBar>
       </CarouselMainContainer>
