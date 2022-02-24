@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
-export const LinearGradient = styled.div`
+export const LinearGradient = styled.div<{ hide: boolean }>`
+  ${({ hide }) => (hide ? "display: none" : "")};
   position: absolute;
   width: 100%;
   height: 100%;
@@ -16,7 +17,8 @@ export const LinearGradient = styled.div`
 `;
 LinearGradient.displayName = "LinearGradient";
 
-export const ImageStyle = styled.div`
+export const ImageStyle = styled.div<{ hide: boolean }>`
+  ${({ hide }) => (hide ? "display: none" : "")};
   width: 100%;
   height: 100%;
   overflow: hidden;

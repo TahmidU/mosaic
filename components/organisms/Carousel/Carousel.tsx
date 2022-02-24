@@ -31,12 +31,26 @@ export default function Carousel(): ReactElement {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  console.log(carouselData);
+  console.log(`${step} ${carouselData.length}`);
+
+  function handleSlideChange(next: boolean) {
+    if (next) {
+      setStep((_step) => (_step < carouselData.length - 1 ? _step + 1 : _step));
+    } else {
+      setStep((_step) => (_step < 1 ? _step : _step - 1));
+    }
+  }
 
   return (
     <Container>
       <CarouselMainContainer>
-        <PrevBtn variant="left" strokeWidth={4} />
+        <PrevBtn
+          variant="left"
+          strokeWidth={4}
+          onClick={() => {
+            handleSlideChange(false);
+          }}
+        />
         <CarouselContainer>
           <ImageContainer>
             {carouselData.map((movies, index) => {
@@ -44,7 +58,7 @@ export default function Carousel(): ReactElement {
                 <CarouselImage
                   key={index}
                   imageURL={movies.backdrop_path}
-                  disabled={step !== index}
+                  hide={step !== index}
                 />
               );
             })}
@@ -58,9 +72,20 @@ export default function Carousel(): ReactElement {
             </p>
           </TextStyle>
         </CarouselContainer>
-        <NextBtn variant="right" strokeWidth={4} />
+        <NextBtn
+          variant="right"
+          strokeWidth={4}
+          onClick={() => {
+            handleSlideChange(true);
+          }}
+        />
         <ProgBar>
-          <ProgressiveBar duration={15} />
+          <ProgressiveBar
+            duration={15}
+            trigger={() => {
+              handleSlideChange(true);
+            }}
+          />
         </ProgBar>
       </CarouselMainContainer>
     </Container>
