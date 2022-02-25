@@ -1,6 +1,5 @@
-import Image from "next/image";
-import styled from "styled-components";
 import SlideButton from "./SlideButton";
+import styled from "styled-components";
 
 export const Container = styled.div`
   display: grid;
@@ -35,7 +34,13 @@ export const CarouselContainer = styled.div`
 `;
 CarouselContainer.displayName = "CarouselContainer";
 
-export const ImageContainer = styled.div``;
+export const ImageContainer = styled.div`
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 1280px;
+  max-height: 720px;
+`;
 ImageContainer.displayName = "ImageContainer";
 
 export const TextStyle = styled.div`

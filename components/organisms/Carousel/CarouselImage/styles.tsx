@@ -1,7 +1,11 @@
 import styled from "styled-components";
 
-export const LinearGradient = styled.div<{ hide: boolean }>`
-  ${({ hide }) => (hide ? "display: none" : "")};
+export const Container = styled.div<{ index: number; currentStep: number }>`
+  ${({ index, currentStep }) => (index !== currentStep ? "display: none" : "")};
+`;
+Container.displayName = "Container";
+
+export const LinearGradient = styled.div`
   position: absolute;
   width: 100%;
   height: 100%;
@@ -17,8 +21,8 @@ export const LinearGradient = styled.div<{ hide: boolean }>`
 `;
 LinearGradient.displayName = "LinearGradient";
 
-export const ImageStyle = styled.div<{ hide: boolean }>`
-  ${({ hide }) => (hide ? "display: none" : "")};
+export const ImageStyle = styled.div`
+  position: relative;
   width: 100%;
   height: 100%;
   overflow: hidden;

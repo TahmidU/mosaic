@@ -27,7 +27,7 @@ export default function Carousel(): ReactElement {
     const requests = CarouselRequests(axiosInstance.api);
 
     requests.getDiscoverMovie().then((data) => {
-      setCarouselData(data.results);
+      setCarouselData(data.results.slice(0, 10));
     });
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -43,7 +43,7 @@ export default function Carousel(): ReactElement {
     }
 
     if (next) {
-      setStep((_step) => (_step <= 10 ? _step + 1 : 0));
+      setStep((_step) => (_step < 9 ? _step + 1 : 0));
     } else {
       setStep((_step) => (_step < 1 ? _step : _step - 1));
     }
@@ -54,7 +54,7 @@ export default function Carousel(): ReactElement {
       <CarouselMainContainer>
         <PrevBtn
           variant="left"
-          strokeWidth={4}
+          strokeWidth={3}
           onClick={() => {
             handleSlideChange(false, true);
           }}
@@ -66,7 +66,8 @@ export default function Carousel(): ReactElement {
                 <CarouselImage
                   key={index}
                   imageURL={movies.backdrop_path}
-                  hide={step !== index}
+                  currentStep={step}
+                  index={index}
                 />
               );
             })}
@@ -82,7 +83,7 @@ export default function Carousel(): ReactElement {
         </CarouselContainer>
         <NextBtn
           variant="right"
-          strokeWidth={4}
+          strokeWidth={3}
           onClick={() => {
             handleSlideChange(true, true);
           }}
@@ -91,7 +92,8 @@ export default function Carousel(): ReactElement {
           <ProgressiveBar
             duration={15}
             trigger={() => {
-              handleSlideChange(true);
+              //! Uncomment this once carousel is finished. It's annoying when debugging!
+              //handleSlideChange(true);
             }}
             pause={carouselTimerPause}
             reset={carouselTimerReset}
