@@ -3,6 +3,7 @@ import { ReactElement, useState } from "react";
 
 import Image from "next/image";
 
+//! Some of the code here are kept for slide animation in near future.
 interface CarouselImageProps {
   imageURL: string;
   disabled?: boolean;

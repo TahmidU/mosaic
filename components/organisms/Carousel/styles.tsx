@@ -35,11 +35,16 @@ export const CarouselContainer = styled.div`
 CarouselContainer.displayName = "CarouselContainer";
 
 export const ImageContainer = styled.div`
+  display: flex;
+  flex-direction: row;
   position: relative;
+  //width: 100%;
+  //height: auto;
   width: 100%;
-  height: auto;
+  height: 720px;
   max-width: 1280px;
   max-height: 720px;
+  overflow: hidden;
 `;
 ImageContainer.displayName = "ImageContainer";
 

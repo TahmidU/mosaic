@@ -2,6 +2,11 @@ import styled from "styled-components";
 
 export const Container = styled.div<{ index: number; currentStep: number }>`
   ${({ index, currentStep }) => (index !== currentStep ? "display: none" : "")};
+  position: inherit;
+  max-width: 1280px;
+  max-height: 720px;
+  width: 100%;
+  height: auto;
 `;
 Container.displayName = "Container";
 
