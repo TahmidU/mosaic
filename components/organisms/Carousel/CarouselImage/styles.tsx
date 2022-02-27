@@ -1,12 +1,17 @@
+import { motion } from "framer-motion";
 import styled from "styled-components";
 
-export const Container = styled.div<{ index: number; currentStep: number }>`
-  ${({ index, currentStep }) => (index !== currentStep ? "display: none" : "")};
-  position: inherit;
+export const Container = styled(motion.div)<{
+  index: number;
+  currentStep: number;
+}>`
+  //display: inline-block;
+  position: relative;
   max-width: 1280px;
   max-height: 720px;
   width: 100%;
   height: auto;
+  top: calc(${({ index }) => `${index} * -720px`});
 `;
 Container.displayName = "Container";
 

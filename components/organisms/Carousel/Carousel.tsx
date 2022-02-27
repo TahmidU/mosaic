@@ -93,7 +93,7 @@ export default function Carousel(): ReactElement {
             duration={15}
             trigger={() => {
               //! Uncomment this once carousel is finished. It's annoying when debugging!
-              //handleSlideChange(true);
+              handleSlideChange(true);
             }}
             pause={carouselTimerPause}
             reset={carouselTimerReset}

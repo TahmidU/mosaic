@@ -2,6 +2,7 @@ import { Container, ImageStyle, LinearGradient } from "./styles";
 import { ReactElement, useState } from "react";
 
 import Image from "next/image";
+import { carouselImageAnimVariant } from "./animation-variant";
 
 //! Some of the code here are kept for slide animation in near future.
 interface CarouselImageProps {
@@ -18,27 +19,42 @@ export default function CarouselImage({
 }: CarouselImageProps): ReactElement {
   const [loading, setLoading] = useState(true);
 
+  console.log(currentStep);
+
   return (
     <>
-      {!(Math.abs(index - currentStep) > 1) && (
-        <Container index={index} currentStep={currentStep}>
-          <ImageStyle>
-            {!loading && <LinearGradient />}
-            <Image
-              alt="Carousel"
-              src={`https://image.tmdb.org/t/p/w1280${imageURL}`}
-              blurDataURL={`https://image.tmdb.org/t/p/w300${imageURL}`}
-              placeholder="blur"
-              width={1280}
-              height={720}
-              layout="responsive"
-              onLoadingComplete={() => {
-                setLoading(false);
-              }}
-            />
-          </ImageStyle>
-        </Container>
-      )}
+      <Container
+        index={index}
+        currentStep={currentStep}
+        variants={carouselImageAnimVariant}
+        initial={false}
+        animate={
+          index - currentStep >= 1
+            ? "moveRight"
+            : index - currentStep === 0
+            ? "show"
+            : index - currentStep <= -1
+            ? "moveLeft"
+            : ""
+        }
+        transition={{ duration: 0.85 }}
+      >
+        <ImageStyle>
+          {!loading && <LinearGradient />}
+          <Image
+            alt="Carousel"
+            src={`https://image.tmdb.org/t/p/w1280${imageURL}`}
+            blurDataURL={`https://image.tmdb.org/t/p/w300${imageURL}`}
+            placeholder="blur"
+            width={1280}
+            height={720}
+            layout="responsive"
+            onLoadingComplete={() => {
+              setLoading(false);
+            }}
+          />
+        </ImageStyle>
+      </Container>
     </>
   );
 }
