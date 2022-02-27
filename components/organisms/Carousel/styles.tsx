@@ -13,7 +13,7 @@ export const CarouselMainContainer = styled.div`
   flex-direction: row;
   width: 100%;
   max-width: 1280px;
-  height: auto;
+  height: fit-content;
   max-height: 720px;
   justify-content: space-evenly;
   align-items: center;

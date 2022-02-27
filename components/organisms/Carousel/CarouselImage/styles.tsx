@@ -11,7 +11,7 @@ export const Container = styled(motion.div)<{
   max-height: 720px;
   width: 100%;
   height: auto;
-  top: calc(${({ index }) => `${index} * -720px`});
+  top: calc(${({ index }) => `${index} * -37.5vw`});
 `;
 Container.displayName = "Container";
 
