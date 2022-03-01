@@ -18,6 +18,7 @@ export default function CarouselImage({
   currentStep = 0,
 }: CarouselImageProps): ReactElement {
   const [loading, setLoading] = useState(true);
+  const [posAbsolute, setPosAbsolute] = useState(index - currentStep !== 0);
 
   console.log(currentStep);
 
@@ -28,6 +29,7 @@ export default function CarouselImage({
         currentStep={currentStep}
         variants={carouselImageAnimVariant}
         initial={false}
+        positionAbsolute={posAbsolute}
         animate={
           index - currentStep >= 1
             ? "moveRight"
@@ -37,7 +39,23 @@ export default function CarouselImage({
             ? "moveLeft"
             : ""
         }
-        transition={{ duration: 0.85 }}
+        transition={{
+          duration: 0.85,
+          onPlay: () => {
+            if (index - currentStep !== 0) {
+              setPosAbsolute(true);
+            } else {
+              setPosAbsolute(false);
+            }
+          },
+          onComplete: () => {
+            if (index - currentStep !== 0) {
+              setPosAbsolute(true);
+            } else {
+              setPosAbsolute(false);
+            }
+          },
+        }}
       >
         <ImageStyle>
           {!loading && <LinearGradient />}

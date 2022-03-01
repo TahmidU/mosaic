@@ -5,6 +5,8 @@ export const Container = styled.div`
   display: grid;
   grid-template-columns: 0.7fr 0.3fr;
   margin: 2rem 1rem;
+  height: fit-content;
+  //max-height: 720px;
 `;
 Container.displayName = "Container";
 
@@ -14,7 +16,7 @@ export const CarouselMainContainer = styled.div`
   width: 100%;
   max-width: 1280px;
   height: fit-content;
-  max-height: 720px;
+  //max-height: 720px;
   justify-content: space-evenly;
   align-items: center;
   position: relative;
@@ -25,7 +27,7 @@ export const CarouselContainer = styled.div`
   width: 100%;
   max-width: 1280px;
   height: fit-content;
-  max-height: 720px;
+  //max-height: 720px;
   position: relative;
 
   > span:nth-child(2) {
@@ -37,11 +39,11 @@ CarouselContainer.displayName = "CarouselContainer";
 export const ImageContainer = styled.div`
   position: relative;
   //width: 100%;
-  height: auto;
+  height: fit-content;
   width: 100%;
   //height: 720px;
   max-width: 1280px;
-  max-height: 720px;
+  //max-height: 720px;
   overflow: hidden;
 
   //overflow-x: hidden;
@@ -109,6 +111,7 @@ export const ProgBar = styled.div`
   position: absolute;
   z-index: 11;
   bottom: 0;
+  right: 3.5%;
   width: calc(100% - 80px);
 `;
 ProgBar.displayName = "ProgBar";

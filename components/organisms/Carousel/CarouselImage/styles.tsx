@@ -4,14 +4,16 @@ import styled from "styled-components";
 export const Container = styled(motion.div)<{
   index: number;
   currentStep: number;
+  positionAbsolute: boolean;
 }>`
   //display: inline-block;
-  position: relative;
+  position: ${({ positionAbsolute }) =>
+    positionAbsolute ? "absolute" : "relative"};
   max-width: 1280px;
   max-height: 720px;
   width: 100%;
   height: auto;
-  top: calc(${({ index }) => `${index} * -37.5vw`});
+  //top: calc(${({ index }) => `${index} * -37.5vw`});
 `;
 Container.displayName = "Container";
 
