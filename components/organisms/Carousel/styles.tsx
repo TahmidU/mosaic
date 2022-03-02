@@ -38,6 +38,8 @@ CarouselContainer.displayName = "CarouselContainer";
 
 export const ImageContainer = styled.div`
   position: relative;
+  display: inline-block;
+  white-space: nowrap;
   //width: 100%;
   height: fit-content;
   width: 100%;
@@ -45,8 +47,6 @@ export const ImageContainer = styled.div`
   max-width: 1280px;
   //max-height: 720px;
   overflow: hidden;
-
-  //overflow-x: hidden;
   //overflow-y: hidden;
 `;
 ImageContainer.displayName = "ImageContainer";
@@ -110,8 +110,8 @@ PrevBtn.displayName = "PrevBtn";
 export const ProgBar = styled.div`
   position: absolute;
   z-index: 11;
-  bottom: 0;
-  right: 3.5%;
+  bottom: 1.3%;
+  right: 4.25%;
   width: calc(100% - 80px);
 `;
 ProgBar.displayName = "ProgBar";

@@ -6,9 +6,9 @@ export const Container = styled(motion.div)<{
   currentStep: number;
   positionAbsolute: boolean;
 }>`
-  //display: inline-block;
-  position: ${({ positionAbsolute }) =>
-    positionAbsolute ? "absolute" : "relative"};
+  display: inline-block;
+  position: relative;
+  //white-space: nowrap;
   max-width: 1280px;
   max-height: 720px;
   width: 100%;

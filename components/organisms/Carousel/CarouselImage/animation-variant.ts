@@ -1,14 +1,35 @@
+export function getCarouselImageAnimVariant(
+  left: number,
+  show: number,
+  right: number
+) {
+  return {
+    moveLeft: {
+      right: `${left}%`,
+      opacity: "0%",
+    },
+    show: {
+      right: `${show}%`,
+      opacity: "100%",
+    },
+    moveRight: {
+      right: `${right}%`,
+      opacity: "0%",
+    },
+  };
+}
+
 export const carouselImageAnimVariant = {
   moveLeft: {
-    right: "101%",
+    right: "201%",
     opacity: "0%",
   },
   show: {
-    right: "0%",
+    right: "100%",
     opacity: "100%",
   },
   moveRight: {
-    right: "-101%",
+    right: "-201%",
     opacity: "0%",
   },
 };

@@ -71,18 +71,6 @@ export default function Carousel(): ReactElement {
                 />
               );
             })}
-            <ProgBar>
-              <ProgressiveBar
-                duration={15}
-                trigger={() => {
-                  //! Uncomment this once carousel is finished. It's annoying when debugging!
-                  //handleSlideChange(true);
-                }}
-                pause={carouselTimerPause}
-                reset={carouselTimerReset}
-                setResetToFalse={setResetToFalse}
-              />
-            </ProgBar>
           </ImageContainer>
           <TextStyle>
             <p>{carouselData[step] ? carouselData[step].title : ""}</p>
@@ -100,6 +88,18 @@ export default function Carousel(): ReactElement {
             handleSlideChange(true, true);
           }}
         />
+        <ProgBar>
+          <ProgressiveBar
+            duration={15}
+            trigger={() => {
+              //! Uncomment this once carousel is finished. It's annoying when debugging!
+              //handleSlideChange(true);
+            }}
+            pause={carouselTimerPause}
+            reset={carouselTimerReset}
+            setResetToFalse={setResetToFalse}
+          />
+        </ProgBar>
       </CarouselMainContainer>
       <div>Test</div>
     </Container>

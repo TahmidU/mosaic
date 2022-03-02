@@ -1,8 +1,11 @@
 import { Container, ImageStyle, LinearGradient } from "./styles";
 import { ReactElement, useState } from "react";
+import {
+  carouselImageAnimVariant,
+  getCarouselImageAnimVariant,
+} from "./animation-variant";
 
 import Image from "next/image";
-import { carouselImageAnimVariant } from "./animation-variant";
 
 //! Some of the code here are kept for slide animation in near future.
 interface CarouselImageProps {
@@ -20,14 +23,22 @@ export default function CarouselImage({
   const [loading, setLoading] = useState(true);
   const [posAbsolute, setPosAbsolute] = useState(index - currentStep !== 0);
 
-  console.log(currentStep);
+  console.log(
+    (currentStep + 1) * 100 + 1,
+    currentStep * 100,
+    (currentStep + 1) * -100 - 1
+  );
 
   return (
     <>
       <Container
         index={index}
         currentStep={currentStep}
-        variants={carouselImageAnimVariant}
+        variants={getCarouselImageAnimVariant(
+          currentStep * 100 + 1,
+          currentStep * 100,
+          currentStep * 100 - 1
+        )}
         initial={false}
         positionAbsolute={posAbsolute}
         animate={
@@ -41,20 +52,6 @@ export default function CarouselImage({
         }
         transition={{
           duration: 0.85,
-          onPlay: () => {
-            if (index - currentStep !== 0) {
-              setPosAbsolute(true);
-            } else {
-              setPosAbsolute(false);
-            }
-          },
-          onComplete: () => {
-            if (index - currentStep !== 0) {
-              setPosAbsolute(true);
-            } else {
-              setPosAbsolute(false);
-            }
-          },
         }}
       >
         <ImageStyle>
