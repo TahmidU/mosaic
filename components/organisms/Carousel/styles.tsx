@@ -134,5 +134,9 @@ export const ProgBar = styled.div`
   z-index: 11;
   bottom: 1%;
   width: calc(100% - 84px);
+
+  @media (max-width: 1474px) {
+    bottom: 1.4%;
+  }
 `;
 ProgBar.displayName = "ProgBar";
