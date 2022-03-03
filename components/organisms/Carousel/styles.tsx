@@ -59,7 +59,7 @@ export const TextStyle = styled.div`
   width: 100%;
 
   > p:first-child {
-    position: absolute;
+    position: relative;
     z-index: 10;
     ${({ theme }) => theme.fonts.main.humongous};
     font-weight: bolder;
@@ -68,10 +68,10 @@ export const TextStyle = styled.div`
   }
 
   > p:nth-child(2) {
-    position: absolute;
+    position: relative;
     z-index: 10;
     ${({ theme }) => theme.fonts.main.massive};
-    top: 80px;
+    top: -115px;
     left: 2%;
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -80,11 +80,33 @@ export const TextStyle = styled.div`
   }
 
   > p:nth-child(3) {
-    position: absolute;
+    position: relative;
     z-index: 10;
     ${({ theme }) => theme.fonts.main.massive};
-    top: 160px;
+    top: -130px;
     left: 2%;
+  }
+
+  p {
+    width: 90%;
+    white-space: normal;
+  }
+
+  @media (max-width: 1474px) {
+    > p:first-child {
+      ${({ theme }) => theme.fonts.main.massive};
+      top: 6px;
+    }
+
+    > p:nth-child(2) {
+      ${({ theme }) => theme.fonts.main.bigger};
+      top: -28px;
+    }
+
+    > p:nth-child(3) {
+      ${({ theme }) => theme.fonts.main.big};
+      top: -40px;
+    }
   }
 `;
 TextStyle.displayName = "TextStyle";
@@ -110,8 +132,7 @@ PrevBtn.displayName = "PrevBtn";
 export const ProgBar = styled.div`
   position: absolute;
   z-index: 11;
-  bottom: 1.3%;
-  right: 4.25%;
-  width: calc(100% - 80px);
+  bottom: 1%;
+  width: calc(100% - 84px);
 `;
 ProgBar.displayName = "ProgBar";
