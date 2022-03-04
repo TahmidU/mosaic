@@ -1,8 +1,8 @@
 import ProgressiveCircle from ".";
-import { storyTitle } from "../../../../../resources/utils/story";
+import { StoryUtils } from "../../../../../resources/utils";
 
 const payload = {
-  title: storyTitle("ATOMS", "ProgressiveCircle"),
+  title: StoryUtils.storyTitle("ATOMS", "ProgressiveCircle"),
   component: ProgressiveCircle,
 };
 export default payload;

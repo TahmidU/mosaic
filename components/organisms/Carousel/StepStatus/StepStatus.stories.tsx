@@ -1,8 +1,8 @@
 import StepStatus from ".";
-import { storyTitle } from "../../../../resources/utils/story";
+import { StoryUtils } from "../../../../resources/utils";
 
 const payload = {
-  title: storyTitle("ATOMS", "StepStatus"),
+  title: StoryUtils.storyTitle("ATOMS", "StepStatus"),
   component: StepStatus,
 };
 export default payload;

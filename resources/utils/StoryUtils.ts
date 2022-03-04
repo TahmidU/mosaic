@@ -1,4 +1,4 @@
-export const titles = {
+const storyType = {
   atoms: "ATOMS",
   molecules: "MOLECULES",
   organisms: "ORGANISMS",
@@ -6,6 +6,13 @@ export const titles = {
 
 type StoryType = "ATOMS" | "MOLECULES" | "ORGANISMS";
 
-export function storyTitle(type: StoryType, title: string) {
+function storyTitle(type: StoryType, title: string) {
   return `${type}/${title}`;
 }
+
+const StoryUtils = {
+  storyTitle,
+  storyType,
+};
+
+export default StoryUtils;

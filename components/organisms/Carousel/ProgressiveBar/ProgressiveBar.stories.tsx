@@ -1,9 +1,9 @@
 import ProgressiveBar from ".";
-import { storyTitle } from "../../../../resources/utils/story";
+import { StoryUtils } from "../../../../resources/utils";
 import { useState } from "react";
 
 const payload = {
-  title: storyTitle("ATOMS", "ProgressiveBar"),
+  title: StoryUtils.storyTitle("ATOMS", "ProgressiveBar"),
   component: ProgressiveBar,
 };
 export default payload;

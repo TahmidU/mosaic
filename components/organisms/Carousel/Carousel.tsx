@@ -15,6 +15,7 @@ import CarouselRequests from "./request";
 import GlobalContext from "../../../context/GlobalContext";
 import { IDiscoverMovie } from "../../../types/api/discover";
 import ProgressiveBar from "./ProgressiveBar";
+import { TextUtils } from "resources/utils";
 
 export default function Carousel(): ReactElement {
   const [step, setStep] = useState(0);
@@ -77,7 +78,9 @@ export default function Carousel(): ReactElement {
             <p>{carouselData[step] ? carouselData[step].overview : ""}</p>
             <p>
               RELEASE DATE:{" "}
-              {carouselData[step] ? carouselData[step].release_date : ""}
+              {carouselData[step]
+                ? TextUtils.dateFormatter(carouselData[step].release_date)
+                : ""}
             </p>
           </TextStyle>
         </CarouselContainer>

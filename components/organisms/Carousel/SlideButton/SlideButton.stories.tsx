@@ -1,8 +1,8 @@
 import SlideButton from ".";
-import { storyTitle } from "../../../../resources/utils/story";
+import { StoryUtils } from "../../../../resources/utils";
 
 const payload = {
-  title: storyTitle("ATOMS", "SlideButton"),
+  title: StoryUtils.storyTitle("MOLECULES", "SlideButton"),
   component: SlideButton,
 };
 export default payload;
