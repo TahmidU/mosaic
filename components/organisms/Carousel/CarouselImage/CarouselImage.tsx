@@ -21,26 +21,16 @@ export default function CarouselImage({
   currentStep = 0,
 }: CarouselImageProps): ReactElement {
   const [loading, setLoading] = useState(true);
-  const [posAbsolute, setPosAbsolute] = useState(index - currentStep !== 0);
-
-  console.log(
-    (currentStep + 1) * 100 + 1,
-    currentStep * 100,
-    (currentStep + 1) * -100 - 1
-  );
 
   return (
     <>
       <Container
-        index={index}
-        currentStep={currentStep}
         variants={getCarouselImageAnimVariant(
           currentStep * 100 + 1,
           currentStep * 100,
           currentStep * 100 - 1
         )}
         initial={false}
-        positionAbsolute={posAbsolute}
         animate={
           index - currentStep >= 1
             ? "moveRight"

@@ -19,8 +19,10 @@ import { TextUtils } from "resources/utils";
 
 export default function Carousel(): ReactElement {
   const [step, setStep] = useState(0);
-  const [carouselTimerPause, setCarouselTimerPause] = useState(false);
-  const [carouselTimerReset, setCarouselTimerReset] = useState(false);
+  const [timerConfig, setTimerConfig] = useState({
+    pause: false,
+    reset: false,
+  });
   const [carouselData, setCarouselData] = useState<IDiscoverMovie[]>([]);
   const { axiosInstance } = useContext(GlobalContext);
 
@@ -34,19 +36,19 @@ export default function Carousel(): ReactElement {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  function setResetToFalse() {
-    setCarouselTimerReset(false);
+  function onAnimEnd() {
+    setTimerConfig((prev) => ({ ...prev, reset: false }));
   }
 
   function handleSlideChange(next: boolean, clicked: boolean = false) {
     if (clicked) {
-      setCarouselTimerReset(true);
+      setTimerConfig((prev) => ({ ...prev, reset: true }));
     }
 
     if (next) {
       setStep((_step) => (_step < 9 ? _step + 1 : 0));
     } else {
-      setStep((_step) => (_step < 1 ? _step : _step - 1));
+      setStep((_step) => (_step < 1 ? 9 : _step - 1));
     }
   }
 
@@ -98,9 +100,9 @@ export default function Carousel(): ReactElement {
               //! Uncomment this once carousel is finished. It's annoying when debugging!
               //handleSlideChange(true);
             }}
-            pause={carouselTimerPause}
-            reset={carouselTimerReset}
-            setResetToFalse={setResetToFalse}
+            pause={timerConfig.pause}
+            reset={timerConfig.reset}
+            onAnimEnd={onAnimEnd}
           />
         </ProgBar>
       </CarouselMainContainer>

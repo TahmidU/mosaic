@@ -4,9 +4,9 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: grid;
   grid-template-columns: 70% 30%;
-  margin: 0 1rem;
+  margin: 1rem 1rem;
   height: fit-content;
-  //max-height: 720px;
+  max-height: 720px;
 `;
 Container.displayName = "Container";
 
@@ -16,7 +16,6 @@ export const CarouselMainContainer = styled.div`
   width: 100%;
   max-width: 1280px;
   height: fit-content;
-  //max-height: 720px;
   justify-content: space-evenly;
   align-items: center;
   position: relative;
@@ -27,7 +26,6 @@ export const CarouselContainer = styled.div`
   width: 100%;
   max-width: 1280px;
   height: fit-content;
-  //max-height: 720px;
   position: relative;
 
   > span:nth-child(2) {
@@ -40,14 +38,12 @@ export const ImageContainer = styled.div`
   position: relative;
   display: inline-block;
   white-space: nowrap;
-  //width: 100%;
+
   height: fit-content;
   width: 100%;
-  //height: 720px;
+
   max-width: 1280px;
-  //max-height: 720px;
   overflow: hidden;
-  //overflow-y: hidden;
 `;
 ImageContainer.displayName = "ImageContainer";
 
