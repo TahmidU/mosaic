@@ -1,11 +1,8 @@
 import { Container, ImageStyle, LinearGradient } from "./styles";
 import { ReactElement, useState } from "react";
-import {
-  carouselImageAnimVariant,
-  getCarouselImageAnimVariant,
-} from "./animation-variant";
 
 import Image from "next/image";
+import { getCarouselImageAnimVariant } from "./animation-variants";
 
 //! Some of the code here are kept for slide animation in near future.
 interface CarouselImageProps {

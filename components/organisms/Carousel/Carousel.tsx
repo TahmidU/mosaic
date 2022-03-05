@@ -16,6 +16,8 @@ import GlobalContext from "../../../context/GlobalContext";
 import { IDiscoverMovie } from "../../../types/api/discover";
 import ProgressiveBar from "./ProgressiveBar";
 import { TextUtils } from "resources/utils";
+import { textAnimVariant } from "./animation-variants";
+import { useAnimation } from "framer-motion";
 
 export default function Carousel(): ReactElement {
   const [step, setStep] = useState(0);
@@ -25,6 +27,7 @@ export default function Carousel(): ReactElement {
   });
   const [carouselData, setCarouselData] = useState<IDiscoverMovie[]>([]);
   const { axiosInstance } = useContext(GlobalContext);
+  const textAnimControls = useAnimation();
 
   useEffect(() => {
     const requests = CarouselRequests(axiosInstance.api);
@@ -35,6 +38,12 @@ export default function Carousel(): ReactElement {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    //textAnimControls.stop();
+    textAnimControls.set(textAnimVariant.hide);
+    textAnimControls.start(() => textAnimVariant.show);
+  }, [step]);
 
   function onAnimEnd() {
     setTimerConfig((prev) => ({ ...prev, reset: false }));
@@ -75,7 +84,7 @@ export default function Carousel(): ReactElement {
               );
             })}
           </ImageContainer>
-          <TextStyle>
+          <TextStyle variants={textAnimVariant} animate={textAnimControls}>
             <p>{carouselData[step] ? carouselData[step].title : ""}</p>
             <p>{carouselData[step] ? carouselData[step].overview : ""}</p>
             <p>

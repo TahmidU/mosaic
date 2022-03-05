@@ -1,4 +1,5 @@
 import SlideButton from "./SlideButton";
+import { motion } from "framer-motion";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -50,7 +51,7 @@ export const ImageContainer = styled.div`
 `;
 ImageContainer.displayName = "ImageContainer";
 
-export const TextStyle = styled.div`
+export const TextStyle = styled(motion.div)`
   position: absolute;
   color: ${({ theme }) => theme.main};
   top: 55%;
