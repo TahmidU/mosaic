@@ -3,8 +3,8 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   display: grid;
-  grid-template-columns: 0.7fr 0.3fr;
-  margin: 2rem 1rem;
+  grid-template-columns: 70% 30%;
+  margin: 0 1rem;
   height: fit-content;
   //max-height: 720px;
 `;
