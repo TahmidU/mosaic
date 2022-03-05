@@ -19,6 +19,9 @@ export const CarouselMainContainer = styled.div`
   justify-content: space-evenly;
   align-items: center;
   position: relative;
+  background-color: ${({ theme }) => theme.reverseMain};
+  border-radius: 48px 48px 60px 60px;
+  overflow: hidden;
 `;
 CarouselMainContainer.displayName = "CarouselMainContainer";
 
@@ -128,11 +131,7 @@ PrevBtn.displayName = "PrevBtn";
 export const ProgBar = styled.div`
   position: absolute;
   z-index: 11;
-  bottom: 1%;
-  width: calc(100% - 84px);
-
-  @media (max-width: 1474px) {
-    bottom: 1.4%;
-  }
+  bottom: 0%;
+  width: calc(100% - 68px);
 `;
 ProgBar.displayName = "ProgBar";
