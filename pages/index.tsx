@@ -4,13 +4,14 @@ import Head from "next/head";
 import Image from "next/image";
 import type { NextPage } from "next";
 import styles from "../styles/Home.module.css";
+import { useMediaQuery } from "react-responsive";
 
 const Home: NextPage = () => {
-  return (
-    <div>
-      <Carousel />
-    </div>
-  );
+  const isSmallTablet = useMediaQuery({
+    query: "(max-width: 1024px)",
+  });
+
+  return <div>{isSmallTablet ? <></> : <Carousel />}</div>;
 };
 
 export default Home;
