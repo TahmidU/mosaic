@@ -1,4 +1,5 @@
 import SlideButton from "./SlideButton";
+import StepStatus from "./StepStatus";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 
@@ -65,6 +66,9 @@ export const TextStyle = styled(motion.div)`
     font-weight: bolder;
     top: -40px;
     left: 2%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   > p:nth-child(2) {
@@ -82,7 +86,7 @@ export const TextStyle = styled(motion.div)`
   > p:nth-child(3) {
     position: relative;
     z-index: 10;
-    ${({ theme }) => theme.fonts.main.massive};
+    ${({ theme }) => theme.fonts.main.big};
     top: -130px;
     left: 2%;
   }
@@ -99,12 +103,12 @@ export const TextStyle = styled(motion.div)`
     }
 
     > p:nth-child(2) {
-      ${({ theme }) => theme.fonts.main.bigger};
+      ${({ theme }) => theme.fonts.main.big};
       top: -28px;
     }
 
     > p:nth-child(3) {
-      ${({ theme }) => theme.fonts.main.big};
+      ${({ theme }) => theme.fonts.main.medium};
       top: -40px;
     }
   }
@@ -120,12 +124,12 @@ export const SlideBtn = styled(SlideButton)`
 SlideBtn.displayName = "SlideBtn";
 
 export const NextBtn = styled(SlideBtn)`
-  right: 35px;
+  right: 52px;
 `;
 NextBtn.displayName = "NextBtn";
 
 export const PrevBtn = styled(SlideBtn)`
-  left: 35px;
+  left: 52px;
 `;
 PrevBtn.displayName = "PrevBtn";
 
@@ -136,3 +140,24 @@ export const ProgBar = styled.div`
   width: calc(100% - 68px);
 `;
 ProgBar.displayName = "ProgBar";
+
+export const StepsContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  z-index: 22;
+  bottom: 3%;
+  right: 0;
+  left: 0;
+  margin-right: auto;
+  margin-left: auto;
+  width: 400px;
+  align-items: center;
+  justify-content: space-evenly;
+`;
+StepsContainer.displayName = "StepContainer";
+
+export const StepsStyle = styled(StepStatus)`
+  cursor: pointer;
+`;
+StepsStyle.displayName = "StepsStyle";

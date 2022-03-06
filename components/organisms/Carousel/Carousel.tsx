@@ -6,6 +6,8 @@ import {
   NextBtn,
   PrevBtn,
   ProgBar,
+  StepsContainer,
+  StepsStyle,
   TextStyle,
 } from "./styles";
 import { ReactElement, useContext, useEffect, useState } from "react";
@@ -40,12 +42,13 @@ export default function Carousel(): ReactElement {
   }, []);
 
   useEffect(() => {
-    //textAnimControls.stop();
     textAnimControls.set(textAnimVariant.hide);
     textAnimControls.start(() => textAnimVariant.show);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [step]);
 
-  function onAnimEnd() {
+  function onTimerAnimEnd() {
     setTimerConfig((prev) => ({ ...prev, reset: false }));
   }
 
@@ -83,6 +86,18 @@ export default function Carousel(): ReactElement {
                 />
               );
             })}
+
+            <StepsContainer>
+              {carouselData.map((movies, index) => {
+                return (
+                  <StepsStyle
+                    key={index}
+                    enabled={index <= step}
+                    onClick={() => setStep(index)}
+                  />
+                );
+              })}
+            </StepsContainer>
           </ImageContainer>
           <TextStyle variants={textAnimVariant} animate={textAnimControls}>
             <p>{carouselData[step] ? carouselData[step].title : ""}</p>
@@ -111,7 +126,7 @@ export default function Carousel(): ReactElement {
             }}
             pause={timerConfig.pause}
             reset={timerConfig.reset}
-            onAnimEnd={onAnimEnd}
+            onAnimEnd={onTimerAnimEnd}
           />
         </ProgBar>
       </CarouselMainContainer>
