@@ -137,7 +137,7 @@ export const ProgBar = styled.div`
   position: absolute;
   z-index: 11;
   bottom: 0%;
-  width: calc(100% - 68px);
+  width: calc(100% - 62px);
 `;
 ProgBar.displayName = "ProgBar";
 
