@@ -1,6 +1,6 @@
 import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
 
-import ProgressiveCircle from "./ProgressiveCircle";
+import ProgressiveCircle from "components/atoms/ProgressiveCircle";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 

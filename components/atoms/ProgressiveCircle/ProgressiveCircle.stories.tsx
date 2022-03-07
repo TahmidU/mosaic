@@ -1,5 +1,5 @@
 import ProgressiveCircle from ".";
-import { StoryUtils } from "../../../../../resources/utils";
+import { StoryUtils } from "resources/utils";
 
 const payload = {
   title: StoryUtils.storyTitle("ATOMS", "ProgressiveCircle"),

@@ -16,6 +16,7 @@ module.exports = {
     config.module.rules.push({
       resolve: {
         alias: {
+          components: path.resolve(__dirname, "../components"),
           atoms: path.resolve(__dirname, "../components/atoms"),
           molecules: path.resolve(__dirname, "../components/molecules"),
           organisms: path.resolve(__dirname, "../components/organisms"),
