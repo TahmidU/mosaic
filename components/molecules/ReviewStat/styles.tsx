@@ -23,6 +23,6 @@ ProgCircle.displayName = "ProgCircle";
 
 export const TextStyle = styled.div`
   color: ${({ theme }) => theme.main};
-  ${({ theme }) => theme.fonts.main.bigger};
+  ${({ theme }) => theme.fonts.main.massive};
 `;
 TextStyle.displayName = "TextStyle";
