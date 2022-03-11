@@ -8,4 +8,4 @@ const payload = {
 export default payload;
 
 export const Basic = (args: any) => <ReviewStat {...args} />;
-Basic.args = {};
+Basic.args = { percentage: 60 };

@@ -1,22 +1,29 @@
-import ProgressiveCircle from "components/atoms/ProgressiveCircle";
+import { CircularProgressbar } from "react-circular-progressbar";
 import styled from "styled-components";
 
 export const Container = styled.div`
-  background-color: ${({ theme }) => theme.reverseMain};
+  background-color: ${({ theme }) => theme.almostBlack};
   border-radius: 100%;
   width: 160px;
   height: 160px;
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 1px solid ${({ theme }) => theme.almostBlack};
 `;
 Container.displayName = "Container";
 
-export const ProgCircle = styled(ProgressiveCircle)`
-  circle {
-    stroke: green;
-    width: 80%;
-    height: auto;
+export const ProgCircle = styled(CircularProgressbar)`
+  path {
+    stroke-width: 5;
+  }
+
+  > text:last-child {
+    fill: ${({ theme }) => theme.white};
+    ${({ theme }) => theme.fonts.main.bigger};
+    font-weight: bolder;
+    dominant-baseline: middle;
+    text-anchor: middle;
   }
 `;
 ProgCircle.displayName = "ProgCircle";
