@@ -1,3 +1,4 @@
+import ReviewStat from "components/molecules/ReviewStat";
 import SlideButton from "./SlideButton";
 import StepStatus from "./StepStatus";
 import { motion } from "framer-motion";
@@ -161,3 +162,18 @@ export const StepsStyle = styled(StepStatus)`
   cursor: pointer;
 `;
 StepsStyle.displayName = "StepsStyle";
+
+export const CarouselReview = styled(ReviewStat)`
+  position: absolute;
+  z-index: 20;
+  top: 2%;
+  left: 88%;
+  width: 128px;
+  height: 128px;
+
+  @media (max-width: 1600px) {
+    width: 86px;
+    height: 86px;
+  }
+`;
+CarouselReview.displayName = "CarouselReview";

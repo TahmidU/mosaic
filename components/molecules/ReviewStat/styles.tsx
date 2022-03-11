@@ -14,6 +14,9 @@ export const Container = styled.div`
 Container.displayName = "Container";
 
 export const ProgCircle = styled(CircularProgressbar)`
+  width: 100%;
+  height: 100%;
+
   path {
     stroke-width: 5;
   }

@@ -7,13 +7,15 @@ import { easeQuadInOut } from "d3-ease";
 
 interface ReviewStatProps {
   percentage: number;
+  className?: string;
 }
 
 export default function ReviewStat({
   percentage,
+  className,
 }: ReviewStatProps): ReactElement {
   return (
-    <Container>
+    <Container className={className}>
       <AnimatedProgressProvider
         valueStart={0}
         valueEnd={percentage}

@@ -1,6 +1,7 @@
 import {
   CarouselContainer,
   CarouselMainContainer,
+  CarouselReview,
   Container,
   ImageContainer,
   NextBtn,
@@ -67,6 +68,13 @@ export default function Carousel(): ReactElement {
   return (
     <Container>
       <CarouselMainContainer>
+        <CarouselReview
+          percentage={
+            carouselData.length > 0
+              ? Math.round(carouselData[step].vote_average * 10)
+              : 0
+          }
+        />
         <PrevBtn
           variant="left"
           strokeWidth={3}
