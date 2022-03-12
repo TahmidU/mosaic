@@ -15,7 +15,7 @@ export default function ReviewStat({
   className,
 }: ReviewStatProps): ReactElement {
   return (
-    <Container className={className}>
+    <Container className={className} data-testid="ReviewStatContainer">
       <AnimatedProgressProvider
         valueStart={0}
         valueEnd={percentage}

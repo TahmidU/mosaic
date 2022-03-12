@@ -1,7 +1,14 @@
+import "jest-styled-components";
+
 import { cleanup, render } from "resources/utils/test-config";
 
+import { ProgCircle } from "./styles";
 import React from "react";
 import ReviewStat from "./ReviewStat";
+import TestThemeProvider from "components/atoms/TestThemeProvider";
+import { buildStyles } from "react-circular-progressbar";
+import getTheme from "resources/themes";
+import renderer from "react-test-renderer";
 
 afterEach(cleanup);
 
@@ -30,7 +37,30 @@ describe("ReviewStat", () => {
     const { getByText } = render(<ReviewStat percentage={review} />);
 
     // Then
-    await new Promise((r) => setTimeout(r, 2000));
+    await new Promise((r) => setTimeout(r, 1400));
     getByText(`${review}%`);
+  });
+
+  test("Default light theme styles applied", async () => {
+    // Given
+    const lightTheme = getTheme("light");
+    const review = 10;
+
+    // When
+    const { getByTestId } = render(<ReviewStat percentage={review} />);
+
+    // Then
+    expect(getByTestId("ReviewStatContainer")).toHaveStyleRule(
+      "background-color",
+      lightTheme.almostBlack
+    );
+    expect(getByTestId("ReviewStatContainer")).toHaveStyleRule(
+      "border-radius",
+      "100%"
+    );
+    expect(getByTestId("ReviewStatContainer")).toHaveStyleRule(
+      "border",
+      `1px solid ${lightTheme.almostBlack}`
+    );
   });
 });
