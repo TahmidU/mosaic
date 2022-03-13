@@ -22,25 +22,19 @@ import { TextUtils } from "resources/utils";
 import { textAnimVariant } from "./animation-variants";
 import { useAnimation } from "framer-motion";
 
-export default function Carousel(): ReactElement {
+interface CarouselProps {
+  carouselData?: IDiscoverMovie[];
+}
+
+export default function Carousel({
+  carouselData = [],
+}: CarouselProps): ReactElement {
   const [step, setStep] = useState(0);
   const [timerConfig, setTimerConfig] = useState({
     pause: false,
     reset: false,
   });
-  const [carouselData, setCarouselData] = useState<IDiscoverMovie[]>([]);
-  const { axiosInstance } = useContext(GlobalContext);
   const textAnimControls = useAnimation();
-
-  useEffect(() => {
-    const requests = CarouselRequests(axiosInstance.api);
-
-    requests.getDiscoverMovie().then((data) => {
-      setCarouselData(data.results.slice(0, 10));
-    });
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   useEffect(() => {
     textAnimControls.set(textAnimVariant.hide);
