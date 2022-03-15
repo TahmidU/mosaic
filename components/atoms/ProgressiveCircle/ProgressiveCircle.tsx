@@ -27,8 +27,14 @@ export default function ProgressiveCircle({
   className,
 }: ProgressiveCircleProps): ReactElement {
   return (
-    <Container width={width} height={height} className={className}>
+    <Container
+      width={width}
+      height={height}
+      className={className}
+      data-testid="ProgressiveCircleContainer"
+    >
       <AnimatedCircle
+        data-testid="ProgressiveCircleAnimatedCircle"
         cx={`${width / 2}`}
         cy={`${height / 2}`}
         r={radius}

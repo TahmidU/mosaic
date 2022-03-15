@@ -2,11 +2,9 @@ import "jest-styled-components";
 
 import { cleanup, render } from "resources/utils/test-config";
 
-import { ProgCircle } from "./styles";
 import React from "react";
 import ReviewStat from "./ReviewStat";
 import TestThemeProvider from "components/atoms/TestThemeProvider";
-import { buildStyles } from "react-circular-progressbar";
 import getTheme from "resources/themes";
 import renderer from "react-test-renderer";
 
@@ -22,7 +20,7 @@ describe("ReviewStat", () => {
     getByText(`${review}%`);
   });
 
-  test("Review 90% Non-wait", () => {
+  test("Review 90% non-wait", () => {
     // Given When
     const review = 90;
     const { queryByText } = render(<ReviewStat percentage={review} />);
@@ -62,5 +60,21 @@ describe("ReviewStat", () => {
       "border",
       `1px solid ${lightTheme.almostBlack}`
     );
+  });
+
+  test("Snapshot", () => {
+    // Given
+    const review = 10;
+
+    // When
+    const rendered = renderer.create(
+      <TestThemeProvider>
+        <ReviewStat percentage={review} />
+      </TestThemeProvider>
+    );
+    const tree = rendered.toJSON();
+
+    // Then
+    expect(tree).toMatchSnapshot();
   });
 });
