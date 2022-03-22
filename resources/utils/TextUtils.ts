@@ -5,6 +5,8 @@
  * @returns font-family + font-size string
  */
 function fontImportancePlacer(font: string, indexes: number[]): string {
+  if (indexes.length > 2) return "";
+
   return font
     .split(";")
     .map((f, index) => (indexes.includes(index) ? f + " !important" : f))
