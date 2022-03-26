@@ -13,6 +13,11 @@ export default function StepStatus({
   className,
 }: StepStatusProps): ReactElement {
   return (
-    <Indicator className={className} enabled={enabled} onClick={onClick} />
+    <Indicator
+      data-testid="StepStatusIndicator"
+      className={className}
+      enabled={enabled}
+      onClick={onClick}
+    />
   );
 }

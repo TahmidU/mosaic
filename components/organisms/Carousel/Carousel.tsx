@@ -24,10 +24,14 @@ import { useAnimation } from "framer-motion";
 
 interface CarouselProps {
   carouselData?: IDiscoverMovie[];
+  localImages?: boolean;
+  disableAutoSlide?: boolean;
 }
 
 export default function Carousel({
   carouselData = [],
+  localImages = false,
+  disableAutoSlide = false,
 }: CarouselProps): ReactElement {
   const [step, setStep] = useState(0);
   const [timerConfig, setTimerConfig] = useState({
@@ -53,9 +57,9 @@ export default function Carousel({
     }
 
     if (next) {
-      setStep((_step) => (_step < 9 ? _step + 1 : 0));
+      setStep((_step) => (_step < carouselData.length - 1 ? _step + 1 : 0));
     } else {
-      setStep((_step) => (_step < 1 ? 9 : _step - 1));
+      setStep((_step) => (_step < 1 ? carouselData.length - 1 : _step - 1));
     }
   }
 
@@ -85,6 +89,7 @@ export default function Carousel({
                   imageURL={movies.backdrop_path}
                   currentStep={step}
                   index={index}
+                  local={localImages}
                 />
               );
             })}
@@ -124,7 +129,7 @@ export default function Carousel({
             duration={15}
             trigger={() => {
               //! Uncomment this once carousel is finished. It's annoying when debugging!
-              //handleSlideChange(true);
+              !disableAutoSlide && handleSlideChange(true);
             }}
             pause={timerConfig.pause}
             reset={timerConfig.reset}

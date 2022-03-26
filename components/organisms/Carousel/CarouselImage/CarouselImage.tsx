@@ -10,12 +10,14 @@ interface CarouselImageProps {
   disabled?: boolean;
   index?: number;
   currentStep?: number;
+  local?: boolean;
 }
 
 export default function CarouselImage({
   imageURL,
   index = 0,
   currentStep = 0,
+  local = false,
 }: CarouselImageProps): ReactElement {
   const [loading, setLoading] = useState(true);
 
@@ -44,9 +46,14 @@ export default function CarouselImage({
         <ImageStyle>
           {!loading && <LinearGradient />}
           <Image
+            data-testid="CarouselImageImage"
             alt="Carousel"
-            src={`https://image.tmdb.org/t/p/w1280${imageURL}`}
-            blurDataURL={`https://image.tmdb.org/t/p/w300${imageURL}`}
+            src={
+              local ? imageURL : `https://image.tmdb.org/t/p/w1280${imageURL}`
+            }
+            blurDataURL={
+              local ? imageURL : `https://image.tmdb.org/t/p/w300${imageURL}`
+            }
             placeholder="blur"
             width={1280}
             height={720}
