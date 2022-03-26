@@ -26,14 +26,18 @@ interface CarouselProps {
   carouselData?: IDiscoverMovie[];
   localImages?: boolean;
   disableAutoSlide?: boolean;
+  autoSlideDuration?: number;
+  startStep?: number;
 }
 
 export default function Carousel({
   carouselData = [],
   localImages = false,
   disableAutoSlide = false,
+  autoSlideDuration = 15,
+  startStep = 0,
 }: CarouselProps): ReactElement {
-  const [step, setStep] = useState(0);
+  const [step, setStep] = useState(startStep);
   const [timerConfig, setTimerConfig] = useState({
     pause: false,
     reset: false,
@@ -74,6 +78,7 @@ export default function Carousel({
           }
         />
         <PrevBtn
+          dataTestId="CarouselPrevBtn"
           variant="left"
           strokeWidth={3}
           onClick={() => {
@@ -118,6 +123,7 @@ export default function Carousel({
           </TextStyle>
         </CarouselContainer>
         <NextBtn
+          dataTestId="CarouselNextBtn"
           variant="right"
           strokeWidth={3}
           onClick={() => {
@@ -126,7 +132,7 @@ export default function Carousel({
         />
         <ProgBar>
           <ProgressiveBar
-            duration={15}
+            duration={autoSlideDuration}
             trigger={() => {
               //! Uncomment this once carousel is finished. It's annoying when debugging!
               !disableAutoSlide && handleSlideChange(true);

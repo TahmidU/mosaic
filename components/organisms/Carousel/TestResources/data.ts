@@ -46,7 +46,8 @@ export const FakeDiscoverMovie: IDiscoverMovie[] = [
     popularity: 100,
     poster_path: "/TestResources/test.png",
     release_date: "2012-01-01",
-    title: "Test Movie",
+    title:
+      "Very Long Title Test Movie Test Movie Test Movie Test Movie Test Movie Test Movie Test Movie Test Movie Test Movie",
     video: false,
     vote_average: 10,
     vote_count: 10,

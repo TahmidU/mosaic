@@ -21,6 +21,7 @@ interface SlideButtonProps {
   variant?: Variant;
   strokeWidth?: number;
   onClick?: any;
+  dataTestId?: string;
 }
 
 export default function SlideButton({
@@ -28,6 +29,7 @@ export default function SlideButton({
   strokeWidth = 1,
   className,
   onClick = () => {},
+  dataTestId = "",
 }: SlideButtonProps): ReactElement {
   const [showCircleAnim, setShowCircleAnim] = useState(false);
   const [containerSize, setContainerSize] = useState({
@@ -72,6 +74,7 @@ export default function SlideButton({
       onMouseEnter={() => setShowCircleAnim(true)}
       onMouseLeave={() => setShowCircleAnim(false)}
       onClick={onClick}
+      data-testid={dataTestId}
     >
       {variant === "left" && <LeftArrow />}
       {variant === "right" && <RightArrow />}
