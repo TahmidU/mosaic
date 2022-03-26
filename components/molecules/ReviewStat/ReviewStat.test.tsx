@@ -4,7 +4,7 @@ import { cleanup, render } from "resources/utils/test-config";
 
 import React from "react";
 import ReviewStat from "./ReviewStat";
-import TestThemeProvider from "components/atoms/TestThemeProvider";
+import TestThemeProvider from "components/atoms/Helper/TestThemeProvider";
 import getTheme from "resources/themes";
 import renderer from "react-test-renderer";
 

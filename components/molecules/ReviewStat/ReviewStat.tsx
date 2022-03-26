@@ -1,6 +1,6 @@
 import { Container, ProgCircle } from "./styles";
 
-import AnimatedProgressProvider from "components/atoms/AnimatedProgressProvider";
+import AnimatedProgressProvider from "components/atoms/Helper/AnimatedProgressProvider";
 import { ReactElement } from "react";
 import { buildStyles } from "react-circular-progressbar";
 import { easeQuadInOut } from "d3-ease";

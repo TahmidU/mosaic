@@ -1,7 +1,7 @@
 import "jest-styled-components";
 
 import ProgressiveCircle from "./ProgressiveCircle";
-import TestThemeProvider from "components/atoms/TestThemeProvider";
+import TestThemeProvider from "components/atoms/Helper/TestThemeProvider";
 import getTheme from "resources/themes";
 import { render } from "resources/utils/test-config";
 import renderer from "react-test-renderer";
