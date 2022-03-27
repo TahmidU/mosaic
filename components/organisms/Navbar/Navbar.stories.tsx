@@ -1,8 +1,8 @@
 import Navbar from "./Navbar";
-import { titles } from "../../../resources/utils/story";
+import { StoryUtils } from "../../../resources/utils";
 
 const payload = {
-  title: `${titles.organisms}/Navbar`,
+  title: StoryUtils.storyTitle("ORGANISMS", "Navbar"),
   component: Navbar,
 };
 export default payload;

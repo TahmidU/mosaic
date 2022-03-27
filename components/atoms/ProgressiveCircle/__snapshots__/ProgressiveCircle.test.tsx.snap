@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProgressiveCircle Snapshot non-wait 1`] = `
+.c0 {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  -webkit-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+  overflow: visible;
+}
+
+.c1 {
+  position: absolute;
+  stroke: #211f1b;
+  stroke-width: 4;
+  stroke-dasharray: 189;
+  stroke-linecap: round;
+}
+
+<svg
+  className="c0"
+  data-testid="ProgressiveCircleContainer"
+  height={30}
+  width={30}
+>
+  <circle
+    className="c1"
+    cx="15"
+    cy="15"
+    data-testid="ProgressiveCircleAnimatedCircle"
+    fill="transparent"
+    r={30}
+    strokeDashoffset={189}
+    strokeWidth={4}
+    style={Object {}}
+  />
+</svg>
+`;
+
+exports[`ProgressiveCircle Snapshot wait 1`] = `
+.c0 {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  -webkit-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+  overflow: visible;
+}
+
+.c1 {
+  position: absolute;
+  stroke: #211f1b;
+  stroke-width: 4;
+  stroke-dasharray: 189;
+  stroke-linecap: round;
+}
+
+<svg
+  className="c0"
+  data-testid="ProgressiveCircleContainer"
+  height={30}
+  width={30}
+>
+  <circle
+    className="c1"
+    cx="15"
+    cy="15"
+    data-testid="ProgressiveCircleAnimatedCircle"
+    fill="transparent"
+    r={30}
+    strokeDashoffset={189}
+    strokeWidth={4}
+    style={Object {}}
+  />
+</svg>
+`;

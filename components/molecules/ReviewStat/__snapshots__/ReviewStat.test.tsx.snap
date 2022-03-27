@@ -1,0 +1,100 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ReviewStat Snapshot 1`] = `
+.c0 {
+  background-color: #211f1b;
+  border-radius: 100%;
+  width: 160px;
+  height: 160px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border: 1px solid #211f1b;
+}
+
+.c1 {
+  width: 100%;
+  height: 100%;
+}
+
+.c1 path {
+  stroke-width: 5;
+}
+
+.c1 > text:last-child {
+  fill: #FFFFFF;
+  font-family: "Roboto",sans-serif;
+  font-size: 24px;
+  font-weight: bolder;
+  -webkit-dominant-baseline: middle;
+  dominant-baseline: middle;
+  text-anchor: middle;
+}
+
+<div
+  className="c0"
+  data-testid="ReviewStatContainer"
+>
+  <svg
+    className="CircularProgressbar c1"
+    data-test-id="CircularProgressbar"
+    style={Object {}}
+    viewBox="0 0 100 100"
+  >
+    <path
+      className="CircularProgressbar-trail"
+      d="
+      M 50,50
+      m 0,-46
+      a 46,46 0 1 1 0,92
+      a 46,46 0 1 1 0,-92
+    "
+      fillOpacity={0}
+      strokeWidth={8}
+      style={
+        Object {
+          "stroke": "#e8e8e8",
+          "strokeDasharray": "289.02652413026095px 289.02652413026095px",
+          "strokeDashoffset": "0px",
+        }
+      }
+    />
+    <path
+      className="CircularProgressbar-path"
+      d="
+      M 50,50
+      m 0,-46
+      a 46,46 0 1 1 0,92
+      a 46,46 0 1 1 0,-92
+    "
+      fillOpacity={0}
+      strokeWidth={8}
+      style={
+        Object {
+          "stroke": "rgba(56, 255, 76, 1)",
+          "strokeDasharray": "289.02652413026095px 289.02652413026095px",
+          "strokeDashoffset": "289.02652413026095px",
+          "transition": "none",
+        }
+      }
+    />
+    <text
+      className="CircularProgressbar-text"
+      style={Object {}}
+      x={50}
+      y={50}
+    >
+      0%
+    </text>
+  </svg>
+</div>
+`;

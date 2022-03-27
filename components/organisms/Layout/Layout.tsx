@@ -2,6 +2,7 @@ import React, { ReactElement } from "react";
 
 import Footer from "../Footer";
 import Navbar from "../Navbar";
+import { Container } from "./styles";
 
 export default function Layout({
   children,
@@ -9,10 +10,10 @@ export default function Layout({
   children: React.ReactNode;
 }): ReactElement {
   return (
-    <div>
+    <Container>
       <Navbar />
       <div>{children}</div>
       <Footer />
-    </div>
+    </Container>
   );
 }
