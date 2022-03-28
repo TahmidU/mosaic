@@ -28,6 +28,7 @@ interface CarouselProps {
   disableAutoSlide?: boolean;
   autoSlideDuration?: number;
   startStep?: number;
+  autoSlideCallback?: () => void;
 }
 
 export default function Carousel({
@@ -36,6 +37,7 @@ export default function Carousel({
   disableAutoSlide = false,
   autoSlideDuration = 15,
   startStep = 0,
+  autoSlideCallback = () => {},
 }: CarouselProps): ReactElement {
   const [step, setStep] = useState(startStep);
   const [timerConfig, setTimerConfig] = useState({
@@ -58,6 +60,8 @@ export default function Carousel({
   function handleSlideChange(next: boolean, clicked: boolean = false) {
     if (clicked) {
       setTimerConfig((prev) => ({ ...prev, reset: true }));
+    } else {
+      autoSlideCallback();
     }
 
     if (next) {
