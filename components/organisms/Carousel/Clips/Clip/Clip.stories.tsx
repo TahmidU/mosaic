@@ -1,5 +1,6 @@
 import Clip from "./Clip";
 import { StoryUtils } from "resources/utils";
+import thumbnail from "./TestResources/hqdefault.jpg";
 
 const payload = {
   title: StoryUtils.storyTitle("ATOMS", "Clip"),
@@ -8,4 +9,7 @@ const payload = {
 export default payload;
 
 export const Basic = (args: any) => <Clip {...args} />;
-Basic.args = {};
+Basic.args = {
+  local: true,
+  YTKey: `/${thumbnail}`,
+};

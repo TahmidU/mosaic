@@ -2,7 +2,13 @@
 module.exports = {
   reactStrictMode: true,
   images: {
-    domains: ["tmdb.org", "themoviedb.org", "image.tmdb.org", "localhost"],
+    domains: [
+      "img.youtube.com",
+      "tmdb.org",
+      "themoviedb.org",
+      "image.tmdb.org",
+      "localhost",
+    ],
     deviceSizes: [300, 780, 1280],
   },
 };
