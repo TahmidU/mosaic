@@ -10,6 +10,5 @@ export default payload;
 
 export const Basic = (args: any) => <Clip {...args} />;
 Basic.args = {
-  local: true,
-  YTKey: `/${thumbnail}`,
+  YTKey: `A5I4MBQ3mM4`,
 };
