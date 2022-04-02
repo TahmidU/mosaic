@@ -10,5 +10,7 @@ export default payload;
 
 export const Basic = (args: any) => <Clip {...args} />;
 Basic.args = {
-  YTKey: `A5I4MBQ3mM4`,
+  YTKey: `GfbNLLcrItI`,
+  title: "Easter Eggs",
+  type: "Featurette",
 };
