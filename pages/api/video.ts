@@ -4,11 +4,13 @@ import axios, { AxiosError } from "axios";
 async function handle(req: NextApiRequest, res: NextApiResponse) {
   switch (req.method) {
     case "GET":
+      const { movieId } = req.query;
+
       try {
         const results = await axios({
           method: "get",
           headers: { "Content-type": "application/json" },
-          url: `${process.env.MOVIE_DB_WEB_URL}/discover/movie?language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate&api_key=${process.env.MOVIE_DB_API_KEY}`,
+          url: `${process.env.MOVIE_DB_WEB_URL}/movie/${movieId}/videos?api_key=${process.env.MOVIE_DB_API_KEY}`,
         });
         res.status(results.status).json(results.data);
       } catch (error) {

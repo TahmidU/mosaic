@@ -11,11 +11,10 @@ import {
   StepsStyle,
   TextStyle,
 } from "./styles";
-import { ReactElement, useContext, useEffect, useState } from "react";
+import { ReactElement, useEffect, useState } from "react";
 
 import CarouselImage from "./CarouselImage";
-import CarouselRequests from "./request";
-import GlobalContext from "../../../context/GlobalContext";
+import Clips from "./Clips";
 import { IDiscoverMovie } from "../../../types/api/discover";
 import ProgressiveBar from "./ProgressiveBar";
 import { TextUtils } from "resources/utils";
@@ -147,7 +146,9 @@ export default function Carousel({
           />
         </ProgBar>
       </CarouselMainContainer>
-      <div>Test</div>
+      <div>
+        <Clips currentMovieId={634649} />
+      </div>
     </Container>
   );
 }
