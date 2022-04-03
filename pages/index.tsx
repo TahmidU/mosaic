@@ -4,7 +4,8 @@ import {
   NextPage,
 } from "next";
 
-import HomePageComp from "components/pages/HomePageComp";
+import HomePage from "components/pages/HomePage";
+import { IDiscoverMovie } from "types/api/discover";
 import axios from "axios";
 
 export const getServerSideProps: GetServerSideProps = async () => {
@@ -13,18 +14,20 @@ export const getServerSideProps: GetServerSideProps = async () => {
     headers: { "Content-type": "application/json" },
     url: `${process.env.MOVIE_DB_WEB_URL}/discover/movie?language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate&api_key=${process.env.MOVIE_DB_API_KEY}`,
   });
-
-  const carouselData = carouselResults.data.results.slice(0, 10);
+  const carouselData: IDiscoverMovie[] = carouselResults.data.results.slice(
+    0,
+    10
+  );
 
   return {
     props: { carouselData },
   };
 };
 
-const HomePage: NextPage = ({
+const Index: NextPage = ({
   carouselData,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  return <HomePageComp carouselData={carouselData} />;
+  return <HomePage carouselData={carouselData} />;
 };
 
-export default HomePage;
+export default Index;

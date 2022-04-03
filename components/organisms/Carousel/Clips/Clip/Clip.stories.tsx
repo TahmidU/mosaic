@@ -1,6 +1,5 @@
 import Clip from "./Clip";
 import { StoryUtils } from "resources/utils";
-import thumbnail from "./TestResources/hqdefault.jpg";
 
 const payload = {
   title: StoryUtils.storyTitle("ATOMS", "Clip"),

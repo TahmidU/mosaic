@@ -11,7 +11,7 @@ export interface IVideoResult {
   id: string;
 }
 
-export interface IVideos {
+export interface IVideo {
   id: number;
   results: IVideoResult[];
 }
