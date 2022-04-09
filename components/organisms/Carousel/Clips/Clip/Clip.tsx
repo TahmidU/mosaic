@@ -1,7 +1,7 @@
 import { Container, ImageContainer } from "./styles";
+import { ReactElement, useState } from "react";
 
 import Image from "next/image";
-import { ReactElement } from "react";
 
 interface ClipProps {
   YTKey: string;
@@ -10,17 +10,20 @@ interface ClipProps {
 }
 
 export default function Clip({ YTKey, title, type }: ClipProps): ReactElement {
+  const [visible, setVisibility] = useState(false);
+
   return (
-    <Container>
+    <Container visible={visible}>
       <ImageContainer>
         <Image
           src={`https://img.youtube.com/vi/${YTKey}/mqdefault.jpg`}
-          blurDataURL={`https://img.youtube.com/vi/${YTKey}/sddefault.jpg`}
           alt="ClipThumbnail"
-          placeholder="blur"
+          placeholder="empty"
           width={160}
           height={90}
           layout="responsive"
+          loading="eager"
+          onLoadingComplete={() => setVisibility(true)}
         />
       </ImageContainer>
 
