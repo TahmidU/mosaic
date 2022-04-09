@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-export const Container = styled.div<{ visible: boolean }>`
-  display: ${({ visible }) => (visible ? "grid" : "none")};
+export const Container = styled.div`
+  display: grid;
   grid-template-columns: 10% 90%;
   grid-template-areas: "thumb meta";
 
