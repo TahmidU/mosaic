@@ -3,10 +3,14 @@ import {
   InferGetServerSidePropsType,
   NextPage,
 } from "next";
+import { useContext, useEffect, useState } from "react";
 
+import GlobalContext from "context/GlobalContext";
 import HomePage from "components/pages/HomePage";
 import { IDiscoverMovie } from "types/api/discover";
+import { IVideo } from "types/api/videos";
 import axios from "axios";
+import clipsRequests from "components/organisms/Carousel/requests";
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const carouselResults = await axios({
@@ -27,7 +31,35 @@ export const getServerSideProps: GetServerSideProps = async () => {
 const Index: NextPage = ({
   carouselData,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  return <HomePage carouselData={carouselData} />;
+  // Videos & Clips
+  const [videos, setVideos] = useState<IVideo>();
+
+  // Context
+  const { axiosInstance } = useContext(GlobalContext);
+
+  function getMovieData(step: number) {
+    if (carouselData.length > 0 && axiosInstance?.api) {
+      clipsRequests(axiosInstance.api)
+        .getMovieData(carouselData[step].id)
+        .then((data) => {
+          console.log(data.data);
+          setVideos(data.data);
+        });
+    }
+  }
+
+  function onStepChange(step: number) {
+    console.log(`step ${step} in callback`);
+    getMovieData(step);
+  }
+
+  return (
+    <HomePage
+      carouselData={carouselData}
+      videos={videos}
+      onStepChange={onStepChange}
+    />
+  );
 };
 
 export default Index;

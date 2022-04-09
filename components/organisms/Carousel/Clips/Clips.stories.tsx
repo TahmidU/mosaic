@@ -7,5 +7,5 @@ const payload = {
 };
 export default payload;
 
-export const Basic = (args: any) => <Clips {...args} />;
+export const Basic = () => <Clips />;
 Basic.args = {};

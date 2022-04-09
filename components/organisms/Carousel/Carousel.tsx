@@ -11,33 +11,41 @@ import {
   StepsStyle,
   TextStyle,
 } from "./styles";
-import { ReactElement, useEffect, useState } from "react";
+import { ReactElement, useContext, useEffect, useState } from "react";
 
 import CarouselImage from "./CarouselImage";
 import Clips from "./Clips";
+import GlobalContext from "context/GlobalContext";
 import { IDiscoverMovie } from "../../../types/api/discover";
+import { IVideo } from "types/api/videos";
 import ProgressiveBar from "./ProgressiveBar";
 import { TextUtils } from "resources/utils";
+import clipsRequests from "./requests";
 import { textAnimVariant } from "./animation-variants";
 import { useAnimation } from "framer-motion";
 
 interface CarouselProps {
   carouselData?: IDiscoverMovie[];
+  videos?: IVideo;
   localImages?: boolean;
   disableAutoSlide?: boolean;
   autoSlideDuration?: number;
   startStep?: number;
   autoSlideCallback?: () => void;
+  onStepChange?: (step: number) => void;
 }
 
 export default function Carousel({
   carouselData = [],
+  videos,
   localImages = false,
   disableAutoSlide = false,
   autoSlideDuration = 15,
   startStep = 0,
   autoSlideCallback = () => {},
+  onStepChange,
 }: CarouselProps): ReactElement {
+  // Carousel Slide
   const [step, setStep] = useState(startStep);
   const [timerConfig, setTimerConfig] = useState({
     pause: false,
@@ -45,9 +53,12 @@ export default function Carousel({
   });
   const textAnimControls = useAnimation();
 
+  // Animations
   useEffect(() => {
     textAnimControls.set(textAnimVariant.hide);
     textAnimControls.start(() => textAnimVariant.show);
+
+    onStepChange && onStepChange(step);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [step]);
@@ -147,7 +158,7 @@ export default function Carousel({
         </ProgBar>
       </CarouselMainContainer>
       <div>
-        <Clips currentMovieId={634649} />
+        <Clips videos={videos} />
       </div>
     </Container>
   );
