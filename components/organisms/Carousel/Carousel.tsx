@@ -149,7 +149,7 @@ export default function Carousel({
             duration={autoSlideDuration}
             trigger={() => {
               //! Uncomment this once carousel is finished. It's annoying when debugging!
-              !disableAutoSlide && handleSlideChange(true);
+              //!disableAutoSlide && handleSlideChange(true);
             }}
             pause={timerConfig.pause}
             reset={timerConfig.reset}
@@ -157,9 +157,8 @@ export default function Carousel({
           />
         </ProgBar>
       </CarouselMainContainer>
-      <div>
-        <Clips videos={videos} />
-      </div>
+
+      <Clips videos={videos} />
     </Container>
   );
 }

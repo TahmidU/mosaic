@@ -19,6 +19,7 @@ export default function Clip({ YTKey, title, type }: ClipProps): ReactElement {
           placeholder="empty"
           width={160}
           height={90}
+          loading="lazy"
           layout="responsive"
         />
       </ImageContainer>

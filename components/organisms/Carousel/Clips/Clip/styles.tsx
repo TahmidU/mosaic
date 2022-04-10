@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   display: grid;
-  grid-template-columns: 10% 90%;
+  grid-template-columns: 40% 60%;
   grid-template-areas: "thumb meta";
 
   > div:first-child {
