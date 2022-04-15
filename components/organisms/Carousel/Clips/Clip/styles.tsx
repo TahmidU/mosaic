@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   display: grid;
-  grid-template-columns: 40% 60%;
+  grid-template-columns: 30% 70%;
   grid-template-areas: "thumb meta";
 
   > div:first-child {
@@ -19,9 +19,9 @@ export const Container = styled.div`
 
     height: 100%;
 
-    margin: 0.25em 0 0 0;
+    margin: 0.25em 0 0 0.75em;
 
-    ${({ theme }) => theme.fonts.main.big};
+    ${({ theme }) => theme.fonts.secondary.big};
 
     > span:first-child {
       overflow: hidden;

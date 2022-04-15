@@ -41,21 +41,55 @@ const themes: { [key: string]: Partial<DefaultTheme> } = {
 
 const fonts: IFonts = {
   main: {
-    small: `font-family: "Roboto", sans-serif;
+    small: `font-family: 'Roboto', sans-serif;
     font-size: 11px;`,
-    regular: `font-family: "Roboto", sans-serif;
+    regular: `font-family: 'Roboto', sans-serif;
       font-size: 14px;`,
-    medium: `font-family: "Roboto", sans-serif;
+    medium: `font-family: 'Roboto', sans-serif;
     font-size: 16px;`,
-    mediumBig: `font-family: "Roboto", sans-serif;
+    mediumBig: `font-family: 'Roboto', sans-serif;
     font-size: 18px;`,
-    big: `font-family: "Roboto", sans-serif;
+    big: `font-family: 'Roboto', sans-serif;
     font-size: 20px;`,
-    bigger: `font-family: "Roboto", sans-serif;
+    bigger: `font-family: 'Roboto', sans-serif;
     font-size: 24px;`,
-    massive: `font-family: "Roboto", sans-serif;
+    massive: `font-family: 'Roboto', sans-serif;
     font-size: 32px;`,
-    humongous: `font-family: "Roboto", sans-serif;
+    humongous: `font-family: 'Roboto', sans-serif;
+    font-size: 72px;`,
+  },
+  secondary: {
+    small: `font-family: 'Source Sans Pro', sans-serif;
+    font-size: 11px;`,
+    regular: `font-family: 'Source Sans Pro', sans-serif;
+      font-size: 14px;`,
+    medium: `font-family: 'Source Sans Pro', sans-serif;
+    font-size: 16px;`,
+    mediumBig: `font-family: 'Source Sans Pro', sans-serif;
+    font-size: 18px;`,
+    big: `font-family: 'Source Sans Pro', sans-serif; font-size: 24px`,
+    bigger: `font-family: 'Source Sans Pro', sans-serif;
+    font-size: 24px;`,
+    massive: `font-family: 'Source Sans Pro', sans-serif; font-size: 32px`,
+    humongous: `font-family: 'Source Sans Pro', sans-serif;
+    font-size: 72px;`,
+  },
+  tertiary: {
+    small: `font-family: 'Nunito', sans-serif;
+    font-size: 11px;`,
+    regular: `font-family: 'Nunito', sans-serif;
+      font-size: 14px;`,
+    medium: `font-family: 'Nunito', sans-serif;
+    font-size: 16px;`,
+    mediumBig: `font-family: 'Nunito', sans-serif;
+    font-size: 18px;`,
+    big: `font-family: 'Nunito', sans-serif;
+    font-size: 20px;`,
+    bigger: `font-family: 'Nunito', sans-serif;
+    font-size: 24px;`,
+    massive: `font-family: 'Nunito', sans-serif;
+    font-size: 32px;`,
+    humongous: `font-family: 'Nunito', sans-serif;
     font-size: 72px;`,
   },
 };

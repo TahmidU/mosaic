@@ -20,6 +20,26 @@ export interface IFonts {
     massive: string;
     humongous: string;
   };
+  secondary: {
+    small: string;
+    regular: string;
+    medium: string;
+    mediumBig: string;
+    big: string;
+    bigger: string;
+    massive: string;
+    humongous: string;
+  };
+  tertiary: {
+    small: string;
+    regular: string;
+    medium: string;
+    mediumBig: string;
+    big: string;
+    bigger: string;
+    massive: string;
+    humongous: string;
+  };
 }
 
 export interface ICColours {

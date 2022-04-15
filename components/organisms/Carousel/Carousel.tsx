@@ -157,7 +157,6 @@ export default function Carousel({
           />
         </ProgBar>
       </CarouselMainContainer>
-
       <Clips videos={videos} />
     </Container>
   );

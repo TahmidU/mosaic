@@ -8,8 +8,9 @@ export const Container = styled.div`
   display: grid;
   grid-template-columns: 70% 30%;
   margin: 1rem 1rem;
-  height: fit-content;
+  height: 100%;
   max-height: 720px;
+  align-self: center;
 `;
 Container.displayName = "Container";
 
