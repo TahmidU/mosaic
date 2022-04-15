@@ -8,7 +8,7 @@ export const Container = styled.div`
   display: grid;
   grid-template-columns: 70% 30%;
   margin: 1rem 1rem;
-  height: 100%;
+  height: 720px;
   max-height: 720px;
   align-self: center;
 `;
@@ -22,6 +22,7 @@ export const CarouselMainContainer = styled.div`
   height: fit-content;
   justify-content: space-evenly;
   align-items: center;
+  align-self: center;
   position: relative;
   background-color: ${({ theme }) => theme.reverseMain};
   border-radius: 48px 48px 60px 60px;
@@ -65,7 +66,6 @@ export const TextStyle = styled(motion.div)`
     position: relative;
     z-index: 10;
     ${({ theme }) => theme.fonts.main.humongous};
-    font-weight: bolder;
     top: -40px;
     left: 2%;
     white-space: nowrap;
@@ -77,6 +77,7 @@ export const TextStyle = styled(motion.div)`
     position: relative;
     z-index: 10;
     ${({ theme }) => theme.fonts.main.massive};
+    font-weight: 100;
     top: -115px;
     left: 2%;
     display: -webkit-box;
@@ -89,6 +90,7 @@ export const TextStyle = styled(motion.div)`
     position: relative;
     z-index: 10;
     ${({ theme }) => theme.fonts.main.big};
+    font-weight: 100;
     top: -130px;
     left: 2%;
   }

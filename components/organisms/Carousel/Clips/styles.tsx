@@ -16,11 +16,11 @@ export const Container = styled.div`
     }
 
     > span:first-child {
-      font-weight: bolder;
+      font-weight: 600;
       ${({ theme }) => theme.fonts.main.massive};
     }
     > span:last-child {
-      font-weight: 600;
+      font-weight: 400;
       ${({ theme }) => theme.fonts.main.big};
     }
   }

@@ -21,14 +21,14 @@ export const Container = styled.div`
 
     margin: 0.25em 0 0 0.75em;
 
-    ${({ theme }) => theme.fonts.secondary.big};
-
     > span:first-child {
       overflow: hidden;
       text-overflow: ellipsis;
       display: -webkit-box;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
+      ${({ theme }) => theme.fonts.main.big};
+      font-weight: 600;
     }
 
     > span:last-child {

@@ -92,10 +92,10 @@ const Logo = (props: SVGProps<SVGSVGElement>) => (
       x={44.77}
       y={32.103}
       style={{
-        fontFamily: "'Roboto',sans-serif",
-        fontSize: "33.333px",
+        fontFamily: "'Nunito', sans-serif",
+        fontSize: "30px",
         fill: "#211f1b",
-        fontWeight: "bold",
+        width: "100%",
       }}
     >
       {"MOSAIC"}
