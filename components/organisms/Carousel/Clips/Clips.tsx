@@ -1,7 +1,7 @@
+import { Container, Content } from "./styles";
 import { ReactElement, useContext, useEffect, useState } from "react";
 
 import Clip from "./Clip";
-import { Container } from "./styles";
 import GlobalContext from "context/GlobalContext";
 import { IVideo } from "types/api/videos";
 import Scrollbar from "components/atoms/Scrollbar";
@@ -24,22 +24,20 @@ export default function Clips({ videos }: ClipsProps): ReactElement {
         <span>Trailers {"&"} Clips</span>
         <span>Result: {videos?.results.length}</span>
       </div>
-      <div>
+      <Content universal>
         {!loading ? (
-          <Scrollbar>
-            {videos?.results.map((_video, index) => (
-              <Clip
-                key={index}
-                YTKey={_video.key}
-                title={_video.name}
-                type={_video.type}
-              />
-            ))}
-          </Scrollbar>
+          videos?.results.map((_video, index) => (
+            <Clip
+              key={index}
+              YTKey={_video.key}
+              title={_video.name}
+              type={_video.type}
+            />
+          ))
         ) : (
           <p>Loading...</p>
         )}
-      </div>
+      </Content>
     </Container>
   );
 }

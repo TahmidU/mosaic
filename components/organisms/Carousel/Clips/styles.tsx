@@ -1,3 +1,4 @@
+import Scrollbar from "components/atoms/Scrollbar";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -25,6 +26,7 @@ export const Container = styled.div`
     }
   }
 
+  /*
   > div:last-child {
     overflow-y: auto;
     overflow-x: hidden;
@@ -33,6 +35,15 @@ export const Container = styled.div`
     > div {
       margin: 1rem 0;
     }
-  }
+  }*/
 `;
 Container.displayName = "Container";
+
+export const Content = styled(Scrollbar)`
+  height: 28vw !important;
+
+  > div:first-child > div {
+    margin: 1rem 0;
+  }
+`;
+Content.displayName = "Content";
