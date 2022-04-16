@@ -4,6 +4,7 @@ export const Container = styled.div`
   display: grid;
   grid-template-columns: 30% 70%;
   grid-template-areas: "thumb meta";
+  cursor: pointer;
 
   > div:first-child {
     grid-area: thumb;
@@ -29,10 +30,18 @@ export const Container = styled.div`
       -webkit-box-orient: vertical;
       ${({ theme }) => theme.fonts.main.big};
       font-weight: 600;
+
+      @media only screen and (max-width: 1370px) {
+        ${({ theme }) => theme.fonts.main.regular};
+      }
     }
 
     > span:last-child {
       ${({ theme }) => theme.fonts.main.regular};
+
+      @media only screen and (max-width: 1370px) {
+        ${({ theme }) => theme.fonts.main.small};
+      }
     }
   }
 `;

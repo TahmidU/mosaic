@@ -99,7 +99,7 @@ export const TextStyle = styled(motion.div)`
     white-space: normal;
   }
 
-  @media (max-width: 1474px) {
+  @media (max-width: 1640px) {
     > p:first-child {
       ${({ theme }) => theme.fonts.main.massive};
       top: 6px;

@@ -9,7 +9,7 @@ export const Container = styled.div`
 
   > div:first-child {
     display: block;
-    margin: 0 0 1rem 0;
+    margin: 0 0 0.425rem 0;
 
     span {
       display: block;
