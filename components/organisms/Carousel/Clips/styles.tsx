@@ -28,7 +28,7 @@ export const Container = styled.div`
   > div:last-child {
     overflow-y: auto;
     overflow-x: hidden;
-    height: 100%;
+    height: 28vw;
 
     > div {
       margin: 1rem 0;

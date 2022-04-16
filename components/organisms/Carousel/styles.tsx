@@ -22,7 +22,6 @@ export const CarouselMainContainer = styled.div`
   height: fit-content;
   justify-content: space-evenly;
   align-items: center;
-  align-self: center;
   position: relative;
   background-color: ${({ theme }) => theme.reverseMain};
   border-radius: 48px 48px 60px 60px;
