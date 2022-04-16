@@ -4,6 +4,7 @@ import Clip from "./Clip";
 import { Container } from "./styles";
 import GlobalContext from "context/GlobalContext";
 import { IVideo } from "types/api/videos";
+import Scrollbar from "components/atoms/Scrollbar";
 import clipsRequests from "./requests";
 
 interface ClipsProps {
@@ -25,14 +26,16 @@ export default function Clips({ videos }: ClipsProps): ReactElement {
       </div>
       <div>
         {!loading ? (
-          videos?.results.map((_video, index) => (
-            <Clip
-              key={index}
-              YTKey={_video.key}
-              title={_video.name}
-              type={_video.type}
-            />
-          ))
+          <Scrollbar>
+            {videos?.results.map((_video, index) => (
+              <Clip
+                key={index}
+                YTKey={_video.key}
+                title={_video.name}
+                type={_video.type}
+              />
+            ))}
+          </Scrollbar>
         ) : (
           <p>Loading...</p>
         )}

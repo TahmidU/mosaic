@@ -6,6 +6,10 @@ export const Container = styled.div`
   grid-template-areas: "thumb meta";
   cursor: pointer;
 
+  :-webkit-scrollbar {
+    width: 0px;
+  }
+
   > div:first-child {
     grid-area: thumb;
   }

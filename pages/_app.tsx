@@ -4,9 +4,10 @@ import type { AppProps } from "next/app";
 import GlobalContext from "../context/GlobalContext";
 import Layout from "../components/organisms/Layout";
 import React from "react";
+import Scrollbar from "components/atoms/Scrollbar";
 import { ThemeProvider } from "styled-components";
-import useTheme from "../hooks/useTheme";
 import useAxios from "../hooks/useAxios";
+import useTheme from "../hooks/useTheme";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const appTheme = useTheme();
@@ -17,9 +18,11 @@ function MyApp({ Component, pageProps }: AppProps) {
       value={{ theme: appTheme, axiosInstance: axiosInstance }}
     >
       <ThemeProvider theme={appTheme.value}>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <Scrollbar universal autoHeight autoHeightMin={"100vh"}>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </Scrollbar>
       </ThemeProvider>
     </GlobalContext.Provider>
   );
