@@ -5,13 +5,10 @@ export const Container = styled.div`
   grid-template-columns: 30% 70%;
   grid-template-areas: "thumb meta";
   cursor: pointer;
+  border-radius: 14px;
 
-  // Firefox
-  scrollbar-width: none;
-
-  // Chrome & Edge
-  :-webkit-scrollbar {
-    width: 0px;
+  :hover {
+    background-color: ${({ theme }) => theme.cGrey.alpha(0.2).toString()};
   }
 
   > div:first-child {

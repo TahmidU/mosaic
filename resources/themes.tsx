@@ -11,6 +11,7 @@ const colours: IColours = {
   white: "#FFFFFF",
   almostWhite: "#e8e8e8",
   black: "#000000",
+  grey: "#bebebe",
 };
 
 const cColours: ICColours = {
@@ -20,6 +21,7 @@ const cColours: ICColours = {
   cWhite: Color(colours.white),
   cAlmostWhite: Color(colours.almostWhite),
   cBlack: Color(colours.black),
+  cGrey: Color(colours.grey),
 };
 
 const themes: { [key: string]: Partial<DefaultTheme> } = {

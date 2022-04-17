@@ -7,6 +7,7 @@ export interface IColours {
   white: string;
   almostWhite: string;
   black: string;
+  grey: string;
 }
 
 export interface IFonts {
@@ -49,6 +50,7 @@ export interface ICColours {
   cWhite: Color<string>;
   cAlmostWhite: Color<string>;
   cBlack: Color<string>;
+  cGrey: Color<string>;
 }
 
 declare module "styled-components" {
@@ -59,6 +61,7 @@ declare module "styled-components" {
     white: string;
     almostWhite: string;
     black: string;
+    grey: string;
 
     fonts: IFonts;
 
@@ -68,6 +71,7 @@ declare module "styled-components" {
     cWhite: Color<string>;
     cAlmostWhite: Color<string>;
     cBlack: Color<string>;
+    cGrey: Color<string>;
 
     name: Theme;
     main: string;
