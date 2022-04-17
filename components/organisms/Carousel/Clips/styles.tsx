@@ -37,17 +37,6 @@ export const Content = styled(Scrollbar)`
     > div {
       margin: 0.8em 0;
       position: relative;
-
-      ::after {
-        position: absolute;
-        content: "";
-        width: 95%;
-        height: 1px;
-        background-color: ${({ theme }) => theme.cGrey.alpha(0.6).toString()};
-        color: ${({ theme }) => theme.cGrey.alpha(0.6).toString()};
-        top: 110%;
-        right: 3%;
-      }
     }
   }
 `;

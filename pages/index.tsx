@@ -3,14 +3,12 @@ import {
   InferGetServerSidePropsType,
   NextPage,
 } from "next";
-import { useContext, useEffect, useState } from "react";
 
-import GlobalContext from "context/GlobalContext";
 import HomePage from "components/pages/HomePage";
 import { IDiscoverMovie } from "types/api/discover";
 import { IVideo } from "types/api/videos";
 import axios from "axios";
-import clipsRequests from "components/organisms/Carousel/requests";
+import useVideoInfoStore from "hooks/useVideoInfoStore";
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const carouselResults = await axios({
@@ -23,40 +21,33 @@ export const getServerSideProps: GetServerSideProps = async () => {
     10
   );
 
+  const getVideoDataPromises = carouselData.map(
+    async (_movie) =>
+      await axios({
+        method: "get",
+        headers: { "Content-type": "application/json" },
+        url: `${process.env.MOVIE_DB_WEB_URL}/movie/${_movie.id}/videos?api_key=${process.env.MOVIE_DB_API_KEY}`,
+      }).then((res) => {
+        return res.data;
+      })
+  );
+  const allMovieVideoData: IVideo[] = await Promise.all(getVideoDataPromises);
+
   return {
-    props: { carouselData },
+    props: { carouselData, allMovieVideoData },
   };
 };
 
 const Index: NextPage = ({
   carouselData,
+  allMovieVideoData,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  // Videos & Clips
-  const [videos, setVideos] = useState<IVideo>();
-
-  // Context
-  const { axiosInstance } = useContext(GlobalContext);
-
-  function getMovieData(step: number) {
-    if (carouselData.length > 0 && axiosInstance?.api) {
-      clipsRequests(axiosInstance.api)
-        .getMovieData(carouselData[step].id)
-        .then((data) => {
-          console.log(data.data);
-          setVideos(data.data);
-        });
-    }
-  }
-
-  function onStepChange(step: number) {
-    console.log(`step ${step} in callback`);
-    getMovieData(step);
-  }
+  const { currVideos, onStepChange } = useVideoInfoStore(allMovieVideoData);
 
   return (
     <HomePage
       carouselData={carouselData}
-      videos={videos}
+      videos={currVideos}
       onStepChange={onStepChange}
     />
   );
