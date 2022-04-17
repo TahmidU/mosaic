@@ -25,17 +25,6 @@ export const Container = styled.div`
       ${({ theme }) => theme.fonts.main.big};
     }
   }
-
-  /*
-  > div:last-child {
-    overflow-y: auto;
-    overflow-x: hidden;
-    height: 28vw;
-
-    > div {
-      margin: 1rem 0;
-    }
-  }*/
 `;
 Container.displayName = "Container";
 

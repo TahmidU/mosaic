@@ -6,6 +6,10 @@ export const Container = styled.div`
   grid-template-areas: "thumb meta";
   cursor: pointer;
 
+  // Firefox
+  scrollbar-width: none;
+
+  // Chrome & Edge
   :-webkit-scrollbar {
     width: 0px;
   }
