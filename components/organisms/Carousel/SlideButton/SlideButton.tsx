@@ -2,7 +2,10 @@ import {
   Container,
   HoverAnimationCircle,
   LeftArrow,
+  LeftMobileArrow,
+  MobileContainer,
   RightArrow,
+  RightMobileArrow,
 } from "./styles";
 import {
   ReactElement,
@@ -14,7 +17,7 @@ import {
 
 import { ContainerAnimVariant } from "./animation-variants";
 
-type Variant = "right" | "left";
+type Variant = "right" | "left" | "mobileLeft" | "mobileRight";
 
 interface SlideButtonProps {
   className?: string;
@@ -63,6 +66,15 @@ export default function SlideButton({
         handleProgressiveCircleAnim(containerRef.current);
     });
   }, [containerRef]);
+
+  if (variant !== "left" && variant !== "right") {
+    return (
+      <MobileContainer onClick={onClick} data-testid={dataTestId}>
+        {variant === "mobileLeft" && <LeftMobileArrow />}
+        {variant === "mobileRight" && <RightMobileArrow />}
+      </MobileContainer>
+    );
+  }
 
   return (
     <Container

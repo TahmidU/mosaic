@@ -1,4 +1,5 @@
 import { BsArrowLeft, BsArrowRight } from "react-icons/bs";
+import { GoChevronLeft, GoChevronRight } from "react-icons/go";
 
 import ProgressiveCircle from "components/atoms/ProgressiveCircle";
 import { motion } from "framer-motion";
@@ -20,17 +21,49 @@ export const Container = styled(motion.div)`
 `;
 Container.displayName = "Container";
 
+export const MobileContainer = styled.div`
+  cursor: pointer;
+  border: 2px solid ${({ theme }) => theme.main};
+  background-color: ${({ theme }) => theme.cAlmostWhite.alpha(0.3).toString()};
+  width: 125px;
+  height: 250px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  :hover {
+    background-color: ${({ theme }) =>
+      theme.cAlmostWhite.alpha(0.6).toString()};
+  }
+`;
+MobileContainer.displayName = "MobileContainer";
+
 export const RightArrow = styled(BsArrowRight)`
   width: 100%;
   height: auto;
 `;
 RightArrow.displayName = "RightArrow";
 
+export const RightMobileArrow = styled(GoChevronRight)`
+  color: ${({ theme }) => theme.white};
+  width: 85%;
+  height: auto;
+`;
+RightMobileArrow.displayName = "LeftMobileArrow";
+
 export const LeftArrow = styled(BsArrowLeft)`
   width: 100%;
   height: auto;
 `;
 LeftArrow.displayName = "LeftArrow";
+
+export const LeftMobileArrow = styled(GoChevronLeft)`
+  color: ${({ theme }) => theme.white};
+  width: 85%;
+  height: auto;
+`;
+LeftMobileArrow.displayName = "LeftMobileArrow";
 
 export const HoverAnimationCircle = styled(ProgressiveCircle)`
   position: absolute;

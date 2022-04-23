@@ -19,7 +19,7 @@ export const Container = styled.div`
   right: 15%;
   width: 70%;
   height: 90%;
-  background-color: white;
+  background-color: transparent;
   z-index: 99999;
 `;
 Container.displayName = "Container";
@@ -27,5 +27,6 @@ Container.displayName = "Container";
 export const Frame = styled.iframe`
   width: 100%;
   height: 100%;
+  background-color: transparent;
 `;
 Frame.displayName = "Frame";
