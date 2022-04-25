@@ -69,7 +69,11 @@ export default function SlideButton({
 
   if (variant !== "left" && variant !== "right") {
     return (
-      <MobileContainer onClick={onClick} data-testid={dataTestId}>
+      <MobileContainer
+        onClick={onClick}
+        data-testid={dataTestId}
+        className={className}
+      >
         {variant === "mobileLeft" && <LeftMobileArrow />}
         {variant === "mobileRight" && <RightMobileArrow />}
       </MobileContainer>
