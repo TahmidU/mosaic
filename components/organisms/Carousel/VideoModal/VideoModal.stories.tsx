@@ -7,4 +7,10 @@ const payload = {
 };
 export default payload;
 
-export const Basic = () => <VideoModal />;
+export const Basic = (args: any) => <VideoModal {...args} />;
+Basic.args = {
+  open: true,
+  onClose: () => {},
+  onNext: () => {},
+  onPrev: () => {},
+};

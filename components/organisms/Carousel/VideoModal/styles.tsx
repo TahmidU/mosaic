@@ -32,7 +32,7 @@ LeftBtn.displayName = "LeftBtn";
 export const RightBtn = styled(SlideButton)`
   position: fixed;
   bottom: 30%;
-  right: 1.2%;
+  right: 1.5%;
 `;
 RightBtn.displayName = "RightBtn";
 

@@ -10,16 +10,27 @@ import {
 
 import { GrClose } from "react-icons/gr";
 import { ReactElement } from "react";
-import SlideButton from "../SlideButton";
 
-interface VideoModalProps {}
+interface VideoModalProps {
+  open: boolean;
+  onClose: () => void;
+  onNext: () => void;
+  onPrev: () => void;
+}
 
-export default function VideoModal({}: VideoModalProps): ReactElement {
+export default function VideoModal({
+  open,
+  onClose,
+  onNext,
+  onPrev,
+}: VideoModalProps): ReactElement {
+  if (!open) return <></>;
+
   return (
     <>
-      <Overlay />
+      <Overlay onClick={onClose} />
       <Container>
-        <LeftBtn variant="mobileLeft" />
+        <LeftBtn variant="mobileLeft" onClick={onPrev} />
         <VideoContainer>
           <Frame
             src="https://www.youtube-nocookie.com/embed/JfVOs4VSpmA"
@@ -29,8 +40,8 @@ export default function VideoModal({}: VideoModalProps): ReactElement {
             allowFullScreen
           />
         </VideoContainer>
-        <RightBtn variant="mobileRight" />
-        <CloseBtn>
+        <RightBtn variant="mobileRight" onClick={onNext} />
+        <CloseBtn onClick={onClose}>
           <GrClose />
         </CloseBtn>
       </Container>
