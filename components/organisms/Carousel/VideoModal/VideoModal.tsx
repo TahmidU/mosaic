@@ -8,8 +8,10 @@ import {
   VideoContainer,
 } from "./styles";
 
+import ClientPortal from "components/atoms/ClientPortal";
 import { GrClose } from "react-icons/gr";
 import { ReactElement } from "react";
+import { createPortal } from "react-dom";
 
 interface VideoModalProps {
   open: boolean;
@@ -27,7 +29,7 @@ export default function VideoModal({
   if (!open) return <></>;
 
   return (
-    <>
+    <ClientPortal selector="#modalPortal">
       <Overlay onClick={onClose} />
       <Container>
         <LeftBtn variant="mobileLeft" onClick={onPrev} />
@@ -45,6 +47,6 @@ export default function VideoModal({
           <GrClose />
         </CloseBtn>
       </Container>
-    </>
+    </ClientPortal>
   );
 }

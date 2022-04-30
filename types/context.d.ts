@@ -1,3 +1,4 @@
+import { IModalVisibilities } from "hooks/useModalControl";
 import { DefaultTheme } from "styled-components";
 import useAuth from "../hooks/useAxios";
 
@@ -10,7 +11,13 @@ export interface ITheme {
 }
 
 export type AxiosInstance = ReturnType<typeof useAxios>;
+
+export interface IModalControl {
+  modalVisibilities: IModalVisibilities;
+  toggleModal: (name: string) => (show: boolean) => void;
+}
 export interface IGlobalContext {
   theme: ITheme;
   axiosInstance: AxiosInstance;
+  modalControl: IModalControl;
 }
