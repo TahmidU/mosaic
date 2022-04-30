@@ -29,3 +29,7 @@ a {
 * {
   box-sizing: border-box;
 }
+
+#modalPortal {
+  z-index: 999999;
+}

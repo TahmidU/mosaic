@@ -21,8 +21,11 @@ import { IVideo } from "types/api/videos";
 import ProgressiveBar from "./ProgressiveBar";
 import { TextUtils } from "resources/utils";
 import clipsRequests from "./requests";
+import dynamic from "next/dynamic";
 import { textAnimVariant } from "./animation-variants";
 import { useAnimation } from "framer-motion";
+
+const VideoModal = dynamic(() => import("./VideoModal"), { ssr: false });
 
 interface CarouselProps {
   carouselData?: IDiscoverMovie[];
@@ -53,6 +56,11 @@ export default function Carousel({
   });
   const textAnimControls = useAnimation();
 
+  // Modal
+  const [showVideoModal, setShowVideoModal] = useState(false);
+
+  function onClipClickedCallback(url: string) {}
+
   // Animations
   useEffect(() => {
     textAnimControls.set(textAnimVariant.hide);
@@ -82,82 +90,87 @@ export default function Carousel({
   }
 
   return (
-    <Container>
-      <CarouselMainContainer>
-        <CarouselReview
-          percentage={
-            carouselData.length > 0
-              ? Math.round(carouselData[step].vote_average * 10)
-              : 0
-          }
-        />
-        <PrevBtn
-          dataTestId="CarouselPrevBtn"
-          variant="left"
-          strokeWidth={3}
-          onClick={() => {
-            handleSlideChange(false, true);
-          }}
-        />
-        <CarouselContainer>
-          <ImageContainer>
-            {carouselData.map((movies, index) => {
-              return (
-                <CarouselImage
-                  key={index}
-                  imageURL={movies.backdrop_path}
-                  currentStep={step}
-                  index={index}
-                  local={localImages}
-                />
-              );
-            })}
-
-            <StepsContainer>
+    <>
+      <Container>
+        <CarouselMainContainer>
+          <CarouselReview
+            percentage={
+              carouselData.length > 0
+                ? Math.round(carouselData[step].vote_average * 10)
+                : 0
+            }
+          />
+          <PrevBtn
+            dataTestId="CarouselPrevBtn"
+            variant="left"
+            strokeWidth={3}
+            onClick={() => {
+              handleSlideChange(false, true);
+            }}
+          />
+          <CarouselContainer>
+            <ImageContainer>
               {carouselData.map((movies, index) => {
                 return (
-                  <StepsStyle
+                  <CarouselImage
                     key={index}
-                    enabled={index <= step}
-                    onClick={() => setStep(index)}
+                    imageURL={movies.backdrop_path}
+                    currentStep={step}
+                    index={index}
+                    local={localImages}
                   />
                 );
               })}
-            </StepsContainer>
-          </ImageContainer>
-          <TextStyle variants={textAnimVariant} animate={textAnimControls}>
-            <p>{carouselData[step] ? carouselData[step].title : ""}</p>
-            <p>{carouselData[step] ? carouselData[step].overview : ""}</p>
-            <p>
-              RELEASE DATE:{" "}
-              {carouselData[step]
-                ? TextUtils.dateFormatter(carouselData[step].release_date)
-                : ""}
-            </p>
-          </TextStyle>
-        </CarouselContainer>
-        <NextBtn
-          dataTestId="CarouselNextBtn"
-          variant="right"
-          strokeWidth={3}
-          onClick={() => {
-            handleSlideChange(true, true);
-          }}
-        />
-        <ProgBar>
-          <ProgressiveBar
-            duration={autoSlideDuration}
-            trigger={() => {
-              //! Uncomment this once carousel is finished. It's annoying when debugging!
-              //!disableAutoSlide && handleSlideChange(true);
+
+              <StepsContainer>
+                {carouselData.map((movies, index) => {
+                  return (
+                    <StepsStyle
+                      key={index}
+                      enabled={index <= step}
+                      onClick={() => setStep(index)}
+                    />
+                  );
+                })}
+              </StepsContainer>
+            </ImageContainer>
+            <TextStyle variants={textAnimVariant} animate={textAnimControls}>
+              <p>{carouselData[step] ? carouselData[step].title : ""}</p>
+              <p>{carouselData[step] ? carouselData[step].overview : ""}</p>
+              <p>
+                RELEASE DATE:{" "}
+                {carouselData[step]
+                  ? TextUtils.dateFormatter(carouselData[step].release_date)
+                  : ""}
+              </p>
+            </TextStyle>
+          </CarouselContainer>
+          <NextBtn
+            dataTestId="CarouselNextBtn"
+            variant="right"
+            strokeWidth={3}
+            onClick={() => {
+              handleSlideChange(true, true);
             }}
-            pause={timerConfig.pause}
-            reset={timerConfig.reset}
-            onAnimEnd={onTimerAnimEnd}
           />
-        </ProgBar>
-      </CarouselMainContainer>
-      <Clips videos={videos} />
-    </Container>
+          <ProgBar>
+            <ProgressiveBar
+              duration={autoSlideDuration}
+              trigger={() => {
+                //! Uncomment this once carousel is finished. It's annoying when debugging!
+                //!disableAutoSlide && handleSlideChange(true);
+              }}
+              pause={timerConfig.pause}
+              reset={timerConfig.reset}
+              onAnimEnd={onTimerAnimEnd}
+            />
+          </ProgBar>
+        </CarouselMainContainer>
+        <Clips
+          videos={videos}
+          onClipClickedCallback={(url: string) => onClipClickedCallback(url)}
+        />
+      </Container>
+    </>
   );
 }

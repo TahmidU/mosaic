@@ -11,13 +11,13 @@ import {
 import ClientPortal from "components/atoms/ClientPortal";
 import { GrClose } from "react-icons/gr";
 import { ReactElement } from "react";
-import { createPortal } from "react-dom";
 
 interface VideoModalProps {
   open: boolean;
   onClose: () => void;
   onNext: () => void;
   onPrev: () => void;
+  url: string;
 }
 
 export default function VideoModal({
@@ -25,6 +25,7 @@ export default function VideoModal({
   onClose,
   onNext,
   onPrev,
+  url,
 }: VideoModalProps): ReactElement {
   if (!open) return <></>;
 
@@ -35,7 +36,7 @@ export default function VideoModal({
         <LeftBtn variant="mobileLeft" onClick={onPrev} />
         <VideoContainer>
           <Frame
-            src="https://www.youtube-nocookie.com/embed/JfVOs4VSpmA"
+            src={`https://www.youtube-nocookie.com/embed/${url}`}
             title="YouTube video player"
             frameBorder="0"
             allow="accelerometer; rel=0; showinfo=0; autohide=1; clipboard-write; encrypted-media; gyroscope;"

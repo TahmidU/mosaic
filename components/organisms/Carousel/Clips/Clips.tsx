@@ -1,17 +1,18 @@
 import { Container, Content } from "./styles";
-import { ReactElement, useContext, useEffect, useState } from "react";
+import { ReactElement, useEffect, useState } from "react";
 
 import Clip from "./Clip";
-import GlobalContext from "context/GlobalContext";
 import { IVideo } from "types/api/videos";
-import Scrollbar from "components/atoms/Scrollbar";
-import clipsRequests from "./requests";
 
 interface ClipsProps {
   videos?: IVideo;
+  onClipClickedCallback: (url: string) => void;
 }
 
-export default function Clips({ videos }: ClipsProps): ReactElement {
+export default function Clips({
+  videos,
+  onClipClickedCallback,
+}: ClipsProps): ReactElement {
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
@@ -32,6 +33,7 @@ export default function Clips({ videos }: ClipsProps): ReactElement {
               YTKey={_video.key}
               title={_video.name}
               type={_video.type}
+              onClick={(url) => onClipClickedCallback(url)}
             />
           ))
         ) : (

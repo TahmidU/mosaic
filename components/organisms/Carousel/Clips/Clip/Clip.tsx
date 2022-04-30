@@ -7,11 +7,17 @@ interface ClipProps {
   YTKey: string;
   title: string;
   type: string;
+  onClick: (url: string) => void;
 }
 
-export default function Clip({ YTKey, title, type }: ClipProps): ReactElement {
+export default function Clip({
+  YTKey,
+  title,
+  type,
+  onClick,
+}: ClipProps): ReactElement {
   return (
-    <Container>
+    <Container onClick={() => onClick(YTKey)}>
       <ImageContainer>
         <Image
           src={`https://img.youtube.com/vi/${YTKey}/mqdefault.jpg`}
