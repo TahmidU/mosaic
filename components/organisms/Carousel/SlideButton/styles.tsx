@@ -25,8 +25,8 @@ export const MobileContainer = styled.div`
   cursor: pointer;
   border: 2px solid ${({ theme }) => theme.main};
   background-color: ${({ theme }) => theme.cAlmostWhite.alpha(0.3).toString()};
-  width: 125px;
-  height: 250px;
+  width: 75px;
+  height: 150px;
 
   display: flex;
   justify-content: center;

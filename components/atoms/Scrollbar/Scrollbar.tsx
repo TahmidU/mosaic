@@ -1,4 +1,5 @@
-import { CustomThumb } from "./styled";
+import { CustomThumb, CustomTrack } from "./styles";
+
 import { ReactElement } from "react";
 import Scrollbars from "react-custom-scrollbars";
 
@@ -7,5 +8,15 @@ export default function Scrollbar({ ...props }): ReactElement {
     return <CustomThumb {...props} />;
   }
 
-  return <Scrollbars renderThumbVertical={renderThumb} {...props} />;
+  function renderTrackVertical({ style, ...props }: { style: any }) {
+    return <CustomTrack {...props} />;
+  }
+
+  return (
+    <Scrollbars
+      renderThumbVertical={renderThumb}
+      renderTrackVertical={renderTrackVertical}
+      {...props}
+    />
+  );
 }

@@ -25,13 +25,14 @@ Container.displayName = "Container";
 
 export const LeftBtn = styled(SlideButton)`
   position: fixed;
-  bottom: 30%;
+  bottom: 45%;
+  left: 1.5%;
 `;
 LeftBtn.displayName = "LeftBtn";
 
 export const RightBtn = styled(SlideButton)`
   position: fixed;
-  bottom: 30%;
+  bottom: 45%;
   right: 1.5%;
 `;
 RightBtn.displayName = "RightBtn";
@@ -44,12 +45,17 @@ export const VideoContainer = styled.div`
   height: 90%;
   background-color: transparent;
   z-index: 99999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 VideoContainer.displayName = "VideoContainer";
 
 export const Frame = styled.iframe`
   width: 100%;
   height: 100%;
+  max-width: 1280px;
+  max-height: 720px;
   background-color: transparent;
 `;
 Frame.displayName = "Frame";
@@ -61,9 +67,9 @@ export const CloseBtn = styled.button`
   align-items: center;
   position: fixed;
   cursor: pointer;
-  width: 24px;
-  height: 24px;
-  right: 5%;
+  width: 42px;
+  height: 42px;
+  right: 4%;
   top: 5%;
 
   svg,

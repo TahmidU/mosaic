@@ -29,7 +29,8 @@ export const Container = styled.div`
 Container.displayName = "Container";
 
 export const Content = styled(Scrollbar)`
-  height: 28vw !important;
+  height: 30vw !important;
+  max-height: 590px;
 
   > div:first-child {
     padding: 0 0.2em 0 0;
