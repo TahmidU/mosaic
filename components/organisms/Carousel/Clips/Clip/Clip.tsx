@@ -7,7 +7,7 @@ interface ClipProps {
   YTKey: string;
   title: string;
   type: string;
-  onClick: (url: string) => void;
+  onClick: () => void;
 }
 
 export default function Clip({
@@ -17,7 +17,7 @@ export default function Clip({
   onClick,
 }: ClipProps): ReactElement {
   return (
-    <Container onClick={() => onClick(YTKey)}>
+    <Container onClick={onClick}>
       <ImageContainer>
         <Image
           src={`https://img.youtube.com/vi/${YTKey}/mqdefault.jpg`}

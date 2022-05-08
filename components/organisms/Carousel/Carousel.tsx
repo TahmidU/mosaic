@@ -57,9 +57,16 @@ export default function Carousel({
   const textAnimControls = useAnimation();
 
   // Modal
-  const [showVideoModal, setShowVideoModal] = useState(false);
+  const [videoIndex, setVideoIndex] = useState(-1);
+  const [youtubeURL, setYoutubeURL] = useState("");
 
-  function onClipClickedCallback(url: string) {}
+  useEffect(() => {
+    if (videos && videos.results[videoIndex] && videoIndex !== -1) {
+      setYoutubeURL(videos.results[videoIndex].key); //! Create callback
+    } else {
+      setYoutubeURL("");
+    }
+  }, [videos, youtubeURL, videoIndex]);
 
   // Animations
   useEffect(() => {
@@ -168,9 +175,19 @@ export default function Carousel({
         </CarouselMainContainer>
         <Clips
           videos={videos}
-          onClipClickedCallback={(url: string) => onClipClickedCallback(url)}
+          onClipClickedCallback={(_videoIndex: number) => {
+            console.log(_videoIndex);
+            setVideoIndex(_videoIndex);
+          }}
         />
       </Container>
+      <VideoModal
+        isOpen={youtubeURL !== ""}
+        onPrev={() => {}}
+        onClose={() => setVideoIndex(-1)}
+        onNext={() => {}}
+        url={youtubeURL}
+      />
     </>
   );
 }

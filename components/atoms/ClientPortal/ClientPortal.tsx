@@ -14,5 +14,5 @@ export default function ClientPortal({ children, selector }: IClientPortal) {
     ref.current = document.querySelector(selector);
   }, [selector]);
 
-  return ref.current ? createPortal(children, ref.current) : null;
+  return createPortal(children, document.querySelector(selector));
 }

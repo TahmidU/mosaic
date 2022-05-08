@@ -13,7 +13,7 @@ import { GrClose } from "react-icons/gr";
 import { ReactElement } from "react";
 
 interface VideoModalProps {
-  open: boolean;
+  isOpen: boolean;
   onClose: () => void;
   onNext: () => void;
   onPrev: () => void;
@@ -21,13 +21,13 @@ interface VideoModalProps {
 }
 
 export default function VideoModal({
-  open,
+  isOpen,
   onClose,
   onNext,
   onPrev,
   url,
 }: VideoModalProps): ReactElement {
-  if (!open) return <></>;
+  if (!isOpen) return <></>;
 
   return (
     <ClientPortal selector="#modalPortal">

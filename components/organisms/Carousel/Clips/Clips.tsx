@@ -6,7 +6,7 @@ import { IVideo } from "types/api/videos";
 
 interface ClipsProps {
   videos?: IVideo;
-  onClipClickedCallback: (url: string) => void;
+  onClipClickedCallback: (videoIndex: number) => void;
 }
 
 export default function Clips({
@@ -33,7 +33,7 @@ export default function Clips({
               YTKey={_video.key}
               title={_video.name}
               type={_video.type}
-              onClick={(url) => onClipClickedCallback(url)}
+              onClick={() => onClipClickedCallback(index)}
             />
           ))
         ) : (
