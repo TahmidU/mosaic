@@ -45,7 +45,14 @@ export default function VideoModal({
     <ClientPortal selector="#modalPortal">
       <Overlay />
       <Container>
-        <LeftBtn variant="mobileLeft" onClick={() => {}} />
+        <LeftBtn
+          variant="mobileLeft"
+          onClick={() => {
+            setVideoIndex((prev) =>
+              prev > 0 ? prev - 1 : videos.results.length - 1
+            );
+          }}
+        />
         <VideoContainer>
           <Frame
             src={`https://www.youtube-nocookie.com/embed/${videos.results[videoIndex].key}`}
@@ -55,7 +62,14 @@ export default function VideoModal({
             allowFullScreen
           />
         </VideoContainer>
-        <RightBtn variant="mobileRight" onClick={() => {}} />
+        <RightBtn
+          variant="mobileRight"
+          onClick={() => {
+            setVideoIndex((prev) =>
+              prev < videos.results.length - 1 ? prev + 1 : 0
+            );
+          }}
+        />
         <CloseBtn
           onClick={() => setModalOpen((prev) => ({ ...prev, open: false }))}
         >
