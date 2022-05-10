@@ -57,16 +57,10 @@ export default function Carousel({
   const textAnimControls = useAnimation();
 
   // Modal
-  const [videoIndex, setVideoIndex] = useState(-1);
-  const [youtubeURL, setYoutubeURL] = useState("");
-
-  useEffect(() => {
-    if (videos && videos.results[videoIndex] && videoIndex !== -1) {
-      setYoutubeURL(videos.results[videoIndex].key); //! Create callback
-    } else {
-      setYoutubeURL("");
-    }
-  }, [videos, youtubeURL, videoIndex]);
+  const [modalOpen, setModalOpen] = useState({
+    open: false,
+    initialIndex: 0,
+  });
 
   // Animations
   useEffect(() => {
@@ -176,17 +170,14 @@ export default function Carousel({
         <Clips
           videos={videos}
           onClipClickedCallback={(_videoIndex: number) => {
-            console.log(_videoIndex);
-            setVideoIndex(_videoIndex);
+            setModalOpen({ open: true, initialIndex: _videoIndex });
           }}
         />
       </Container>
       <VideoModal
-        isOpen={youtubeURL !== ""}
-        onPrev={() => {}}
-        onClose={() => setVideoIndex(-1)}
-        onNext={() => {}}
-        url={youtubeURL}
+        modalOpen={modalOpen}
+        setModalOpen={setModalOpen}
+        videos={videos}
       />
     </>
   );
