@@ -7,5 +7,5 @@ const payload = {
 };
 export default payload;
 
-export const Basic = () => <Clips />;
+export const Basic = () => <Clips onClipClickedCallback={() => {}} />;
 Basic.args = {};
