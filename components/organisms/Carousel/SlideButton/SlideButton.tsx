@@ -6,18 +6,19 @@ import {
   MobileContainer,
   RightArrow,
   RightMobileArrow,
+  TransparentContainer,
 } from "./styles";
-import {
-  ReactElement,
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  useState,
-} from "react";
+import { ReactElement, useEffect, useRef, useState } from "react";
 
 import { ContainerAnimVariant } from "./animation-variants";
 
-type Variant = "right" | "left" | "mobileLeft" | "mobileRight";
+type Variant =
+  | "right"
+  | "left"
+  | "simpleLeft"
+  | "simpleRight"
+  | "transparentLeft"
+  | "transparentRight";
 
 interface SlideButtonProps {
   className?: string;
@@ -67,16 +68,29 @@ export default function SlideButton({
     });
   }, [containerRef]);
 
-  if (variant !== "left" && variant !== "right") {
+  if (variant === "simpleLeft" || variant === "simpleRight") {
     return (
       <MobileContainer
         onClick={onClick}
         data-testid={dataTestId}
         className={className}
       >
-        {variant === "mobileLeft" && <LeftMobileArrow />}
-        {variant === "mobileRight" && <RightMobileArrow />}
+        {variant === "simpleLeft" && <LeftMobileArrow />}
+        {variant === "simpleRight" && <RightMobileArrow />}
       </MobileContainer>
+    );
+  }
+
+  if (variant === "transparentLeft" || variant === "transparentRight") {
+    return (
+      <TransparentContainer
+        className={className}
+        onClick={onClick}
+        data-testid={dataTestId}
+      >
+        {variant === "transparentLeft" && <LeftArrow />}
+        {variant === "transparentRight" && <RightArrow />}
+      </TransparentContainer>
     );
   }
 

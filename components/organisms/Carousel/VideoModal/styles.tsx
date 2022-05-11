@@ -25,22 +25,22 @@ Container.displayName = "Container";
 
 export const LeftBtn = styled(SlideButton)`
   position: fixed;
-  bottom: 45%;
-  left: 1.5%;
+  top: 17rem;
+  left: 1.25rem;
 `;
 LeftBtn.displayName = "LeftBtn";
 
 export const RightBtn = styled(SlideButton)`
   position: fixed;
-  bottom: 45%;
-  right: 1.5%;
+  top: 17rem;
+  right: 1.25rem;
 `;
 RightBtn.displayName = "RightBtn";
 
 export const VideoContainer = styled.div`
   position: fixed;
-  top: 5%;
-  right: 15%;
+  top: 3.5rem;
+  right: 12.75rem;
   width: 70%;
   height: 90%;
   background-color: transparent;
@@ -76,9 +76,18 @@ export const CloseBtn = styled.button`
   path {
     height: 100%;
     width: 100%;
-    color: ${({ theme }) => theme.white};
-    fill: ${({ theme }) => theme.white};
-    stroke: ${({ theme }) => theme.white};
+    color: ${({ theme }) => theme.cAlmostWhite.alpha(0.75).toString()};
+    fill: ${({ theme }) => theme.cAlmostWhite.alpha(0.75).toString()};
+    stroke: ${({ theme }) => theme.cAlmostWhite.alpha(0.75).toString()};
+  }
+
+  :hover {
+    svg,
+    path {
+      color: ${({ theme }) => theme.cAlmostWhite.alpha(1).toString()};
+      fill: ${({ theme }) => theme.cAlmostWhite.alpha(1).toString()};
+      stroke: ${({ theme }) => theme.cAlmostWhite.alpha(1).toString()};
+    }
   }
 `;
 CloseBtn.displayName = "CloseBtn";

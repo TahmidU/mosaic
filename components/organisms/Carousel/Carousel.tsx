@@ -11,16 +11,14 @@ import {
   StepsStyle,
   TextStyle,
 } from "./styles";
-import { ReactElement, useContext, useEffect, useState } from "react";
+import { ReactElement, useEffect, useState } from "react";
 
 import CarouselImage from "./CarouselImage";
 import Clips from "./Clips";
-import GlobalContext from "context/GlobalContext";
 import { IDiscoverMovie } from "../../../types/api/discover";
 import { IVideo } from "types/api/videos";
 import ProgressiveBar from "./ProgressiveBar";
 import { TextUtils } from "resources/utils";
-import clipsRequests from "./requests";
 import dynamic from "next/dynamic";
 import { textAnimVariant } from "./animation-variants";
 import { useAnimation } from "framer-motion";

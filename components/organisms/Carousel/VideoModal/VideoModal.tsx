@@ -46,7 +46,7 @@ export default function VideoModal({
       <Overlay />
       <Container>
         <LeftBtn
-          variant="mobileLeft"
+          variant="transparentLeft"
           onClick={() => {
             setVideoIndex((prev) =>
               prev > 0 ? prev - 1 : videos.results.length - 1
@@ -63,7 +63,7 @@ export default function VideoModal({
           />
         </VideoContainer>
         <RightBtn
-          variant="mobileRight"
+          variant="transparentRight"
           onClick={() => {
             setVideoIndex((prev) =>
               prev < videos.results.length - 1 ? prev + 1 : 0

@@ -21,6 +21,30 @@ export const Container = styled(motion.div)`
 `;
 Container.displayName = "Container";
 
+export const TransparentContainer = styled.div`
+  background-color: ${({ theme }) => theme.cAlmostBlack.alpha(0.75).toString()};
+  border-radius: 1.25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 125px;
+  height: 200px;
+  cursor: pointer;
+
+  svg {
+    color: ${({ theme }) => theme.cAlmostWhite.alpha(0.75).toString()};
+    width: 50%;
+  }
+
+  :hover {
+    background-color: ${({ theme }) => theme.cAlmostBlack.alpha(1).toString()};
+    svg {
+      color: ${({ theme }) => theme.cAlmostWhite.alpha(1).toString()};
+    }
+  }
+`;
+TransparentContainer.displayName = "TransparentContainer";
+
 export const MobileContainer = styled.div`
   cursor: pointer;
   border: 2px solid ${({ theme }) => theme.main};
