@@ -4,8 +4,11 @@ import {
   NextPage,
 } from "next";
 
-import HomePageComp from "components/pages/HomePageComp";
+import HomePage from "components/pages/HomePage";
+import { IDiscoverMovie } from "types/api/discover";
+import { IVideo } from "types/api/videos";
 import axios from "axios";
+import useVideoInfoStore from "hooks/useVideoInfoStore";
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const carouselResults = await axios({
@@ -13,18 +16,41 @@ export const getServerSideProps: GetServerSideProps = async () => {
     headers: { "Content-type": "application/json" },
     url: `${process.env.MOVIE_DB_WEB_URL}/discover/movie?language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate&api_key=${process.env.MOVIE_DB_API_KEY}`,
   });
+  const carouselData: IDiscoverMovie[] = carouselResults.data.results.slice(
+    0,
+    10
+  );
 
-  const carouselData = carouselResults.data.results.slice(0, 10);
+  const getVideoDataPromises = carouselData.map(
+    async (_movie) =>
+      await axios({
+        method: "get",
+        headers: { "Content-type": "application/json" },
+        url: `${process.env.MOVIE_DB_WEB_URL}/movie/${_movie.id}/videos?api_key=${process.env.MOVIE_DB_API_KEY}`,
+      }).then((res) => {
+        return res.data;
+      })
+  );
+  const allMovieVideoData: IVideo[] = await Promise.all(getVideoDataPromises);
 
   return {
-    props: { carouselData },
+    props: { carouselData, allMovieVideoData },
   };
 };
 
-const HomePage: NextPage = ({
+const Index: NextPage = ({
   carouselData,
+  allMovieVideoData,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  return <HomePageComp carouselData={carouselData} />;
+  const { currVideos, onStepChange } = useVideoInfoStore(allMovieVideoData);
+
+  return (
+    <HomePage
+      carouselData={carouselData}
+      videos={currVideos}
+      onStepChange={onStepChange}
+    />
+  );
 };
 
-export default HomePage;
+export default Index;

@@ -8,8 +8,9 @@ export const Container = styled.div`
   display: grid;
   grid-template-columns: 70% 30%;
   margin: 1rem 1rem;
-  height: fit-content;
+  height: 720px;
   max-height: 720px;
+  align-self: center;
 `;
 Container.displayName = "Container";
 
@@ -64,7 +65,6 @@ export const TextStyle = styled(motion.div)`
     position: relative;
     z-index: 10;
     ${({ theme }) => theme.fonts.main.humongous};
-    font-weight: bolder;
     top: -40px;
     left: 2%;
     white-space: nowrap;
@@ -76,6 +76,7 @@ export const TextStyle = styled(motion.div)`
     position: relative;
     z-index: 10;
     ${({ theme }) => theme.fonts.main.massive};
+    font-weight: 100;
     top: -115px;
     left: 2%;
     display: -webkit-box;
@@ -88,6 +89,7 @@ export const TextStyle = styled(motion.div)`
     position: relative;
     z-index: 10;
     ${({ theme }) => theme.fonts.main.big};
+    font-weight: 100;
     top: -130px;
     left: 2%;
   }
@@ -97,7 +99,7 @@ export const TextStyle = styled(motion.div)`
     white-space: normal;
   }
 
-  @media (max-width: 1474px) {
+  @media (max-width: 1640px) {
     > p:first-child {
       ${({ theme }) => theme.fonts.main.massive};
       top: 6px;

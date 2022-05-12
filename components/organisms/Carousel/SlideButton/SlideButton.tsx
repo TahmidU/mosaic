@@ -2,19 +2,23 @@ import {
   Container,
   HoverAnimationCircle,
   LeftArrow,
+  LeftMobileArrow,
+  MobileContainer,
   RightArrow,
+  RightMobileArrow,
+  TransparentContainer,
 } from "./styles";
-import {
-  ReactElement,
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  useState,
-} from "react";
+import { ReactElement, useEffect, useRef, useState } from "react";
 
 import { ContainerAnimVariant } from "./animation-variants";
 
-type Variant = "right" | "left";
+type Variant =
+  | "right"
+  | "left"
+  | "simpleLeft"
+  | "simpleRight"
+  | "transparentLeft"
+  | "transparentRight";
 
 interface SlideButtonProps {
   className?: string;
@@ -63,6 +67,32 @@ export default function SlideButton({
         handleProgressiveCircleAnim(containerRef.current);
     });
   }, [containerRef]);
+
+  if (variant === "simpleLeft" || variant === "simpleRight") {
+    return (
+      <MobileContainer
+        onClick={onClick}
+        data-testid={dataTestId}
+        className={className}
+      >
+        {variant === "simpleLeft" && <LeftMobileArrow />}
+        {variant === "simpleRight" && <RightMobileArrow />}
+      </MobileContainer>
+    );
+  }
+
+  if (variant === "transparentLeft" || variant === "transparentRight") {
+    return (
+      <TransparentContainer
+        className={className}
+        onClick={onClick}
+        data-testid={dataTestId}
+      >
+        {variant === "transparentLeft" && <LeftArrow />}
+        {variant === "transparentRight" && <RightArrow />}
+      </TransparentContainer>
+    );
+  }
 
   return (
     <Container

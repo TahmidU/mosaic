@@ -1,4 +1,5 @@
 const path = require("path");
+var webpack = require("webpack");
 
 module.exports = {
   staticDirs: ["../public"],
@@ -30,6 +31,7 @@ module.exports = {
         },
       },
     });
+
     return config;
   },
 };

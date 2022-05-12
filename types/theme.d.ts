@@ -7,10 +7,31 @@ export interface IColours {
   white: string;
   almostWhite: string;
   black: string;
+  grey: string;
 }
 
 export interface IFonts {
   main: {
+    small: string;
+    regular: string;
+    medium: string;
+    mediumBig: string;
+    big: string;
+    bigger: string;
+    massive: string;
+    humongous: string;
+  };
+  secondary: {
+    small: string;
+    regular: string;
+    medium: string;
+    mediumBig: string;
+    big: string;
+    bigger: string;
+    massive: string;
+    humongous: string;
+  };
+  tertiary: {
     small: string;
     regular: string;
     medium: string;
@@ -29,6 +50,7 @@ export interface ICColours {
   cWhite: Color<string>;
   cAlmostWhite: Color<string>;
   cBlack: Color<string>;
+  cGrey: Color<string>;
 }
 
 declare module "styled-components" {
@@ -39,6 +61,7 @@ declare module "styled-components" {
     white: string;
     almostWhite: string;
     black: string;
+    grey: string;
 
     fonts: IFonts;
 
@@ -48,6 +71,7 @@ declare module "styled-components" {
     cWhite: Color<string>;
     cAlmostWhite: Color<string>;
     cBlack: Color<string>;
+    cGrey: Color<string>;
 
     name: Theme;
     main: string;

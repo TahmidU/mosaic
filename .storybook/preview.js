@@ -1,3 +1,5 @@
+import * as nextImage from "next/image";
+
 import { addDecorator } from "@storybook/react";
 import getTheme from "../resources/themes";
 import { withThemesProvider } from "storybook-addon-styled-component-theme";
@@ -14,3 +16,10 @@ export const parameters = {
     },
   },
 };
+
+Object.defineProperty(nextImage, "default", {
+  configurable: true,
+  value: (props) => {
+    return <img {...props} />;
+  },
+});

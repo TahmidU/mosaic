@@ -37,7 +37,7 @@ export const MenuContainer = styled.div`
       margin: 0 1.75rem 0 0;
     }
 
-    font-weight: bold;
+    font-weight: 500;
     margin: 0 1.75rem;
     cursor: pointer;
   }

@@ -67,15 +67,19 @@ describe("Carousel", () => {
       target = data[1],
       expectedTitle = target.title;
 
-    // When
+    // When Then
     const { getByText } = render(
-      <Carousel carouselData={data} localImages autoSlideDuration={1} />
+      <Carousel
+        carouselData={data}
+        localImages
+        autoSlideDuration={1}
+        autoSlideCallback={() => {
+          getByText(expectedTitle);
+        }}
+      />
     );
 
-    // Then
-    await new Promise((r) => setTimeout(r, 2000));
-
-    getByText(expectedTitle);
+    await new Promise((r) => setTimeout(r, 1000));
   });
 
   test("Click prev from start", async () => {

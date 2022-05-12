@@ -8,7 +8,13 @@ const payload = {
 export default payload;
 
 export const Basic = (args: any) => (
-  <div style={{ position: "absolute", right: "50%", bottom: "50%" }}>
+  <div
+    style={{
+      position: "absolute",
+      right: "50%",
+      bottom: "50%",
+    }}
+  >
     <SlideButton {...args} />
   </div>
 );
