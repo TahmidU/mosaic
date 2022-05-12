@@ -22,7 +22,7 @@ export const Container = styled(motion.div)`
 Container.displayName = "Container";
 
 export const TransparentContainer = styled.div`
-  background-color: ${({ theme }) => theme.cAlmostBlack.alpha(0.75).toString()};
+  background-color: ${({ theme }) => theme.cAlmostBlack.alpha(0.7).toString()};
   border-radius: 1.25rem;
   display: flex;
   justify-content: center;
@@ -32,14 +32,15 @@ export const TransparentContainer = styled.div`
   cursor: pointer;
 
   svg {
-    color: ${({ theme }) => theme.cAlmostWhite.alpha(0.75).toString()};
+    color: ${({ theme }) => theme.cAlmostWhite.alpha(0.7).toString()};
     width: 50%;
   }
 
   :hover {
-    background-color: ${({ theme }) => theme.cAlmostBlack.alpha(1).toString()};
+    background-color: ${({ theme }) =>
+      theme.cAlmostBlack.alpha(0.85).toString()};
     svg {
-      color: ${({ theme }) => theme.cAlmostWhite.alpha(1).toString()};
+      color: ${({ theme }) => theme.cAlmostWhite.alpha(0.85).toString()};
     }
   }
 `;

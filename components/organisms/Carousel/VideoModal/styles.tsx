@@ -25,22 +25,22 @@ Container.displayName = "Container";
 
 export const LeftBtn = styled(SlideButton)`
   position: fixed;
-  top: 17rem;
-  left: 1.25rem;
+  top: 40%;
+  left: 2%;
 `;
 LeftBtn.displayName = "LeftBtn";
 
 export const RightBtn = styled(SlideButton)`
   position: fixed;
-  top: 17rem;
-  right: 1.25rem;
+  top: 40%;
+  right: 2%;
 `;
 RightBtn.displayName = "RightBtn";
 
 export const VideoContainer = styled.div`
   position: fixed;
-  top: 3.5rem;
-  right: 12.75rem;
+  top: 5%;
+  right: 15%;
   width: 70%;
   height: 90%;
   background-color: transparent;
@@ -76,17 +76,17 @@ export const CloseBtn = styled.button`
   path {
     height: 100%;
     width: 100%;
-    color: ${({ theme }) => theme.cAlmostWhite.alpha(0.75).toString()};
-    fill: ${({ theme }) => theme.cAlmostWhite.alpha(0.75).toString()};
-    stroke: ${({ theme }) => theme.cAlmostWhite.alpha(0.75).toString()};
+    color: ${({ theme }) => theme.cAlmostWhite.alpha(0.7).toString()};
+    fill: ${({ theme }) => theme.cAlmostWhite.alpha(0.7).toString()};
+    stroke: ${({ theme }) => theme.cAlmostWhite.alpha(0.7).toString()};
   }
 
   :hover {
     svg,
     path {
-      color: ${({ theme }) => theme.cAlmostWhite.alpha(1).toString()};
-      fill: ${({ theme }) => theme.cAlmostWhite.alpha(1).toString()};
-      stroke: ${({ theme }) => theme.cAlmostWhite.alpha(1).toString()};
+      color: ${({ theme }) => theme.cAlmostWhite.alpha(0.85).toString()};
+      fill: ${({ theme }) => theme.cAlmostWhite.alpha(0.85).toString()};
+      stroke: ${({ theme }) => theme.cAlmostWhite.alpha(0.85).toString()};
     }
   }
 `;
