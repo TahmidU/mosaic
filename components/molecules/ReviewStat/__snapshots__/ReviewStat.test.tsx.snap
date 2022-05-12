@@ -32,7 +32,7 @@ exports[`ReviewStat Snapshot 1`] = `
 
 .c1 > text:last-child {
   fill: #FFFFFF;
-  font-family: "Roboto",sans-serif;
+  font-family: 'Nunito',sans-serif;
   font-size: 24px;
   font-weight: bolder;
   -webkit-dominant-baseline: middle;
