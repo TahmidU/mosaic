@@ -70,6 +70,14 @@ export default function Carousel({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [step]);
 
+  useEffect(() => {
+    if (modalOpen.open) {
+      setTimerConfig((prev) => ({ ...prev, pause: true }));
+    } else {
+      setTimerConfig((prev) => ({ ...prev, pause: false }));
+    }
+  }, [modalOpen.open]);
+
   function onTimerAnimEnd() {
     setTimerConfig((prev) => ({ ...prev, reset: false }));
   }
@@ -157,7 +165,7 @@ export default function Carousel({
               duration={autoSlideDuration}
               trigger={() => {
                 //! Uncomment this once carousel is finished. It's annoying when debugging!
-                //!disableAutoSlide && handleSlideChange(true);
+                !disableAutoSlide && handleSlideChange(true);
               }}
               pause={timerConfig.pause}
               reset={timerConfig.reset}
