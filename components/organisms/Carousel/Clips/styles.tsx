@@ -36,7 +36,7 @@ export const Content = styled(Scrollbar)`
     padding: 0 0.2em 0 0;
 
     > div {
-      margin: 0.8em 0.75em 0 0.2em;
+      margin: 0.8em 0.75em 0 0.1em;
       position: relative;
     }
   }
