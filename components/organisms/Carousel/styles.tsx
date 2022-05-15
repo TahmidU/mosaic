@@ -16,6 +16,8 @@ Container.displayName = "Container";
 
 export const CarouselMainContainer = styled.div`
   display: flex;
+  justify-self: center;
+  max-height: 720px;
   flex-direction: row;
   width: 100%;
   max-width: 1280px;
