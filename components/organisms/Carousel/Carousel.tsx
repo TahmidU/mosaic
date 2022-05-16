@@ -82,9 +82,18 @@ export default function Carousel({
     setTimerConfig((prev) => ({ ...prev, reset: false }));
   }
 
+  function resetCarouselTimer() {
+    setTimerConfig((prev) => ({ ...prev, reset: true }));
+  }
+
+  function onClipClicked(_videoIndex: number) {
+    setModalOpen({ open: true, initialIndex: _videoIndex });
+    resetCarouselTimer();
+  }
+
   function handleSlideChange(next: boolean, clicked: boolean = false) {
     if (clicked) {
-      setTimerConfig((prev) => ({ ...prev, reset: true }));
+      resetCarouselTimer();
     } else {
       autoSlideCallback();
     }
@@ -135,7 +144,10 @@ export default function Carousel({
                     <StepsStyle
                       key={index}
                       enabled={index <= step}
-                      onClick={() => setStep(index)}
+                      onClick={() => {
+                        setStep(index);
+                        resetCarouselTimer();
+                      }}
                     />
                   );
                 })}
@@ -176,7 +188,7 @@ export default function Carousel({
         <Clips
           videos={videos}
           onClipClickedCallback={(_videoIndex: number) => {
-            setModalOpen({ open: true, initialIndex: _videoIndex });
+            onClipClicked(_videoIndex);
           }}
         />
       </Container>
