@@ -1,4 +1,11 @@
-import { Container, MovieCardList, SubListTitle, SubTitle } from "./styles";
+import {
+  Container,
+  MovieCardList,
+  MovieCardWrapper,
+  MovieListWrapper,
+  SubListTitle,
+  SubTitle,
+} from "./styles";
 import { ReactElement, useState } from "react";
 
 import { IMovieCardProps } from "components/molecules/MovieCard/MovieCard";
@@ -42,19 +49,22 @@ export default function MovieList<T>({
           );
         })}
       </SubListTitle>
-      <MovieCardList>
-        {movies.map((_movie, index) => {
-          return (
-            <MovieCard
-              key={index}
-              src={_movie.src}
-              review={_movie.review}
-              movieTitle={_movie.movieTitle}
-              movieReleaseDate={_movie.movieReleaseDate}
-            />
-          );
-        })}
-      </MovieCardList>
+      <MovieListWrapper>
+        <MovieCardList>
+          {movies.map((_movie, index) => {
+            return (
+              <MovieCardWrapper key={index}>
+                <MovieCard
+                  src={_movie.src}
+                  review={_movie.review}
+                  movieTitle={_movie.movieTitle}
+                  movieReleaseDate={_movie.movieReleaseDate}
+                />
+              </MovieCardWrapper>
+            );
+          })}
+        </MovieCardList>
+      </MovieListWrapper>
     </Container>
   );
 }

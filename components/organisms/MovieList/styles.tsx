@@ -14,7 +14,7 @@ Container.displayName = "Container";
 export const SubListTitle = styled.div`
   display: flex;
   flex-direction: row;
-  margin: 0 0 1.25rem 0;
+  margin: 0 0 2.75rem 0;
 
   > span:not(:first-child):not(:last-child) {
     margin: 0 2.5%;
@@ -43,11 +43,20 @@ export const SubTitle = styled.span<{ highlight: boolean }>`
 `;
 SubTitle.displayName = "SubTitle";
 
-export const MovieCardList = styled.div`
+export const MovieListWrapper = styled.div`
   display: flex;
-  flex-direction: row;
-  overflow-x: scroll;
-  width: 1436px;
+  justify-content: center;
+`;
+MovieListWrapper.displayName = "MovieListWrapper";
+
+export const MovieCardList = styled.div`
+  display: block;
+  overflow-x: hidden;
+  white-space: nowrap;
+  max-width: 1648px;
+  width: 100%;
+  max-height: 290px;
+  height: auto;
 
   > div:not(:first-child):not(:last-child) {
     margin: 0 2rem;
@@ -64,9 +73,11 @@ export const MovieCardList = styled.div`
   > div:only-child {
     margin: 0;
   }
-
-  > div {
-    flex: 1 0 auto;
-  }
 `;
 MovieCardList.displayName = "MovieCardList";
+
+export const MovieCardWrapper = styled.div`
+  display: inline-block;
+  width: 9.67vw;
+`;
+MovieCardWrapper.displayName = "MovieCardWrapper";
