@@ -1,3 +1,4 @@
+import SlideButton from "../Carousel/SlideButton";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -46,8 +47,25 @@ SubTitle.displayName = "SubTitle";
 export const MovieListWrapper = styled.div`
   display: flex;
   justify-content: center;
+  position: relative;
 `;
 MovieListWrapper.displayName = "MovieListWrapper";
+
+export const LeftSlide = styled(SlideButton)`
+  position: absolute;
+  left: 2.5%;
+  top: 30%;
+  z-index: 1;
+`;
+LeftSlide.displayName = "LeftSlide";
+
+export const RightSlide = styled(SlideButton)`
+  position: absolute;
+  right: 2.5%;
+  top: 30%;
+  z-index: 1;
+`;
+RightSlide.displayName = "RightSlide";
 
 export const MovieCardList = styled.div`
   display: block;
@@ -59,15 +77,15 @@ export const MovieCardList = styled.div`
   height: auto;
 
   > div:not(:first-child):not(:last-child) {
-    margin: 0 2rem;
+    padding: 0 0.25rem;
   }
 
   > div:last-child {
-    margin: 0 0 0 2rem;
+    padding: 0 0 0 0.25rem;
   }
 
   > div:first-child {
-    margin: 0 2rem 0 0;
+    padding: 0 0.25rem 0 0;
   }
 
   > div:only-child {
@@ -78,6 +96,30 @@ MovieCardList.displayName = "MovieCardList";
 
 export const MovieCardWrapper = styled.div`
   display: inline-block;
-  width: 9.67vw;
+  width: calc((100% - (0.25rem * 4)) / 6);
+
+  > div {
+    margin: 0 auto;
+  }
+
+  @media only screen and (max-width: 1346px) {
+    width: calc((100% - (0.25rem * 4)) / 5);
+  }
+
+  @media only screen and (max-width: 1068px) {
+    width: calc((100% - (0.25rem * 4)) / 4);
+  }
+
+  @media only screen and (max-width: 770px) {
+    width: calc((100% - (0.25rem * 4)) / 3);
+
+    > div > div > div:last-child {
+      display: none;
+    }
+  }
+
+  @media only screen and (max-width: 375px) {
+    width: calc((100% - (0.25rem * 4)) / 2);
+  }
 `;
 MovieCardWrapper.displayName = "MovieCardWrapper";

@@ -1,8 +1,10 @@
 import {
   Container,
+  LeftSlide,
   MovieCardList,
   MovieCardWrapper,
   MovieListWrapper,
+  RightSlide,
   SubListTitle,
   SubTitle,
 } from "./styles";
@@ -50,6 +52,7 @@ export default function MovieList<T>({
         })}
       </SubListTitle>
       <MovieListWrapper>
+        <LeftSlide variant="left" />
         <MovieCardList>
           {movies.map((_movie, index) => {
             return (
@@ -64,6 +67,7 @@ export default function MovieList<T>({
             );
           })}
         </MovieCardList>
+        <RightSlide />
       </MovieListWrapper>
     </Container>
   );

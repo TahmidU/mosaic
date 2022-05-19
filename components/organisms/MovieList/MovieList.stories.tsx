@@ -18,7 +18,7 @@ enum ExploreMovies {
 }
 
 const fakeAPI: { [key in ExploreMovies]: IMovieCardProps[] } = {
-  "In Theatres": Array(9).fill({
+  "In Theatres": Array(20).fill({
     src:
       "https://image.tmdb.org/t/p/w220_and_h330_face/9Gtg2DzBhmYamXBS1hKAhiwbBKS.jpg",
     review: 7.0,
