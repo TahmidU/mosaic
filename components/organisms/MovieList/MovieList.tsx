@@ -1,30 +1,49 @@
-import { Container, MovieCardList, SubListTitle } from "./styles";
+import { Container, MovieCardList, SubListTitle, SubTitle } from "./styles";
 import { ReactElement, useState } from "react";
 
 import { IMovieCardProps } from "components/molecules/MovieCard/MovieCard";
 import MovieCard from "components/molecules/MovieCard";
 
-interface IMovieListProps {
+interface IMovieListProps<T> {
   title: string;
-  subMovieList: { title: string; movies: IMovieCardProps[] }[];
+  subListTitles: T[];
+  movies?: IMovieCardProps[];
+  onSubTitleClick: (title: T) => void;
 }
 
-export default function MovieList({
+export default function MovieList<T>({
   title,
-  subMovieList,
-}: IMovieListProps): ReactElement {
-  const [list, setList] = useState<IMovieCardProps[]>(subMovieList[0].movies);
+  subListTitles,
+  onSubTitleClick,
+  movies,
+}: IMovieListProps<T>): ReactElement {
+  const [currIndex, setCurrIndex] = useState(0);
+
+  if (!movies) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <Container>
       <h1>{title}</h1>
       <SubListTitle>
-        {subMovieList.map((_subList, index) => {
-          return <span key={index}>{_subList.title}</span>;
+        {subListTitles.map((_subTitle, _index) => {
+          return (
+            <SubTitle
+              key={_index}
+              highlight={_index === currIndex}
+              onClick={() => {
+                onSubTitleClick(_subTitle);
+                setCurrIndex(_index);
+              }}
+            >
+              {_subTitle}
+            </SubTitle>
+          );
         })}
       </SubListTitle>
       <MovieCardList>
-        {list.map((_movie, index) => {
+        {movies.map((_movie, index) => {
           return (
             <MovieCard
               key={index}

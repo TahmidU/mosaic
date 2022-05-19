@@ -3,9 +3,9 @@ import ReviewStat from "../ReviewStat";
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 100%;
+  max-width: 150px;
   width: 150px;
-  height: 100%;
+  max-height: 276px;
   height: 276px;
   cursor: pointer;
   display: flex;
