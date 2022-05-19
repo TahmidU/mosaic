@@ -46,7 +46,6 @@ SubTitle.displayName = "SubTitle";
 
 export const MovieListWrapper = styled.div`
   display: flex;
-  justify-content: center;
   position: relative;
 `;
 MovieListWrapper.displayName = "MovieListWrapper";
@@ -71,7 +70,7 @@ export const MovieCardList = styled.div`
   display: block;
   overflow-x: hidden;
   white-space: nowrap;
-  max-width: 1648px;
+  //max-width: 1648px;
   width: 100%;
   max-height: 290px;
   height: auto;
@@ -96,10 +95,14 @@ MovieCardList.displayName = "MovieCardList";
 
 export const MovieCardWrapper = styled.div`
   display: inline-block;
-  width: calc((100% - (0.25rem * 4)) / 6);
+  width: calc((100% - (0.25rem * 4)) / 7);
 
   > div {
-    margin: 0 auto;
+    margin-left: auto;
+  }
+
+  @media only screen and (max-width: 1648px) {
+    width: calc((100% - (0.25rem * 4)) / 6);
   }
 
   @media only screen and (max-width: 1346px) {
