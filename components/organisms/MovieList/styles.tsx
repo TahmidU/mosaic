@@ -1,3 +1,4 @@
+import Scrollbar from "components/atoms/Scrollbar";
 import SlideButton from "../Carousel/SlideButton";
 import styled from "styled-components";
 
@@ -47,6 +48,7 @@ SubTitle.displayName = "SubTitle";
 export const MovieListWrapper = styled.div`
   display: flex;
   position: relative;
+  height: 300px;
 `;
 MovieListWrapper.displayName = "MovieListWrapper";
 
@@ -68,27 +70,28 @@ export const RightSlide = styled(LeftSlide)`
 `;
 RightSlide.displayName = "RightSlide";
 
-export const MovieCardList = styled.div`
+export const MovieCardList = styled(Scrollbar)`
   display: block;
-  overflow-x: scroll;
+  overflow-x: auto;
+  overflow-y: hidden;
   white-space: nowrap;
   width: 100%;
   max-height: 290px;
-  height: auto;
+  height: 100%;
 
-  > div:not(:first-child):not(:last-child) {
+  > div:first-child > div:not(:first-child):not(:last-child) {
     padding: 0 0.25rem;
   }
 
-  > div:last-child {
+  > div:first-child > div:last-child {
     padding: 0 0 0 0.25rem;
   }
 
-  > div:first-child {
+  > div:first-child > div:first-child {
     padding: 0 0.25rem 0 0;
   }
 
-  > div:only-child {
+  > div:first-child > div:only-child {
     margin: 0;
   }
 `;
@@ -96,7 +99,7 @@ MovieCardList.displayName = "MovieCardList";
 
 export const MovieCardWrapper = styled.div`
   display: inline-block;
-  width: calc((100% - (0.25rem * 4)) / 8);
+  width: calc((100% - (0.25rem * 4)) / 7);
 
   > div {
     margin: 0 auto;

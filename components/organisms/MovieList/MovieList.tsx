@@ -52,8 +52,7 @@ export default function MovieList<T>({
         })}
       </SubListTitle>
       <MovieListWrapper>
-        <MovieCardList>
-          {/*<MovieCardWrapper></MovieCardWrapper>*/}
+        <MovieCardList universal variant="horizontal">
           {movies.map((_movie, index) => {
             return (
               <MovieCardWrapper key={index}>
