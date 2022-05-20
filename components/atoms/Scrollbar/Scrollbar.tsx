@@ -18,6 +18,7 @@ export default function Scrollbar({ ...props }): ReactElement {
   }
 
   function renderThumbHorizontal({ style, ...props }: { style: any }) {
+    console.log(props);
     return <CustomHorizontalThumb {...props} />;
   }
 
@@ -27,11 +28,7 @@ export default function Scrollbar({ ...props }): ReactElement {
 
   if (props.variant === "horizontal") {
     return (
-      <Scrollbars
-        renderThumbHorizontal={renderThumbHorizontal}
-        renderTrackHorizontal={renderTrackHorizontal}
-        {...props}
-      />
+      <Scrollbars renderThumbHorizontal={renderThumbHorizontal} {...props} />
     );
   }
 

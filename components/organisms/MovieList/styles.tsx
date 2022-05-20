@@ -17,6 +17,8 @@ export const SubListTitle = styled.div`
   display: flex;
   flex-direction: row;
   margin: 0 0 2.75rem 0;
+  overflow-x: auto;
+  overflow-y: hidden;
 
   > span:not(:first-child):not(:last-child) {
     margin: 0 2.5%;
@@ -33,6 +35,20 @@ export const SubListTitle = styled.div`
   > span:only-child {
     margin: 0;
   }
+
+  @media only screen and (max-width: 395px) {
+    > span:not(:first-child):not(:last-child) {
+      margin: 0 3.5%;
+    }
+
+    > span:last-child {
+      margin: 0 0 0 3.5%;
+    }
+
+    > span:first-child {
+      margin: 0 3.5% 0 0;
+    }
+  }
 `;
 SubListTitle.displayName = "SubListTitle";
 
@@ -42,6 +58,16 @@ export const SubTitle = styled.span<{ highlight: boolean }>`
   font-weight: 600;
   color: ${({ theme, highlight }) =>
     highlight ? theme.cRed.alpha(0.65).toString() : theme.text};
+
+  @media only screen and (max-width: 768px) {
+    ${({ theme }) => theme.fonts.main.regular};
+    text-align: center;
+  }
+
+  @media only screen and (max-width: 395px) {
+    ${({ theme }) => theme.fonts.main.small};
+    text-align: center;
+  }
 `;
 SubTitle.displayName = "SubTitle";
 
