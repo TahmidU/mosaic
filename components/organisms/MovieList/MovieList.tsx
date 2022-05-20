@@ -52,8 +52,8 @@ export default function MovieList<T>({
         })}
       </SubListTitle>
       <MovieListWrapper>
-        <LeftSlide variant="left" />
         <MovieCardList>
+          {/*<MovieCardWrapper></MovieCardWrapper>*/}
           {movies.map((_movie, index) => {
             return (
               <MovieCardWrapper key={index}>
@@ -67,7 +67,6 @@ export default function MovieList<T>({
             );
           })}
         </MovieCardList>
-        <RightSlide />
       </MovieListWrapper>
     </Container>
   );

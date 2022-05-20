@@ -52,25 +52,26 @@ MovieListWrapper.displayName = "MovieListWrapper";
 
 export const LeftSlide = styled(SlideButton)`
   position: absolute;
-  left: 2.5%;
-  top: 30%;
+  top: 36%;
+  left: 6.35%;
   z-index: 1;
+  max-height: 24px;
+  height: 100%;
+  max-width: 24px;
+  width: 100%;
 `;
 LeftSlide.displayName = "LeftSlide";
 
-export const RightSlide = styled(SlideButton)`
-  position: absolute;
-  right: 2.5%;
-  top: 30%;
-  z-index: 1;
+export const RightSlide = styled(LeftSlide)`
+  left: unset;
+  right: 4.8%;
 `;
 RightSlide.displayName = "RightSlide";
 
 export const MovieCardList = styled.div`
   display: block;
-  overflow-x: hidden;
+  overflow-x: scroll;
   white-space: nowrap;
-  //max-width: 1648px;
   width: 100%;
   max-height: 290px;
   height: auto;
@@ -95,10 +96,10 @@ MovieCardList.displayName = "MovieCardList";
 
 export const MovieCardWrapper = styled.div`
   display: inline-block;
-  width: calc((100% - (0.25rem * 4)) / 7);
+  width: calc((100% - (0.25rem * 4)) / 8);
 
   > div {
-    margin-left: auto;
+    margin: 0 auto;
   }
 
   @media only screen and (max-width: 1648px) {

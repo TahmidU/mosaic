@@ -18,41 +18,61 @@ enum ExploreMovies {
 }
 
 const fakeAPI: { [key in ExploreMovies]: IMovieCardProps[] } = {
-  "In Theatres": Array(20).fill({
-    src:
-      "https://image.tmdb.org/t/p/w220_and_h330_face/9Gtg2DzBhmYamXBS1hKAhiwbBKS.jpg",
-    review: 7.0,
-    movieTitle: "Doctor Strange in the Multiverse of Madness",
-    movieReleaseDate: "06-05-2022",
-  }),
-  Latest: Array(2).fill({
-    src:
-      "https://image.tmdb.org/t/p/w220_and_h330_face/9Gtg2DzBhmYamXBS1hKAhiwbBKS.jpg",
-    review: 7.0,
-    movieTitle: "Doctor Strange in the Multiverse of Madness",
-    movieReleaseDate: "06-05-2022",
-  }),
-  Popular: Array(3).fill({
-    src:
-      "https://image.tmdb.org/t/p/w220_and_h330_face/9Gtg2DzBhmYamXBS1hKAhiwbBKS.jpg",
-    review: 7.0,
-    movieTitle: "Doctor Strange in the Multiverse of Madness",
-    movieReleaseDate: "06-05-2022",
-  }),
-  "Top Rated": Array(4).fill({
-    src:
-      "https://image.tmdb.org/t/p/w220_and_h330_face/9Gtg2DzBhmYamXBS1hKAhiwbBKS.jpg",
-    review: 7.0,
-    movieTitle: "Doctor Strange in the Multiverse of Madness",
-    movieReleaseDate: "06-05-2022",
-  }),
-  Upcoming: Array(1).fill({
-    src:
-      "https://image.tmdb.org/t/p/w220_and_h330_face/9Gtg2DzBhmYamXBS1hKAhiwbBKS.jpg",
-    review: 7.0,
-    movieTitle: "Doctor Strange in the Multiverse of Madness",
-    movieReleaseDate: "06-05-2022",
-  }),
+  "In Theatres": Array(20)
+    .fill({
+      src: "",
+      review: 7.0,
+      movieTitle: "Doctor Strange in the Multiverse of Madness",
+      movieReleaseDate: "06-05-2022",
+    })
+    .map((_fakeMovie, index) => ({
+      ..._fakeMovie,
+      src: `https://via.placeholder.com/220x330/000000?text=${index}`,
+    })),
+  Latest: Array(2)
+    .fill({
+      src: "",
+      review: 7.0,
+      movieTitle: "Doctor Strange in the Multiverse of Madness",
+      movieReleaseDate: "06-05-2022",
+    })
+    .map((_fakeMovie, index) => ({
+      ..._fakeMovie,
+      src: `https://via.placeholder.com/220x330/000000?text=${index}`,
+    })),
+  Popular: Array(3)
+    .fill({
+      src: "",
+      review: 7.0,
+      movieTitle: "Doctor Strange in the Multiverse of Madness",
+      movieReleaseDate: "06-05-2022",
+    })
+    .map((_fakeMovie, index) => ({
+      ..._fakeMovie,
+      src: `https://via.placeholder.com/220x330/000000?text=${index}`,
+    })),
+  "Top Rated": Array(4)
+    .fill({
+      src: "",
+      review: 7.0,
+      movieTitle: "Doctor Strange in the Multiverse of Madness",
+      movieReleaseDate: "06-05-2022",
+    })
+    .map((_fakeMovie, index) => ({
+      ..._fakeMovie,
+      src: `https://via.placeholder.com/220x330/000000?text=${index}`,
+    })),
+  Upcoming: Array(1)
+    .fill({
+      src: "",
+      review: 7.0,
+      movieTitle: "Doctor Strange in the Multiverse of Madness",
+      movieReleaseDate: "06-05-2022",
+    })
+    .map((_fakeMovie, index) => ({
+      ..._fakeMovie,
+      src: `https://via.placeholder.com/220x330/000000?text=${index}`,
+    })),
 };
 
 export const Basic = () => {
