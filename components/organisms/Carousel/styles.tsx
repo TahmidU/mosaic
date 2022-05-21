@@ -11,6 +11,7 @@ export const Container = styled.div`
   height: 720px;
   max-height: 720px;
   align-self: center;
+  width: 100%;
 `;
 Container.displayName = "Container";
 

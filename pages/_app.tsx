@@ -11,13 +11,13 @@ import useTheme from "../hooks/useTheme";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const appTheme = useTheme();
-  const axiosInstance = useAxios();
+  const globalRequests = useAxios();
 
   return (
     <GlobalContext.Provider
       value={{
         theme: appTheme,
-        axiosInstance: axiosInstance,
+        globalRequests: globalRequests,
       }}
     >
       <ThemeProvider theme={appTheme.value}>

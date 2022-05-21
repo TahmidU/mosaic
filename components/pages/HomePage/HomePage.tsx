@@ -1,7 +1,11 @@
+import { ReactElement, useContext, useEffect } from "react";
+
 import Carousel from "components/organisms/Carousel";
+import { Container } from "./styles";
+import GlobalContext from "context/GlobalContext";
 import { IDiscoverMovie } from "types/api/discover";
 import { IVideo } from "types/api/videos";
-import { ReactElement } from "react";
+import useHomePageRequests from "./useHomePageRequests";
 import { useMediaQuery } from "react-responsive";
 
 interface HomePageProps {
@@ -15,12 +19,16 @@ export default function HomePage({
   videos,
   onStepChange,
 }: HomePageProps): ReactElement {
+  const { getMoviesInTheatres } = useHomePageRequests();
+
+  useEffect(() => {}, []);
+
   const isSmallTablet = useMediaQuery({
     query: "(max-width: 1024px)",
   });
 
   return (
-    <div>
+    <Container>
       {isSmallTablet ? (
         <></>
       ) : (
@@ -28,8 +36,9 @@ export default function HomePage({
           carouselData={carouselData}
           videos={videos}
           onStepChange={onStepChange}
+          disableAutoSlide
         />
       )}
-    </div>
+    </Container>
   );
 }
