@@ -7,7 +7,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: grid;
   grid-template-columns: 70% 30%;
-  margin: 1rem 1rem;
+  padding: 1rem 1rem;
   height: 720px;
   max-height: 720px;
   align-self: center;
