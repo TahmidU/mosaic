@@ -24,7 +24,7 @@ export default function MovieCard({
   return (
     <Container>
       <Wrapper>
-        <MovieImage src={src} />
+        <MovieImage src={src} width={150} height={225} />
         <MovieReview percentage={review * 10} />
       </Wrapper>
       <MovieText>

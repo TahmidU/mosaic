@@ -3,10 +3,10 @@ import ReviewStat from "../ReviewStat";
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 100%;
   max-width: 150px;
-  height: 100%;
+  width: 100%;
   max-height: 276px;
+  height: auto;
   cursor: pointer;
   display: flex;
   flex-direction: column;
@@ -60,6 +60,7 @@ export const MovieText = styled.div`
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
+    white-space: normal;
     ${({ theme }) => theme.fonts.tertiary.regular};
     font-weight: 600;
     margin-bottom: 0.1em;
