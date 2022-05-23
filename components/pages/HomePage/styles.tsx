@@ -16,6 +16,6 @@ FirstPageWrapper.displayName = "FirstPageWrapper";
 
 export const MovieListStyle = styled(MovieList)`
   padding: 0 2rem;
-  //margin: 100% 0 0 0;
+  margin: 0 0 5rem 0;
 ` as any;
 MovieListStyle.displayName = "MovieListStyle";

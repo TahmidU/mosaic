@@ -1,6 +1,7 @@
 import { Container, FirstPageWrapper, MovieListStyle } from "./styles";
 import { ReactElement, useContext, useEffect } from "react";
 import useMovieList, { ExploreMovies } from "./useMovieList";
+import useTVList, { ExploreTVs } from "./useTVList";
 
 import Carousel from "components/organisms/Carousel";
 import GlobalContext from "context/GlobalContext";
@@ -21,10 +22,7 @@ export default function HomePage({
   onStepChange,
 }: HomePageProps): ReactElement {
   const { exploreMoviesList, exploreMovieSelect } = useMovieList();
-
-  useEffect(() => {
-    console.log(exploreMoviesList);
-  }, []);
+  const { exploreTVSelect, exploreTVsList } = useTVList();
 
   const isSmallTablet = useMediaQuery({
     query: "(max-width: 1024px)",
@@ -57,6 +55,17 @@ export default function HomePage({
           exploreMovieSelect(subTitle)
         }
         movies={exploreMoviesList}
+      />
+
+      <MovieListStyle
+        title="Explore TV Shows"
+        subListTitles={[
+          ExploreTVs.ON_AIR,
+          ExploreTVs.POPULAR,
+          ExploreTVs.TOP_RATED,
+        ]}
+        onSubTitleClick={(subTitle: ExploreTVs) => exploreTVSelect(subTitle)}
+        movies={exploreTVsList}
       />
     </Container>
   );
