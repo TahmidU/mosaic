@@ -1,8 +1,8 @@
+import { IPayload } from "types/story";
 import SlideButton from ".";
-import { StoryUtils } from "../../../../resources/utils";
 
-const payload = {
-  title: StoryUtils.storyTitle("MOLECULES", "SlideButton"),
+const payload: IPayload = {
+  title: "MOLECULES/SlideButton",
   component: SlideButton,
 };
 export default payload;

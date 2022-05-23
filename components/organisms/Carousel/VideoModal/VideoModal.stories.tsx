@@ -1,8 +1,8 @@
-import { StoryUtils } from "resources/utils";
+import { IPayload } from "types/story";
 import VideoModal from "./VideoModal";
 
-const payload = {
-  title: StoryUtils.storyTitle("MOLECULES", "VideoModal"),
+const payload: IPayload = {
+  title: "MOLECULES/VideoModal",
   component: VideoModal,
 };
 export default payload;

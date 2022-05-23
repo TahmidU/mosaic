@@ -1,8 +1,8 @@
+import { IPayload } from "types/story";
 import ProgressiveCircle from ".";
-import { StoryUtils } from "resources/utils";
 
-const payload = {
-  title: StoryUtils.storyTitle("ATOMS", "ProgressiveCircle"),
+const payload: IPayload = {
+  title: "ATOMS/ProgressiveCircle",
   component: ProgressiveCircle,
 };
 export default payload;

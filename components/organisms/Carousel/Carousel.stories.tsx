@@ -1,9 +1,9 @@
 import Carousel from ".";
 import { FakeDiscoverMovie } from "./TestResources/data";
-import { StoryUtils } from "../../../resources/utils";
+import { IPayload } from "types/story";
 
-const payload = {
-  title: StoryUtils.storyTitle("ORGANISMS", "Carousel"),
+const payload: IPayload = {
+  title: "ORGANISMS/Carousel",
   component: Carousel,
 };
 export default payload;

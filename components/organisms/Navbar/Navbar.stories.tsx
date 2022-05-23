@@ -1,8 +1,8 @@
+import { IPayload } from "types/story";
 import Navbar from "./Navbar";
-import { StoryUtils } from "../../../resources/utils";
 
-const payload = {
-  title: StoryUtils.storyTitle("ORGANISMS", "Navbar"),
+const payload: IPayload = {
+  title: "ORGANISMS/Navbar",
   component: Navbar,
 };
 export default payload;

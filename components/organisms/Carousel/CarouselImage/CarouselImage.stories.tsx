@@ -1,8 +1,8 @@
 import CarouselImage from ".";
-import { StoryUtils } from "../../../../resources/utils";
+import { IPayload } from "types/story";
 
-const payload = {
-  title: StoryUtils.storyTitle("ATOMS", "ProgressiveBar"),
+const payload: IPayload = {
+  title: "ATOMS/ProgressiveBar",
   component: CarouselImage,
 };
 export default payload;
