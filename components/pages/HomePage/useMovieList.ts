@@ -1,13 +1,12 @@
 import { useContext, useEffect, useState } from "react";
 
 import GlobalContext from "context/GlobalContext";
-import { IExploreMovies } from "types/api/explore";
 import { IMovieCardProps } from "components/molecules/MovieCard/MovieCard";
+import { IMovieDetails } from "types/api/explore";
 
 export enum ExploreMovies {
   IN_THEATRES = "In Theatres",
   POPULAR = "Popular",
-  LATEST = "Latest",
   UPCOMING = "Upcoming",
   TOP_RATED = "Top Rated",
 }
@@ -27,7 +26,6 @@ export default function useMovieList() {
     selected: ExploreMovies.IN_THEATRES,
     cache: {
       "In Theatres": [],
-      Latest: [],
       Popular: [],
       "Top Rated": [],
       Upcoming: [],
@@ -42,27 +40,84 @@ export default function useMovieList() {
   function exploreMovieSelect(select: ExploreMovies) {
     switch (select) {
       case ExploreMovies.IN_THEATRES:
-        getMoviesInTheatres()?.then((_movies) =>
+        if (exploreMovies.cache["In Theatres"].length === 0) {
+          getMoviesInTheatres()?.then((_movies) =>
+            setExploreMovies((prev) => ({
+              selected: ExploreMovies.IN_THEATRES,
+              cache: {
+                ...prev.cache,
+                "In Theatres": _movies,
+              },
+            }))
+          );
+        } else {
           setExploreMovies((prev) => ({
             selected: ExploreMovies.IN_THEATRES,
             cache: {
               ...prev.cache,
-              "In Theatres": _movies,
             },
-          }))
-        );
-        break;
-      case ExploreMovies.LATEST:
-        getLatestMovies();
+          }));
+        }
         break;
       case ExploreMovies.POPULAR:
-        getPopularMovies();
+        if (exploreMovies.cache["Popular"].length === 0) {
+          getPopularMovies()?.then((_movies) =>
+            setExploreMovies((prev) => ({
+              selected: ExploreMovies.POPULAR,
+              cache: {
+                ...prev.cache,
+                Popular: _movies,
+              },
+            }))
+          );
+        } else {
+          setExploreMovies((prev) => ({
+            selected: ExploreMovies.POPULAR,
+            cache: {
+              ...prev.cache,
+            },
+          }));
+        }
         break;
       case ExploreMovies.TOP_RATED:
-        getTopRatedMovies();
+        if (exploreMovies.cache["Top Rated"].length === 0) {
+          getTopRatedMovies()?.then((_movies) =>
+            setExploreMovies((prev) => ({
+              selected: ExploreMovies.TOP_RATED,
+              cache: {
+                ...prev.cache,
+                "Top Rated": _movies,
+              },
+            }))
+          );
+        } else {
+          setExploreMovies((prev) => ({
+            selected: ExploreMovies.TOP_RATED,
+            cache: {
+              ...prev.cache,
+            },
+          }));
+        }
         break;
       case ExploreMovies.UPCOMING:
-        getUpcomingMovies();
+        if (exploreMovies.cache["Upcoming"].length === 0) {
+          getUpcomingMovies()?.then((_movies) =>
+            setExploreMovies((prev) => ({
+              selected: ExploreMovies.UPCOMING,
+              cache: {
+                ...prev.cache,
+                Upcoming: _movies,
+              },
+            }))
+          );
+        } else {
+          setExploreMovies((prev) => ({
+            selected: ExploreMovies.UPCOMING,
+            cache: {
+              ...prev.cache,
+            },
+          }));
+        }
         break;
       default:
         break;
@@ -71,10 +126,10 @@ export default function useMovieList() {
 
   function getMoviesInTheatres() {
     return globalRequests?.api
-      .get(`/explore/movies`)
-      .then((res) => res.data.results)
-      .then((results: IExploreMovies[]) =>
-        results.map((_result) => {
+      .get(`/explore/movies/in_theatres`)
+      .then((_result) => _result.data.results)
+      .then((_results: IMovieDetails[]) =>
+        _results.map((_result) => {
           const movieCardDetails: IMovieCardProps = {
             movieTitle: _result.title,
             movieReleaseDate: _result.release_date,
@@ -86,13 +141,56 @@ export default function useMovieList() {
       );
   }
 
-  function getLatestMovies() {}
+  function getPopularMovies() {
+    return globalRequests?.api
+      .get(`explore/movies/popular`)
+      .then((_result) => _result.data.results)
+      .then((_results: IMovieDetails[]) =>
+        _results.map((_result) => {
+          const movieCardDetails: IMovieCardProps = {
+            movieTitle: _result.title,
+            movieReleaseDate: _result.release_date,
+            src: `https://image.tmdb.org/t/p/original/${_result.poster_path}`,
+            review: _result.vote_average,
+          };
+          return movieCardDetails;
+        })
+      );
+  }
 
-  function getPopularMovies() {}
+  function getTopRatedMovies() {
+    return globalRequests?.api
+      .get(`explore/movies/top_rated`)
+      .then((_result) => _result.data.results)
+      .then((_results: IMovieDetails[]) =>
+        _results.map((_result) => {
+          const movieCardDetails: IMovieCardProps = {
+            movieTitle: _result.title,
+            movieReleaseDate: _result.release_date,
+            src: `https://image.tmdb.org/t/p/original/${_result.poster_path}`,
+            review: _result.vote_average,
+          };
+          return movieCardDetails;
+        })
+      );
+  }
 
-  function getTopRatedMovies() {}
-
-  function getUpcomingMovies() {}
+  function getUpcomingMovies() {
+    return globalRequests?.api
+      .get(`explore/movies/upcoming`)
+      .then((_result) => _result.data.results)
+      .then((_results: IMovieDetails[]) =>
+        _results.map((_result) => {
+          const movieCardDetails: IMovieCardProps = {
+            movieTitle: _result.title,
+            movieReleaseDate: _result.release_date,
+            src: `https://image.tmdb.org/t/p/original/${_result.poster_path}`,
+            review: _result.vote_average,
+          };
+          return movieCardDetails;
+        })
+      );
+  }
 
   return {
     exploreMovieSelect,

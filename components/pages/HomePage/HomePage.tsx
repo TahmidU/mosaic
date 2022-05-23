@@ -22,7 +22,9 @@ export default function HomePage({
 }: HomePageProps): ReactElement {
   const { exploreMoviesList, exploreMovieSelect } = useMovieList();
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    console.log(exploreMoviesList);
+  }, []);
 
   const isSmallTablet = useMediaQuery({
     query: "(max-width: 1024px)",
@@ -48,7 +50,6 @@ export default function HomePage({
         subListTitles={[
           ExploreMovies.IN_THEATRES,
           ExploreMovies.POPULAR,
-          ExploreMovies.LATEST,
           ExploreMovies.UPCOMING,
           ExploreMovies.TOP_RATED,
         ]}

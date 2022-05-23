@@ -18,7 +18,6 @@ export default function Scrollbar({ ...props }): ReactElement {
   }
 
   function renderThumbHorizontal({ style, ...props }: { style: any }) {
-    console.log(props);
     return <CustomHorizontalThumb {...props} />;
   }
 

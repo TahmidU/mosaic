@@ -30,7 +30,7 @@ export default function MovieList<T>({
 }: IMovieListProps<T>): ReactElement {
   const [currIndex, setCurrIndex] = useState(0);
 
-  if (!movies) {
+  if (!movies || movies.length === 0) {
     return <div>Loading...</div>;
   }
 

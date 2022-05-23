@@ -21,15 +21,15 @@ export const SubListTitle = styled.div`
   overflow-y: hidden;
 
   > span:not(:first-child):not(:last-child) {
-    margin: 0 2.5%;
+    margin: 0 1.5%;
   }
 
   > span:last-child {
-    margin: 0 0 0 2.5%;
+    margin: 0 0 0 1.5%;
   }
 
   > span:first-child {
-    margin: 0 2.5% 0 0;
+    margin: 0 1.5% 0 0;
   }
 
   > span:only-child {
@@ -38,15 +38,15 @@ export const SubListTitle = styled.div`
 
   @media only screen and (max-width: 395px) {
     > span:not(:first-child):not(:last-child) {
-      margin: 0 3.5%;
+      margin: 0 2.5%;
     }
 
     > span:last-child {
-      margin: 0 0 0 3.5%;
+      margin: 0 0 0 2.5%;
     }
 
     > span:first-child {
-      margin: 0 3.5% 0 0;
+      margin: 0 2.5% 0 0;
     }
   }
 `;

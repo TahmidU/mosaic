@@ -1,4 +1,4 @@
-export interface IExploreMovies {
+export interface IMovieDetails {
   id: number;
   adult: boolean;
   backdrop_path: string;
