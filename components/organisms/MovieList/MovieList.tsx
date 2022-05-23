@@ -18,6 +18,7 @@ interface IMovieListProps<T> {
   subListTitles: T[];
   movies?: IMovieCardProps[];
   onSubTitleClick: (title: T) => void;
+  className?: string;
 }
 
 export default function MovieList<T>({
@@ -25,6 +26,7 @@ export default function MovieList<T>({
   subListTitles,
   onSubTitleClick,
   movies,
+  className,
 }: IMovieListProps<T>): ReactElement {
   const [currIndex, setCurrIndex] = useState(0);
 
@@ -33,7 +35,7 @@ export default function MovieList<T>({
   }
 
   return (
-    <Container>
+    <Container className={className}>
       <h1>{title}</h1>
       <SubListTitle>
         {subListTitles.map((_subTitle, _index) => {

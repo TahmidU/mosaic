@@ -34,6 +34,11 @@ export default function useMovieList() {
     },
   });
 
+  useEffect(() => {
+    exploreMovieSelect(ExploreMovies.IN_THEATRES);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   function exploreMovieSelect(select: ExploreMovies) {
     switch (select) {
       case ExploreMovies.IN_THEATRES:
@@ -46,6 +51,18 @@ export default function useMovieList() {
             },
           }))
         );
+        break;
+      case ExploreMovies.LATEST:
+        getLatestMovies();
+        break;
+      case ExploreMovies.POPULAR:
+        getPopularMovies();
+        break;
+      case ExploreMovies.TOP_RATED:
+        getTopRatedMovies();
+        break;
+      case ExploreMovies.UPCOMING:
+        getUpcomingMovies();
         break;
       default:
         break;
@@ -69,8 +86,15 @@ export default function useMovieList() {
       );
   }
 
+  function getLatestMovies() {}
+
+  function getPopularMovies() {}
+
+  function getTopRatedMovies() {}
+
+  function getUpcomingMovies() {}
+
   return {
-    getMoviesInTheatres,
     exploreMovieSelect,
     exploreMoviesList: exploreMovies.cache[exploreMovies.selected],
   };

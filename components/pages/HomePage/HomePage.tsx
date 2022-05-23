@@ -1,8 +1,8 @@
+import { Container, FirstPageWrapper, MovieListStyle } from "./styles";
 import { ReactElement, useContext, useEffect } from "react";
 import useMovieList, { ExploreMovies } from "./useMovieList";
 
 import Carousel from "components/organisms/Carousel";
-import { Container } from "./styles";
 import GlobalContext from "context/GlobalContext";
 import { IDiscoverMovie } from "types/api/discover";
 import { IVideo } from "types/api/videos";
@@ -30,17 +30,20 @@ export default function HomePage({
 
   return (
     <Container>
-      {isSmallTablet ? (
-        <></>
-      ) : (
-        <Carousel
-          carouselData={carouselData}
-          videos={videos}
-          onStepChange={onStepChange}
-          disableAutoSlide
-        />
-      )}
-      <MovieList
+      <FirstPageWrapper>
+        {isSmallTablet ? (
+          <></>
+        ) : (
+          <Carousel
+            carouselData={carouselData}
+            videos={videos}
+            onStepChange={onStepChange}
+            disableAutoSlide
+          />
+        )}
+      </FirstPageWrapper>
+
+      <MovieListStyle
         title="Explore Movies"
         subListTitles={[
           ExploreMovies.IN_THEATRES,

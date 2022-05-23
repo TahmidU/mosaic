@@ -55,7 +55,7 @@ SubListTitle.displayName = "SubListTitle";
 export const SubTitle = styled.span<{ highlight: boolean }>`
   cursor: pointer;
   ${({ theme }) => theme.fonts.main.big};
-  font-weight: 600;
+  font-weight: 700;
   color: ${({ theme, highlight }) =>
     highlight ? theme.cRed.alpha(0.65).toString() : theme.text};
 

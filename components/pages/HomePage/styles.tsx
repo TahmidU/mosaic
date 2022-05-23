@@ -1,3 +1,4 @@
+import MovieList from "components/organisms/MovieList";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -6,3 +7,15 @@ export const Container = styled.div`
   width: 100%;
 `;
 Container.displayName = "Container";
+
+export const FirstPageWrapper = styled.div`
+  width: 100%;
+  height: 100vh;
+`;
+FirstPageWrapper.displayName = "FirstPageWrapper";
+
+export const MovieListStyle = styled(MovieList)`
+  padding: 0 2rem;
+  //margin: 100% 0 0 0;
+` as any;
+MovieListStyle.displayName = "MovieListStyle";

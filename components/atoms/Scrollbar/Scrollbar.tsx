@@ -32,11 +32,5 @@ export default function Scrollbar({ ...props }): ReactElement {
     );
   }
 
-  return (
-    <Scrollbars
-      renderThumbVertical={renderThumb}
-      renderTrackVertical={renderTrackVertical}
-      {...props}
-    />
-  );
+  return <Scrollbars renderThumbVertical={renderThumb} {...props} />;
 }
