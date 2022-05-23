@@ -1,9 +1,8 @@
+import { IPayload } from "types/story";
 import ProgressiveBar from ".";
-import { StoryUtils } from "../../../../resources/utils";
-import { useState } from "react";
 
-const payload = {
-  title: StoryUtils.storyTitle("ATOMS", "ProgressiveBar"),
+const payload: IPayload = {
+  title: "ATOMS/ProgressiveBar",
   component: ProgressiveBar,
 };
 export default payload;

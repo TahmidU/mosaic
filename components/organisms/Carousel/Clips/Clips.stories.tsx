@@ -1,8 +1,8 @@
 import Clips from "./Clips";
-import { StoryUtils } from "resources/utils";
+import { IPayload } from "types/story";
 
-const payload = {
-  title: StoryUtils.storyTitle("MOLECULES", "Clips"),
+const payload: IPayload = {
+  title: "MOLECULES/Clips",
   component: Clips,
 };
 export default payload;

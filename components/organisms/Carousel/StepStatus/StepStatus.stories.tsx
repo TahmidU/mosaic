@@ -1,8 +1,8 @@
+import { IPayload } from "types/story";
 import StepStatus from ".";
-import { StoryUtils } from "../../../../resources/utils";
 
-const payload = {
-  title: StoryUtils.storyTitle("ATOMS", "StepStatus"),
+const payload: IPayload = {
+  title: "ATOMS/StepStatus",
   component: StepStatus,
 };
 export default payload;

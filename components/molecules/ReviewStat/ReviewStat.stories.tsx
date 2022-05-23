@@ -1,8 +1,8 @@
+import { IPayload } from "types/story";
 import ReviewStat from ".";
-import { StoryUtils } from "resources/utils";
 
-const payload = {
-  title: StoryUtils.storyTitle("MOLECULES", "ReviewStat"),
+const payload: IPayload = {
+  title: "MOLECULES/ReviewStat",
   component: ReviewStat,
 };
 export default payload;
