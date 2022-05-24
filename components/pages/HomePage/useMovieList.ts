@@ -17,6 +17,7 @@ type CacheExploreMovies = {
 
 interface IExploreMoviesCache {
   selected: ExploreMovies;
+  loading: boolean;
   cache: CacheExploreMovies;
 }
 
@@ -24,6 +25,7 @@ export default function useMovieList() {
   const { globalRequests } = useContext(GlobalContext);
   const [exploreMovies, setExploreMovies] = useState<IExploreMoviesCache>({
     selected: ExploreMovies.IN_THEATRES,
+    loading: true,
     cache: {
       "In Theatres": [],
       Popular: [],
@@ -37,43 +39,66 @@ export default function useMovieList() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  async function exploreMovieSelect(select: ExploreMovies) {
-    if (exploreMovies.cache[select].length === 0) {
-      let apiRes: IMovieCardProps[] | undefined;
-
-      switch (select) {
+  useEffect(() => {
+    async function fetchMovie() {
+      let res;
+      switch (exploreMovies.selected) {
         case ExploreMovies.IN_THEATRES:
-          apiRes = await getMovies("in_theatres");
+          res = await getMovies("in_theatres");
           break;
         case ExploreMovies.POPULAR:
-          apiRes = await getMovies("popular");
+          res = await getMovies("popular");
           break;
         case ExploreMovies.TOP_RATED:
-          apiRes = await getMovies("top_rated");
+          res = await getMovies("top_rated");
           break;
         case ExploreMovies.UPCOMING:
-          apiRes = await getMovies("upcoming");
+          res = await getMovies("upcoming");
           break;
         default:
           break;
       }
+      return res;
+    }
 
-      apiRes &&
+    async function setList() {
+      if (exploreMovies.cache[exploreMovies.selected].length === 0) {
+        let res: IMovieCardProps[] | undefined;
+
+        res = await fetchMovie();
+
+        res &&
+          setExploreMovies((prev) => ({
+            selected: exploreMovies.selected,
+            loading: false,
+            cache: {
+              ...prev.cache,
+              [exploreMovies.selected]: res,
+            },
+          }));
+      } else {
         setExploreMovies((prev) => ({
-          selected: select,
+          selected: exploreMovies.selected,
+          loading: false,
           cache: {
             ...prev.cache,
-            [select]: apiRes,
           },
         }));
-    } else {
-      setExploreMovies((prev) => ({
-        selected: select,
-        cache: {
-          ...prev.cache,
-        },
-      }));
+      }
     }
+
+    if (exploreMovies.loading) {
+      setList();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [exploreMovies.loading]);
+
+  async function exploreMovieSelect(select: ExploreMovies) {
+    setExploreMovies((prev) => ({
+      ...prev,
+      selected: select,
+      loading: true,
+    }));
   }
 
   async function getMovies(
@@ -97,6 +122,8 @@ export default function useMovieList() {
 
   return {
     exploreMovieSelect,
-    exploreMoviesList: exploreMovies.cache[exploreMovies.selected],
+    exploreMoviesList: exploreMovies.loading
+      ? []
+      : exploreMovies.cache[exploreMovies.selected],
   };
 }
