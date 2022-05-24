@@ -40,32 +40,26 @@ export default function useMovieList() {
   }, []);
 
   useEffect(() => {
-    async function fetchMovie() {
-      let res;
-      switch (exploreMovies.selected) {
-        case ExploreMovies.IN_THEATRES:
-          res = await getMovies("in_theatres");
-          break;
-        case ExploreMovies.POPULAR:
-          res = await getMovies("popular");
-          break;
-        case ExploreMovies.TOP_RATED:
-          res = await getMovies("top_rated");
-          break;
-        case ExploreMovies.UPCOMING:
-          res = await getMovies("upcoming");
-          break;
-        default:
-          break;
-      }
-      return res;
-    }
-
-    async function setList() {
+    async function fetchMovies() {
       if (exploreMovies.cache[exploreMovies.selected].length === 0) {
         let res: IMovieCardProps[] | undefined;
 
-        res = await fetchMovie();
+        switch (exploreMovies.selected) {
+          case ExploreMovies.IN_THEATRES:
+            res = await getMovies("in_theatres");
+            break;
+          case ExploreMovies.POPULAR:
+            res = await getMovies("popular");
+            break;
+          case ExploreMovies.TOP_RATED:
+            res = await getMovies("top_rated");
+            break;
+          case ExploreMovies.UPCOMING:
+            res = await getMovies("upcoming");
+            break;
+          default:
+            break;
+        }
 
         res &&
           setExploreMovies((prev) => ({
@@ -88,7 +82,7 @@ export default function useMovieList() {
     }
 
     if (exploreMovies.loading) {
-      setList();
+      fetchMovies();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [exploreMovies.loading]);
