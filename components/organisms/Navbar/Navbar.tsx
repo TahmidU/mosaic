@@ -17,11 +17,7 @@ export default function Navbar({}: NavbarProps): ReactElement {
     <NavbarContainer>
       <div>
         <Logo />
-        <MenuContainer>
-          <button>Movies</button>
-          <button>TV Shows</button>
-          <button>People</button>
-        </MenuContainer>
+        <MenuContainer>{/* */}</MenuContainer>
       </div>
       <OptionsContainer>
         <SearchIcon />

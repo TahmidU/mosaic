@@ -47,7 +47,7 @@ MenuContainer.displayName = "MenuContainer";
 export const OptionsContainer = styled.div`
   display: inline-flex;
   align-items: center;
-  margin-right: 2%;
+  margin-right: 2rem;
 `;
 OptionsContainer.displayName = "OptionsContainer";
 
