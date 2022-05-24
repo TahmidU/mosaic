@@ -1,4 +1,4 @@
-import { cleanup, render } from "../../../resources/utils/test-config";
+import { cleanup, render } from "utils/test-config";
 
 import Navbar from "./Navbar";
 import React from "react";

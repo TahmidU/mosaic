@@ -1,6 +1,6 @@
 import "jest-styled-components";
 
-import { cleanup, render } from "resources/utils/test-config";
+import { cleanup, render } from "utils/test-config";
 
 import React from "react";
 import ReviewStat from "./ReviewStat";

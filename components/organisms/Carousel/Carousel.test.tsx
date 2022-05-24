@@ -1,11 +1,11 @@
 import "jest-styled-components";
 
-import { cleanup, fireEvent, render } from "resources/utils/test-config";
+import { cleanup, fireEvent, render } from "utils/test-config";
 
 import Carousel from "./Carousel";
 import { FakeDiscoverMovie } from "./TestResources/data";
 import React from "react";
-import { TextUtils } from "resources/utils";
+import { TextUtils } from "utils";
 
 afterEach(cleanup);
 
