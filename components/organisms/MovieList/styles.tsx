@@ -75,8 +75,24 @@ export const MovieListWrapper = styled.div`
   display: flex;
   position: relative;
   height: 300px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
 `;
 MovieListWrapper.displayName = "MovieListWrapper";
+
+export const LoadingContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  > span:last-child {
+    ${({ theme }) => theme.fonts.secondary.bigger};
+    font-weight: 500;
+  }
+`;
+LoadingContainer.displayName = "LoadingContainer";
 
 export const LeftSlide = styled(SlideButton)`
   position: absolute;

@@ -24,6 +24,8 @@ export default function HomePage({
   const { exploreMoviesList, exploreMovieSelect } = useMovieList();
   const { exploreTVSelect, exploreTVsList } = useTVList();
 
+  console.log(exploreMoviesList);
+
   const isSmallTablet = useMediaQuery({
     query: "(max-width: 1024px)",
   });
