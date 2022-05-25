@@ -1,8 +1,8 @@
+import { IMovieDetails, ITVShowDetails } from "types/api/explore";
 import { useContext, useEffect, useState } from "react";
 
 import GlobalContext from "context/GlobalContext";
 import { IMovieCardProps } from "components/molecules/MovieCard/MovieCard";
-import { IMovieDetails } from "types/api/explore";
 
 export enum ExploreMovies {
   IN_THEATRES = "In Theatres",
@@ -21,7 +21,23 @@ interface IExploreMoviesCache {
   cache: CacheExploreMovies;
 }
 
-export default function useMovieList() {
+export enum ExploreTVs {
+  ON_AIR = "On Air",
+  POPULAR = "Popular",
+  TOP_RATED = "Top Rated",
+}
+
+type CacheExploreTV = {
+  [key in ExploreTVs]: IMovieCardProps[];
+};
+
+interface IExploreTVsCache {
+  selected: ExploreTVs;
+  loading: boolean;
+  cache: CacheExploreTV;
+}
+
+export default function useExploreList() {
   const { globalRequests } = useContext(GlobalContext);
   const [exploreMovies, setExploreMovies] = useState<IExploreMoviesCache>({
     selected: ExploreMovies.IN_THEATRES,
@@ -31,6 +47,15 @@ export default function useMovieList() {
       Popular: [],
       "Top Rated": [],
       Upcoming: [],
+    },
+  });
+  const [exploreTVs, setExploreTVs] = useState<IExploreTVsCache>({
+    selected: ExploreTVs.ON_AIR,
+    loading: true,
+    cache: {
+      "On Air": [],
+      Popular: [],
+      "Top Rated": [],
     },
   });
 
@@ -87,7 +112,52 @@ export default function useMovieList() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [exploreMovies.loading]);
 
-  async function exploreMovieSelect(select: ExploreMovies) {
+  useEffect(() => {
+    async function fetchTVShows() {
+      if (exploreTVs.cache[exploreTVs.selected].length === 0) {
+        let res: IMovieCardProps[] | undefined;
+
+        switch (exploreTVs.selected) {
+          case ExploreTVs.ON_AIR:
+            res = await getTVShows("on_air");
+            break;
+          case ExploreTVs.POPULAR:
+            res = await getTVShows("popular");
+            break;
+          case ExploreTVs.TOP_RATED:
+            res = await getTVShows("top_rated");
+            break;
+          default:
+            break;
+        }
+        res &&
+          setExploreTVs((prev) => ({
+            selected: exploreTVs.selected,
+            loading: false,
+            cache: {
+              ...prev.cache,
+              [exploreTVs.selected]: res,
+            },
+          }));
+      } else {
+        setExploreTVs((prev) => ({
+          selected: exploreTVs.selected,
+          loading: false,
+          cache: {
+            ...prev.cache,
+          },
+        }));
+      }
+    }
+
+    if (exploreTVs.loading) {
+      fetchTVShows();
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [exploreTVs.loading]);
+
+  function exploreMovieSelect(select: ExploreMovies) {
     setExploreMovies((prev) => ({
       ...prev,
       selected: select,
@@ -114,10 +184,39 @@ export default function useMovieList() {
       );
   }
 
+  function exploreTVSelect(select: ExploreTVs) {
+    setExploreTVs((prev) => ({
+      ...prev,
+      selected: select,
+      loading: true,
+    }));
+  }
+
+  async function getTVShows(selectReq: "on_air" | "popular" | "top_rated") {
+    return await globalRequests?.api
+      .get(`/explore/tv_shows/${selectReq}`)
+      .then((_result) => _result.data.results)
+      .then((_results: ITVShowDetails[]) =>
+        _results.map((_result) => {
+          const movieCardDetails: IMovieCardProps = {
+            movieTitle: _result.name,
+            movieReleaseDate: _result.first_air_date,
+            src: `https://image.tmdb.org/t/p/original/${_result.poster_path}`,
+            review: _result.vote_average,
+          };
+          return movieCardDetails;
+        })
+      );
+  }
+
   return {
     exploreMovieSelect,
     exploreMoviesList: exploreMovies.loading
       ? []
       : exploreMovies.cache[exploreMovies.selected],
+    exploreTVSelect,
+    exploreTVsList: exploreTVs.loading
+      ? []
+      : exploreTVs.cache[exploreTVs.selected],
   };
 }

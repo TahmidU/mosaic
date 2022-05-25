@@ -1,13 +1,10 @@
 import { Container, FirstPageWrapper, MovieListStyle } from "./styles";
-import { ReactElement, useContext, useEffect } from "react";
-import useMovieList, { ExploreMovies } from "./useMovieList";
-import useTVList, { ExploreTVs } from "./useTVList";
+import useExploreList, { ExploreMovies, ExploreTVs } from "./useExploreList";
 
 import Carousel from "components/organisms/Carousel";
-import GlobalContext from "context/GlobalContext";
 import { IDiscoverMovie } from "types/api/discover";
 import { IVideo } from "types/api/videos";
-import MovieList from "components/organisms/MovieList";
+import { ReactElement } from "react";
 import { useMediaQuery } from "react-responsive";
 
 interface HomePageProps {
@@ -21,10 +18,12 @@ export default function HomePage({
   videos,
   onStepChange,
 }: HomePageProps): ReactElement {
-  const { exploreMoviesList, exploreMovieSelect } = useMovieList();
-  const { exploreTVSelect, exploreTVsList } = useTVList();
-
-  console.log(exploreMoviesList);
+  const {
+    exploreMoviesList,
+    exploreMovieSelect,
+    exploreTVSelect,
+    exploreTVsList,
+  } = useExploreList();
 
   const isSmallTablet = useMediaQuery({
     query: "(max-width: 1024px)",

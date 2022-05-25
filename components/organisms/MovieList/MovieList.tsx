@@ -34,38 +34,6 @@ export default function MovieList<T>({
 }: IMovieListProps<T>): ReactElement {
   const [currIndex, setCurrIndex] = useState(0);
 
-  {
-    /*if (!movies || movies.length === 0 || loading) {
-    return (
-      <Container className={className}>
-        <h1>{title}</h1>
-        <SubListTitle>
-          {subListTitles.map((_subTitle, _index) => {
-            return (
-              <SubTitle
-                key={_index}
-                highlight={_index === currIndex}
-                onClick={() => {
-                  onSubTitleClick(_subTitle);
-                  setCurrIndex(_index);
-                }}
-              >
-                {_subTitle}
-              </SubTitle>
-            );
-          })}
-        </SubListTitle>
-        <MovieListWrapper>
-          <LoadingContainer>
-            <Loader size={120} color="red" variant="dots" />
-            <span>Loading</span>
-          </LoadingContainer>
-        </MovieListWrapper>
-      </Container>
-    );
-  }*/
-  }
-
   return (
     <Container className={className}>
       <h1>{title}</h1>
@@ -93,6 +61,7 @@ export default function MovieList<T>({
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
+              transition={{ duration: 1.25 }}
             >
               <Loader size={120} color="red" variant="dots" />
               <span>Loading</span>
@@ -105,6 +74,7 @@ export default function MovieList<T>({
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
+              transition={{ duration: 1.25 }}
             >
               <MovieCardList universal variant="horizontal" autoHide={false}>
                 {movies.map((_movie, index) => {
