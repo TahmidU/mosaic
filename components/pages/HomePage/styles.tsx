@@ -8,9 +8,10 @@ export const Container = styled.div`
 `;
 Container.displayName = "Container";
 
+const navbarSize = "80px";
 export const FirstPageWrapper = styled.div`
   width: 100%;
-  height: 100vh;
+  height: calc(100vh - ${navbarSize});
 `;
 FirstPageWrapper.displayName = "FirstPageWrapper";
 
