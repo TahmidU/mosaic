@@ -1,5 +1,6 @@
 import Scrollbar from "components/atoms/Scrollbar";
 import SlideButton from "../Carousel/SlideButton";
+import { motion } from "framer-motion";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -75,8 +76,24 @@ export const MovieListWrapper = styled.div`
   display: flex;
   position: relative;
   height: 300px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
 `;
 MovieListWrapper.displayName = "MovieListWrapper";
+
+export const LoadingContainer = styled(motion.div)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  > span:last-child {
+    ${({ theme }) => theme.fonts.secondary.bigger};
+    font-weight: 500;
+  }
+`;
+LoadingContainer.displayName = "LoadingContainer";
 
 export const LeftSlide = styled(SlideButton)`
   position: absolute;
@@ -95,6 +112,17 @@ export const RightSlide = styled(LeftSlide)`
   right: 4.8%;
 `;
 RightSlide.displayName = "RightSlide";
+
+export const MovieCardListAnim = styled(motion.div)`
+  display: block;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  width: 100%;
+  max-height: 290px;
+  height: 100%;
+`;
+MovieCardListAnim.displayName = "MovieCardListAnim";
 
 export const MovieCardList = styled(Scrollbar)`
   display: block;

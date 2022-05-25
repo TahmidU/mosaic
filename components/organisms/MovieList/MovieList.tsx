@@ -1,16 +1,18 @@
 import {
   Container,
-  LeftSlide,
+  LoadingContainer,
   MovieCardList,
+  MovieCardListAnim,
   MovieCardWrapper,
   MovieListWrapper,
-  RightSlide,
   SubListTitle,
   SubTitle,
 } from "./styles";
 import { ReactElement, useState } from "react";
 
+import { AnimatePresence } from "framer-motion";
 import { IMovieCardProps } from "components/molecules/MovieCard/MovieCard";
+import { Loader } from "@mantine/core";
 import MovieCard from "components/molecules/MovieCard";
 
 interface IMovieListProps<T> {
@@ -19,6 +21,7 @@ interface IMovieListProps<T> {
   movies?: IMovieCardProps[];
   onSubTitleClick: (title: T) => void;
   className?: string;
+  loading?: boolean;
 }
 
 export default function MovieList<T>({
@@ -27,12 +30,9 @@ export default function MovieList<T>({
   onSubTitleClick,
   movies,
   className,
+  loading = false,
 }: IMovieListProps<T>): ReactElement {
   const [currIndex, setCurrIndex] = useState(0);
-
-  if (!movies || movies.length === 0) {
-    return <div>Loading...</div>;
-  }
 
   return (
     <Container className={className}>
@@ -54,20 +54,45 @@ export default function MovieList<T>({
         })}
       </SubListTitle>
       <MovieListWrapper>
-        <MovieCardList universal variant="horizontal" autoHide={false}>
-          {movies.map((_movie, index) => {
-            return (
-              <MovieCardWrapper key={index}>
-                <MovieCard
-                  src={_movie.src}
-                  review={_movie.review}
-                  movieTitle={_movie.movieTitle}
-                  movieReleaseDate={_movie.movieReleaseDate}
-                />
-              </MovieCardWrapper>
-            );
-          })}
-        </MovieCardList>
+        {!movies || movies.length === 0 || loading ? (
+          <AnimatePresence>
+            <LoadingContainer
+              key="modal"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1.25 }}
+            >
+              <Loader size={120} color="red" variant="dots" />
+              <span>Loading</span>
+            </LoadingContainer>
+          </AnimatePresence>
+        ) : (
+          <AnimatePresence>
+            <MovieCardListAnim
+              key="modal"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1.25 }}
+            >
+              <MovieCardList universal variant="horizontal" autoHide={false}>
+                {movies.map((_movie, index) => {
+                  return (
+                    <MovieCardWrapper key={index}>
+                      <MovieCard
+                        src={_movie.src}
+                        review={_movie.review}
+                        movieTitle={_movie.movieTitle}
+                        movieReleaseDate={_movie.movieReleaseDate}
+                      />
+                    </MovieCardWrapper>
+                  );
+                })}
+              </MovieCardList>
+            </MovieCardListAnim>
+          </AnimatePresence>
+        )}
       </MovieListWrapper>
     </Container>
   );
