@@ -13,13 +13,10 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   /* Firefox */
-  scrollbar-width: none;
+  /*scrollbar-width: none;*/
 }
 
 /* Chrome & Edge*/
-html::-webkit-scrollbar {
-  width: 0px;
-}
 
 a {
   color: inherit;
