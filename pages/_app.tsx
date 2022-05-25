@@ -4,7 +4,7 @@ import React, { useEffect, useRef } from "react";
 
 import type { AppProps } from "next/app";
 import GlobalContext from "../context/GlobalContext";
-import { GlobalStyles } from "./GlobalStyles";
+import { GlobalStyles } from "styles/GlobalStyles";
 import Layout from "../components/organisms/Layout";
 import Scrollbar from "components/atoms/Scrollbar";
 import { ThemeProvider } from "styled-components";
