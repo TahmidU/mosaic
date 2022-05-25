@@ -4,7 +4,7 @@ import React, { useEffect, useRef } from "react";
 
 import type { AppProps } from "next/app";
 import GlobalContext from "../context/GlobalContext";
-import { GlobalStyle } from "./GlobalStyles";
+import { GlobalStyles } from "./GlobalStyles";
 import Layout from "../components/organisms/Layout";
 import Scrollbar from "components/atoms/Scrollbar";
 import { ThemeProvider } from "styled-components";
@@ -23,7 +23,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       }}
     >
       <ThemeProvider theme={appTheme.value}>
-        <GlobalStyle theme={appTheme.value} />
+        <GlobalStyles theme={appTheme.value} />
         <Layout>
           <Component {...pageProps} />
         </Layout>
