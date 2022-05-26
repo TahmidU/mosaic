@@ -1,5 +1,5 @@
 import GrClose from "react-icons/gr";
-import SlideButton from "../SlideButton";
+import SlideButton from "../../../molecules/SlideButton";
 import styled from "styled-components";
 
 export const Overlay = styled.div`

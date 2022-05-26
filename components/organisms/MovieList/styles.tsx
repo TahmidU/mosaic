@@ -1,4 +1,4 @@
-import SlideButton from "../Carousel/SlideButton";
+import SlideButton from "../../molecules/SlideButton";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 
