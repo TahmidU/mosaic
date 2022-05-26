@@ -54,7 +54,7 @@ export interface ICColours {
 }
 
 declare module "styled-components" {
-  export interface DefaultTheme {
+  export interface IDefaultTheme {
     almostBlack: string;
     red: string;
     crimson: string;

@@ -3,7 +3,7 @@ import { ReactElement, useState } from "react";
 
 import Image from "next/image";
 
-interface ClipProps {
+interface IClipProps {
   YTKey: string;
   title: string;
   type: string;
@@ -15,7 +15,7 @@ export default function Clip({
   title,
   type,
   onClick,
-}: ClipProps): ReactElement {
+}: IClipProps): ReactElement {
   return (
     <Container onClick={onClick}>
       <ImageContainer>

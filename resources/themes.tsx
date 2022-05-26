@@ -1,7 +1,7 @@
 import { ICColours, IColours, IFonts } from "../types/theme";
 
 import Color from "color";
-import type { DefaultTheme } from "styled-components";
+import type { IDefaultTheme } from "styled-components";
 import { Theme } from "../types/context";
 
 const colours: IColours = {
@@ -24,7 +24,7 @@ const cColours: ICColours = {
   cGrey: Color(colours.grey),
 };
 
-const themes: { [key: string]: Partial<DefaultTheme> } = {
+const themes: { [key: string]: Partial<IDefaultTheme> } = {
   light: {
     name: "light",
     main: colours.white,
@@ -96,11 +96,11 @@ const fonts: IFonts = {
   },
 };
 
-export default function getTheme(themeSelect: Theme): DefaultTheme {
+export default function getTheme(themeSelect: Theme): IDefaultTheme {
   return {
     ...colours,
     ...cColours,
     fonts,
     ...themes[themeSelect],
-  } as DefaultTheme;
+  } as IDefaultTheme;
 }

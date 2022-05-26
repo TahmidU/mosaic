@@ -10,9 +10,9 @@ import {
 import Logo from "../../../img/Logo";
 import { ReactElement } from "react";
 
-interface NavbarProps {}
+interface INavbarProps {}
 
-export default function Navbar({}: NavbarProps): ReactElement {
+export default function Navbar({}: INavbarProps): ReactElement {
   return (
     <NavbarContainer>
       <div>

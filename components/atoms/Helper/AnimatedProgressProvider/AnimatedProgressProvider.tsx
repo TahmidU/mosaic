@@ -2,7 +2,7 @@ import { ReactElement, useEffect, useState } from "react";
 
 import { Animate } from "react-move";
 
-interface AnimatedProgressProviderProps {
+interface IAnimatedProgressProviderProps {
   valueStart?: number;
   valueEnd: number;
   duration: number;
@@ -18,7 +18,7 @@ export default function AnimatedProgressProvider({
   repeat = false,
   easingFunction,
   children,
-}: AnimatedProgressProviderProps): ReactElement {
+}: IAnimatedProgressProviderProps): ReactElement {
   const [isAnimated, setIsAnimated] = useState(false);
 
   useEffect(() => {

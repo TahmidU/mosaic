@@ -3,7 +3,7 @@ import { AnimatedCircle, Container } from "./styles";
 import { ReactElement } from "react";
 import { produceProgressiveCircleAnimVariant } from "./animation-variants";
 
-interface ProgressiveCircleProps {
+interface IProgressiveCircleProps {
   width: number;
   height: number;
   radius: number;
@@ -25,7 +25,7 @@ export default function ProgressiveCircle({
   fillColourFrom = "transparent",
   fillColourTo = "transparent",
   className,
-}: ProgressiveCircleProps): ReactElement {
+}: IProgressiveCircleProps): ReactElement {
   return (
     <Container
       width={width}

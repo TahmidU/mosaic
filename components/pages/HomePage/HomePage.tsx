@@ -20,7 +20,7 @@ import { ReactElement } from "react";
 import ScrollDownBtn from "components/molecules/ScrollDownBtn";
 import { useMediaQuery } from "react-responsive";
 
-interface HomePageProps {
+interface IHomePageProps {
   carouselData: IDiscoverMovie[];
   videos?: IVideo;
   onStepChange?: (step: number) => void;
@@ -30,7 +30,7 @@ export default function HomePage({
   carouselData,
   videos,
   onStepChange,
-}: HomePageProps): ReactElement {
+}: IHomePageProps): ReactElement {
   const {
     exploreMoviesList,
     exploreMovieSelect,
