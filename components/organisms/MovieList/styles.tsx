@@ -152,19 +152,19 @@ export const MovieCardList = styled.div`
     border-radius: 1rem;
   }
 
-  > div:first-child > div:not(:first-child):not(:last-child) {
+  > div:not(:first-child):not(:last-child) {
     padding: 0 0.25rem;
   }
 
-  > div:first-child > div:last-child {
+  > div:last-child {
     padding: 0 0 0 0.25rem;
   }
 
-  > div:first-child > div:first-child {
+  > div {
     padding: 0 0.25rem 0 0;
   }
 
-  > div:first-child > div:only-child {
+  > div:only-child {
     margin: 0;
   }
 `;
