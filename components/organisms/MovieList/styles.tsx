@@ -1,4 +1,3 @@
-import Scrollbar from "components/atoms/Scrollbar";
 import SlideButton from "../Carousel/SlideButton";
 import { motion } from "framer-motion";
 import styled from "styled-components";

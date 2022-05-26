@@ -1,4 +1,3 @@
-import Scrollbar from "components/atoms/Scrollbar";
 import styled from "styled-components";
 
 export const Container = styled.div`
