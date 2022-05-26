@@ -6,7 +6,7 @@ export const Container = styled.div`
   grid-template-areas: "thumb meta";
   cursor: pointer;
   border-radius: 14px;
-  padding: 0.425em;
+  padding: 0.625em;
   box-shadow: 2px 2px 8px 0px rgba(33, 31, 27, 0.14);
 
   :hover {

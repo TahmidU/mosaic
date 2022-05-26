@@ -76,7 +76,7 @@ export default function MovieList<T>({
               exit={{ opacity: 0 }}
               transition={{ duration: 1.25 }}
             >
-              <MovieCardList universal variant="horizontal" autoHide={false}>
+              <MovieCardList>
                 {movies.map((_movie, index) => {
                   return (
                     <MovieCardWrapper key={index}>

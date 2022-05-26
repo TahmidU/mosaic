@@ -1,4 +1,3 @@
-import Scrollbar from "components/atoms/Scrollbar";
 import SlideButton from "../Carousel/SlideButton";
 import { motion } from "framer-motion";
 import styled from "styled-components";
@@ -124,7 +123,7 @@ export const MovieCardListAnim = styled(motion.div)`
 `;
 MovieCardListAnim.displayName = "MovieCardListAnim";
 
-export const MovieCardList = styled(Scrollbar)`
+export const MovieCardList = styled.div`
   display: block;
   overflow-x: auto;
   overflow-y: hidden;
@@ -132,6 +131,26 @@ export const MovieCardList = styled(Scrollbar)`
   width: 100%;
   max-height: 290px;
   height: 100%;
+
+  ::-webkit-scrollbar {
+    height: 0.625rem;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: ${({ theme }) =>
+      theme.cAlmostBlack.alpha(0.8).toString()};
+    border-radius: 1rem;
+
+    :hover {
+      background-color: ${({ theme }) =>
+        theme.cAlmostBlack.alpha(0.85).toString()};
+    }
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: ${({ theme }) => theme.cAlmostWhite};
+    border-radius: 1rem;
+  }
 
   > div:first-child > div:not(:first-child):not(:last-child) {
     padding: 0 0.25rem;

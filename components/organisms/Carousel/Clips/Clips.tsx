@@ -25,7 +25,7 @@ export default function Clips({
         <span>Trailers {"&"} Clips</span>
         <span>Result: {videos?.results.length}</span>
       </div>
-      <Content universal>
+      <Content>
         {!loading ? (
           videos?.results.map((_video, index) => (
             <Clip
