@@ -20,7 +20,7 @@ type Variant =
   | "transparentLeft"
   | "transparentRight";
 
-interface SlideButtonProps {
+interface ISlideButtonProps {
   className?: string;
   variant?: Variant;
   strokeWidth?: number;
@@ -34,7 +34,7 @@ export default function SlideButton({
   className,
   onClick = () => {},
   dataTestId = "",
-}: SlideButtonProps): ReactElement {
+}: ISlideButtonProps): ReactElement {
   const [showCircleAnim, setShowCircleAnim] = useState(false);
   const [containerSize, setContainerSize] = useState({
     width: 0,

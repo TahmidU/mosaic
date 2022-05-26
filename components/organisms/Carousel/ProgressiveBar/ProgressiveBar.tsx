@@ -4,7 +4,7 @@ import { Bar } from "./styles";
 import { progressiveBarAnimVariant } from "./animation-variants";
 import { useAnimation } from "framer-motion";
 
-interface ProgressiveBarProps {
+interface IProgressiveBarProps {
   duration?: number;
   trigger?: () => void;
   pause?: boolean;
@@ -20,7 +20,7 @@ export default function ProgressiveBar({
   reset = false,
   onAnimEnd = () => {},
   className,
-}: ProgressiveBarProps): ReactElement {
+}: IProgressiveBarProps): ReactElement {
   const barControls = useAnimation();
 
   useEffect(() => {

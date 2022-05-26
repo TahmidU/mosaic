@@ -3,9 +3,9 @@ import Logo from "../../../img/Logo";
 import MDBLogo from "../../../img/MDBLogo";
 import { ReactElement } from "react";
 
-interface FooterProps {}
+interface IFooterProps {}
 
-export default function Footer({}: FooterProps): ReactElement {
+export default function Footer({}: IFooterProps): ReactElement {
   return (
     <FooterContainer>
       <div>

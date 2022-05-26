@@ -5,7 +5,7 @@ import Image from "next/image";
 import { getCarouselImageAnimVariant } from "./animation-variants";
 
 //! Some of the code here are kept for slide animation in near future.
-interface CarouselImageProps {
+interface ICarouselImageProps {
   imageURL: string;
   disabled?: boolean;
   index?: number;
@@ -18,7 +18,7 @@ export default function CarouselImage({
   index = 0,
   currentStep = 0,
   local = false,
-}: CarouselImageProps): ReactElement {
+}: ICarouselImageProps): ReactElement {
   const [loading, setLoading] = useState(true);
 
   return (

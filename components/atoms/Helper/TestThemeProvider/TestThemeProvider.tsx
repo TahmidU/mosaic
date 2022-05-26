@@ -3,7 +3,7 @@ import { Theme } from "types/context";
 import { ThemeProvider } from "styled-components";
 import getTheme from "resources/themes";
 
-interface TestThemeProviderProps {
+interface ITestThemeProviderProps {
   children: any;
   theme?: Theme;
 }
@@ -11,6 +11,6 @@ interface TestThemeProviderProps {
 export default function TestThemeProvider({
   children,
   theme = "light",
-}: TestThemeProviderProps): ReactElement {
+}: ITestThemeProviderProps): ReactElement {
   return <ThemeProvider theme={getTheme(theme)}>{children}</ThemeProvider>;
 }

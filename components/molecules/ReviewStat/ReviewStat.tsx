@@ -5,7 +5,7 @@ import { ReactElement } from "react";
 import { buildStyles } from "react-circular-progressbar";
 import { easeQuadInOut } from "d3-ease";
 
-interface ReviewStatProps {
+interface IReviewStatProps {
   percentage: number;
   className?: string;
 }
@@ -13,7 +13,7 @@ interface ReviewStatProps {
 export default function ReviewStat({
   percentage,
   className,
-}: ReviewStatProps): ReactElement {
+}: IReviewStatProps): ReactElement {
   return (
     <Container className={className} data-testid="ReviewStatContainer">
       <AnimatedProgressProvider

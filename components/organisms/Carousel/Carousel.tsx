@@ -25,7 +25,7 @@ import { useAnimation } from "framer-motion";
 
 const VideoModal = dynamic(() => import("./VideoModal"), { ssr: false });
 
-interface CarouselProps {
+interface ICarouselProps {
   carouselData?: IDiscoverMovie[];
   videos?: IVideo;
   localImages?: boolean;
@@ -45,7 +45,7 @@ export default function Carousel({
   startStep = 0,
   autoSlideCallback = () => {},
   onStepChange,
-}: CarouselProps): ReactElement {
+}: ICarouselProps): ReactElement {
   // Carousel Slide
   const [step, setStep] = useState(startStep);
   const [timerConfig, setTimerConfig] = useState({

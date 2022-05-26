@@ -4,7 +4,7 @@ import { ReactElement, useEffect, useState } from "react";
 import Clip from "./Clip";
 import { IVideo } from "types/api/videos";
 
-interface ClipsProps {
+interface IClipsProps {
   videos?: IVideo;
   onClipClickedCallback: (videoIndex: number) => void;
 }
@@ -12,7 +12,7 @@ interface ClipsProps {
 export default function Clips({
   videos,
   onClipClickedCallback,
-}: ClipsProps): ReactElement {
+}: IClipsProps): ReactElement {
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
