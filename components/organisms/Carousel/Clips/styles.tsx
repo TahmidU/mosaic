@@ -28,17 +28,36 @@ export const Container = styled.div`
 `;
 Container.displayName = "Container";
 
-export const Content = styled(Scrollbar)`
-  height: 30vw !important;
+export const Content = styled.div`
+  height: 31vw !important;
   max-height: 590px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding: 0 0.4em 0 0;
 
-  > div:first-child {
-    padding: 0 0.2em 0 0;
+  ::-webkit-scrollbar {
+    width: 0.625rem;
+  }
 
-    > div {
-      margin: 0.8em 0.75em 0 0.1em;
-      position: relative;
+  ::-webkit-scrollbar-thumb {
+    background-color: ${({ theme }) =>
+      theme.cAlmostBlack.alpha(0.8).toString()};
+    border-radius: 1rem;
+
+    :hover {
+      background-color: ${({ theme }) =>
+        theme.cAlmostBlack.alpha(0.85).toString()};
     }
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: ${({ theme }) => theme.cAlmostWhite};
+    border-radius: 1rem;
+  }
+
+  > div {
+    margin: 0.8em 0.75em 0 0.1em;
+    position: relative;
   }
 `;
 Content.displayName = "Content";
