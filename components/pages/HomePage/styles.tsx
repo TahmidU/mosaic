@@ -24,6 +24,14 @@ export const ScrollDownContainer = styled.div`
   width: 100%;
   height: 100%;
 
+  > a:first-child {
+    opacity: 40%;
+
+    :hover {
+      opacity: 100%;
+    }
+  }
+
   @media only screen and (max-height: 876px) {
     display: none;
   }
