@@ -1,10 +1,11 @@
 import { BsArrowDown } from "react-icons/bs";
+import { Link } from "react-scroll";
 import styled from "styled-components";
 
-export const Container = styled.button`
+export const Container = styled(Link)`
   all: unset;
   cursor: pointer;
-  height: 100%;
+  height: fit-content;
   width: 100%;
   max-width: 384px;
   max-height: fit-content;
