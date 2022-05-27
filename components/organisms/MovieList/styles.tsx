@@ -114,12 +114,11 @@ RightSlide.displayName = "RightSlide";
 
 export const MovieCardListAnim = styled(motion.div)`
   display: block;
-  overflow-x: auto;
-  overflow-y: hidden;
   white-space: nowrap;
   width: 100%;
   max-height: 290px;
   height: 100%;
+  position: relative;
 `;
 MovieCardListAnim.displayName = "MovieCardListAnim";
 
@@ -152,16 +151,8 @@ export const MovieCardList = styled.div`
     border-radius: 1rem;
   }
 
-  > div:not(:first-child):not(:last-child) {
-    padding: 0 0.25rem;
-  }
-
-  > div:last-child {
-    padding: 0 0 0 0.25rem;
-  }
-
   > div {
-    padding: 0 0.25rem 0 0;
+    padding: 0 0.25rem;
   }
 
   > div:only-child {
@@ -170,28 +161,42 @@ export const MovieCardList = styled.div`
 `;
 MovieCardList.displayName = "MovieCardList";
 
+export const LeftSlideBtn = styled(SlideButton)`
+  position: absolute;
+  z-index: 10;
+  top: 25%;
+  left: -1%;
+`;
+LeftSlideBtn.displayName = "LeftSlideBtn";
+
+export const RightSlideBtn = styled(LeftSlideBtn)`
+  left: unset;
+  right: -1%;
+`;
+RightSlideBtn.displayName = "RightSlideBtn";
+
 export const MovieCardWrapper = styled.div`
   display: inline-block;
-  width: calc((100% - (0.25rem * 4)) / 7);
+  width: calc((100%) / 7);
 
   > div {
     margin: 0 auto;
   }
 
   @media only screen and (max-width: 1648px) {
-    width: calc((100% - (0.25rem * 4)) / 6);
+    width: calc((100%) / 6);
   }
 
   @media only screen and (max-width: 1346px) {
-    width: calc((100% - (0.25rem * 4)) / 5);
+    width: calc((100%) / 5);
   }
 
   @media only screen and (max-width: 1068px) {
-    width: calc((100% - (0.25rem * 4)) / 4);
+    width: calc((100%) / 4);
   }
 
   @media only screen and (max-width: 770px) {
-    width: calc((100% - (0.25rem * 4)) / 3);
+    width: calc((100%) / 3);
 
     > div > div > div:last-child {
       display: none;
@@ -199,7 +204,7 @@ export const MovieCardWrapper = styled.div`
   }
 
   @media only screen and (max-width: 375px) {
-    width: calc((100% - (0.25rem * 4)) / 2);
+    width: calc((100%) / 2);
   }
 `;
 MovieCardWrapper.displayName = "MovieCardWrapper";

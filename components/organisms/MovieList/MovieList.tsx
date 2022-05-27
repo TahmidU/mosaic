@@ -1,10 +1,12 @@
 import {
   Container,
+  LeftSlideBtn,
   LoadingContainer,
   MovieCardList,
   MovieCardListAnim,
   MovieCardWrapper,
   MovieListWrapper,
+  RightSlideBtn,
   SubListTitle,
   SubTitle,
 } from "./styles";
@@ -76,6 +78,7 @@ export default function MovieList<T>({
               exit={{ opacity: 0 }}
               transition={{ duration: 1.25 }}
             >
+              <LeftSlideBtn variant="circleSimpleLeft" />
               <MovieCardList>
                 {movies.map((_movie, index) => {
                   return (
@@ -90,6 +93,7 @@ export default function MovieList<T>({
                   );
                 })}
               </MovieCardList>
+              <RightSlideBtn variant="circleSimpleRight" />
             </MovieCardListAnim>
           </AnimatePresence>
         )}

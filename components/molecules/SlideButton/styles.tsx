@@ -93,7 +93,7 @@ LeftMobileArrow.displayName = "LeftMobileArrow";
 export const CircleSimpleContainer = styled.div`
   width: 65px;
   height: 65px;
-  background-color: ${({ theme }) => theme.cAlmostBlack.alpha(0.1).toString()};
+  background-color: ${({ theme }) => theme.cAlmostBlack.alpha(0.2).toString()};
   border-radius: 3rem;
   cursor: pointer;
   display: flex;
@@ -108,7 +108,7 @@ export const CircleSimpleContainer = styled.div`
 
   :hover {
     background-color: ${({ theme }) =>
-      theme.cAlmostBlack.alpha(0.2).toString()};
+      theme.cAlmostBlack.alpha(0.3).toString()};
   }
 `;
 CircleSimpleContainer.displayName = "CircleSimpleContainer";

@@ -100,7 +100,11 @@ export default function SlideButton({
 
   if (variant === "circleSimpleLeft" || variant === "circleSimpleRight") {
     return (
-      <CircleSimpleContainer>
+      <CircleSimpleContainer
+        className={className}
+        onClick={onClick}
+        data-testid={dataTestId}
+      >
         {variant === "circleSimpleLeft" && <AiOutlineLeft />}
         {variant === "circleSimpleRight" && <AiOutlineRight />}
       </CircleSimpleContainer>
