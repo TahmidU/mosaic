@@ -90,6 +90,29 @@ export const LeftMobileArrow = styled(GoChevronLeft)`
 `;
 LeftMobileArrow.displayName = "LeftMobileArrow";
 
+export const CircleSimpleContainer = styled.div`
+  width: 65px;
+  height: 65px;
+  background-color: ${({ theme }) => theme.cAlmostBlack.alpha(0.1).toString()};
+  border-radius: 3rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  > svg:first-child {
+    color: ${({ theme }) => theme.white};
+    width: 45%;
+    height: 45%;
+  }
+
+  :hover {
+    background-color: ${({ theme }) =>
+      theme.cAlmostBlack.alpha(0.2).toString()};
+  }
+`;
+CircleSimpleContainer.displayName = "CircleSimpleContainer";
+
 export const HoverAnimationCircle = styled(ProgressiveCircle)`
   position: absolute;
   margin: auto;

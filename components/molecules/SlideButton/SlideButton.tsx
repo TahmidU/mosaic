@@ -1,4 +1,6 @@
+import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 import {
+  CircleSimpleContainer,
   Container,
   HoverAnimationCircle,
   LeftArrow,
@@ -18,7 +20,9 @@ type Variant =
   | "simpleLeft"
   | "simpleRight"
   | "transparentLeft"
-  | "transparentRight";
+  | "transparentRight"
+  | "circleSimpleLeft"
+  | "circleSimpleRight";
 
 interface ISlideButtonProps {
   className?: string;
@@ -91,6 +95,15 @@ export default function SlideButton({
         {variant === "transparentLeft" && <LeftArrow />}
         {variant === "transparentRight" && <RightArrow />}
       </TransparentContainer>
+    );
+  }
+
+  if (variant === "circleSimpleLeft" || variant === "circleSimpleRight") {
+    return (
+      <CircleSimpleContainer>
+        {variant === "circleSimpleLeft" && <AiOutlineLeft />}
+        {variant === "circleSimpleRight" && <AiOutlineRight />}
+      </CircleSimpleContainer>
     );
   }
 
