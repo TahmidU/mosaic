@@ -1,5 +1,5 @@
 import ReviewStat from "components/molecules/ReviewStat";
-import SlideButton from "./SlideButton";
+import SlideButton from "../../molecules/SlideButton";
 import StepStatus from "./StepStatus";
 import { motion } from "framer-motion";
 import styled from "styled-components";
