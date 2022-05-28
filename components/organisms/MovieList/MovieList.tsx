@@ -10,7 +10,7 @@ import {
   SubListTitle,
   SubTitle,
 } from "./styles";
-import { ReactElement, useState } from "react";
+import { ReactElement, useEffect, useRef, useState } from "react";
 
 import { AnimatePresence } from "framer-motion";
 import { IMovieCardProps } from "components/molecules/MovieCard/MovieCard";
@@ -35,6 +35,39 @@ export default function MovieList<T>({
   loading = false,
 }: IMovieListProps<T>): ReactElement {
   const [currIndex, setCurrIndex] = useState(0);
+  const movieListRef = useRef<HTMLDivElement>(null);
+
+  function slideRight() {
+    if (movieListRef.current) {
+      const movieList = movieListRef.current;
+
+      const scrollAmount =
+        movieList.scrollWidth !== movieList.scrollLeft + movieList.offsetWidth
+          ? movieList.scrollLeft + movieList.offsetWidth
+          : 0;
+      movieList.scrollTo({
+        left: scrollAmount,
+        behavior: "smooth",
+      });
+    }
+  }
+
+  function slideLeft() {
+    if (movieListRef.current) {
+      const movieList = movieListRef.current;
+
+      const scrollAmount =
+        movieList.scrollLeft !== 0
+          ? movieList.scrollLeft - movieList.offsetWidth
+          : movieList.scrollWidth;
+
+      console.log(scrollAmount);
+      movieList.scrollTo({
+        left: scrollAmount,
+        behavior: "smooth",
+      });
+    }
+  }
 
   return (
     <Container className={className}>
@@ -78,8 +111,8 @@ export default function MovieList<T>({
               exit={{ opacity: 0 }}
               transition={{ duration: 1.25 }}
             >
-              <LeftSlideBtn variant="circleSimpleLeft" />
-              <MovieCardList>
+              <LeftSlideBtn variant="circleSimpleLeft" onClick={slideLeft} />
+              <MovieCardList ref={movieListRef}>
                 {movies.map((_movie, index) => {
                   return (
                     <MovieCardWrapper key={index}>
@@ -93,7 +126,7 @@ export default function MovieList<T>({
                   );
                 })}
               </MovieCardList>
-              <RightSlideBtn variant="circleSimpleRight" />
+              <RightSlideBtn variant="circleSimpleRight" onClick={slideRight} />
             </MovieCardListAnim>
           </AnimatePresence>
         )}
