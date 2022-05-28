@@ -4,10 +4,10 @@ import {
   MovieListStyle,
   ScrollDownContainer,
 } from "./styles";
-import { Element } from "react-scroll";
 import useExploreList, { ExploreMovies, ExploreTVs } from "./useExploreList";
 
 import Carousel from "components/organisms/Carousel";
+import { Element } from "react-scroll";
 import { IDiscoverMovie } from "types/api/discover";
 import { IVideo } from "types/api/videos";
 import { ReactElement } from "react";
