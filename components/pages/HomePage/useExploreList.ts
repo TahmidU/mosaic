@@ -8,7 +8,6 @@ export enum ExploreMovies {
   IN_THEATRES = "In Theatres",
   POPULAR = "Popular",
   UPCOMING = "Upcoming",
-  TOP_RATED = "Top Rated",
 }
 
 type CacheExploreMovies = {
@@ -24,7 +23,6 @@ interface IExploreMoviesCache {
 export enum ExploreTVs {
   ON_AIR = "On Air",
   POPULAR = "Popular",
-  TOP_RATED = "Top Rated",
 }
 
 type CacheExploreTV = {
@@ -45,7 +43,6 @@ export default function useExploreList() {
     cache: {
       "In Theatres": [],
       Popular: [],
-      "Top Rated": [],
       Upcoming: [],
     },
   });
@@ -55,7 +52,6 @@ export default function useExploreList() {
     cache: {
       "On Air": [],
       Popular: [],
-      "Top Rated": [],
     },
   });
 
@@ -75,9 +71,6 @@ export default function useExploreList() {
             break;
           case ExploreMovies.POPULAR:
             res = await getMovies("popular");
-            break;
-          case ExploreMovies.TOP_RATED:
-            res = await getMovies("top_rated");
             break;
           case ExploreMovies.UPCOMING:
             res = await getMovies("upcoming");
@@ -124,9 +117,6 @@ export default function useExploreList() {
           case ExploreTVs.POPULAR:
             res = await getTVShows("popular");
             break;
-          case ExploreTVs.TOP_RATED:
-            res = await getTVShows("top_rated");
-            break;
           default:
             break;
         }
@@ -165,9 +155,7 @@ export default function useExploreList() {
     }));
   }
 
-  async function getMovies(
-    selectReq: "in_theatres" | "popular" | "upcoming" | "top_rated"
-  ) {
+  async function getMovies(selectReq: "in_theatres" | "popular" | "upcoming") {
     return await globalRequests?.api
       .get(`/explore/movies/${selectReq}`)
       .then((_result) => _result.data.results)
@@ -192,7 +180,7 @@ export default function useExploreList() {
     }));
   }
 
-  async function getTVShows(selectReq: "on_air" | "popular" | "top_rated") {
+  async function getTVShows(selectReq: "on_air" | "popular") {
     return await globalRequests?.api
       .get(`/explore/tv_shows/${selectReq}`)
       .then((_result) => _result.data.results)

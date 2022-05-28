@@ -4,16 +4,10 @@ import {
   MovieListStyle,
   ScrollDownContainer,
 } from "./styles";
-import {
-  Element,
-  Link,
-  animateScroll as scroll,
-  scrollSpy,
-  scroller,
-} from "react-scroll";
 import useExploreList, { ExploreMovies, ExploreTVs } from "./useExploreList";
 
 import Carousel from "components/organisms/Carousel";
+import { Element } from "react-scroll";
 import { IDiscoverMovie } from "types/api/discover";
 import { IVideo } from "types/api/videos";
 import { ReactElement } from "react";
@@ -67,7 +61,6 @@ export default function HomePage({
             ExploreMovies.IN_THEATRES,
             ExploreMovies.POPULAR,
             ExploreMovies.UPCOMING,
-            ExploreMovies.TOP_RATED,
           ]}
           onSubTitleClick={(subTitle: ExploreMovies) =>
             exploreMovieSelect(subTitle)
@@ -77,11 +70,7 @@ export default function HomePage({
 
         <MovieListStyle
           title="Explore TV Shows"
-          subListTitles={[
-            ExploreTVs.ON_AIR,
-            ExploreTVs.POPULAR,
-            ExploreTVs.TOP_RATED,
-          ]}
+          subListTitles={[ExploreTVs.ON_AIR, ExploreTVs.POPULAR]}
           onSubTitleClick={(subTitle: ExploreTVs) => exploreTVSelect(subTitle)}
           movies={exploreTVsList}
         />
