@@ -10,12 +10,6 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   overflow: hidden;
-
-  :hover {
-    > div:first-child > div:last-child {
-      opacity: 100%;
-    }
-  }
 `;
 Container.displayName = "Container";
 
