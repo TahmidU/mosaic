@@ -1,5 +1,4 @@
 import Image from "next/image";
-import ReviewStat from "../ReviewStat";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -35,19 +34,6 @@ export const MovieImage = styled(Image)`
   border-radius: 14px;
 `;
 MovieImage.displayName = "MovieImage";
-
-export const MovieReview = styled(ReviewStat)`
-  position: absolute;
-  z-index: 5;
-  width: 100%;
-  max-width: 54px;
-  height: 100%;
-  max-height: 54px;
-  right: 2.5%;
-  top: 72%;
-  opacity: 30%;
-`;
-MovieReview.displayName = "MovieReview";
 
 export const MovieText = styled.div`
   display: flex;

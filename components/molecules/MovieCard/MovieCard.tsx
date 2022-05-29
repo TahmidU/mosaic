@@ -1,10 +1,4 @@
-import {
-  Container,
-  MovieImage,
-  MovieReview,
-  MovieText,
-  Wrapper,
-} from "./styles";
+import { Container, MovieImage, MovieText, Wrapper } from "./styles";
 
 import { ReactElement } from "react";
 
@@ -25,7 +19,6 @@ export default function MovieCard({
     <Container>
       <Wrapper>
         <MovieImage src={src} width={150} height={225} />
-        <MovieReview percentage={review * 10} />
       </Wrapper>
       <MovieText>
         <span>{movieTitle}</span>
