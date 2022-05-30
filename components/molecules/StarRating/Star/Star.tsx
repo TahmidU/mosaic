@@ -3,20 +3,20 @@ import { ReactElement } from "react";
 interface IStarProps {
   uniqueId: string;
   percentage: string;
+  className?: string;
 }
 
 export default function Star({
   uniqueId,
   percentage,
+  className,
 }: IStarProps): ReactElement {
-  console.log(percentage);
-
   return (
     <svg
       stroke="#fd1c1c53"
       strokeWidth="12"
       viewBox="0 0 1024 1024"
-      className="styles__Star-sc-1wsp650-1 czWykg"
+      className={className}
       height="1em"
       width="1em"
       xmlns="http://www.w3.org/2000/svg"

@@ -1,6 +1,6 @@
-import { Container } from "./styles";
+import { Container, StarStyle, StarWrapper } from "./styles";
+
 import { ReactElement } from "react";
-import Star from "./Star";
 import { v4 as uuidv4 } from "uuid";
 
 interface IStarRatingProps {
@@ -13,33 +13,41 @@ export default function StarRating({ rating }: IStarRatingProps): ReactElement {
 
   return (
     <Container>
-      {[...Array(5)].map((_, index) => {
-        const applyRating = starRating - index;
+      <StarWrapper>
+        {[...Array(5)].map((_, index) => {
+          const applyRating = starRating - index;
 
-        if (applyRating > 1) {
+          if (applyRating > 1) {
+            return (
+              <StarStyle
+                key={index}
+                uniqueId={`${uuidv4()}-${index}`}
+                percentage="100%"
+              />
+            );
+          }
+
+          if (applyRating > 0) {
+            return (
+              <StarStyle
+                key={index}
+                uniqueId={`${uuidv4()}-${index}`}
+                percentage={`${applyRating * 100}%`}
+              />
+            );
+          }
+
           return (
-            <Star
+            <StarStyle
               key={index}
               uniqueId={`${uuidv4()}-${index}`}
-              percentage="100%"
+              percentage="0%"
             />
           );
-        }
+        })}
+      </StarWrapper>
 
-        if (applyRating > 0) {
-          return (
-            <Star
-              key={index}
-              uniqueId={`${uuidv4()}-${index}`}
-              percentage={`${applyRating * 100}%`}
-            />
-          );
-        }
-
-        return (
-          <Star key={index} uniqueId={`${uuidv4()}-${index}`} percentage="0%" />
-        );
-      })}
+      <span>{starRating}/5</span>
     </Container>
   );
 }
