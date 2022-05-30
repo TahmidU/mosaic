@@ -7,4 +7,7 @@ const payload: IPayload = {
 };
 export default payload;
 
-export const Basic = (args: any) => <StarRating rating={7.5} />;
+export const Basic = (args: any) => <StarRating {...args} />;
+Basic.args = {
+  rating: 5.5,
+};
