@@ -1,6 +1,7 @@
 import { Container, MovieImage, MovieText, Wrapper } from "./styles";
 
 import { ReactElement } from "react";
+import StarRating from "../StarRating";
 
 export interface IMovieCardProps {
   src: string;
@@ -22,6 +23,7 @@ export default function MovieCard({
       </Wrapper>
       <MovieText>
         <span>{movieTitle}</span>
+        <StarRating rating={review} />
         <span>{movieReleaseDate}</span>
       </MovieText>
     </Container>

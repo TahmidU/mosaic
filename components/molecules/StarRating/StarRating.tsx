@@ -4,15 +4,19 @@ import { ReactElement } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 interface IStarRatingProps {
+  className?: string;
   rating: number;
 }
 
-export default function StarRating({ rating }: IStarRatingProps): ReactElement {
+export default function StarRating({
+  className,
+  rating,
+}: IStarRatingProps): ReactElement {
   const ratingPercentage = rating / 10;
   const starRating = ratingPercentage * 5;
 
   return (
-    <Container>
+    <Container className={className}>
       <StarWrapper>
         {[...Array(5)].map((_, index) => {
           const applyRating = starRating - index;
@@ -47,7 +51,7 @@ export default function StarRating({ rating }: IStarRatingProps): ReactElement {
         })}
       </StarWrapper>
 
-      <span>{starRating}/5</span>
+      <span>{starRating.toFixed(2)}/5</span>
     </Container>
   );
 }

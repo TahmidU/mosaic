@@ -74,7 +74,7 @@ SubTitle.displayName = "SubTitle";
 export const MovieListWrapper = styled.div`
   display: flex;
   position: relative;
-  height: 300px;
+  height: 330px;
   width: 100%;
   justify-content: center;
   align-items: center;
@@ -116,7 +116,7 @@ export const MovieCardListAnim = styled(motion.div)`
   display: block;
   white-space: nowrap;
   width: 100%;
-  max-height: 290px;
+  max-height: 330px;
   height: 100%;
   position: relative;
 `;
@@ -128,7 +128,7 @@ export const MovieCardList = styled.div`
   overflow-y: hidden;
   white-space: nowrap;
   width: 100%;
-  max-height: 290px;
+  max-height: 330px;
   height: 100%;
 
   ::-webkit-scrollbar {
