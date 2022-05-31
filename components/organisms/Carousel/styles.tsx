@@ -46,7 +46,7 @@ CarouselContainer.displayName = "CarouselContainer";
 
 export const ImageContainer = styled.div`
   position: relative;
-  display: inline-block;
+  display: flex;
   white-space: nowrap;
 
   height: fit-content;

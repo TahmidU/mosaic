@@ -47,7 +47,7 @@ export default function Carousel({
   onStepChange,
 }: ICarouselProps): ReactElement {
   // Carousel Slide
-  const [step, setStep] = useState(startStep);
+  const [[step, direction], setStep] = useState([startStep, 0]);
   const [timerConfig, setTimerConfig] = useState({
     pause: false,
     reset: false,
@@ -91,18 +91,17 @@ export default function Carousel({
     resetCarouselTimer();
   }
 
-  function handleSlideChange(next: boolean, clicked: boolean = false) {
+  function handleSlideChange(direction: 1 | -1, clicked: boolean = false) {
     if (clicked) {
       resetCarouselTimer();
     } else {
       autoSlideCallback();
     }
 
-    if (next) {
-      setStep((_step) => (_step < carouselData.length - 1 ? _step + 1 : 0));
-    } else {
-      setStep((_step) => (_step < 1 ? carouselData.length - 1 : _step - 1));
-    }
+    setStep(([_step, _direction]) => [
+      (_step + direction) % carouselData.length,
+      direction,
+    ]);
   }
 
   return (
@@ -121,22 +120,18 @@ export default function Carousel({
             variant="left"
             strokeWidth={3}
             onClick={() => {
-              handleSlideChange(false, true);
+              handleSlideChange(-1, true);
             }}
           />
           <CarouselContainer>
             <ImageContainer>
-              {carouselData.map((movies, index) => {
-                return (
-                  <CarouselImage
-                    key={index}
-                    imageURL={movies.backdrop_path}
-                    currentStep={step}
-                    index={index}
-                    local={localImages}
-                  />
-                );
-              })}
+              <CarouselImage
+                direction={direction}
+                imageURL={carouselData[step].backdrop_path}
+                currentStep={step}
+                local={localImages}
+                handleSlideChange={handleSlideChange}
+              />
 
               <StepsContainer>
                 {carouselData.map((movies, index) => {
@@ -145,7 +140,11 @@ export default function Carousel({
                       key={index}
                       enabled={index <= step}
                       onClick={() => {
-                        setStep(index);
+                        if (index - step < 0) {
+                          setStep([index, -1]);
+                        } else if (index - step > 0) {
+                          setStep([index, 1]);
+                        }
                         resetCarouselTimer();
                       }}
                     />
@@ -169,7 +168,7 @@ export default function Carousel({
             variant="right"
             strokeWidth={3}
             onClick={() => {
-              handleSlideChange(true, true);
+              handleSlideChange(1, true);
             }}
           />
           <ProgBar>
@@ -177,7 +176,7 @@ export default function Carousel({
               duration={autoSlideDuration}
               trigger={() => {
                 //! Uncomment this once carousel is finished. It's annoying when debugging!
-                !disableAutoSlide && handleSlideChange(true);
+                !disableAutoSlide && handleSlideChange(1);
               }}
               pause={timerConfig.pause}
               reset={timerConfig.reset}
