@@ -49,7 +49,8 @@ export const ImageContainer = styled.div`
   display: flex;
   white-space: nowrap;
 
-  height: fit-content;
+  height: 720px;
+  max-height: 720px;
   width: 100%;
 
   max-width: 1280px;

@@ -11,6 +11,7 @@ import {
   StepsStyle,
   TextStyle,
 } from "./styles";
+import MathUtils, { TextUtils } from "utils";
 import { ReactElement, useEffect, useState } from "react";
 
 import CarouselImage from "./CarouselImage";
@@ -18,7 +19,6 @@ import Clips from "./Clips";
 import { IDiscoverMovie } from "../../../types/api/discover";
 import { IVideo } from "types/api/videos";
 import ProgressiveBar from "./ProgressiveBar";
-import { TextUtils } from "utils";
 import dynamic from "next/dynamic";
 import { textAnimVariant } from "./animation-variants";
 import { useAnimation } from "framer-motion";
@@ -99,7 +99,7 @@ export default function Carousel({
     }
 
     setStep(([_step, _direction]) => [
-      (_step + direction) % carouselData.length,
+      MathUtils.mod(_step + direction, carouselData.length),
       direction,
     ]);
   }

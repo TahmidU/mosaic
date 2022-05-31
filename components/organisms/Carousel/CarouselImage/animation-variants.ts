@@ -19,26 +19,12 @@ export function getCarouselImageAnimVariant(
   };
 }
 
-/*
-export const carouselImageAnimVariant = {
-  moveLeft: {
-    right: "201%",
-    opacity: "0%",
-  },
-  show: {
-    right: "100%",
-    opacity: "100%",
-  },
-  moveRight: {
-    right: "-201%",
-    opacity: "0%",
-  },
-};*/
-
 export const carouselImageAnimVariant = {
   enter: (direction: number) => {
+    console.log(direction);
     return {
-      x: direction > 0 ? 2000 : -2000,
+      zIndex: 1,
+      x: direction > 0 ? 1280 : -1280,
       opacity: "0%",
     };
   },
@@ -48,9 +34,10 @@ export const carouselImageAnimVariant = {
     opacity: "100%",
   },
   exit: (direction: number) => {
+    //console.log(direction);
     return {
       zIndex: 0,
-      x: direction < 0 ? 2000 : -2000,
+      x: direction < 0 ? 1280 : -1280,
       opacity: "0%",
     };
   },
