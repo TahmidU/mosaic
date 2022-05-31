@@ -1,6 +1,6 @@
-import { IDefaultTheme, createGlobalStyle } from "styled-components";
+import { DefaultTheme, createGlobalStyle } from "styled-components";
 
-export const GlobalStyles = createGlobalStyle<{ theme: IDefaultTheme }>`
+export const GlobalStyles = createGlobalStyle<{ theme: DefaultTheme }>`
   
   html::-webkit-scrollbar{
     width: 0.625rem;

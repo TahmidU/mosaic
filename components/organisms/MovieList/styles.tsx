@@ -74,7 +74,7 @@ SubTitle.displayName = "SubTitle";
 export const MovieListWrapper = styled.div`
   display: flex;
   position: relative;
-  height: 300px;
+  height: 350px;
   width: 100%;
   justify-content: center;
   align-items: center;
@@ -116,7 +116,7 @@ export const MovieCardListAnim = styled(motion.div)`
   display: block;
   white-space: nowrap;
   width: 100%;
-  max-height: 290px;
+  max-height: 350px;
   height: 100%;
   position: relative;
 `;
@@ -128,7 +128,7 @@ export const MovieCardList = styled.div`
   overflow-y: hidden;
   white-space: nowrap;
   width: 100%;
-  max-height: 290px;
+  max-height: 350px;
   height: 100%;
 
   ::-webkit-scrollbar {
@@ -166,6 +166,10 @@ export const LeftSlideBtn = styled(SlideButton)`
   z-index: 10;
   top: 25%;
   left: -1%;
+
+  @media only screen and (max-width: 748px) {
+    display: none;
+  }
 `;
 LeftSlideBtn.displayName = "LeftSlideBtn";
 
@@ -177,33 +181,41 @@ RightSlideBtn.displayName = "RightSlideBtn";
 
 export const MovieCardWrapper = styled.div`
   display: inline-block;
-  width: calc((100%) / 7);
+  width: calc((100%) / 10);
 
   > div {
     margin: 0 auto;
   }
 
+  @media only screen and (max-width: 1755px) {
+    width: calc((100%) / 9);
+  }
+
   @media only screen and (max-width: 1648px) {
+    width: calc((100%) / 8);
+  }
+
+  @media only screen and (max-width: 1442px) {
+    width: calc((100%) / 7);
+  }
+
+  @media only screen and (max-width: 1264px) {
     width: calc((100%) / 6);
   }
 
-  @media only screen and (max-width: 1346px) {
+  @media only screen and (max-width: 1086px) {
     width: calc((100%) / 5);
   }
 
-  @media only screen and (max-width: 1068px) {
+  @media only screen and (max-width: 912px) {
     width: calc((100%) / 4);
   }
 
-  @media only screen and (max-width: 770px) {
+  @media only screen and (max-width: 748px) {
     width: calc((100%) / 3);
-
-    > div > div > div:last-child {
-      display: none;
-    }
   }
 
-  @media only screen and (max-width: 375px) {
+  @media only screen and (max-width: 568px) {
     width: calc((100%) / 2);
   }
 `;

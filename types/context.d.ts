@@ -1,5 +1,5 @@
 import { IModalVisibilities } from "hooks/useModalControl";
-import { IDefaultTheme } from "styled-components";
+import { DefaultTheme } from "styled-components";
 import useAxios from "../hooks/useAxios";
 
 export type Theme = "light" | "dark";
@@ -7,7 +7,7 @@ export type Theme = "light" | "dark";
 export interface ITheme {
   toggle: () => void;
   current: Theme;
-  value: IDefaultTheme;
+  value: DefaultTheme;
 }
 
 export type GlobalRequests = ReturnType<typeof useAxios>;
