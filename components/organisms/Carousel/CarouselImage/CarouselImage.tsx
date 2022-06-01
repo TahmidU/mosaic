@@ -1,8 +1,8 @@
 import { AnimatePresence, motion } from "framer-motion";
+import { ReactElement, Ref } from "react";
 
 import { LinearGradient } from "./styles";
 import Links from "utils/Links";
-import { ReactElement } from "react";
 import { carouselImageAnimVariant } from "./animation-variants";
 
 interface ICarouselImageProps {
@@ -12,6 +12,7 @@ interface ICarouselImageProps {
   currentStep: number;
   handleSlideChange: (direction: 1 | -1, clicked: boolean) => void;
   local?: boolean;
+  ref?: Ref<HTMLImageElement>;
 }
 
 export default function CarouselImage({
@@ -20,6 +21,7 @@ export default function CarouselImage({
   currentStep = 0,
   handleSlideChange,
   local = false,
+  ref,
 }: ICarouselImageProps): ReactElement {
   const swipeConfidenceThreshold = 10000;
   function swipePower(offset: number, velocity: number) {
@@ -29,6 +31,7 @@ export default function CarouselImage({
   return (
     <AnimatePresence initial={false} custom={direction}>
       <motion.img
+        ref={ref}
         key={currentStep}
         src={local ? imageURL : `${Links.tmdbImage}w1280${imageURL}`}
         custom={direction}

@@ -55,6 +55,8 @@ export const ImageContainer = styled.div`
 
   max-width: 1280px;
   overflow: hidden;
+
+  cursor: pointer;
 `;
 ImageContainer.displayName = "ImageContainer";
 

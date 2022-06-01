@@ -12,7 +12,7 @@ import {
   TextStyle,
 } from "./styles";
 import { MathUtils, TextUtils } from "utils";
-import { ReactElement, useEffect, useState } from "react";
+import { ReactElement, useEffect, useRef, useState } from "react";
 
 import CarouselImage from "./CarouselImage";
 import Clips from "./Clips";
@@ -54,6 +54,9 @@ export default function Carousel({
   });
   const textAnimControls = useAnimation();
 
+  // Carousel Image
+  const imageRef = useRef<HTMLDivElement>(null);
+
   // Modal
   const [modalOpen, setModalOpen] = useState({
     open: false,
@@ -71,12 +74,39 @@ export default function Carousel({
   }, [step]);
 
   useEffect(() => {
-    if (modalOpen.open) {
-      setTimerConfig((prev) => ({ ...prev, pause: true }));
-    } else {
-      setTimerConfig((prev) => ({ ...prev, pause: false }));
+    function addEventListeners() {
+      if (image) {
+        image.addEventListener("mouseover", pauseAutoSlide);
+        image.addEventListener("mouseleave", resumeAutoSlide);
+      }
     }
-  }, [modalOpen.open]);
+
+    function removeEventListeners() {
+      if (image) {
+        image.removeEventListener("mouseover", pauseAutoSlide);
+        image.removeEventListener("mouseleave", resumeAutoSlide);
+      }
+    }
+
+    const image = imageRef.current;
+    addEventListeners();
+
+    return () => {
+      removeEventListeners();
+    };
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [imageRef.current]);
+
+  console.log(modalOpen);
+
+  function pauseAutoSlide() {
+    setTimerConfig((prev) => ({ ...prev, pause: true }));
+  }
+
+  function resumeAutoSlide() {
+    setTimerConfig((prev) => ({ ...prev, pause: false }));
+  }
 
   function onTimerAnimEnd() {
     setTimerConfig((prev) => ({ ...prev, reset: false }));
@@ -88,7 +118,6 @@ export default function Carousel({
 
   function onClipClicked(_videoIndex: number) {
     setModalOpen({ open: true, initialIndex: _videoIndex });
-    resetCarouselTimer();
   }
 
   function handleSlideChange(direction: 1 | -1, clicked: boolean = false) {
@@ -106,7 +135,7 @@ export default function Carousel({
 
   return (
     <>
-      <Container>
+      <Container ref={imageRef}>
         <CarouselMainContainer>
           <CarouselReview
             percentage={
@@ -134,7 +163,7 @@ export default function Carousel({
               />
 
               <StepsContainer>
-                {carouselData.map((movies, index) => {
+                {carouselData.map((_, index) => {
                   return (
                     <StepsStyle
                       key={index}
@@ -178,7 +207,7 @@ export default function Carousel({
                 //! Uncomment this once carousel is finished. It's annoying when debugging!
                 !disableAutoSlide && handleSlideChange(1);
               }}
-              pause={timerConfig.pause}
+              pause={timerConfig.pause || modalOpen.open}
               reset={timerConfig.reset}
               onAnimEnd={onTimerAnimEnd}
             />
