@@ -1,11 +1,10 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { ReactElement, useState } from "react";
 
-import Image from "next/image";
 import { LinearGradient } from "./styles";
+import Links from "utils/Links";
+import { ReactElement } from "react";
 import { carouselImageAnimVariant } from "./animation-variants";
 
-//! Some of the code here are kept for slide animation in near future.
 interface ICarouselImageProps {
   imageURL: string;
   direction: number;
@@ -31,15 +30,19 @@ export default function CarouselImage({
     <AnimatePresence initial={false} custom={direction}>
       <motion.img
         key={currentStep}
-        src={local ? imageURL : `https://image.tmdb.org/t/p/w1280${imageURL}`}
+        src={local ? imageURL : `${Links.tmdbImage}w1280${imageURL}`}
         custom={direction}
         variants={carouselImageAnimVariant}
         initial="enter"
         animate="center"
         exit="exit"
         transition={{
-          x: { type: "spring", stiffness: 300, damping: 30 },
-          opacity: { duration: 1.25 },
+          x: {
+            type: "spring",
+            stiffness: 500,
+            damping: 60,
+          },
+          opacity: { duration: 1.5 },
         }}
         drag="x"
         dragConstraints={{ left: 0, right: 0 }}

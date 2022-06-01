@@ -11,7 +11,7 @@ import {
   StepsStyle,
   TextStyle,
 } from "./styles";
-import MathUtils, { TextUtils } from "utils";
+import { MathUtils, TextUtils } from "utils";
 import { ReactElement, useEffect, useState } from "react";
 
 import CarouselImage from "./CarouselImage";
