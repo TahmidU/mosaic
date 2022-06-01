@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
+import { ImageStyle, LinearGradient } from "./styles";
 import { ReactElement, Ref } from "react";
 
-import { LinearGradient } from "./styles";
 import Links from "utils/Links";
 import { carouselImageAnimVariant } from "./animation-variants";
 
@@ -30,7 +30,7 @@ export default function CarouselImage({
 
   return (
     <AnimatePresence initial={false} custom={direction}>
-      <motion.img
+      <ImageStyle
         ref={ref}
         key={currentPage}
         src={local ? imageURL : `${Links.tmdbImage}w1280${imageURL}`}
@@ -59,7 +59,6 @@ export default function CarouselImage({
             handlePageChange(-1, true);
           }
         }}
-        style={{ position: "absolute" }}
       />
       <LinearGradient />
     </AnimatePresence>

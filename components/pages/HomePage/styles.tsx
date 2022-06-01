@@ -13,7 +13,7 @@ export const FirstPageWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: calc(100vh - ${navbarSize});
+  min-height: calc(100vh - ${navbarSize});
 `;
 FirstPageWrapper.displayName = "FirstPageWrapper";
 
@@ -23,6 +23,7 @@ export const ScrollDownContainer = styled.div`
   align-items: center;
   width: 100%;
   height: 100%;
+  margin-top: 1em;
 
   > a:first-child {
     opacity: 40%;

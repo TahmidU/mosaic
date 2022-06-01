@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import styled from "styled-components";
 
 export const LinearGradient = styled.div`
@@ -17,3 +18,10 @@ export const LinearGradient = styled.div`
   pointer-events: none;
 `;
 LinearGradient.displayName = "LinearGradient";
+
+export const ImageStyle = styled(motion.img)`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+`;
+ImageStyle.displayName = "ImageStyle";

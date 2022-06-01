@@ -22,7 +22,7 @@ export const CarouselMainContainer = styled.div`
   flex-direction: row;
   width: 100%;
   max-width: 1280px;
-  height: fit-content;
+  height: 100%;
   justify-content: space-evenly;
   align-items: center;
   position: relative;
@@ -35,7 +35,7 @@ CarouselMainContainer.displayName = "CarouselMainContainer";
 export const CarouselContainer = styled.div`
   width: 100%;
   max-width: 1280px;
-  height: fit-content;
+  height: 100%;
   position: relative;
 
   > span:nth-child(2) {
@@ -49,7 +49,7 @@ export const ImageContainer = styled.div`
   display: flex;
   white-space: nowrap;
 
-  height: 720px;
+  height: 100%;
   max-height: 720px;
   width: 100%;
 

@@ -46,6 +46,7 @@ export default function HomePage({
             carouselData={carouselData}
             videos={videos}
             onPageChange={onStepChange}
+            disableAutoSlide
           />
         )}
         <ScrollDownContainer>
