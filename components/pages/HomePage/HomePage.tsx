@@ -45,7 +45,7 @@ export default function HomePage({
           <Carousel
             carouselData={carouselData}
             videos={videos}
-            onStepChange={onStepChange}
+            onPageChange={onStepChange}
           />
         )}
         <ScrollDownContainer>

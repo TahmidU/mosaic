@@ -9,8 +9,8 @@ interface ICarouselImageProps {
   imageURL: string;
   direction: number;
   disabled?: boolean;
-  currentStep: number;
-  handleSlideChange: (direction: 1 | -1, clicked: boolean) => void;
+  currentPage: number;
+  handlePageChange: (direction: 1 | -1, clicked: boolean) => void;
   local?: boolean;
   ref?: Ref<HTMLImageElement>;
 }
@@ -18,8 +18,8 @@ interface ICarouselImageProps {
 export default function CarouselImage({
   imageURL,
   direction,
-  currentStep = 0,
-  handleSlideChange,
+  currentPage = 0,
+  handlePageChange,
   local = false,
   ref,
 }: ICarouselImageProps): ReactElement {
@@ -32,7 +32,7 @@ export default function CarouselImage({
     <AnimatePresence initial={false} custom={direction}>
       <motion.img
         ref={ref}
-        key={currentStep}
+        key={currentPage}
         src={local ? imageURL : `${Links.tmdbImage}w1280${imageURL}`}
         custom={direction}
         variants={carouselImageAnimVariant}
@@ -54,9 +54,9 @@ export default function CarouselImage({
           const swipe = swipePower(offset.x, velocity.x);
 
           if (swipe < -swipeConfidenceThreshold) {
-            handleSlideChange(1, true);
+            handlePageChange(1, true);
           } else if (swipe > swipeConfidenceThreshold) {
-            handleSlideChange(-1, true);
+            handlePageChange(-1, true);
           }
         }}
         style={{ position: "absolute" }}
