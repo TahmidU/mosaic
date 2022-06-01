@@ -30,5 +30,6 @@ ImageWrapper.displayName = "ImageWrapper";
 export const ImageStyle = styled(Image)`
   width: 100%;
   height: 100%;
+  pointer-events: none;
 `;
 ImageStyle.displayName = "ImageStyle";

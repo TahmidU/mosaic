@@ -170,7 +170,6 @@ export default function Carousel({
                         index - page < 0
                           ? setPage([index, -1])
                           : setPage([index, 1]);
-                        resetCarouselTimer();
                       }}
                     />
                   );
