@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from "framer-motion";
-import { ImageStyle, LinearGradient } from "./styles";
+import { ImageStyle, ImageWrapper, LinearGradient } from "./styles";
 import { ReactElement, Ref } from "react";
 
 import Links from "utils/Links";
@@ -12,7 +12,7 @@ interface ICarouselImageProps {
   currentPage: number;
   handlePageChange: (direction: 1 | -1, clicked: boolean) => void;
   local?: boolean;
-  ref?: Ref<HTMLImageElement>;
+  ref?: Ref<HTMLDivElement>;
 }
 
 export default function CarouselImage({
@@ -30,10 +30,9 @@ export default function CarouselImage({
 
   return (
     <AnimatePresence initial={false} custom={direction}>
-      <ImageStyle
+      <ImageWrapper
         ref={ref}
         key={currentPage}
-        src={local ? imageURL : `${Links.tmdbImage}w1280${imageURL}`}
         custom={direction}
         variants={carouselImageAnimVariant}
         initial="enter"
@@ -59,7 +58,19 @@ export default function CarouselImage({
             handlePageChange(-1, true);
           }
         }}
-      />
+      >
+        <ImageStyle
+          data-testid="CarouselImageImage"
+          src={local ? imageURL : `${Links.tmdbImage}w1280${imageURL}`}
+          blurDataURL={
+            local ? imageURL : `https://image.tmdb.org/t/p/w300${imageURL}`
+          }
+          placeholder="blur"
+          width={1280}
+          height={720}
+          layout="responsive"
+        />
+      </ImageWrapper>
       <LinearGradient />
     </AnimatePresence>
   );

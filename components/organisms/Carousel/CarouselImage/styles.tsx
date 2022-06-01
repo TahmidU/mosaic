@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 
@@ -19,8 +20,14 @@ export const LinearGradient = styled.div`
 `;
 LinearGradient.displayName = "LinearGradient";
 
-export const ImageStyle = styled(motion.img)`
+export const ImageWrapper = styled(motion.div)`
   position: absolute;
+  width: 100%;
+  height: 100%;
+`;
+ImageWrapper.displayName = "ImageWrapper";
+
+export const ImageStyle = styled(Image)`
   width: 100%;
   height: 100%;
 `;
