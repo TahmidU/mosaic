@@ -113,7 +113,7 @@ describe("Carousel", () => {
         carouselData={data}
         localImages
         disableAutoSlide
-        startStep={2}
+        startPage={2}
       />
     );
 

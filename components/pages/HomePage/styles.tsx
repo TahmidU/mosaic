@@ -13,7 +13,8 @@ export const FirstPageWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: calc(100vh - ${navbarSize});
+  min-height: calc(100vh - ${navbarSize});
+  height: 38vw;
 `;
 FirstPageWrapper.displayName = "FirstPageWrapper";
 
@@ -23,6 +24,7 @@ export const ScrollDownContainer = styled.div`
   align-items: center;
   width: 100%;
   height: 100%;
+  margin-top: 3em;
 
   > a:first-child {
     opacity: 40%;
@@ -30,6 +32,10 @@ export const ScrollDownContainer = styled.div`
     :hover {
       opacity: 100%;
     }
+  }
+
+  @media only screen and (max-width: 1024px) {
+    display: none;
   }
 
   @media only screen and (max-height: 876px) {

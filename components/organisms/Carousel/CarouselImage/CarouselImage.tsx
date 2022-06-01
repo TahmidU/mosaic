@@ -1,69 +1,77 @@
-import { Container, ImageStyle, LinearGradient } from "./styles";
-import { ReactElement, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { ImageStyle, ImageWrapper, LinearGradient } from "./styles";
+import { ReactElement, Ref } from "react";
 
-import Image from "next/image";
-import { getCarouselImageAnimVariant } from "./animation-variants";
+import Links from "utils/Links";
+import { carouselImageAnimVariant } from "./animation-variants";
 
-//! Some of the code here are kept for slide animation in near future.
 interface ICarouselImageProps {
   imageURL: string;
+  direction: number;
   disabled?: boolean;
-  index?: number;
-  currentStep?: number;
+  currentPage: number;
+  handlePageChange: (direction: 1 | -1, clicked: boolean) => void;
   local?: boolean;
+  ref?: Ref<HTMLDivElement>;
 }
 
 export default function CarouselImage({
   imageURL,
-  index = 0,
-  currentStep = 0,
+  direction,
+  currentPage = 0,
+  handlePageChange,
   local = false,
+  ref,
 }: ICarouselImageProps): ReactElement {
-  const [loading, setLoading] = useState(true);
+  const swipeConfidenceThreshold = 10000;
+  function swipePower(offset: number, velocity: number) {
+    return Math.abs(offset) * velocity;
+  }
 
   return (
-    <>
-      <Container
-        variants={getCarouselImageAnimVariant(
-          currentStep * 100 + 1,
-          currentStep * 100,
-          currentStep * 100 - 1
-        )}
-        initial={false}
-        animate={
-          index - currentStep >= 1
-            ? "moveRight"
-            : index - currentStep === 0
-            ? "show"
-            : index - currentStep <= -1
-            ? "moveLeft"
-            : ""
-        }
+    <AnimatePresence initial={false} custom={direction}>
+      <ImageWrapper
+        ref={ref}
+        key={currentPage}
+        custom={direction}
+        variants={carouselImageAnimVariant}
+        initial="enter"
+        animate="center"
+        exit="exit"
         transition={{
-          duration: 0.85,
+          x: {
+            type: "spring",
+            stiffness: 500,
+            damping: 60,
+          },
+          opacity: { duration: 1.5 },
+        }}
+        drag="x"
+        dragConstraints={{ left: 0, right: 0 }}
+        dragElastic={1}
+        onDragEnd={(e, { offset, velocity }) => {
+          const swipe = swipePower(offset.x, velocity.x);
+
+          if (swipe < -swipeConfidenceThreshold) {
+            handlePageChange(1, true);
+          } else if (swipe > swipeConfidenceThreshold) {
+            handlePageChange(-1, true);
+          }
         }}
       >
-        <ImageStyle>
-          {!loading && <LinearGradient />}
-          <Image
-            data-testid="CarouselImageImage"
-            alt="Carousel"
-            src={
-              local ? imageURL : `https://image.tmdb.org/t/p/w1280${imageURL}`
-            }
-            blurDataURL={
-              local ? imageURL : `https://image.tmdb.org/t/p/w300${imageURL}`
-            }
-            placeholder="blur"
-            width={1280}
-            height={720}
-            layout="responsive"
-            onLoadingComplete={() => {
-              setLoading(false);
-            }}
-          />
-        </ImageStyle>
-      </Container>
-    </>
+        <ImageStyle
+          data-testid="CarouselImageImage"
+          src={local ? imageURL : `${Links.tmdbImage}w1280${imageURL}`}
+          blurDataURL={
+            local ? imageURL : `https://image.tmdb.org/t/p/w300${imageURL}`
+          }
+          placeholder="blur"
+          width={1280}
+          height={720}
+          layout="responsive"
+        />
+      </ImageWrapper>
+      <LinearGradient />
+    </AnimatePresence>
   );
 }

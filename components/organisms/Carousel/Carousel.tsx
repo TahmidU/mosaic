@@ -11,14 +11,14 @@ import {
   StepsStyle,
   TextStyle,
 } from "./styles";
-import { ReactElement, useEffect, useState } from "react";
+import { MathUtils, TextUtils } from "utils";
+import { ReactElement, useEffect, useRef, useState } from "react";
 
 import CarouselImage from "./CarouselImage";
 import Clips from "./Clips";
 import { IDiscoverMovie } from "../../../types/api/discover";
 import { IVideo } from "types/api/videos";
 import ProgressiveBar from "./ProgressiveBar";
-import { TextUtils } from "utils";
 import dynamic from "next/dynamic";
 import { textAnimVariant } from "./animation-variants";
 import { useAnimation } from "framer-motion";
@@ -31,9 +31,9 @@ interface ICarouselProps {
   localImages?: boolean;
   disableAutoSlide?: boolean;
   autoSlideDuration?: number;
-  startStep?: number;
+  startPage?: number;
   autoSlideCallback?: () => void;
-  onStepChange?: (step: number) => void;
+  onPageChange?: (step: number) => void;
 }
 
 export default function Carousel({
@@ -42,17 +42,20 @@ export default function Carousel({
   localImages = false,
   disableAutoSlide = false,
   autoSlideDuration = 15,
-  startStep = 0,
+  startPage = 0,
   autoSlideCallback = () => {},
-  onStepChange,
+  onPageChange,
 }: ICarouselProps): ReactElement {
   // Carousel Slide
-  const [step, setStep] = useState(startStep);
+  const [[page, direction], setPage] = useState([startPage, 0]);
   const [timerConfig, setTimerConfig] = useState({
     pause: false,
     reset: false,
   });
   const textAnimControls = useAnimation();
+
+  // Carousel Image
+  const imageRef = useRef<HTMLDivElement>(null);
 
   // Modal
   const [modalOpen, setModalOpen] = useState({
@@ -65,18 +68,43 @@ export default function Carousel({
     textAnimControls.set(textAnimVariant.hide);
     textAnimControls.start(() => textAnimVariant.show);
 
-    onStepChange && onStepChange(step);
+    onPageChange && onPageChange(page);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [step]);
+  }, [page]);
 
   useEffect(() => {
-    if (modalOpen.open) {
-      setTimerConfig((prev) => ({ ...prev, pause: true }));
-    } else {
-      setTimerConfig((prev) => ({ ...prev, pause: false }));
+    function addEventListeners() {
+      if (image) {
+        image.addEventListener("mouseover", pauseAutoSlide);
+        image.addEventListener("mouseleave", resumeAutoSlide);
+      }
     }
-  }, [modalOpen.open]);
+
+    function removeEventListeners() {
+      if (image) {
+        image.removeEventListener("mouseover", pauseAutoSlide);
+        image.removeEventListener("mouseleave", resumeAutoSlide);
+      }
+    }
+
+    const image = imageRef.current;
+    addEventListeners();
+
+    return () => {
+      removeEventListeners();
+    };
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [imageRef.current]);
+
+  function pauseAutoSlide() {
+    setTimerConfig((prev) => ({ ...prev, pause: true }));
+  }
+
+  function resumeAutoSlide() {
+    setTimerConfig((prev) => ({ ...prev, pause: false }));
+  }
 
   function onTimerAnimEnd() {
     setTimerConfig((prev) => ({ ...prev, reset: false }));
@@ -88,31 +116,29 @@ export default function Carousel({
 
   function onClipClicked(_videoIndex: number) {
     setModalOpen({ open: true, initialIndex: _videoIndex });
-    resetCarouselTimer();
   }
 
-  function handleSlideChange(next: boolean, clicked: boolean = false) {
+  function handlePageChange(direction: 1 | -1, clicked: boolean = false) {
     if (clicked) {
       resetCarouselTimer();
     } else {
       autoSlideCallback();
     }
 
-    if (next) {
-      setStep((_step) => (_step < carouselData.length - 1 ? _step + 1 : 0));
-    } else {
-      setStep((_step) => (_step < 1 ? carouselData.length - 1 : _step - 1));
-    }
+    setPage(([_page, _direction]) => [
+      MathUtils.mod(_page + direction, carouselData.length),
+      direction,
+    ]);
   }
 
   return (
     <>
-      <Container>
+      <Container ref={imageRef}>
         <CarouselMainContainer>
           <CarouselReview
             percentage={
               carouselData.length > 0
-                ? Math.round(carouselData[step].vote_average * 10)
+                ? Math.round(carouselData[page].vote_average * 10)
                 : 0
             }
           />
@@ -121,32 +147,29 @@ export default function Carousel({
             variant="left"
             strokeWidth={3}
             onClick={() => {
-              handleSlideChange(false, true);
+              handlePageChange(-1, true);
             }}
           />
           <CarouselContainer>
             <ImageContainer>
-              {carouselData.map((movies, index) => {
-                return (
-                  <CarouselImage
-                    key={index}
-                    imageURL={movies.backdrop_path}
-                    currentStep={step}
-                    index={index}
-                    local={localImages}
-                  />
-                );
-              })}
+              <CarouselImage
+                direction={direction}
+                imageURL={carouselData[page].backdrop_path}
+                currentPage={page}
+                local={localImages}
+                handlePageChange={handlePageChange}
+              />
 
               <StepsContainer>
-                {carouselData.map((movies, index) => {
+                {carouselData.map((_, index) => {
                   return (
                     <StepsStyle
                       key={index}
-                      enabled={index <= step}
+                      enabled={index <= page}
                       onClick={() => {
-                        setStep(index);
-                        resetCarouselTimer();
+                        index - page < 0
+                          ? setPage([index, -1])
+                          : setPage([index, 1]);
                       }}
                     />
                   );
@@ -154,12 +177,12 @@ export default function Carousel({
               </StepsContainer>
             </ImageContainer>
             <TextStyle variants={textAnimVariant} animate={textAnimControls}>
-              <p>{carouselData[step] ? carouselData[step].title : ""}</p>
-              <p>{carouselData[step] ? carouselData[step].overview : ""}</p>
+              <p>{carouselData[page] ? carouselData[page].title : ""}</p>
+              <p>{carouselData[page] ? carouselData[page].overview : ""}</p>
               <p>
                 RELEASE DATE:{" "}
-                {carouselData[step]
-                  ? TextUtils.dateFormatter(carouselData[step].release_date)
+                {carouselData[page]
+                  ? TextUtils.dateFormatter(carouselData[page].release_date)
                   : ""}
               </p>
             </TextStyle>
@@ -169,7 +192,7 @@ export default function Carousel({
             variant="right"
             strokeWidth={3}
             onClick={() => {
-              handleSlideChange(true, true);
+              handlePageChange(1, true);
             }}
           />
           <ProgBar>
@@ -177,9 +200,9 @@ export default function Carousel({
               duration={autoSlideDuration}
               trigger={() => {
                 //! Uncomment this once carousel is finished. It's annoying when debugging!
-                !disableAutoSlide && handleSlideChange(true);
+                !disableAutoSlide && handlePageChange(1);
               }}
-              pause={timerConfig.pause}
+              pause={timerConfig.pause || modalOpen.open}
               reset={timerConfig.reset}
               onAnimEnd={onTimerAnimEnd}
             />
