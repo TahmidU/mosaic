@@ -113,6 +113,33 @@ export const FooterContainer = styled.div`
   }
 
   @media only screen and (max-width: 500px) {
+    > div:first-child {
+      position: relative;
+      div {
+        width: 50%;
+        height: 50%;
+
+        svg {
+          width: 50%;
+          height: 50%;
+        }
+
+        span {
+          ${({ theme }) => theme.fonts.main.small};
+        }
+      }
+    }
+
+    > div:first-child::after {
+      content: "";
+      position: absolute;
+      z-index: 1;
+      border-bottom: 1px solid
+        ${({ theme }) => theme.cAlmostWhite.alpha(0.2).toString()};
+      width: 100%;
+      bottom: 0;
+    }
+
     > div:nth-child(2) {
       display: flex;
       flex-direction: column;
