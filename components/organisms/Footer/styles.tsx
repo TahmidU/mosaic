@@ -6,7 +6,7 @@ export const FooterContainer = styled.div`
   grid-template-columns: 0.2fr 0.8fr;
   width: 100%;
   align-items: start;
-  justify-content: center;
+  justify-content: space-around;
   background: ${({ theme }) => theme.reverseMain};
   color: ${({ theme }) => theme.main};
   padding: 2rem 0;
@@ -18,14 +18,18 @@ export const FooterContainer = styled.div`
 
   // Logos
   > div:first-child {
-    margin: 0.2rem 0;
+    margin: 0.2rem 1rem;
+
+    > div:first-child > span:last-child {
+      ${({ theme }) => theme.fonts.main.small};
+    }
 
     text {
       fill: ${({ theme }) => theme.main} !important;
     }
 
     div {
-      margin: 0rem 0 1rem 2rem;
+      margin: 0 0 1rem 0;
     }
 
     svg {
@@ -38,7 +42,7 @@ export const FooterContainer = styled.div`
   > div:nth-child(2) {
     display: grid;
     grid-auto-flow: row;
-    grid-template-columns: 0.18fr 0.18fr 0.18fr 0.18fr auto;
+    grid-template-columns: auto auto auto auto auto;
     grid-template-areas: "product community support company .";
 
     > div:first-child {
@@ -75,6 +79,47 @@ export const FooterContainer = styled.div`
           text-decoration: underline;
           font-weight: bold;
         }
+      }
+
+      @media only screen and (max-width: 1024px) {
+        ${({ theme }) => theme.fonts.main.regular};
+
+        > span:first-child {
+          ${({ theme }) => theme.fonts.main.mediumBig};
+        }
+      }
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 1rem;
+
+    > div:first-child {
+      display: flex;
+      width: 100%;
+      margin: 0;
+
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    > div:nth-child(2) {
+      display: grid;
+      width: 100%;
+      grid-template-columns: auto auto auto auto auto;
+    }
+  }
+
+  @media only screen and (max-width: 500px) {
+    > div:nth-child(2) {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+
+      > div {
+        margin: 1rem 0;
       }
     }
   }
