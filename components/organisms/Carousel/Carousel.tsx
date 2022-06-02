@@ -14,7 +14,7 @@ import {
 import { MathUtils, TextUtils } from "utils";
 import { ReactElement, useEffect, useRef, useState } from "react";
 
-import CarouselImage from "./CarouselImage";
+import CarouselImage from "components/molecules/CarouselImage";
 import Clips from "./Clips";
 import { IDiscoverMovie } from "../../../types/api/discover";
 import { IVideo } from "types/api/videos";

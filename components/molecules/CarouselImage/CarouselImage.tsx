@@ -8,7 +8,6 @@ import { carouselImageAnimVariant } from "./animation-variants";
 interface ICarouselImageProps {
   imageURL: string;
   direction: number;
-  disabled?: boolean;
   currentPage: number;
   handlePageChange: (direction: 1 | -1, clicked: boolean) => void;
   local?: boolean;
@@ -61,9 +60,15 @@ export default function CarouselImage({
       >
         <ImageStyle
           data-testid="CarouselImageImage"
-          src={local ? imageURL : `${Links.tmdbImage}w1280${imageURL}`}
+          src={
+            local
+              ? require("" + imageURL)
+              : `${Links.tmdbImage}w1280${imageURL}`
+          }
           blurDataURL={
-            local ? imageURL : `https://image.tmdb.org/t/p/w300${imageURL}`
+            local
+              ? require("" + imageURL)
+              : `https://image.tmdb.org/t/p/w300${imageURL}`
           }
           placeholder="blur"
           width={1280}
