@@ -23,13 +23,15 @@ LinearGradient.displayName = "LinearGradient";
 export const ImageWrapper = styled(motion.div)`
   position: absolute;
   width: 100%;
-  height: 100%;
+  //height: 100%;
+  height: fit-content;
 `;
 ImageWrapper.displayName = "ImageWrapper";
 
 export const ImageStyle = styled(Image)`
   width: 100%;
-  height: 100%;
+  //height: 100%;
+  height: fit-content;
   pointer-events: none;
 `;
 ImageStyle.displayName = "ImageStyle";

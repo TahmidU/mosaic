@@ -15,6 +15,11 @@ export const FirstPageWrapper = styled.div`
   width: 100%;
   min-height: calc(100vh - ${navbarSize});
   height: 38vw;
+
+  @media only screen and (max-width: 1024px) {
+    min-height: unset;
+    height: fit-content;
+  }
 `;
 FirstPageWrapper.displayName = "FirstPageWrapper";
 

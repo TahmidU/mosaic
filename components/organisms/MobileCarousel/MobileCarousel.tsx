@@ -19,11 +19,11 @@ export default function MobileCarousel({
 }: IMobileCarouselProps): ReactElement {
   const [[page, direction], setPage] = useState([startPage, 0]);
 
-  if (!carouselData || carouselData.length === 0) {
-    return <div></div>;
-  }
-
   function handlePageChange() {}
+
+  if (!carouselData || carouselData.length === 0) {
+    return <></>;
+  }
 
   return (
     <Container>

@@ -10,6 +10,7 @@ import Carousel from "components/organisms/Carousel";
 import { Element } from "react-scroll";
 import { IDiscoverMovie } from "types/api/discover";
 import { IVideo } from "types/api/videos";
+import MobileCarousel from "components/organisms/MobileCarousel";
 import { ReactElement } from "react";
 import ScrollDownBtn from "components/molecules/ScrollDownBtn";
 import { useMediaQuery } from "react-responsive";
@@ -40,7 +41,10 @@ export default function HomePage({
     <Container>
       <FirstPageWrapper>
         {isSmallTablet ? (
-          <></>
+          <MobileCarousel
+            carouselData={carouselData}
+            onPageChange={onStepChange}
+          />
         ) : (
           <Carousel
             carouselData={carouselData}
