@@ -17,8 +17,8 @@ export const FirstPageWrapper = styled.div`
   height: 38vw;
 
   @media only screen and (max-width: 1024px) {
-    min-height: unset;
-    height: fit-content;
+    //min-height: unset;
+    height: 100%;
   }
 `;
 FirstPageWrapper.displayName = "FirstPageWrapper";

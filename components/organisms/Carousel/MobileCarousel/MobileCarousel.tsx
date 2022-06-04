@@ -1,6 +1,6 @@
 import { ReactElement, useState } from "react";
 
-import CarouselImage from "components/molecules/CarouselImage";
+import CarouselImage from "components/organisms/Carousel/CarouselImage";
 import { Container } from "./styles";
 import { IDiscoverMovie } from "types/api/discover";
 
