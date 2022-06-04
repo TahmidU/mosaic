@@ -14,12 +14,7 @@ export const FirstPageWrapper = styled.div`
   flex-direction: column;
   width: 100%;
   min-height: calc(100vh - ${navbarSize});
-  height: 38vw;
-
-  @media only screen and (max-width: 1024px) {
-    //min-height: unset;
-    height: 100%;
-  }
+  height: calc(100vh - ${navbarSize});
 `;
 FirstPageWrapper.displayName = "FirstPageWrapper";
 

@@ -11,6 +11,7 @@ interface IMobileCarouselProps {
   onPageChange?: (step: number) => void;
   page: number;
   direction: number;
+  handlePageDirectionChange: (direction: 1 | -1) => void;
 }
 
 export default function MobileCarousel({
@@ -20,6 +21,7 @@ export default function MobileCarousel({
   onPageChange,
   page,
   direction,
+  handlePageDirectionChange,
 }: IMobileCarouselProps): ReactElement {
   function handlePageChange() {}
 
@@ -34,7 +36,7 @@ export default function MobileCarousel({
         imageURL={carouselData[page]?.backdrop_path}
         currentPage={page}
         local={localImages}
-        handlePageChange={handlePageChange}
+        handlePageChange={handlePageDirectionChange}
       />
     </Container>
   );

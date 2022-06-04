@@ -53,6 +53,7 @@ export default function Carousel({
           onPageChange={onPageChange}
           page={page}
           direction={direction}
+          handlePageDirectionChange={handlePageDirectionChange}
         />
       ) : (
         <DesktopCarousel
