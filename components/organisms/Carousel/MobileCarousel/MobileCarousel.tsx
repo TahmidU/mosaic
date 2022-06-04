@@ -9,6 +9,8 @@ interface IMobileCarouselProps {
   localImages?: boolean;
   startPage?: number;
   onPageChange?: (step: number) => void;
+  page: number;
+  direction: number;
 }
 
 export default function MobileCarousel({
@@ -16,9 +18,9 @@ export default function MobileCarousel({
   localImages,
   startPage = 0,
   onPageChange,
+  page,
+  direction,
 }: IMobileCarouselProps): ReactElement {
-  const [[page, direction], setPage] = useState([startPage, 0]);
-
   function handlePageChange() {}
 
   if (!carouselData || carouselData.length === 0) {

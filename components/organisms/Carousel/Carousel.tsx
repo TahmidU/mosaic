@@ -34,6 +34,10 @@ interface ICarouselProps {
   startPage?: number;
   autoSlideCallback?: () => void;
   onPageChange?: (step: number) => void;
+  page: number;
+  direction: number;
+  handlePageDirectionChange: (direction: 1 | -1) => void;
+  handlePageChange: (toPage: number) => void;
 }
 
 export default function Carousel({
@@ -45,9 +49,12 @@ export default function Carousel({
   startPage = 0,
   autoSlideCallback = () => {},
   onPageChange,
+  page,
+  direction,
+  handlePageDirectionChange,
+  handlePageChange,
 }: ICarouselProps): ReactElement {
   // Carousel Slide
-  const [[page, direction], setPage] = useState([startPage, 0]);
   const [timerConfig, setTimerConfig] = useState({
     pause: false,
     reset: false,
@@ -118,17 +125,14 @@ export default function Carousel({
     setModalOpen({ open: true, initialIndex: _videoIndex });
   }
 
-  function handlePageChange(direction: 1 | -1, clicked: boolean = false) {
+  function changeSlide(direction: 1 | -1, clicked: boolean = false) {
     if (clicked) {
       resetCarouselTimer();
     } else {
       autoSlideCallback();
     }
 
-    setPage(([_page, _direction]) => [
-      MathUtils.mod(_page + direction, carouselData.length),
-      direction,
-    ]);
+    handlePageDirectionChange(direction);
   }
 
   return (
@@ -146,9 +150,7 @@ export default function Carousel({
             dataTestId="CarouselPrevBtn"
             variant="left"
             strokeWidth={3}
-            onClick={() => {
-              handlePageChange(-1, true);
-            }}
+            onClick={() => changeSlide(-1, true)}
           />
           <CarouselContainer>
             <ImageContainer>
@@ -157,7 +159,7 @@ export default function Carousel({
                 imageURL={carouselData[page].backdrop_path}
                 currentPage={page}
                 local={localImages}
-                handlePageChange={handlePageChange}
+                handlePageChange={changeSlide}
               />
 
               <StepsContainer>
@@ -166,11 +168,7 @@ export default function Carousel({
                     <StepsStyle
                       key={index}
                       enabled={index <= page}
-                      onClick={() => {
-                        index - page < 0
-                          ? setPage([index, -1])
-                          : setPage([index, 1]);
-                      }}
+                      onClick={() => handlePageChange(index)}
                     />
                   );
                 })}
@@ -191,16 +189,14 @@ export default function Carousel({
             dataTestId="CarouselNextBtn"
             variant="right"
             strokeWidth={3}
-            onClick={() => {
-              handlePageChange(1, true);
-            }}
+            onClick={() => changeSlide(1, true)}
           />
           <ProgBar>
             <ProgressiveBar
               duration={autoSlideDuration}
               trigger={() => {
                 //! Uncomment this once carousel is finished. It's annoying when debugging!
-                !disableAutoSlide && handlePageChange(1);
+                !disableAutoSlide && changeSlide(1);
               }}
               pause={timerConfig.pause || modalOpen.open}
               reset={timerConfig.reset}

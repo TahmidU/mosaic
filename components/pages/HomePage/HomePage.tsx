@@ -40,19 +40,13 @@ export default function HomePage({
   return (
     <Container>
       <FirstPageWrapper>
-        {isSmallTablet ? (
-          <MobileCarousel
-            carouselData={carouselData}
-            onPageChange={onStepChange}
-          />
-        ) : (
-          <Carousel
-            carouselData={carouselData}
-            videos={videos}
-            onPageChange={onStepChange}
-            disableAutoSlide
-          />
-        )}
+        <Carousel
+          carouselData={carouselData}
+          videos={videos}
+          onPageChange={onStepChange}
+          disableAutoSlide
+        />
+
         <ScrollDownContainer>
           <ScrollDownBtn to="SecondPageWrapper" />
         </ScrollDownContainer>
