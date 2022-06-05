@@ -23,7 +23,7 @@ LinearGradient.displayName = "LinearGradient";
 export const ImageWrapper = styled(motion.div)`
   position: absolute;
   width: 100%;
-  height: calc(100vh - 80px);
+  //height: calc(100vh - 80px);
   overflow: hidden;
 `;
 ImageWrapper.displayName = "ImageWrapper";
