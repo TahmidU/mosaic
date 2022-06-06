@@ -1,7 +1,7 @@
+import { Container, ImageContainer } from "./styles";
 import { ReactElement, useState } from "react";
 
 import CarouselImage from "components/organisms/Carousel/CarouselImage";
-import { Container } from "./styles";
 import { IDiscoverMovie } from "types/api/discover";
 
 interface IMobileCarouselProps {
@@ -31,13 +31,15 @@ export default function MobileCarousel({
 
   return (
     <Container>
-      <CarouselImage
-        direction={direction}
-        imageURL={carouselData[page]?.backdrop_path}
-        currentPage={page}
-        local={localImages}
-        handlePageChange={handlePageDirectionChange}
-      />
+      <ImageContainer>
+        <CarouselImage
+          direction={direction}
+          imageURL={carouselData[page]?.backdrop_path}
+          currentPage={page}
+          local={localImages}
+          handlePageChange={handlePageDirectionChange}
+        />
+      </ImageContainer>
     </Container>
   );
 }

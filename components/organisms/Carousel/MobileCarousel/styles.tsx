@@ -6,3 +6,13 @@ export const Container = styled.div`
   position: relative;
 `;
 Container.displayName = "Container";
+
+export const ImageContainer = styled.div`
+  position: relative;
+  display: flex;
+  white-space: nowrap;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+`;
+ImageContainer.displayName = "ImageContainer";
