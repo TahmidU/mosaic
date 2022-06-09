@@ -32,7 +32,7 @@ export default function Carousel({
 }: ICarouselProps): ReactElement {
   const [[page, direction], setPage] = useState([startPage, 0]);
 
-  // Animations
+  // Text Animations
   const textAnimControls = useAnimation();
 
   useEffect(() => {
@@ -44,7 +44,7 @@ export default function Carousel({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page]);
 
-  const isSmallTablet = useMediaQuery({
+  const isMobile = useMediaQuery({
     query: "(max-width: 1024px)",
   });
 
@@ -61,7 +61,7 @@ export default function Carousel({
 
   return (
     <>
-      {isSmallTablet ? (
+      {isMobile ? (
         <MobileCarousel
           carouselData={carouselData}
           onPageChange={onPageChange}

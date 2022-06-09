@@ -10,9 +10,7 @@ import {
   ProgBar,
   StepsContainer,
   StepsStyle,
-  TextStyle,
 } from "./styles";
-import { MathUtils, TextUtils } from "utils";
 import { ReactElement, useEffect, useRef, useState } from "react";
 
 import CarouselImage from "components/organisms/Carousel/CarouselImage";
@@ -22,7 +20,6 @@ import { IVideo } from "types/api/videos";
 import MovieInfo from "./MovieInfo";
 import ProgressiveBar from "./ProgressiveBar";
 import dynamic from "next/dynamic";
-import { textAnimVariant } from "./animation-variants";
 
 const VideoModal = dynamic(() => import("./VideoModal"), { ssr: false });
 
