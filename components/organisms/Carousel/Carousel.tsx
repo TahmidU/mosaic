@@ -1,3 +1,4 @@
+import { AnimationControls, useAnimation } from "framer-motion";
 import {
   CarouselContainer,
   CarouselMainContainer,
@@ -18,10 +19,10 @@ import CarouselImage from "components/organisms/Carousel/CarouselImage";
 import Clips from "./Clips";
 import { IDiscoverMovie } from "../../../types/api/discover";
 import { IVideo } from "types/api/videos";
+import MovieInfo from "./MovieInfo";
 import ProgressiveBar from "./ProgressiveBar";
 import dynamic from "next/dynamic";
 import { textAnimVariant } from "./animation-variants";
-import { useAnimation } from "framer-motion";
 
 const VideoModal = dynamic(() => import("./VideoModal"), { ssr: false });
 
@@ -38,6 +39,7 @@ interface ICarouselProps {
   direction: number;
   handlePageDirectionChange: (direction: 1 | -1) => void;
   handlePageChange: (toPage: number) => void;
+  animationControls?: AnimationControls;
 }
 
 export default function Carousel({
@@ -53,13 +55,13 @@ export default function Carousel({
   direction,
   handlePageDirectionChange,
   handlePageChange,
+  animationControls,
 }: ICarouselProps): ReactElement {
   // Carousel Slide
   const [timerConfig, setTimerConfig] = useState({
     pause: false,
     reset: false,
   });
-  const textAnimControls = useAnimation();
 
   // Carousel Image
   const imageRef = useRef<HTMLDivElement>(null);
@@ -69,16 +71,6 @@ export default function Carousel({
     open: false,
     initialIndex: 0,
   });
-
-  // Animations
-  useEffect(() => {
-    textAnimControls.set(textAnimVariant.hide);
-    textAnimControls.start(() => textAnimVariant.show);
-
-    onPageChange && onPageChange(page);
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [page]);
 
   useEffect(() => {
     function addEventListeners() {
@@ -174,16 +166,12 @@ export default function Carousel({
                 })}
               </StepsContainer>
             </ImageContainer>
-            <TextStyle variants={textAnimVariant} animate={textAnimControls}>
-              <p>{carouselData[page] ? carouselData[page].title : ""}</p>
-              <p>{carouselData[page] ? carouselData[page].overview : ""}</p>
-              <p>
-                RELEASE DATE:{" "}
-                {carouselData[page]
-                  ? TextUtils.dateFormatter(carouselData[page].release_date)
-                  : ""}
-              </p>
-            </TextStyle>
+            <MovieInfo
+              title={carouselData[page]?.title}
+              desc={carouselData[page]?.overview}
+              releaseDate={carouselData[page]?.release_date}
+              animationControls={animationControls}
+            />
           </CarouselContainer>
           <NextBtn
             dataTestId="CarouselNextBtn"

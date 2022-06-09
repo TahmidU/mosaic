@@ -1,10 +1,12 @@
-import { ReactElement, useState } from "react";
+import { ReactElement, useEffect, useState } from "react";
 
 import { default as DesktopCarousel } from "./Carousel";
 import { IDiscoverMovie } from "types/api/discover";
 import { IVideo } from "types/api/videos";
 import { MathUtils } from "utils";
 import MobileCarousel from "./MobileCarousel";
+import { textAnimVariant } from "./MovieInfo/animation-variants";
+import { useAnimation } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
 
 interface ICarouselProps {
@@ -29,6 +31,18 @@ export default function Carousel({
   onPageChange,
 }: ICarouselProps): ReactElement {
   const [[page, direction], setPage] = useState([startPage, 0]);
+
+  // Animations
+  const textAnimControls = useAnimation();
+
+  useEffect(() => {
+    textAnimControls.set(textAnimVariant.hide);
+    textAnimControls.start(() => textAnimVariant.show);
+
+    onPageChange && onPageChange(page);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [page]);
 
   const isSmallTablet = useMediaQuery({
     query: "(max-width: 1024px)",
@@ -65,6 +79,7 @@ export default function Carousel({
           handlePageChange={handlePageChange}
           page={page}
           direction={direction}
+          animationControls={textAnimControls}
         />
       )}
     </>
