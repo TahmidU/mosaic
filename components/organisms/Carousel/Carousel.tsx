@@ -36,7 +36,7 @@ interface ICarouselProps {
   direction: number;
   handlePageDirectionChange: (direction: 1 | -1) => void;
   handlePageChange: (toPage: number) => void;
-  animationControls?: AnimationControls;
+  textAnimControls?: AnimationControls;
 }
 
 export default function Carousel({
@@ -52,7 +52,7 @@ export default function Carousel({
   direction,
   handlePageDirectionChange,
   handlePageChange,
-  animationControls,
+  textAnimControls,
 }: ICarouselProps): ReactElement {
   // Carousel Slide
   const [timerConfig, setTimerConfig] = useState({
@@ -167,7 +167,7 @@ export default function Carousel({
               title={carouselData[page]?.title}
               desc={carouselData[page]?.overview}
               releaseDate={carouselData[page]?.release_date}
-              animationControls={animationControls}
+              animationControls={textAnimControls}
             />
           </CarouselContainer>
           <NextBtn

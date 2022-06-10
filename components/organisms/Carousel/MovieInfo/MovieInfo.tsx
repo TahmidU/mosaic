@@ -9,6 +9,7 @@ interface IMovieInfoProps {
   desc: string;
   releaseDate: string;
   animationControls?: AnimationControls;
+  className?: string;
 }
 
 export default function MovieInfo({
@@ -16,9 +17,14 @@ export default function MovieInfo({
   desc,
   releaseDate,
   animationControls,
+  className,
 }: IMovieInfoProps): ReactElement {
   return (
-    <TextStyle variants={textAnimVariant} animate={animationControls}>
+    <TextStyle
+      className={className}
+      variants={textAnimVariant}
+      animate={animationControls}
+    >
       <p>{title}</p>
       <p>{desc}</p>
       <p>RELEASE DATE: {TextUtils.dateFormatter(releaseDate)}</p>

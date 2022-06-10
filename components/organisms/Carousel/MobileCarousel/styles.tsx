@@ -1,3 +1,4 @@
+import MovieInfo from "../MovieInfo";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -16,3 +17,22 @@ export const ImageContainer = styled.div`
   overflow: hidden;
 `;
 ImageContainer.displayName = "ImageContainer";
+
+export const MovieInfoStyle = styled(MovieInfo)`
+  top: 40%;
+  display: flex;
+  flex-direction: column;
+
+  > p:first-child {
+    ${({ theme }) => theme.fonts.main.big};
+  }
+
+  > p:nth-child(2) {
+    ${({ theme }) => theme.fonts.main.regular};
+  }
+
+  > p:nth-child(3) {
+    ${({ theme }) => theme.fonts.main.small};
+  }
+`;
+MovieInfoStyle.displayName = "MovieInfoStyle";

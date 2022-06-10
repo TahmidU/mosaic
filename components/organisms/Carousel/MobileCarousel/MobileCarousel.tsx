@@ -1,8 +1,10 @@
-import { Container, ImageContainer } from "./styles";
+import { Container, ImageContainer, MovieInfoStyle } from "./styles";
 import { ReactElement, useState } from "react";
 
+import { AnimationControls } from "framer-motion";
 import CarouselImage from "components/organisms/Carousel/CarouselImage";
 import { IDiscoverMovie } from "types/api/discover";
+import MovieInfo from "../MovieInfo";
 
 interface IMobileCarouselProps {
   carouselData?: IDiscoverMovie[];
@@ -12,6 +14,7 @@ interface IMobileCarouselProps {
   page: number;
   direction: number;
   handlePageDirectionChange: (direction: 1 | -1) => void;
+  textAnimControls?: AnimationControls;
 }
 
 export default function MobileCarousel({
@@ -22,6 +25,7 @@ export default function MobileCarousel({
   page,
   direction,
   handlePageDirectionChange,
+  textAnimControls,
 }: IMobileCarouselProps): ReactElement {
   function handlePageChange() {}
 
@@ -40,6 +44,12 @@ export default function MobileCarousel({
           handlePageChange={handlePageDirectionChange}
         />
       </ImageContainer>
+      <MovieInfoStyle
+        title={carouselData[page]?.title}
+        desc={carouselData[page]?.overview}
+        releaseDate={carouselData[page]?.release_date}
+        animationControls={textAnimControls}
+      />
     </Container>
   );
 }

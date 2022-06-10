@@ -68,6 +68,7 @@ export default function Carousel({
           page={page}
           direction={direction}
           handlePageDirectionChange={handlePageDirectionChange}
+          textAnimControls={textAnimControls}
         />
       ) : (
         <DesktopCarousel
@@ -79,7 +80,7 @@ export default function Carousel({
           handlePageChange={handlePageChange}
           page={page}
           direction={direction}
-          animationControls={textAnimControls}
+          textAnimControls={textAnimControls}
         />
       )}
     </>
