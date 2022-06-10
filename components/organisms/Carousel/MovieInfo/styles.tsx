@@ -12,7 +12,6 @@ export const TextStyle = styled(motion.div)`
     position: relative;
     z-index: 10;
     ${({ theme }) => theme.fonts.main.humongous};
-
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -44,6 +43,20 @@ export const TextStyle = styled(motion.div)`
   }
 
   @media (max-width: 1640px) {
+    > span:first-child {
+      ${({ theme }) => theme.fonts.main.colossal};
+    }
+
+    > span:nth-child(2) {
+      ${({ theme }) => theme.fonts.main.big};
+    }
+
+    > span:nth-child(3) {
+      ${({ theme }) => theme.fonts.main.medium};
+    }
+  }
+
+  @media (max-width: 1200px) {
     > span:first-child {
       ${({ theme }) => theme.fonts.main.massive};
     }

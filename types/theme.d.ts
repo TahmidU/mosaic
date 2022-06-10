@@ -19,6 +19,7 @@ export interface IFonts {
     big: string;
     bigger: string;
     massive: string;
+    colossal: string;
     humongous: string;
   };
   secondary: {
@@ -29,6 +30,7 @@ export interface IFonts {
     big: string;
     bigger: string;
     massive: string;
+    colossal: string;
     humongous: string;
   };
   tertiary: {
@@ -39,6 +41,7 @@ export interface IFonts {
     big: string;
     bigger: string;
     massive: string;
+    colossal: string;
     humongous: string;
   };
 }

@@ -57,6 +57,8 @@ const fonts: IFonts = {
     font-size: 24px;`,
     massive: `font-family: 'Nunito', sans-serif;
     font-size: 32px;`,
+    colossal: `font-family: 'Nunito', sans-serif;
+    font-size: 48px;`,
     humongous: `font-family: 'Nunito', sans-serif;
     font-size: 72px;`,
   },
@@ -73,6 +75,7 @@ const fonts: IFonts = {
     bigger: `font-family: 'Source Sans Pro', sans-serif;
     font-size: 24px;`,
     massive: `font-family: 'Source Sans Pro', sans-serif; font-size: 32px`,
+    colossal: `font-family: 'Source Sans Pro', sans-serif; font-size: 48px`,
     humongous: `font-family: 'Source Sans Pro', sans-serif;
     font-size: 72px;`,
   },
@@ -91,6 +94,8 @@ const fonts: IFonts = {
     font-size: 24px;`,
     massive: `font-family: 'Roboto', sans-serif;
     font-size: 32px;`,
+    colossal: `font-family: 'Roboto', sans-serif;
+    font-size: 48px;`,
     humongous: `font-family: 'Roboto', sans-serif;
     font-size: 72px;`,
   },
