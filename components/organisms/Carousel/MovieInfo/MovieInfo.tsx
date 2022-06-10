@@ -25,9 +25,9 @@ export default function MovieInfo({
       variants={textAnimVariant}
       animate={animationControls}
     >
-      <p>{title}</p>
-      <p>{desc}</p>
-      <p>RELEASE DATE: {TextUtils.dateFormatter(releaseDate)}</p>
+      <span>{title}</span>
+      <span>{desc}</span>
+      <span>RELEASE DATE: {TextUtils.dateFormatter(releaseDate)}</span>
     </TextStyle>
   );
 }

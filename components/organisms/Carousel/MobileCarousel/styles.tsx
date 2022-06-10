@@ -19,20 +19,19 @@ export const ImageContainer = styled.div`
 ImageContainer.displayName = "ImageContainer";
 
 export const MovieInfoStyle = styled(MovieInfo)`
-  top: 40%;
   display: flex;
   flex-direction: column;
 
-  > p:first-child {
+  > span:first-child {
+    ${({ theme }) => theme.fonts.main.massive};
+  }
+
+  > span:nth-child(2) {
     ${({ theme }) => theme.fonts.main.big};
   }
 
-  > p:nth-child(2) {
+  > span:nth-child(3) {
     ${({ theme }) => theme.fonts.main.regular};
-  }
-
-  > p:nth-child(3) {
-    ${({ theme }) => theme.fonts.main.small};
   }
 `;
 MovieInfoStyle.displayName = "MovieInfoStyle";
