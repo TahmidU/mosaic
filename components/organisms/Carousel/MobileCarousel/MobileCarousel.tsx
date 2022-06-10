@@ -1,4 +1,10 @@
-import { Container, ImageContainer, MovieInfoStyle } from "./styles";
+import {
+  Container,
+  ImageContainer,
+  MovieInfoStyle,
+  StepStatusStyle,
+  StepsContainer,
+} from "./styles";
 import { ReactElement, useState } from "react";
 
 import { AnimationControls } from "framer-motion";
@@ -50,6 +56,9 @@ export default function MobileCarousel({
         releaseDate={carouselData[page]?.release_date}
         animationControls={textAnimControls}
       />
+      <StepsContainer>
+        <StepStatusStyle />
+      </StepsContainer>
     </Container>
   );
 }

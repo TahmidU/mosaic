@@ -1,4 +1,5 @@
 import MovieInfo from "../MovieInfo";
+import StepStatus from "../StepStatus";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -35,3 +36,19 @@ export const MovieInfoStyle = styled(MovieInfo)`
   }
 `;
 MovieInfoStyle.displayName = "MovieInfoStyle";
+
+export const StepsContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 12px;
+  width: 100%;
+  height: 20px;
+  z-index: 20;
+`;
+StepsContainer.displayName = "StepsContainer";
+
+export const StepStatusStyle = styled(StepStatus)``;
+StepStatusStyle.displayName = "StepStatusStyle";
