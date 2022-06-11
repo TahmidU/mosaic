@@ -68,6 +68,7 @@ export default function Carousel({
           page={page}
           direction={direction}
           handlePageDirectionChange={handlePageDirectionChange}
+          handlePageChange={handlePageChange}
           textAnimControls={textAnimControls}
         />
       ) : (

@@ -82,5 +82,7 @@ export const StepsContainer = styled.div`
 `;
 StepsContainer.displayName = "StepsContainer";
 
-export const StepStatusStyle = styled(StepStatus)``;
+export const StepStatusStyle = styled(StepStatus)`
+  margin: 0 0.15rem;
+`;
 StepStatusStyle.displayName = "StepStatusStyle";

@@ -20,6 +20,7 @@ interface IMobileCarouselProps {
   page: number;
   direction: number;
   handlePageDirectionChange: (direction: 1 | -1) => void;
+  handlePageChange: (toPage: number) => void;
   textAnimControls?: AnimationControls;
 }
 
@@ -31,10 +32,9 @@ export default function MobileCarousel({
   page,
   direction,
   handlePageDirectionChange,
+  handlePageChange,
   textAnimControls,
 }: IMobileCarouselProps): ReactElement {
-  function handlePageChange() {}
-
   if (!carouselData || carouselData.length === 0) {
     return <></>;
   }
@@ -57,7 +57,15 @@ export default function MobileCarousel({
         animationControls={textAnimControls}
       />
       <StepsContainer>
-        <StepStatusStyle />
+        {carouselData.map((_, index) => {
+          return (
+            <StepStatusStyle
+              key={index}
+              enabled={index <= page}
+              onClick={() => handlePageChange(index)}
+            />
+          );
+        })}
       </StepsContainer>
     </Container>
   );
