@@ -51,11 +51,20 @@ export const MovieInfoStyle = styled(MovieInfo)`
   }
 
   @media only screen and (max-width: 448px) {
+    padding: 0 2em;
+    top: 50%;
+
     > span:first-child {
-      ${({ theme }) => theme.fonts.main.regular};
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      ${({ theme }) => theme.fonts.main.bigger};
+      white-space: unset;
     }
 
     > span:nth-child(2) {
+      display: none;
       ${({ theme }) => theme.fonts.main.small};
     }
 
@@ -66,6 +75,10 @@ export const MovieInfoStyle = styled(MovieInfo)`
 
   @media only screen and (max-width: 375px) {
     top: 48%;
+
+    > span:first-child {
+      ${({ theme }) => theme.fonts.main.mediumBig};
+    }
   }
 `;
 MovieInfoStyle.displayName = "MovieInfoStyle";
