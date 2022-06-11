@@ -34,6 +34,38 @@ export const MovieInfoStyle = styled(MovieInfo)`
   > span:nth-child(3) {
     ${({ theme }) => theme.fonts.main.regular};
   }
+
+  @media only screen and (max-width: 586px) {
+    > span:first-child {
+      ${({ theme }) => theme.fonts.main.big};
+    }
+
+    > span:nth-child(2) {
+      ${({ theme }) => theme.fonts.main.regular};
+    }
+
+    > span:nth-child(3) {
+      ${({ theme }) => theme.fonts.main.small};
+    }
+  }
+
+  @media only screen and (max-width: 448px) {
+    > span:first-child {
+      ${({ theme }) => theme.fonts.main.regular};
+    }
+
+    > span:nth-child(2) {
+      ${({ theme }) => theme.fonts.main.small};
+    }
+
+    > span:nth-child(3) {
+      ${({ theme }) => theme.fonts.main.extraSmall};
+    }
+  }
+
+  @media only screen and (max-width: 375px) {
+    top: 48%;
+  }
 `;
 MovieInfoStyle.displayName = "MovieInfoStyle";
 

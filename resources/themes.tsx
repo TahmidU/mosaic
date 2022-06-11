@@ -43,6 +43,8 @@ const themes: { [key: string]: Partial<DefaultTheme> } = {
 
 const fonts: IFonts = {
   main: {
+    extraSmall: `font-family: 'Nunito', sans-serif;
+    font-size: 8px;`,
     small: `font-family: 'Nunito', sans-serif;
     font-size: 11px;`,
     regular: `font-family: 'Nunito', sans-serif;
@@ -63,6 +65,8 @@ const fonts: IFonts = {
     font-size: 72px;`,
   },
   secondary: {
+    extraSmall: `font-family: 'Source Sans Pro', sans-serif;
+    font-size: 8px;`,
     small: `font-family: 'Source Sans Pro', sans-serif;
     font-size: 11px;`,
     regular: `font-family: 'Source Sans Pro', sans-serif;
@@ -80,6 +84,8 @@ const fonts: IFonts = {
     font-size: 72px;`,
   },
   tertiary: {
+    extraSmall: `font-family: 'Roboto', sans-serif;
+    font-size: 8px;`,
     small: `font-family: 'Roboto', sans-serif;
     font-size: 11px;`,
     regular: `font-family: 'Roboto', sans-serif;
