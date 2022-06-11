@@ -6,14 +6,16 @@ import {
 } from "./styles";
 import useExploreList, { ExploreMovies, ExploreTVs } from "./useExploreList";
 
-import Carousel from "components/organisms/Carousel";
 import { Element } from "react-scroll";
 import { IDiscoverMovie } from "types/api/discover";
 import { IVideo } from "types/api/videos";
-import MobileCarousel from "components/organisms/Carousel/MobileCarousel";
 import { ReactElement } from "react";
 import ScrollDownBtn from "components/molecules/ScrollDownBtn";
-import { useMediaQuery } from "react-responsive";
+import dynamic from "next/dynamic";
+
+const Carousel = dynamic(() => import("components/organisms/Carousel"), {
+  ssr: false,
+});
 
 interface IHomePageProps {
   carouselData: IDiscoverMovie[];
@@ -32,10 +34,6 @@ export default function HomePage({
     exploreTVSelect,
     exploreTVsList,
   } = useExploreList();
-
-  const isSmallTablet = useMediaQuery({
-    query: "(max-width: 1024px)",
-  });
 
   return (
     <Container>
