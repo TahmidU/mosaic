@@ -1,3 +1,4 @@
+import { AnimationControls, useAnimation } from "framer-motion";
 import {
   CarouselContainer,
   CarouselMainContainer,
@@ -9,19 +10,16 @@ import {
   ProgBar,
   StepsContainer,
   StepsStyle,
-  TextStyle,
 } from "./styles";
-import { MathUtils, TextUtils } from "utils";
 import { ReactElement, useEffect, useRef, useState } from "react";
 
-import CarouselImage from "./CarouselImage";
+import CarouselImage from "components/organisms/Carousel/CarouselImage";
 import Clips from "./Clips";
 import { IDiscoverMovie } from "../../../types/api/discover";
 import { IVideo } from "types/api/videos";
+import MovieInfo from "./MovieInfo";
 import ProgressiveBar from "./ProgressiveBar";
 import dynamic from "next/dynamic";
-import { textAnimVariant } from "./animation-variants";
-import { useAnimation } from "framer-motion";
 
 const VideoModal = dynamic(() => import("./VideoModal"), { ssr: false });
 
@@ -34,6 +32,11 @@ interface ICarouselProps {
   startPage?: number;
   autoSlideCallback?: () => void;
   onPageChange?: (step: number) => void;
+  page: number;
+  direction: number;
+  handlePageDirectionChange: (direction: 1 | -1) => void;
+  handlePageChange: (toPage: number) => void;
+  textAnimControls?: AnimationControls;
 }
 
 export default function Carousel({
@@ -45,14 +48,17 @@ export default function Carousel({
   startPage = 0,
   autoSlideCallback = () => {},
   onPageChange,
+  page,
+  direction,
+  handlePageDirectionChange,
+  handlePageChange,
+  textAnimControls,
 }: ICarouselProps): ReactElement {
   // Carousel Slide
-  const [[page, direction], setPage] = useState([startPage, 0]);
   const [timerConfig, setTimerConfig] = useState({
     pause: false,
     reset: false,
   });
-  const textAnimControls = useAnimation();
 
   // Carousel Image
   const imageRef = useRef<HTMLDivElement>(null);
@@ -62,16 +68,6 @@ export default function Carousel({
     open: false,
     initialIndex: 0,
   });
-
-  // Animations
-  useEffect(() => {
-    textAnimControls.set(textAnimVariant.hide);
-    textAnimControls.start(() => textAnimVariant.show);
-
-    onPageChange && onPageChange(page);
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [page]);
 
   useEffect(() => {
     function addEventListeners() {
@@ -118,17 +114,14 @@ export default function Carousel({
     setModalOpen({ open: true, initialIndex: _videoIndex });
   }
 
-  function handlePageChange(direction: 1 | -1, clicked: boolean = false) {
+  function changeSlide(direction: 1 | -1, clicked: boolean = false) {
     if (clicked) {
       resetCarouselTimer();
     } else {
       autoSlideCallback();
     }
 
-    setPage(([_page, _direction]) => [
-      MathUtils.mod(_page + direction, carouselData.length),
-      direction,
-    ]);
+    handlePageDirectionChange(direction);
   }
 
   return (
@@ -146,9 +139,7 @@ export default function Carousel({
             dataTestId="CarouselPrevBtn"
             variant="left"
             strokeWidth={3}
-            onClick={() => {
-              handlePageChange(-1, true);
-            }}
+            onClick={() => changeSlide(-1, true)}
           />
           <CarouselContainer>
             <ImageContainer>
@@ -157,7 +148,7 @@ export default function Carousel({
                 imageURL={carouselData[page].backdrop_path}
                 currentPage={page}
                 local={localImages}
-                handlePageChange={handlePageChange}
+                handlePageChange={changeSlide}
               />
 
               <StepsContainer>
@@ -166,41 +157,31 @@ export default function Carousel({
                     <StepsStyle
                       key={index}
                       enabled={index <= page}
-                      onClick={() => {
-                        index - page < 0
-                          ? setPage([index, -1])
-                          : setPage([index, 1]);
-                      }}
+                      onClick={() => handlePageChange(index)}
                     />
                   );
                 })}
               </StepsContainer>
             </ImageContainer>
-            <TextStyle variants={textAnimVariant} animate={textAnimControls}>
-              <p>{carouselData[page] ? carouselData[page].title : ""}</p>
-              <p>{carouselData[page] ? carouselData[page].overview : ""}</p>
-              <p>
-                RELEASE DATE:{" "}
-                {carouselData[page]
-                  ? TextUtils.dateFormatter(carouselData[page].release_date)
-                  : ""}
-              </p>
-            </TextStyle>
+            <MovieInfo
+              title={carouselData[page]?.title}
+              desc={carouselData[page]?.overview}
+              releaseDate={carouselData[page]?.release_date}
+              animationControls={textAnimControls}
+            />
           </CarouselContainer>
           <NextBtn
             dataTestId="CarouselNextBtn"
             variant="right"
             strokeWidth={3}
-            onClick={() => {
-              handlePageChange(1, true);
-            }}
+            onClick={() => changeSlide(1, true)}
           />
           <ProgBar>
             <ProgressiveBar
               duration={autoSlideDuration}
               trigger={() => {
                 //! Uncomment this once carousel is finished. It's annoying when debugging!
-                !disableAutoSlide && handlePageChange(1);
+                !disableAutoSlide && changeSlide(1);
               }}
               pause={timerConfig.pause || modalOpen.open}
               reset={timerConfig.reset}

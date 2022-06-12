@@ -13,8 +13,13 @@ export const FirstPageWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  min-height: calc(100vh - ${navbarSize});
-  height: 38vw;
+  max-height: calc(100vh - ${navbarSize});
+  height: calc(100vh - 80px);
+
+  @media only screen and (max-width: 1264px) {
+    min-height: unset;
+    height: 100%;
+  }
 `;
 FirstPageWrapper.displayName = "FirstPageWrapper";
 
@@ -34,7 +39,7 @@ export const ScrollDownContainer = styled.div`
     }
   }
 
-  @media only screen and (max-width: 1024px) {
+  @media only screen and (max-width: 1264px) {
     display: none;
   }
 

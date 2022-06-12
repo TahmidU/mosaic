@@ -7,7 +7,6 @@ export const LinearGradient = styled.div`
   width: 100%;
   height: 100%;
   z-index: 2;
-  border-radius: 48px;
 
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   background: linear-gradient(
@@ -23,13 +22,15 @@ LinearGradient.displayName = "LinearGradient";
 export const ImageWrapper = styled(motion.div)`
   position: absolute;
   width: 100%;
-  height: 100%;
+  //height: calc(100vh - 80px);
+  overflow: hidden;
 `;
 ImageWrapper.displayName = "ImageWrapper";
 
 export const ImageStyle = styled(Image)`
   width: 100%;
-  height: 100%;
+  //height: 100%;
+  //height: fit-content;
   pointer-events: none;
 `;
 ImageStyle.displayName = "ImageStyle";

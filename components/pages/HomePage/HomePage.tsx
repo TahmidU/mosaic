@@ -6,13 +6,16 @@ import {
 } from "./styles";
 import useExploreList, { ExploreMovies, ExploreTVs } from "./useExploreList";
 
-import Carousel from "components/organisms/Carousel";
 import { Element } from "react-scroll";
 import { IDiscoverMovie } from "types/api/discover";
 import { IVideo } from "types/api/videos";
 import { ReactElement } from "react";
 import ScrollDownBtn from "components/molecules/ScrollDownBtn";
-import { useMediaQuery } from "react-responsive";
+import dynamic from "next/dynamic";
+
+const Carousel = dynamic(() => import("components/organisms/Carousel"), {
+  ssr: false,
+});
 
 interface IHomePageProps {
   carouselData: IDiscoverMovie[];
@@ -32,23 +35,16 @@ export default function HomePage({
     exploreTVsList,
   } = useExploreList();
 
-  const isSmallTablet = useMediaQuery({
-    query: "(max-width: 1024px)",
-  });
-
   return (
     <Container>
       <FirstPageWrapper>
-        {isSmallTablet ? (
-          <></>
-        ) : (
-          <Carousel
-            carouselData={carouselData}
-            videos={videos}
-            onPageChange={onStepChange}
-            disableAutoSlide
-          />
-        )}
+        <Carousel
+          carouselData={carouselData}
+          videos={videos}
+          onPageChange={onStepChange}
+          disableAutoSlide
+        />
+
         <ScrollDownContainer>
           <ScrollDownBtn to="SecondPageWrapper" />
         </ScrollDownContainer>

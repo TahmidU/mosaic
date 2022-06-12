@@ -12,6 +12,7 @@ export interface IColours {
 
 export interface IFonts {
   main: {
+    extraSmall: string;
     small: string;
     regular: string;
     medium: string;
@@ -19,9 +20,11 @@ export interface IFonts {
     big: string;
     bigger: string;
     massive: string;
+    colossal: string;
     humongous: string;
   };
   secondary: {
+    extraSmall: string;
     small: string;
     regular: string;
     medium: string;
@@ -29,9 +32,11 @@ export interface IFonts {
     big: string;
     bigger: string;
     massive: string;
+    colossal: string;
     humongous: string;
   };
   tertiary: {
+    extraSmall: string;
     small: string;
     regular: string;
     medium: string;
@@ -39,6 +44,7 @@ export interface IFonts {
     big: string;
     bigger: string;
     massive: string;
+    colossal: string;
     humongous: string;
   };
 }
