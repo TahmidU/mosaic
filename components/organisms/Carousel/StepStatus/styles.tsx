@@ -33,7 +33,7 @@ export const Indicator = styled.div<{ enabled: boolean }>`
 
   cursor: pointer;
 
-  @media only screen and (max-width: 1024px) {
+  @media only screen and (max-width: 1264px) {
     width: 18px;
     height: 4px;
     border-radius: 2px;

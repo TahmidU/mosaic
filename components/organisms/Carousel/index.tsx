@@ -45,7 +45,7 @@ export default function Carousel({
   }, [page]);
 
   const isMobile = useMediaQuery({
-    query: "(max-width: 1024px)",
+    query: "(max-width: 1264px)",
   });
 
   function handlePageDirectionChange(direction: 1 | -1) {
