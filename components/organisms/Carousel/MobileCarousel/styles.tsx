@@ -1,4 +1,5 @@
 import MovieInfo from "../MovieInfo";
+import SlideButton from "components/molecules/SlideButton";
 import StepStatus from "../StepStatus";
 import styled from "styled-components";
 
@@ -20,9 +21,38 @@ export const ImageContainer = styled.div`
 `;
 ImageContainer.displayName = "ImageContainer";
 
+export const SlideBtn = styled(SlideButton)`
+  position: absolute;
+  z-index: 10;
+  top: 37.5%;
+
+  @media only screen and (max-width: 768px) {
+    top: 40%;
+    height: 108px;
+    width: 54px;
+  }
+
+  @media only screen and (max-width: 586px) {
+    height: 75px;
+    width: 37.5px;
+  }
+`;
+SlideBtn.displayName = "SlideBtn";
+
+export const PrevBtn = styled(SlideBtn)`
+  left: 1%;
+`;
+PrevBtn.displayName = "PrevBtn";
+
+export const NextBtn = styled(SlideBtn)`
+  right: 1%;
+`;
+NextBtn.displayName = "NextBtn";
+
 export const MovieInfoStyle = styled(MovieInfo)`
   display: flex;
   flex-direction: column;
+  padding: 0 8em;
 
   > span:first-child {
     ${({ theme }) => theme.fonts.main.massive};
@@ -37,6 +67,8 @@ export const MovieInfoStyle = styled(MovieInfo)`
   }
 
   @media only screen and (max-width: 586px) {
+    padding: 0 4em;
+
     > span:first-child {
       ${({ theme }) => theme.fonts.main.big};
     }
@@ -51,7 +83,6 @@ export const MovieInfoStyle = styled(MovieInfo)`
   }
 
   @media only screen and (max-width: 448px) {
-    padding: 0 2em;
     top: 50%;
 
     > span:first-child {
@@ -59,13 +90,12 @@ export const MovieInfoStyle = styled(MovieInfo)`
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
       overflow: hidden;
-      ${({ theme }) => theme.fonts.main.bigger};
+      ${({ theme }) => theme.fonts.main.big};
       white-space: unset;
     }
 
     > span:nth-child(2) {
       display: none;
-      ${({ theme }) => theme.fonts.main.small};
     }
 
     > span:nth-child(3) {

@@ -2,6 +2,8 @@ import {
   Container,
   ImageContainer,
   MovieInfoStyle,
+  NextBtn,
+  PrevBtn,
   StepStatusStyle,
   StepsContainer,
 } from "./styles";
@@ -10,7 +12,6 @@ import { ReactElement, useState } from "react";
 import { AnimationControls } from "framer-motion";
 import CarouselImage from "components/organisms/Carousel/CarouselImage";
 import { IDiscoverMovie } from "types/api/discover";
-import MovieInfo from "../MovieInfo";
 
 interface IMobileCarouselProps {
   carouselData?: IDiscoverMovie[];
@@ -41,6 +42,11 @@ export default function MobileCarousel({
 
   return (
     <Container>
+      <PrevBtn
+        dataTestId="MobileCarouselPrevBtn"
+        variant="simpleLeft"
+        onClick={() => handlePageDirectionChange(-1)}
+      />
       <ImageContainer>
         <CarouselImage
           direction={direction}
@@ -55,6 +61,11 @@ export default function MobileCarousel({
         desc={carouselData[page]?.overview}
         releaseDate={carouselData[page]?.release_date}
         animationControls={textAnimControls}
+      />
+      <NextBtn
+        dataTestId="MobileCarouselNextBtn"
+        variant="simpleRight"
+        onClick={() => handlePageDirectionChange(1)}
       />
       <StepsContainer>
         {carouselData.map((_, index) => {
