@@ -44,5 +44,16 @@ export const Indicator = styled.div<{ enabled: boolean }>`
       animation: ${indicatorExpand} 0.1s linear forwards;
     }
   }
+
+  @media only screen and (max-width: 499px) {
+    width: 18px;
+    height: 10px;
+    border-radius: 2px;
+    animation: unset;
+
+    &:hover {
+      animation: unset;
+    }
+  }
 `;
 Indicator.displayName = "Indicator";
