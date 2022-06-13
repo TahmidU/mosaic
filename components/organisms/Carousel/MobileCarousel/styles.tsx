@@ -24,28 +24,37 @@ ImageContainer.displayName = "ImageContainer";
 export const SlideBtn = styled(SlideButton)`
   position: absolute;
   z-index: 10;
-  top: 37.5%;
+  top: 0%;
+  height: 100%;
+  border-color: transparent;
+  opacity: 30%;
+
+  :hover,
+  :active {
+    opacity: 80%;
+  }
 
   @media only screen and (max-width: 768px) {
-    top: 40%;
-    height: 108px;
     width: 54px;
   }
 
   @media only screen and (max-width: 586px) {
-    height: 75px;
     width: 37.5px;
+  }
+
+  @media only screen and (max-width: 499px) {
+    display: none;
   }
 `;
 SlideBtn.displayName = "SlideBtn";
 
 export const PrevBtn = styled(SlideBtn)`
-  left: 1%;
+  //left: 1%;
 `;
 PrevBtn.displayName = "PrevBtn";
 
 export const NextBtn = styled(SlideBtn)`
-  right: 1%;
+  right: 0%;
 `;
 NextBtn.displayName = "NextBtn";
 
@@ -82,8 +91,9 @@ export const MovieInfoStyle = styled(MovieInfo)`
     }
   }
 
-  @media only screen and (max-width: 448px) {
+  @media only screen and (max-width: 499px) {
     top: 50%;
+    padding: 0 2em;
 
     > span:first-child {
       display: -webkit-box;
@@ -128,5 +138,17 @@ StepsContainer.displayName = "StepsContainer";
 
 export const StepStatusStyle = styled(StepStatus)`
   margin: 0 0.15rem;
+
+  @media only screen and (max-width: 499px) {
+    margin: 0 0.5em;
+  }
+
+  @media only screen and (max-width: 400px) {
+    margin: 0 0.4em;
+  }
+
+  @media only screen and (max-width: 350px) {
+    margin: 0 0.15em;
+  }
 `;
 StepStatusStyle.displayName = "StepStatusStyle";
