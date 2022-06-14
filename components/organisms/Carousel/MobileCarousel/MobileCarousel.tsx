@@ -1,5 +1,6 @@
 import {
   Container,
+  Frame,
   ImageContainer,
   MovieInfoStyle,
   NextBtn,
@@ -42,42 +43,44 @@ export default function MobileCarousel({
 
   return (
     <Container>
-      <PrevBtn
-        dataTestId="MobileCarouselPrevBtn"
-        variant="simpleLeft"
-        onClick={() => handlePageDirectionChange(-1)}
-      />
-      <ImageContainer>
-        <CarouselImage
-          direction={direction}
-          imageURL={carouselData[page]?.backdrop_path}
-          currentPage={page}
-          local={localImages}
-          handlePageChange={handlePageDirectionChange}
+      <Frame>
+        <PrevBtn
+          dataTestId="MobileCarouselPrevBtn"
+          variant="simpleLeft"
+          onClick={() => handlePageDirectionChange(-1)}
         />
-      </ImageContainer>
+        <ImageContainer>
+          <CarouselImage
+            direction={direction}
+            imageURL={carouselData[page]?.backdrop_path}
+            currentPage={page}
+            local={localImages}
+            handlePageChange={handlePageDirectionChange}
+          />
+        </ImageContainer>
+        <NextBtn
+          dataTestId="MobileCarouselNextBtn"
+          variant="simpleRight"
+          onClick={() => handlePageDirectionChange(1)}
+        />
+        <StepsContainer>
+          {carouselData.map((_, index) => {
+            return (
+              <StepStatusStyle
+                key={index}
+                enabled={index <= page}
+                onClick={() => handlePageChange(index)}
+              />
+            );
+          })}
+        </StepsContainer>
+      </Frame>
       <MovieInfoStyle
         title={carouselData[page]?.title}
         desc={carouselData[page]?.overview}
         releaseDate={carouselData[page]?.release_date}
         animationControls={textAnimControls}
       />
-      <NextBtn
-        dataTestId="MobileCarouselNextBtn"
-        variant="simpleRight"
-        onClick={() => handlePageDirectionChange(1)}
-      />
-      <StepsContainer>
-        {carouselData.map((_, index) => {
-          return (
-            <StepStatusStyle
-              key={index}
-              enabled={index <= page}
-              onClick={() => handlePageChange(index)}
-            />
-          );
-        })}
-      </StepsContainer>
     </Container>
   );
 }
