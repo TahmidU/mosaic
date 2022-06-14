@@ -8,8 +8,21 @@ export const Container = styled.div`
   height: 55.7vw;
   position: relative;
   background-color: ${({ theme }) => theme.almostBlack};
+  display: flex;
+  flex-direction: column;
+
+  @media only screen and (max-width: 499px) {
+    height: 70vw;
+  }
 `;
 Container.displayName = "Container";
+
+export const Frame = styled.div`
+  position: relative;
+  display: flex;
+  height: 100%;
+`;
+Frame.displayName = "Frame";
 
 export const ImageContainer = styled.div`
   position: relative;
@@ -27,11 +40,13 @@ export const SlideBtn = styled(SlideButton)`
   top: 0%;
   height: 100%;
   border-color: transparent;
-  opacity: 30%;
+  background-color: ${({ theme }) => theme.almostBlack};
+  opacity: 20%;
 
   :hover,
   :active {
-    opacity: 80%;
+    background-color: ${({ theme }) => theme.almostBlack};
+    opacity: 50%;
   }
 
   @media only screen and (max-width: 768px) {
@@ -40,10 +55,6 @@ export const SlideBtn = styled(SlideButton)`
 
   @media only screen and (max-width: 586px) {
     width: 37.5px;
-  }
-
-  @media only screen and (max-width: 499px) {
-    display: none;
   }
 `;
 SlideBtn.displayName = "SlideBtn";
@@ -92,15 +103,17 @@ export const MovieInfoStyle = styled(MovieInfo)`
   }
 
   @media only screen and (max-width: 499px) {
-    top: 50%;
-    padding: 0 2em;
+    position: relative;
+    top: unset;
+    padding: 0.55em 1em 0.05em 1em;
+    min-height: 15vw;
 
     > span:first-child {
       display: -webkit-box;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
       overflow: hidden;
-      ${({ theme }) => theme.fonts.main.big};
+      ${({ theme }) => theme.fonts.main.medium};
       white-space: unset;
     }
 
@@ -114,10 +127,14 @@ export const MovieInfoStyle = styled(MovieInfo)`
   }
 
   @media only screen and (max-width: 375px) {
-    top: 48%;
-
     > span:first-child {
-      ${({ theme }) => theme.fonts.main.mediumBig};
+      ${({ theme }) => theme.fonts.main.regular};
+    }
+  }
+
+  @media only screen and (max-width: 330px) {
+    > span:first-child {
+      ${({ theme }) => theme.fonts.main.small};
     }
   }
 `;
@@ -129,10 +146,14 @@ export const StepsContainer = styled.div`
   justify-content: center;
   align-items: center;
   position: absolute;
-  bottom: 12px;
+  bottom: 10px;
   width: 100%;
   height: 20px;
   z-index: 20;
+
+  @media only screen and (max-width: 499px) {
+    bottom: -11px;
+  }
 `;
 StepsContainer.displayName = "StepsContainer";
 
@@ -140,15 +161,7 @@ export const StepStatusStyle = styled(StepStatus)`
   margin: 0 0.15rem;
 
   @media only screen and (max-width: 499px) {
-    margin: 0 0.5em;
-  }
-
-  @media only screen and (max-width: 400px) {
-    margin: 0 0.4em;
-  }
-
-  @media only screen and (max-width: 350px) {
-    margin: 0 0.15em;
+    margin: 0 0.0625rem;
   }
 `;
 StepStatusStyle.displayName = "StepStatusStyle";

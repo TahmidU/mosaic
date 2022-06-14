@@ -46,8 +46,8 @@ export const Indicator = styled.div<{ enabled: boolean }>`
   }
 
   @media only screen and (max-width: 499px) {
-    width: 18px;
-    height: 10px;
+    width: 100%;
+    height: 4px;
     border-radius: 2px;
     animation: unset;
 
