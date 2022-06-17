@@ -7,5 +7,7 @@ const payload: IPayload = {
 };
 export default payload;
 
-export const Basic = (args: any) => <SelectorComponent {...args} />;
+const options = ["In Theatres", "Popular", "Upcoming"];
+
+export const Basic = (args: any) => <SelectorComponent options={options} />;
 Basic.args = {};

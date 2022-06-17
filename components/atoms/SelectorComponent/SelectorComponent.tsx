@@ -1,11 +1,23 @@
+import { Container, Option } from "./styles";
+
 import { ReactElement } from "react";
 
-interface ISelectorComponent {}
+interface ISelectorComponent {
+  options: string[];
+}
 
-export default function SelectorComponent({}: ISelectorComponent): ReactElement {
+export default function SelectorComponent({
+  options,
+}: ISelectorComponent): ReactElement {
   return (
-    <div>
-      <div></div>
-    </div>
+    <Container>
+      {options.map((_option, key) => {
+        return (
+          <Option key={key} value={_option}>
+            {_option}
+          </Option>
+        );
+      })}
+    </Container>
   );
 }
