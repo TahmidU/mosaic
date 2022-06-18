@@ -1,7 +1,16 @@
 import styled from "styled-components";
 
-export const ButtonStyle = styled.button`
-  border: 10px solid ${({ theme }) => theme.main};
-  border-radius: 10px;
+export const ButtonBasis = styled.button`
+  all: unset;
+  cursor: pointer;
+  ${({ theme }) => theme.fonts.main.regular};
 `;
-ButtonStyle.displayName = "ButtonStyle";
+ButtonBasis.displayName = "ButtonBasis";
+
+export const TextButtonContainer = styled(ButtonBasis)`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+`;
+TextButtonContainer.displayName = "TextButtonContainer";

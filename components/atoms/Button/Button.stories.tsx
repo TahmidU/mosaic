@@ -7,5 +7,7 @@ const payload: IPayload = {
 };
 export default payload;
 
-export const Basic = (args: any) => <Button {...args} />;
-Basic.args = {};
+export const Basic = (args: any) => <Button>Special Button</Button>;
+Basic.args = {
+  variant: "text",
+};
