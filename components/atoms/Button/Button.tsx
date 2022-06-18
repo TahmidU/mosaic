@@ -8,14 +8,18 @@ interface IButtonProps {
   variant?: Variant;
   className?: string;
   children: ReactNode;
+  onClick: () => void;
 }
 
 export default function Button({
   variant = "text",
   className,
   children,
-}: IButtonProps): ReactElement {
+  onClick,
+}: Partial<IButtonProps>): ReactElement {
   return (
-    <TextButtonContainer className={className}>{children}</TextButtonContainer>
+    <TextButtonContainer className={className} onClick={onClick}>
+      {children}
+    </TextButtonContainer>
   );
 }
