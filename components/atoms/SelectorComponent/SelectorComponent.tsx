@@ -46,7 +46,7 @@ export default function SelectorComponent({
   }, [handleClickOut]);
 
   return (
-    <Container ref={dropdownRef} className={className}>
+    <Container ref={dropdownRef} className={className} isOpen={isOpen}>
       <DropdownButton onClick={toggleDropdownMenu}>
         <p>{currSelected}</p>
         <DownIcon />
