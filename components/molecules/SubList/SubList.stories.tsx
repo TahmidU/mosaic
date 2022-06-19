@@ -7,5 +7,25 @@ const payload: IPayload = {
 };
 export default payload;
 
-export const Basic = (args: any) => <SubList {...args} />;
+enum ExploreMovies {
+  IN_THEATRES = "In Theatres",
+  POPULAR = "Popular",
+  LATEST = "Latest",
+  UPCOMING = "Upcoming",
+  TOP_RATED = "Top Rated",
+}
+
+export const Basic = (args: any) => (
+  <SubList
+    options={[
+      ExploreMovies.IN_THEATRES,
+      ExploreMovies.POPULAR,
+      ExploreMovies.LATEST,
+      ExploreMovies.UPCOMING,
+      ExploreMovies.TOP_RATED,
+    ]}
+    onChange={(selected: ExploreMovies) => console.log(selected)}
+    {...args}
+  />
+);
 Basic.args = {};

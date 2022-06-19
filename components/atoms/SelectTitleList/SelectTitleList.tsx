@@ -4,11 +4,13 @@ import { ReactElement, useState } from "react";
 interface ISelectTitleListProps<T> {
   options: T[];
   onChange?: (selected: T) => void;
+  className?: string;
 }
 
 export default function SelectTitleList<T>({
   options,
   onChange = () => {},
+  className,
 }: ISelectTitleListProps<T>): ReactElement {
   const [currIndex, setIndex] = useState(0);
 
@@ -17,7 +19,7 @@ export default function SelectTitleList<T>({
   };
 
   return (
-    <Container>
+    <Container className={className}>
       {options.map((_option, _index) => {
         return (
           <Option
