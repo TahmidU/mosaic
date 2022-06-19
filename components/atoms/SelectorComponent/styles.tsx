@@ -1,6 +1,29 @@
+import styled, { css, keyframes } from "styled-components";
+
 import Button from "../Button";
 import { GrDown } from "react-icons/gr";
-import styled from "styled-components";
+
+const arrowEndAnim = `-180deg`;
+const arrowStartAnim = `0deg`;
+const toUpArrow = keyframes`
+  from{
+    transform: rotate(${arrowStartAnim});
+  }
+
+  to{
+    transform: rotate(${arrowEndAnim});
+  }
+`;
+
+const toDownArrow = keyframes`
+    from{
+    transform: rotate(${arrowEndAnim});
+  }
+
+  to{
+    transform: rotate(${arrowStartAnim});
+  }
+`;
 
 export const Container = styled.div<{ isOpen: boolean }>`
   ${({ theme }) => theme.fonts.main.big};
@@ -10,10 +33,9 @@ export const Container = styled.div<{ isOpen: boolean }>`
   border-radius: 1.8rem;
   border: 1px solid ${({ theme }) => theme.cAlmostBlack.alpha(0.2).toString()};
   padding: 0 0.25em;
-  box-shadow: ${({ theme }) =>
-    `0px 2px 6px ${theme.cAlmostBlack.alpha(0.2).toString()}`};
   position: relative;
-
+  box-shadow: ${({ theme }) =>
+    `0px 2px 8px ${theme.cAlmostBlack.alpha(0.15).toString()}`};
   :hover {
     ${({ isOpen, theme }) =>
       isOpen
@@ -26,11 +48,26 @@ export const Container = styled.div<{ isOpen: boolean }>`
 `;
 Container.displayName = "Container";
 
-export const DropdownButton = styled(Button)`
+export const DropdownButton = styled(Button)<{ isOpen: boolean }>`
   ${({ theme }) => theme.fonts.main.big};
   width: 100%;
   height: 100%;
   justify-content: space-between;
+
+  > p:first-child {
+    padding-left: 0.625rem;
+  }
+
+  > svg:last-child {
+    ${({ isOpen }) =>
+      isOpen
+        ? css`
+            animation: ${toUpArrow} 0.05s linear forwards;
+          `
+        : css`
+            animation: ${toDownArrow} 0.05s linear forwards;
+          `}
+  }
 `;
 DropdownButton.displayName = "DropdownButton";
 
@@ -47,12 +84,26 @@ DownIcon.displayName = "DownIcon";
 
 export const ChildrenOverflow = styled.div<{ isOpen: boolean }>`
   ${({ isOpen }) => (isOpen ? "" : "display:none")};
-  width: 100%;
+  width: 158px;
   position: absolute;
   box-shadow: ${({ theme }) =>
-    `0px 2px 6px ${theme.cAlmostBlack.alpha(0.2).toString()}`};
+    `0px 2px 8px ${theme.cAlmostBlack.alpha(0.15).toString()}`};
+  border-radius: 0.5rem;
+  padding: 0.25rem;
+  top: 60px;
 `;
 ChildrenOverflow.displayName = "ChildrenOverflow";
 
-export const Option = styled(Button)``;
+export const Option = styled(Button)`
+  ${({ theme }) => theme.fonts.main.big};
+  padding: 0.35rem 0.5rem;
+  width: fill-available;
+  justify-content: start;
+  border-radius: 0.25rem;
+
+  :hover {
+    color: ${({ theme }) => theme.cRed.alpha(0.8).toString()};
+    background-color: ${({ theme }) => theme.cRed.alpha(0.05).toString()};
+  }
+`;
 Option.displayName = "Option";

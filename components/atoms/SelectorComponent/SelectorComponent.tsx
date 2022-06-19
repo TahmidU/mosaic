@@ -47,7 +47,7 @@ export default function SelectorComponent({
 
   return (
     <Container ref={dropdownRef} className={className} isOpen={isOpen}>
-      <DropdownButton onClick={toggleDropdownMenu}>
+      <DropdownButton onClick={toggleDropdownMenu} isOpen={isOpen}>
         <p>{currSelected}</p>
         <DownIcon />
       </DropdownButton>
