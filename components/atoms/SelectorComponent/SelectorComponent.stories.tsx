@@ -7,7 +7,23 @@ const payload: IPayload = {
 };
 export default payload;
 
-const options = ["In Theatres", "Popular", "Upcoming"];
+enum ExploreMovies {
+  IN_THEATRES = "In Theatres",
+  POPULAR = "Popular",
+  LATEST = "Latest",
+  UPCOMING = "Upcoming",
+  TOP_RATED = "Top Rated",
+}
 
-export const Basic = (args: any) => <SelectorComponent options={options} />;
+export const Basic = (args: any) => (
+  <SelectorComponent
+    options={[
+      ExploreMovies.IN_THEATRES,
+      ExploreMovies.POPULAR,
+      ExploreMovies.LATEST,
+      ExploreMovies.UPCOMING,
+      ExploreMovies.TOP_RATED,
+    ]}
+  />
+);
 Basic.args = {};

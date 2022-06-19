@@ -7,17 +7,17 @@ import {
 } from "./styles";
 import { ReactElement, useCallback, useEffect, useRef, useState } from "react";
 
-interface ISelectorComponent {
-  options: string[];
+interface ISelectorComponentProps<T> {
+  options: T[];
   className?: string;
 }
 
-export default function SelectorComponent({
+export default function SelectorComponent<T>({
   options,
   className,
-}: ISelectorComponent): ReactElement {
+}: ISelectorComponentProps<T>): ReactElement {
   const [isOpen, setOpen] = useState(false);
-  const [currSelected, setSelected] = useState(options[0]);
+  const [currSelected, setSelected] = useState<T>(options[0]);
   const dropdownRef = useRef<null | HTMLDivElement>(null);
 
   const handleClickOut = useCallback(
@@ -33,7 +33,7 @@ export default function SelectorComponent({
   );
 
   const toggleDropdownMenu = () => setOpen((prev) => !prev);
-  const onSelect = (selected: string) => {
+  const onSelect = (selected: T) => {
     setSelected(selected), setOpen(false);
   };
 
