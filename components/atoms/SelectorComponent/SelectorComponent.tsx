@@ -9,11 +9,13 @@ import { ReactElement, useCallback, useEffect, useRef, useState } from "react";
 
 interface ISelectorComponentProps<T> {
   options: T[];
+  onChange?: (selected: T) => void;
   className?: string;
 }
 
 export default function SelectorComponent<T>({
   options,
+  onChange = () => {},
   className,
 }: ISelectorComponentProps<T>): ReactElement {
   const [isOpen, setOpen] = useState(false);
@@ -34,7 +36,7 @@ export default function SelectorComponent<T>({
 
   const toggleDropdownMenu = () => setOpen((prev) => !prev);
   const onSelect = (selected: T) => {
-    setSelected(selected), setOpen(false);
+    setSelected(selected), onChange(selected), setOpen(false);
   };
 
   useEffect(() => {

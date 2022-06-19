@@ -24,6 +24,7 @@ export const Basic = (args: any) => (
       ExploreMovies.UPCOMING,
       ExploreMovies.TOP_RATED,
     ]}
+    onChange={(selected) => console.log(selected)}
   />
 );
 Basic.args = {};
