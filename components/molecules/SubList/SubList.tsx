@@ -1,4 +1,5 @@
-import { ReactElement } from "react";
+import { ReactElement, useState } from "react";
+
 import SelectTitleList from "components/atoms/SelectTitleList";
 import SelectorComponent from "components/atoms/SelectorComponent";
 import { useMediaQuery } from "react-responsive";
@@ -14,6 +15,7 @@ export default function SubList<T>({
   onChange = () => {},
   className,
 }: ISubListProps<T>): ReactElement {
+  const [selectedIndex, setSelectedIndex] = useState(0);
   const isMobile = useMediaQuery({
     query: "(max-width: 768px)",
   });
@@ -25,12 +27,16 @@ export default function SubList<T>({
           options={options}
           className={className}
           onChange={onChange}
+          selectedIndex={selectedIndex}
+          setSelectedIndex={setSelectedIndex}
         />
       ) : (
         <SelectTitleList
           options={options}
           className={className}
           onChange={onChange}
+          selectedIndex={selectedIndex}
+          setSelectedIndex={setSelectedIndex}
         />
       )}
     </>

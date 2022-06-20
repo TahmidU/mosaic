@@ -1,21 +1,23 @@
 import { Container, Option } from "./styles";
-import { ReactElement, useState } from "react";
+import { Dispatch, ReactElement, SetStateAction, useState } from "react";
 
 interface ISelectTitleListProps<T> {
   options: T[];
   onChange?: (selected: T) => void;
+  selectedIndex: number;
+  setSelectedIndex: Dispatch<SetStateAction<number>>;
   className?: string;
 }
 
 export default function SelectTitleList<T>({
   options,
   onChange = () => {},
+  selectedIndex,
+  setSelectedIndex,
   className,
 }: ISelectTitleListProps<T>): ReactElement {
-  const [currIndex, setIndex] = useState(0);
-
   const onSelect = (selected: T, index: number) => {
-    onChange(selected), setIndex(index);
+    onChange(selected), setSelectedIndex(index);
   };
 
   return (
@@ -24,7 +26,7 @@ export default function SelectTitleList<T>({
         return (
           <Option
             key={_index}
-            highlight={_index === currIndex}
+            highlight={_index === selectedIndex}
             onClick={() => onSelect(_option, _index)}
           >
             {_option}
