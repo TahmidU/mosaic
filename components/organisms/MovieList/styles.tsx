@@ -1,6 +1,11 @@
 import SlideButton from "../../molecules/SlideButton";
+import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import styled from "styled-components";
+
+const SubList = dynamic(() => import("components/molecules/SubList"), {
+  ssr: false,
+});
 
 export const Container = styled.div`
   display: flex;
@@ -13,63 +18,12 @@ export const Container = styled.div`
 `;
 Container.displayName = "Container";
 
-export const SubListTitle = styled.div`
-  display: flex;
-  flex-direction: row;
-  margin: 0 0 2.75rem 0;
-  overflow-x: auto;
-  overflow-y: hidden;
-
-  > span:not(:first-child):not(:last-child) {
-    margin: 0 1.5%;
-  }
-
-  > span:last-child {
-    margin: 0 0 0 1.5%;
-  }
-
-  > span:first-child {
-    margin: 0 1.5% 0 0;
-  }
-
-  > span:only-child {
-    margin: 0;
-  }
-
-  @media only screen and (max-width: 395px) {
-    > span:not(:first-child):not(:last-child) {
-      margin: 0 2.5%;
-    }
-
-    > span:last-child {
-      margin: 0 0 0 2.5%;
-    }
-
-    > span:first-child {
-      margin: 0 2.5% 0 0;
-    }
-  }
-`;
-SubListTitle.displayName = "SubListTitle";
-
-export const SubTitle = styled.span<{ highlight: boolean }>`
-  cursor: pointer;
-  ${({ theme }) => theme.fonts.main.big};
-  font-weight: 700;
-  color: ${({ theme, highlight }) =>
-    highlight ? theme.cRed.alpha(0.65).toString() : theme.text};
-
+export const SubListStyle = styled(SubList)`
   @media only screen and (max-width: 768px) {
-    ${({ theme }) => theme.fonts.main.regular};
-    text-align: center;
-  }
-
-  @media only screen and (max-width: 395px) {
-    ${({ theme }) => theme.fonts.main.small};
-    text-align: center;
+    margin: 1rem 0;
   }
 `;
-SubTitle.displayName = "SubTitle";
+SubListStyle.displayName = "SubListStyle";
 
 export const MovieListWrapper = styled.div`
   display: flex;

@@ -7,10 +7,9 @@ import {
   MovieCardWrapper,
   MovieListWrapper,
   RightSlideBtn,
-  SubListTitle,
-  SubTitle,
+  SubListStyle,
 } from "./styles";
-import { ReactElement, useEffect, useRef, useState } from "react";
+import { ReactElement, useRef, useState } from "react";
 
 import { AnimatePresence } from "framer-motion";
 import { IMovieCardProps } from "components/molecules/MovieCard/MovieCard";
@@ -34,7 +33,6 @@ export default function MovieList<T>({
   className,
   loading = false,
 }: IMovieListProps<T>): ReactElement {
-  const [currIndex, setCurrIndex] = useState(0);
   const movieListRef = useRef<HTMLDivElement>(null);
 
   function slideRight() {
@@ -72,22 +70,10 @@ export default function MovieList<T>({
   return (
     <Container className={className}>
       <h1>{title}</h1>
-      <SubListTitle>
-        {subListTitles.map((_subTitle, _index) => {
-          return (
-            <SubTitle
-              key={_index}
-              highlight={_index === currIndex}
-              onClick={() => {
-                onSubTitleClick(_subTitle);
-                setCurrIndex(_index);
-              }}
-            >
-              {_subTitle}
-            </SubTitle>
-          );
-        })}
-      </SubListTitle>
+      <SubListStyle
+        options={subListTitles}
+        onChange={(_selected: any) => onSubTitleClick(_selected as T)}
+      />
       <MovieListWrapper>
         {!movies || movies.length === 0 || loading ? (
           <AnimatePresence>
