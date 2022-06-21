@@ -5,21 +5,32 @@ import {
   DropdownButton,
   Option,
 } from "./styles";
-import { ReactElement, useCallback, useEffect, useRef, useState } from "react";
+import {
+  Dispatch,
+  ReactElement,
+  SetStateAction,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 
 interface ISelectorComponentProps<T> {
   options: T[];
   onChange?: (selected: T) => void;
+  selectedIndex: number;
+  setSelectedIndex: Dispatch<SetStateAction<number>>;
   className?: string;
 }
 
 export default function SelectorComponent<T>({
   options,
+  selectedIndex,
+  setSelectedIndex,
   onChange = () => {},
   className,
 }: ISelectorComponentProps<T>): ReactElement {
   const [isOpen, setOpen] = useState(false);
-  const [currSelected, setSelected] = useState<T>(options[0]);
   const dropdownRef = useRef<null | HTMLDivElement>(null);
 
   const handleClickOut = useCallback(
@@ -35,8 +46,8 @@ export default function SelectorComponent<T>({
   );
 
   const toggleDropdownMenu = () => setOpen((prev) => !prev);
-  const onSelect = (selected: T) => {
-    setSelected(selected), onChange(selected), setOpen(false);
+  const onSelect = (selected: T, index: number) => {
+    setSelectedIndex(index), onChange(selected), setOpen(false);
   };
 
   useEffect(() => {
@@ -50,13 +61,13 @@ export default function SelectorComponent<T>({
   return (
     <Container ref={dropdownRef} className={className} isOpen={isOpen}>
       <DropdownButton onClick={toggleDropdownMenu} isOpen={isOpen}>
-        <p>{currSelected}</p>
+        <p>{options[selectedIndex]}</p>
         <DownIcon />
       </DropdownButton>
       <ChildrenOverflow isOpen={isOpen}>
         {options.map((_option, key) => {
           return (
-            <Option key={key} onClick={() => onSelect(_option)}>
+            <Option key={key} onClick={() => onSelect(_option, key)}>
               {_option}
             </Option>
           );

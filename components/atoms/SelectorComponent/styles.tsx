@@ -62,10 +62,10 @@ export const DropdownButton = styled(Button)<{ isOpen: boolean }>`
     ${({ isOpen }) =>
       isOpen
         ? css`
-            animation: ${toUpArrow} 0.05s linear forwards;
+            animation: ${toUpArrow} 0.1s linear forwards;
           `
         : css`
-            animation: ${toDownArrow} 0.05s linear forwards;
+            animation: ${toDownArrow} 0.1s linear forwards;
           `}
   }
 `;
@@ -90,7 +90,9 @@ export const ChildrenOverflow = styled.div<{ isOpen: boolean }>`
     `0px 2px 8px ${theme.cAlmostBlack.alpha(0.15).toString()}`};
   border-radius: 0.5rem;
   padding: 0.25rem;
-  top: 60px;
+  top: 54px;
+  background-color: ${({ theme }) => theme.main};
+  z-index: 100;
 `;
 ChildrenOverflow.displayName = "ChildrenOverflow";
 

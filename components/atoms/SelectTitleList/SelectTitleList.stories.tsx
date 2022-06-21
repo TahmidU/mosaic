@@ -1,10 +1,10 @@
 import { IPayload } from "types/story";
-import SelectorComponent from "./SelectorComponent";
+import SelectTitleList from "./SelectTitleList";
 import { useState } from "react";
 
 const payload: IPayload = {
-  title: "ATOMS/SelectorComponent",
-  component: SelectorComponent,
+  title: "ATOMS/SelectTitleList",
+  component: SelectTitleList,
 };
 export default payload;
 
@@ -20,7 +20,7 @@ export const Basic = (args: any) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   return (
-    <SelectorComponent
+    <SelectTitleList
       options={[
         ExploreMovies.IN_THEATRES,
         ExploreMovies.POPULAR,
@@ -28,7 +28,7 @@ export const Basic = (args: any) => {
         ExploreMovies.UPCOMING,
         ExploreMovies.TOP_RATED,
       ]}
-      onChange={(selected) => console.log(selected)}
+      onChange={(selected: ExploreMovies) => console.log(selected)}
       selectedIndex={selectedIndex}
       setSelectedIndex={setSelectedIndex}
     />
