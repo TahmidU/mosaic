@@ -20,13 +20,13 @@ const Carousel = dynamic(() => import("components/organisms/Carousel"), {
 interface IHomePageProps {
   carouselData: IDiscoverMovie[];
   videos?: IVideo;
-  onStepChange?: (step: number) => void;
+  onPageChange?: (step: number) => void;
 }
 
 export default function HomePage({
   carouselData,
   videos,
-  onStepChange,
+  onPageChange,
 }: IHomePageProps): ReactElement {
   const {
     exploreMoviesList,
@@ -41,7 +41,7 @@ export default function HomePage({
         <Carousel
           carouselData={carouselData}
           videos={videos}
-          onPageChange={onStepChange}
+          onPageChange={onPageChange}
           disableAutoSlide
         />
 
