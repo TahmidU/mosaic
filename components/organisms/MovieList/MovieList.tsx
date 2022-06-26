@@ -1,4 +1,4 @@
-import HorizontalList from "components/atoms/HorizontalList";
+import HorizontalList from "components/molecules/HorizontalList";
 import { IMovieCardProps } from "components/molecules/MovieCard/MovieCard";
 import MovieCard from "components/molecules/MovieCard";
 import { MovieCardWrapper } from "./styles";
