@@ -15,7 +15,7 @@ import {
   useState,
 } from "react";
 
-interface ISelectorComponentProps<T> {
+interface IDropdownListProps<T> {
   options: T[];
   onChange?: (selected: T) => void;
   selectedIndex: number;
@@ -23,13 +23,13 @@ interface ISelectorComponentProps<T> {
   className?: string;
 }
 
-export default function SelectorComponent<T>({
+export default function DropdownList<T>({
   options,
   selectedIndex,
   setSelectedIndex,
   onChange = () => {},
   className,
-}: ISelectorComponentProps<T>): ReactElement {
+}: IDropdownListProps<T>): ReactElement {
   const [isOpen, setOpen] = useState(false);
   const dropdownRef = useRef<null | HTMLDivElement>(null);
 

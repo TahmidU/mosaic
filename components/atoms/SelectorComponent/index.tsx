@@ -1,1 +1,1 @@
-export { default } from "./SelectorComponent";
+export { default } from "./DropdownList";
