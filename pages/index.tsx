@@ -8,7 +8,7 @@ import HomePage from "components/pages/HomePage";
 import { IDiscoverMovie } from "types/api/discover";
 import { IVideo } from "types/api/videos";
 import axios from "axios";
-import useVideoInfoStore from "hooks/useVideoInfoStore";
+import useVideoInfoCache from "hooks/useVideoInfoCache";
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const carouselResults = await axios({
@@ -42,13 +42,13 @@ const Index: NextPage = ({
   carouselData,
   allMovieVideoData,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  const { currVideos, onStepChange } = useVideoInfoStore(allMovieVideoData);
+  const { currVideos, onPageChange } = useVideoInfoCache(allMovieVideoData);
 
   return (
     <HomePage
       carouselData={carouselData}
       videos={currVideos}
-      onStepChange={onStepChange}
+      onPageChange={onPageChange}
     />
   );
 };
