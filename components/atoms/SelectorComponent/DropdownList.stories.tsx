@@ -1,10 +1,10 @@
+import DropdownList from "./DropdownList";
 import { IPayload } from "types/story";
-import SelectorComponent from "./SelectorComponent";
 import { useState } from "react";
 
 const payload: IPayload = {
   title: "ATOMS/SelectorComponent",
-  component: SelectorComponent,
+  component: DropdownList,
 };
 export default payload;
 
@@ -20,7 +20,7 @@ export const Basic = (args: any) => {
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   return (
-    <SelectorComponent
+    <DropdownList
       options={[
         ExploreMovies.IN_THEATRES,
         ExploreMovies.POPULAR,
