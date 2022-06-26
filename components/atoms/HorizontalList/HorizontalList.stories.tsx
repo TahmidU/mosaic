@@ -7,4 +7,23 @@ const payload: IPayload = {
 };
 export default payload;
 
-export const Basic = (args: any) => <HorizontalList {...args} />;
+enum RandomEnum {
+  FOO = "Foo",
+  BAR = "Bar",
+  FOOBAR = "FooBar",
+}
+
+export const Basic = (args: any) => {
+  return (
+    <HorizontalList
+      title="Test"
+      subListTitles={[RandomEnum.FOO, RandomEnum.BAR, RandomEnum.FOOBAR]}
+      {...args}
+    >
+      <p>Test</p>
+    </HorizontalList>
+  );
+};
+Basic.args = {
+  loading: false,
+};
