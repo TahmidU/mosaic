@@ -1,28 +1,55 @@
 import styled, { keyframes } from "styled-components";
 
-import { BsArrowDown } from "react-icons/bs";
+import { BsMouse } from "react-icons/bs";
 import { Link } from "react-scroll";
+import { VscFoldDown } from "react-icons/vsc";
 
-const arrowMaxExpand = 1.4;
-const arrowNormalSize = 1.0;
-const expandArrow = keyframes`
+const showArrows = keyframes`
   from{
-    transform: scale(${arrowNormalSize});
+    top:-5px;
+    opacity: 0;
   }
 
   to{
-    transform: scale(${arrowMaxExpand});
+    top:0px;
+    opacity:1;
   }
 `;
 
-const normalArrow = keyframes`
-  from{
-    transform: scale(${arrowMaxExpand});
+const hideArrows = keyframes`
+from{
+  top:0px;
+    opacity: 1;
   }
 
   to{
-    transform: scale(${arrowNormalSize});
-    }
+    top:-5px;
+    opacity:0;
+  }
+`;
+
+const moveMouseDown = keyframes`
+  from{
+    opacity: 0.5;
+    top:0px;
+  }
+
+  to{
+    opacity: 0.8;
+    top: 20px;
+  }
+`;
+
+const moveMouseUp = keyframes`
+  from{
+    opacity: 0.8;
+    top:20px;
+  }
+
+  to{
+    opacity: 0.5;
+    top:0px;
+  }
 `;
 
 export const Container = styled(Link)`
@@ -33,42 +60,51 @@ export const Container = styled(Link)`
   max-width: 384px;
   max-height: fit-content;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   position: relative;
 
   > span:nth-child(2) {
-    ${({ theme }) => theme.fonts.main.bigger};
-  }
-
-  > svg:first-child,
-  > svg:last-child {
-    animation: ${normalArrow} 0.1s linear forwards;
+    ${({ theme }) => theme.fonts.main.regular};
   }
 
   :hover {
-    > svg:first-child,
-    > svg:last-child {
-      animation: ${expandArrow} 0.1s linear forwards;
+    > div:first-child > svg:first-child {
+      animation: ${showArrows} 0.25s linear forwards;
+    }
+
+    > div:first-child > svg:last-child {
+      animation: ${moveMouseDown} 0.4s linear forwards;
     }
   }
 `;
 Container.displayName = "Container";
 
-const DownIcon = styled(BsArrowDown)`
+export const DownArrows = styled(VscFoldDown)`
+  width: 21px;
+  height: 21px;
+  position: absolute;
+  z-index: 1;
+  opacity: 1;
+  left: 36%;
+  animation: ${hideArrows} 0.25s linear forwards;
+`;
+DownArrows.displayName = "DownArrows";
+
+export const MouseIcon = styled(BsMouse)`
+  position: absolute;
   width: 32px;
   height: 32px;
-  position: absolute;
+  z-index: 10;
+  left: 26%;
+  animation: ${moveMouseUp} 0.4s linear forwards;
 `;
-DownIcon.displayName = "DownIcon";
+MouseIcon.displayName = "MouseIcon";
 
-export const LeftDownIcon = styled(DownIcon)`
-  left: 0;
+export const IconsWrapper = styled.div`
+  position: relative;
+  width: 68px;
+  height: 64px;
 `;
-LeftDownIcon.displayName = "LeftDownIcon";
-
-export const RightDownIcon = styled(DownIcon)`
-  right: 0;
-`;
-RightDownIcon.displayName = "RightDownIcon";
+IconsWrapper.displayName = "IconsWrapper";
