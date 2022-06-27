@@ -1,29 +1,55 @@
-import { BsArrowDown, BsMouse } from "react-icons/bs";
 import styled, { keyframes } from "styled-components";
 
+import { BsMouse } from "react-icons/bs";
 import { Link } from "react-scroll";
 import { VscFoldDown } from "react-icons/vsc";
 
-const arrowMaxExpand = 1.4;
-const arrowNormalSize = 1.0;
-const expandArrow = keyframes`
+const showArrows = keyframes`
   from{
-    transform: scale(${arrowNormalSize});
+    top:-5px;
+    opacity: 0;
   }
 
   to{
-    transform: scale(${arrowMaxExpand});
+    top:0px;
+    opacity:1;
   }
 `;
 
-const normalArrow = keyframes`
-  from{
-    transform: scale(${arrowMaxExpand});
+const hideArrows = keyframes`
+from{
+  top:0px;
+    opacity: 1;
   }
 
   to{
-    transform: scale(${arrowNormalSize});
-    }
+    top:-5px;
+    opacity:0;
+  }
+`;
+
+const moveMouseDown = keyframes`
+  from{
+    opacity: 0.5;
+    top:0px;
+  }
+
+  to{
+    opacity: 0.8;
+    top: 20px;
+  }
+`;
+
+const moveMouseUp = keyframes`
+  from{
+    opacity: 0.8;
+    top:20px;
+  }
+
+  to{
+    opacity: 0.5;
+    top:0px;
+  }
 `;
 
 export const Container = styled(Link)`
@@ -43,18 +69,15 @@ export const Container = styled(Link)`
     ${({ theme }) => theme.fonts.main.regular};
   }
 
-  /*
-  > svg:first-child,
-  > svg:last-child {
-    animation: ${normalArrow} 0.1s linear forwards;
-  }
-
   :hover {
-    > svg:first-child,
-    > svg:last-child {
-      animation: ${expandArrow} 0.1s linear forwards;
+    > div:first-child > svg:first-child {
+      animation: ${showArrows} 0.25s linear forwards;
     }
-  }*/
+
+    > div:first-child > svg:last-child {
+      animation: ${moveMouseDown} 0.4s linear forwards;
+    }
+  }
 `;
 Container.displayName = "Container";
 
@@ -65,6 +88,7 @@ export const DownArrows = styled(VscFoldDown)`
   z-index: 1;
   opacity: 1;
   left: 36%;
+  animation: ${hideArrows} 0.25s linear forwards;
 `;
 DownArrows.displayName = "DownArrows";
 
@@ -74,6 +98,7 @@ export const MouseIcon = styled(BsMouse)`
   height: 32px;
   z-index: 10;
   left: 26%;
+  animation: ${moveMouseUp} 0.4s linear forwards;
 `;
 MouseIcon.displayName = "MouseIcon";
 
@@ -83,20 +108,3 @@ export const IconsWrapper = styled.div`
   height: 64px;
 `;
 IconsWrapper.displayName = "IconsWrapper";
-
-const DownIcon = styled(BsArrowDown)`
-  width: 32px;
-  height: 32px;
-  position: absolute;
-`;
-DownIcon.displayName = "DownIcon";
-
-export const LeftDownIcon = styled(DownIcon)`
-  left: 0;
-`;
-LeftDownIcon.displayName = "LeftDownIcon";
-
-export const RightDownIcon = styled(DownIcon)`
-  right: 0;
-`;
-RightDownIcon.displayName = "RightDownIcon";

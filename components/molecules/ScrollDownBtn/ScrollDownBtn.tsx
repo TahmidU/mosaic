@@ -1,11 +1,4 @@
-import {
-  Container,
-  DownArrows,
-  IconsWrapper,
-  LeftDownIcon,
-  MouseIcon,
-  RightDownIcon,
-} from "./styles";
+import { Container, DownArrows, IconsWrapper, MouseIcon } from "./styles";
 
 import { ReactElement } from "react";
 
