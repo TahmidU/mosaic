@@ -1,6 +1,6 @@
 import {
   Container,
-  FirstPageWrapper,
+  HeroSection,
   MovieListStyle,
   ScrollDownContainer,
 } from "./styles";
@@ -37,7 +37,7 @@ export default function HomePage({
 
   return (
     <Container>
-      <FirstPageWrapper>
+      <HeroSection>
         <Carousel
           carouselData={carouselData}
           videos={videos}
@@ -46,11 +46,11 @@ export default function HomePage({
         />
 
         <ScrollDownContainer>
-          <ScrollDownBtn to="SecondPageWrapper" />
+          <ScrollDownBtn to="ContentSection" />
         </ScrollDownContainer>
-      </FirstPageWrapper>
+      </HeroSection>
 
-      <Element name="SecondPageWrapper">
+      <Element name="ContentSection">
         <MovieListStyle
           title="Explore Movies"
           subListTitles={[
