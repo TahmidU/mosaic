@@ -9,7 +9,7 @@ export const Container = styled.div`
 Container.displayName = "Container";
 
 const navbarSize = "80px";
-export const FirstPageWrapper = styled.div`
+export const HeroSection = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -21,7 +21,7 @@ export const FirstPageWrapper = styled.div`
     height: 100%;
   }
 `;
-FirstPageWrapper.displayName = "FirstPageWrapper";
+HeroSection.displayName = "HeroSection";
 
 export const ScrollDownContainer = styled.div`
   display: flex;
