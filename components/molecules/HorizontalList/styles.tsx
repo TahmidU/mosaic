@@ -20,7 +20,7 @@ Container.displayName = "Container";
 
 export const SubListStyle = styled(SubList)`
   @media only screen and (max-width: 768px) {
-    margin: 1rem 0;
+    margin: 0 0 1rem 0;
   }
 `;
 SubListStyle.displayName = "SubListStyle";

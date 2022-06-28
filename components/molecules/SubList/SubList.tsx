@@ -1,7 +1,7 @@
 import { ReactElement, useState } from "react";
 
 import SelectTitleList from "components/atoms/SelectTitleList";
-import SelectorComponent from "components/atoms/SelectorComponent";
+import DropdownList from "components/atoms/DropdownList";
 import { useMediaQuery } from "react-responsive";
 
 interface ISubListProps<T> {
@@ -23,7 +23,7 @@ export default function SubList<T>({
   return (
     <>
       {isMobile ? (
-        <SelectorComponent
+        <DropdownList
           options={options}
           className={className}
           onChange={onChange}
