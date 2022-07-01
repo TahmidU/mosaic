@@ -3,14 +3,14 @@ import { IDiscoverMovie } from "types/api/discover";
 export const FakeDiscoverMovie: IDiscoverMovie[] = [
   {
     adult: false,
-    backdrop_path: "TestResources/testImage.webp",
+    backdrop_path: "https://via.placeholder.com/220x330/000000",
     genre_ids: [0, 1],
     id: 1,
     original_language: "English",
     original_title: "Test Movie",
     overview: "Test Overview.",
     popularity: 100,
-    poster_path: "./TestResources/testImage.webp",
+    poster_path: "https://via.placeholder.com/220x330/000000",
     release_date: "2012-01-01",
     title: "Test Movie",
     video: false,
@@ -19,25 +19,23 @@ export const FakeDiscoverMovie: IDiscoverMovie[] = [
   },
   {
     adult: false,
-    backdrop_path:
-      "../../organisms/MobileCarousel/TestResources/testImage.webp",
+    backdrop_path: "https://via.placeholder.com/220x330/000000",
     genre_ids: [0, 1],
     id: 1,
     original_language: "English",
     original_title: "Test Movie",
     overview: "Test Overview.",
     popularity: 100,
-    poster_path: "../../organisms/MobileCarousel/TestResources/testImage.webp",
+    poster_path: "https://via.placeholder.com/220x330/000000",
     release_date: "2012-01-01",
     title: "Test Movie",
     video: false,
-    vote_average: 10,
+    vote_average: 1,
     vote_count: 10,
   },
   {
     adult: false,
-    backdrop_path:
-      "../../organisms/MobileCarousel/TestResources/testImage.webp",
+    backdrop_path: "https://via.placeholder.com/220x330/000000",
     genre_ids: [0, 1],
     id: 1,
     original_language: "English",
@@ -46,12 +44,12 @@ export const FakeDiscoverMovie: IDiscoverMovie[] = [
     overview:
       "Very Long Overview Test Overview Test Overview Test Overview Test Overview Test Overview Test Overview Test Overview Test Overview Test Overview.",
     popularity: 100,
-    poster_path: "../../organisms/MobileCarousel/TestResources/testImage.webp",
+    poster_path: "https://via.placeholder.com/220x330/000000",
     release_date: "2012-01-01",
     title:
       "Very Long Title Test Movie Test Movie Test Movie Test Movie Test Movie Test Movie Test Movie Test Movie Test Movie",
     video: false,
-    vote_average: 10,
+    vote_average: 5,
     vote_count: 10,
   },
 ];

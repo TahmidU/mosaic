@@ -14,6 +14,8 @@ function fontImportancePlacer(font: string, indexes: number[]): string {
 }
 
 function dateFormatter(date: string): string {
+  if (!date) return date; //! Somehow an undefined date param is passed in storybook
+
   const [year, month, day] = date.split("-");
 
   if (year && month && day) return `${day}-${month}-${year}`;

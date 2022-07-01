@@ -12,22 +12,14 @@ import { useMediaQuery } from "react-responsive";
 interface ICarouselProps {
   carouselData?: IDiscoverMovie[];
   videos?: IVideo;
-  localImages?: boolean;
-  disableAutoSlide?: boolean;
-  autoSlideDuration?: number;
   startPage?: number;
-  autoSlideCallback?: () => void;
   onPageChange?: (step: number) => void;
 }
 
 export default function Carousel({
   carouselData = [],
   videos,
-  localImages = false,
-  disableAutoSlide = false,
-  autoSlideDuration = 15,
   startPage = 0,
-  autoSlideCallback = () => {},
   onPageChange,
 }: ICarouselProps): ReactElement {
   const [[page, direction], setPage] = useState([startPage, 0]);
@@ -64,7 +56,6 @@ export default function Carousel({
       {isMobile ? (
         <MobileCarousel
           carouselData={carouselData}
-          onPageChange={onPageChange}
           page={page}
           direction={direction}
           handlePageDirectionChange={handlePageDirectionChange}
@@ -75,8 +66,6 @@ export default function Carousel({
         <DesktopCarousel
           carouselData={carouselData}
           videos={videos}
-          onPageChange={onPageChange}
-          disableAutoSlide
           handlePageDirectionChange={handlePageDirectionChange}
           handlePageChange={handlePageChange}
           page={page}

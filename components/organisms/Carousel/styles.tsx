@@ -15,7 +15,7 @@ export const Container = styled.div`
 `;
 Container.displayName = "Container";
 
-export const CarouselMainContainer = styled.div`
+export const Frame = styled.div`
   display: flex;
   justify-self: center;
   max-height: 720px;
@@ -30,33 +30,18 @@ export const CarouselMainContainer = styled.div`
   border-radius: 48px 48px 60px 60px;
   overflow: hidden;
 `;
-CarouselMainContainer.displayName = "CarouselMainContainer";
+Frame.displayName = "Frame";
 
-export const CarouselContainer = styled.div`
+export const ImageContainer = styled.div`
   width: 100%;
   max-width: 1280px;
   height: 100%;
   position: relative;
+  cursor: pointer;
 
   > span:nth-child(2) {
     border-radius: 48px;
   }
-`;
-CarouselContainer.displayName = "CarouselContainer";
-
-export const ImageContainer = styled.div`
-  position: relative;
-  display: flex;
-  white-space: nowrap;
-
-  height: 100%;
-  max-height: 720px;
-  width: 100%;
-
-  max-width: 1280px;
-  overflow: hidden;
-
-  cursor: pointer;
 `;
 ImageContainer.displayName = "ImageContainer";
 
