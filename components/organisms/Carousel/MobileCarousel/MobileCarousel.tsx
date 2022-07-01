@@ -8,11 +8,11 @@ import {
   StepStatusStyle,
   StepsContainer,
 } from "./styles";
-import { ReactElement, useState } from "react";
 
 import { AnimationControls } from "framer-motion";
 import CarouselImage from "components/organisms/Carousel/CarouselImage";
 import { IDiscoverMovie } from "types/api/discover";
+import { ReactElement } from "react";
 
 interface IMobileCarouselProps {
   carouselData?: IDiscoverMovie[];
@@ -36,6 +36,7 @@ export default function MobileCarousel({
   if (!carouselData || carouselData.length === 0) {
     return <></>;
   }
+  console.log(carouselData);
 
   return (
     <Container>
@@ -72,9 +73,9 @@ export default function MobileCarousel({
         </StepsContainer>
       </Frame>
       <MovieInfoStyle
-        title={carouselData[page]?.title}
-        desc={carouselData[page]?.overview}
-        releaseDate={carouselData[page]?.release_date}
+        title={carouselData[page].title}
+        desc={carouselData[page].overview}
+        releaseDate={carouselData[page].release_date}
         animationControls={textAnimControls}
       />
     </Container>
