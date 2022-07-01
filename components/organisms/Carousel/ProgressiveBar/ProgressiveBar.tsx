@@ -8,8 +8,6 @@ interface IProgressiveBarProps {
   duration?: number;
   trigger?: () => void;
   pause?: boolean;
-  reset?: boolean;
-  onAnimEnd?: () => void;
   className?: string;
 }
 
@@ -17,8 +15,6 @@ export default function ProgressiveBar({
   duration = 3,
   trigger = () => {},
   pause = false,
-  reset = false,
-  onAnimEnd = () => {},
   className,
 }: IProgressiveBarProps): ReactElement {
   const barControls = useAnimation();
@@ -32,17 +28,6 @@ export default function ProgressiveBar({
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pause]);
-
-  useEffect(() => {
-    if (reset) {
-      barControls.stop();
-      barControls.set(progressiveBarAnimVariant.none);
-      barControls.start(() => progressiveBarAnimVariant.full);
-      onAnimEnd();
-    }
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [reset]);
 
   return (
     <Bar

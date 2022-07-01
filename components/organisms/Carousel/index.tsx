@@ -74,8 +74,6 @@ export default function Carousel({
         <DesktopCarousel
           carouselData={carouselData}
           videos={videos}
-          onPageChange={onPageChange}
-          disableAutoSlide
           handlePageDirectionChange={handlePageDirectionChange}
           handlePageChange={handlePageChange}
           page={page}
