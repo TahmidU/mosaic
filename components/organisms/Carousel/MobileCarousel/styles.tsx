@@ -37,31 +37,22 @@ ImageContainer.displayName = "ImageContainer";
 export const SlideBtn = styled(SlideButton)`
   position: absolute;
   z-index: 10;
-  top: 0%;
-  height: 100%;
+  top: 35%;
+  height: 25%;
   border-color: transparent;
   background-color: ${({ theme }) => theme.almostBlack};
   opacity: 20%;
+  width: 8.625%;
 
   :hover,
   :active {
     background-color: ${({ theme }) => theme.almostBlack};
     opacity: 50%;
   }
-
-  @media only screen and (max-width: 768px) {
-    width: 54px;
-  }
-
-  @media only screen and (max-width: 586px) {
-    width: 37.5px;
-  }
 `;
 SlideBtn.displayName = "SlideBtn";
 
-export const PrevBtn = styled(SlideBtn)`
-  //left: 1%;
-`;
+export const PrevBtn = styled(SlideBtn)``;
 PrevBtn.displayName = "PrevBtn";
 
 export const NextBtn = styled(SlideBtn)`
