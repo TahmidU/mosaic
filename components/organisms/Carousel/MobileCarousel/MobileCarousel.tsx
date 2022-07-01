@@ -17,8 +17,6 @@ import { IDiscoverMovie } from "types/api/discover";
 interface IMobileCarouselProps {
   carouselData?: IDiscoverMovie[];
   localImages?: boolean;
-  startPage?: number;
-  onPageChange?: (step: number) => void;
   page: number;
   direction: number;
   handlePageDirectionChange: (direction: 1 | -1) => void;
@@ -29,8 +27,6 @@ interface IMobileCarouselProps {
 export default function MobileCarousel({
   carouselData,
   localImages,
-  startPage = 0,
-  onPageChange,
   page,
   direction,
   handlePageDirectionChange,

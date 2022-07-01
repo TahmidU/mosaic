@@ -64,7 +64,6 @@ export default function Carousel({
       {isMobile ? (
         <MobileCarousel
           carouselData={carouselData}
-          onPageChange={onPageChange}
           page={page}
           direction={direction}
           handlePageDirectionChange={handlePageDirectionChange}
