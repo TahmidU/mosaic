@@ -1,11 +1,10 @@
 import "../styles/globals.css";
 
-import React from "react";
-
 import type { AppProps } from "next/app";
 import GlobalContext from "../context/GlobalContext";
 import { GlobalStyles } from "styles/GlobalStyles";
 import Layout from "../components/organisms/Layout";
+import React from "react";
 import { ThemeProvider } from "styled-components";
 import useAxios from "../hooks/useAxios";
 import useTheme from "../hooks/useTheme";
