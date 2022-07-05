@@ -1,9 +1,5 @@
-import {
-  IMovieCardDefaultProps,
-  IMovieCardProps,
-} from "components/molecules/MovieCard/MovieCard";
-
 import HorizontalList from "components/molecules/HorizontalList";
+import { IMovieCardProps } from "components/molecules/MovieCard/MovieCard";
 import MovieCard from "components/molecules/MovieCard";
 import { MovieCardWrapper } from "./styles";
 import { ReactElement } from "react";
@@ -11,7 +7,7 @@ import { ReactElement } from "react";
 interface IMovieListProps<T> {
   title: string;
   subListTitles: T[];
-  movies?: IMovieCardDefaultProps[];
+  movies?: IMovieCardProps[];
   onSubTitleClick: (title: T) => void;
   className?: string;
   loading?: boolean;
@@ -38,7 +34,6 @@ export default function MovieList<T>({
           return (
             <MovieCardWrapper key={index}>
               <MovieCard
-                variant="default"
                 src={_movie.src}
                 review={_movie.review}
                 movieTitle={_movie.movieTitle}

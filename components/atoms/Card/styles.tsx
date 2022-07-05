@@ -1,3 +1,4 @@
+import Image from "next/image";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -16,3 +17,28 @@ export const Container = styled.div`
   box-shadow: 2px 2px 8px 0px rgb(33 31 27 / 14%);
 `;
 Container.displayName = "Container";
+
+export const Wrapper = styled.div`
+  width: 100%;
+  max-width: 150px;
+  height: 100%;
+  max-height: 225px;
+  position: relative;
+`;
+Wrapper.displayName = "Wrapper";
+
+export const MovieImage = styled(Image)`
+  width: 100%;
+  height: 100%;
+  border-radius: 14px;
+`;
+MovieImage.displayName = "MovieImage";
+
+export const SubSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 0.75em;
+  text-align: center;
+`;
+SubSection.displayName = "SubSection";
