@@ -19,15 +19,3 @@ Default.args = {
 Default.parameters = {
   controls: { include: ["src", "review", "movieTitle", "movieReleaseDate"] },
 };
-
-export const MoreDetailed = (args: IMovieCardProps) => (
-  <MovieCard {...args} variant="more_detailed">
-    <p>Test</p>
-    <p>Another Test</p>
-  </MovieCard>
-);
-MoreDetailed.args = {
-  src:
-    "https://image.tmdb.org/t/p/w220_and_h330_face/9Gtg2DzBhmYamXBS1hKAhiwbBKS.jpg",
-};
-MoreDetailed.parameters = { controls: { include: [] } };
