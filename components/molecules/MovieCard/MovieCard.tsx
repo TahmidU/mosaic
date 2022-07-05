@@ -1,4 +1,4 @@
-import { MovieImage, MovieText, Wrapper } from "./styles";
+import { MovieImage, SubSection, Wrapper } from "./styles";
 import { ReactElement, ReactNode } from "react";
 
 import Card from "components/atoms/Card";
@@ -36,7 +36,7 @@ export default function MovieCard(props: IMovieCardProps): ReactElement {
         <Wrapper>
           <MovieImage src={src} width={150} height={225} />
         </Wrapper>
-        <MovieText>{children}</MovieText>
+        <SubSection>{children}</SubSection>
       </Card>
     );
   }
@@ -47,11 +47,11 @@ export default function MovieCard(props: IMovieCardProps): ReactElement {
       <Wrapper>
         <MovieImage src={src} width={150} height={225} />
       </Wrapper>
-      <MovieText>
+      <SubSection>
         <span>{movieTitle}</span>
         <StarRating rating={review || 0} />
         <span>{movieReleaseDate}</span>
-      </MovieText>
+      </SubSection>
     </Card>
   );
 }

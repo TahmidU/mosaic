@@ -17,7 +17,7 @@ export const MovieImage = styled(Image)`
 `;
 MovieImage.displayName = "MovieImage";
 
-export const MovieText = styled.div`
+export const SubSection = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -42,4 +42,4 @@ export const MovieText = styled.div`
     color: ${({ theme }) => theme.cAlmostBlack.alpha(0.7)};
   }
 `;
-MovieText.displayName = "MovieText";
+SubSection.displayName = "SubSection";
