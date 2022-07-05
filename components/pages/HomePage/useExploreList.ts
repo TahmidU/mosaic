@@ -1,8 +1,11 @@
+import {
+  IMovieCardDefaultProps,
+  IMovieCardProps,
+} from "components/molecules/MovieCard/MovieCard";
 import { IMovieDetails, ITVShowDetails } from "types/api/explore";
 import { useContext, useEffect, useState } from "react";
 
 import GlobalContext from "context/GlobalContext";
-import { IMovieCardProps } from "components/molecules/MovieCard/MovieCard";
 
 export enum ExploreMovies {
   IN_THEATRES = "In Theatres",
@@ -11,7 +14,7 @@ export enum ExploreMovies {
 }
 
 type CacheExploreMovies = {
-  [key in ExploreMovies]: IMovieCardProps[];
+  [key in ExploreMovies]: IMovieCardDefaultProps[];
 };
 
 interface IExploreMoviesCache {
@@ -26,7 +29,7 @@ export enum ExploreTVs {
 }
 
 type CacheExploreTV = {
-  [key in ExploreTVs]: IMovieCardProps[];
+  [key in ExploreTVs]: IMovieCardDefaultProps[];
 };
 
 interface IExploreTVsCache {
@@ -161,7 +164,7 @@ export default function useExploreList() {
       .then((_result) => _result.data.results)
       .then((_results: IMovieDetails[]) =>
         _results.map((_result) => {
-          const movieCardDetails: IMovieCardProps = {
+          const movieCardDetails: IMovieCardDefaultProps = {
             movieTitle: _result.title,
             movieReleaseDate: _result.release_date,
             src: `https://image.tmdb.org/t/p/original/${_result.poster_path}`,
@@ -186,7 +189,7 @@ export default function useExploreList() {
       .then((_result) => _result.data.results)
       .then((_results: ITVShowDetails[]) =>
         _results.map((_result) => {
-          const movieCardDetails: IMovieCardProps = {
+          const movieCardDetails: IMovieCardDefaultProps = {
             movieTitle: _result.name,
             movieReleaseDate: _result.first_air_date,
             src: `https://image.tmdb.org/t/p/original/${_result.poster_path}`,

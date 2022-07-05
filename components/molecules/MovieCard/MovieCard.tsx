@@ -15,7 +15,7 @@ export interface IMovieCardMoreDetailedProps extends IMovieCardCommonProps {
 }
 
 export interface IMovieCardDefaultProps extends IMovieCardCommonProps {
-  variant: "default";
+  variant?: "default";
   review: number;
   movieTitle: string;
   movieReleaseDate: string;
