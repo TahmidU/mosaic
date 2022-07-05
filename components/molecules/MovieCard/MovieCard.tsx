@@ -9,19 +9,21 @@ interface IMovieCardCommonProps {
   src: string;
 }
 
-interface IMoreDetailedProps extends IMovieCardCommonProps {
+export interface IMovieCardMoreDetailedProps extends IMovieCardCommonProps {
   variant: "more_detailed";
   children: ReactNode;
 }
 
-interface IDefaultProps extends IMovieCardCommonProps {
+export interface IMovieCardDefaultProps extends IMovieCardCommonProps {
   variant: "default";
   review: number;
   movieTitle: string;
   movieReleaseDate: string;
 }
 
-export type IMovieCardProps = IMoreDetailedProps | IDefaultProps;
+export type IMovieCardProps =
+  | IMovieCardMoreDetailedProps
+  | IMovieCardDefaultProps;
 
 export default function MovieCard(props: IMovieCardProps): ReactElement {
   const { variant, className, src } = props;
