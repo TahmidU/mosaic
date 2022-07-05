@@ -1,4 +1,8 @@
-import { IMovieCardProps } from "components/molecules/MovieCard/MovieCard";
+import {
+  IMovieCardDefaultProps,
+  IMovieCardProps,
+} from "components/molecules/MovieCard/MovieCard";
+
 import { IPayload } from "types/story";
 import MovieList from "./MovieList";
 import { useState } from "react";
@@ -17,7 +21,7 @@ enum ExploreMovies {
   TOP_RATED = "Top Rated",
 }
 
-const fakeAPI: { [key in ExploreMovies]: IMovieCardProps[] } = {
+const fakeAPI: { [key in ExploreMovies]: IMovieCardDefaultProps[] } = {
   "In Theatres": Array(20)
     .fill({
       src: "",
