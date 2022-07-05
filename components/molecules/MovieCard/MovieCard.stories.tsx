@@ -21,7 +21,7 @@ Default.parameters = {
 };
 
 export const MoreDetailed = (args: IMovieCardProps) => (
-  <MovieCard variant="more_detailed" {...args}>
+  <MovieCard {...args} variant="more_detailed">
     <p>Test</p>
     <p>Another Test</p>
   </MovieCard>
