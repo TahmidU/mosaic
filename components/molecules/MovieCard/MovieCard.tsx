@@ -1,57 +1,27 @@
-import { MovieImage, SubSection, Wrapper } from "./styles";
-import { ReactElement, ReactNode } from "react";
-
-import Card from "components/atoms/Card";
+import { CardStyle } from "./styles";
+import { ReactElement } from "react";
 import StarRating from "../StarRating";
 
-interface IMovieCardCommonProps {
+export interface IMovieCardProps {
   className?: string;
   src: string;
-}
-
-export interface IMovieCardMoreDetailedProps extends IMovieCardCommonProps {
-  variant: "more_detailed";
-  children: ReactNode;
-}
-
-export interface IMovieCardDefaultProps extends IMovieCardCommonProps {
-  variant?: "default";
   review: number;
   movieTitle: string;
   movieReleaseDate: string;
 }
 
-export type IMovieCardProps =
-  | IMovieCardMoreDetailedProps
-  | IMovieCardDefaultProps;
-
-export default function MovieCard(props: IMovieCardProps): ReactElement {
-  const { variant, className, src } = props;
-
-  if (variant === "more_detailed") {
-    const { children } = props;
-
-    return (
-      <Card className={className}>
-        <Wrapper>
-          <MovieImage src={src} width={150} height={225} />
-        </Wrapper>
-        <SubSection>{children}</SubSection>
-      </Card>
-    );
-  }
-
-  const { movieTitle, review, movieReleaseDate } = props;
+export default function MovieCard({
+  className,
+  src,
+  review,
+  movieTitle,
+  movieReleaseDate,
+}: IMovieCardProps): ReactElement {
   return (
-    <Card className={className}>
-      <Wrapper>
-        <MovieImage src={src} width={150} height={225} />
-      </Wrapper>
-      <SubSection>
-        <span>{movieTitle}</span>
-        <StarRating rating={review || 0} />
-        <span>{movieReleaseDate}</span>
-      </SubSection>
-    </Card>
+    <CardStyle variant="vertical_image" className={className} src={src}>
+      <span>{movieTitle}</span>
+      <StarRating rating={review || 0} />
+      <span>{movieReleaseDate}</span>
+    </CardStyle>
   );
 }
