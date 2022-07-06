@@ -2,7 +2,7 @@ import { Container, MovieImage, SubSection, Wrapper } from "./styles";
 import { ReactElement, ReactNode } from "react";
 
 type Variant = "default" | "vertical_image";
-export interface ICardProps {
+interface ICardProps {
   variant?: Variant;
   src?: string;
   imageWidth?: number;

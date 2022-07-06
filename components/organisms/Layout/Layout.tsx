@@ -1,14 +1,14 @@
-import React, { ReactElement } from "react";
+import React, { ReactElement, ReactNode } from "react";
 
+import { Container } from "./styles";
 import Footer from "../Footer";
 import Navbar from "../Navbar";
-import { Container } from "./styles";
 
-export default function Layout({
-  children,
-}: {
-  children: React.ReactNode;
-}): ReactElement {
+interface ILayoutProps {
+  children: ReactNode;
+}
+
+export default function Layout({ children }: ILayoutProps): ReactElement {
   return (
     <Container>
       <Navbar />
