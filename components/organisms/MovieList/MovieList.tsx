@@ -1,5 +1,5 @@
 import HorizontalList from "components/molecules/HorizontalList";
-import { IMovieCardProps } from "components/molecules/MovieCard/MovieCard";
+import { IShortMovieDetails } from "types/movie";
 import MovieCard from "components/molecules/MovieCard";
 import { MovieCardWrapper } from "./styles";
 import { ReactElement } from "react";
@@ -7,7 +7,7 @@ import { ReactElement } from "react";
 interface IMovieListProps<T> {
   title: string;
   subListTitles: T[];
-  movies?: IMovieCardProps[];
+  movies?: IShortMovieDetails[];
   onSubTitleClick: (title: T) => void;
   className?: string;
   loading?: boolean;
