@@ -1,6 +1,5 @@
-import MovieCard, { IMovieCardProps } from "./MovieCard";
-
 import { IPayload } from "types/story";
+import MovieCard from "./MovieCard";
 
 const payload: IPayload = {
   title: "MOLECULES/MovieCard",
@@ -8,7 +7,7 @@ const payload: IPayload = {
 };
 export default payload;
 
-export const Default = (args: IMovieCardProps) => <MovieCard {...args} />;
+export const Default = (args: any) => <MovieCard {...args} />;
 Default.args = {
   src:
     "https://image.tmdb.org/t/p/w220_and_h330_face/9Gtg2DzBhmYamXBS1hKAhiwbBKS.jpg",
