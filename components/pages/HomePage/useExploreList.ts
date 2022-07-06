@@ -2,7 +2,7 @@ import { IMovieDetails, ITVShowDetails } from "types/api/explore";
 import { useContext, useEffect, useState } from "react";
 
 import GlobalContext from "context/GlobalContext";
-import { IMovieCardProps } from "components/molecules/MovieCard/MovieCard";
+import { IShortMovieDetails } from "types/movie";
 
 export enum ExploreMovies {
   IN_THEATRES = "In Theatres",
@@ -11,7 +11,7 @@ export enum ExploreMovies {
 }
 
 type CacheExploreMovies = {
-  [key in ExploreMovies]: IMovieCardProps[];
+  [key in ExploreMovies]: IShortMovieDetails[];
 };
 
 interface IExploreMoviesCache {
@@ -26,7 +26,7 @@ export enum ExploreTVs {
 }
 
 type CacheExploreTV = {
-  [key in ExploreTVs]: IMovieCardProps[];
+  [key in ExploreTVs]: IShortMovieDetails[];
 };
 
 interface IExploreTVsCache {
@@ -63,7 +63,7 @@ export default function useExploreList() {
   useEffect(() => {
     async function fetchMovies() {
       if (exploreMovies.cache[exploreMovies.selected].length === 0) {
-        let res: IMovieCardProps[] | undefined;
+        let res: IShortMovieDetails[] | undefined;
 
         switch (exploreMovies.selected) {
           case ExploreMovies.IN_THEATRES:
@@ -108,7 +108,7 @@ export default function useExploreList() {
   useEffect(() => {
     async function fetchTVShows() {
       if (exploreTVs.cache[exploreTVs.selected].length === 0) {
-        let res: IMovieCardProps[] | undefined;
+        let res: IShortMovieDetails[] | undefined;
 
         switch (exploreTVs.selected) {
           case ExploreTVs.ON_AIR:
@@ -161,7 +161,7 @@ export default function useExploreList() {
       .then((_result) => _result.data.results)
       .then((_results: IMovieDetails[]) =>
         _results.map((_result) => {
-          const movieCardDetails: IMovieCardProps = {
+          const movieCardDetails: IShortMovieDetails = {
             movieTitle: _result.title,
             movieReleaseDate: _result.release_date,
             src: `https://image.tmdb.org/t/p/original/${_result.poster_path}`,
@@ -186,7 +186,7 @@ export default function useExploreList() {
       .then((_result) => _result.data.results)
       .then((_results: ITVShowDetails[]) =>
         _results.map((_result) => {
-          const movieCardDetails: IMovieCardProps = {
+          const movieCardDetails: IShortMovieDetails = {
             movieTitle: _result.name,
             movieReleaseDate: _result.first_air_date,
             src: `https://image.tmdb.org/t/p/original/${_result.poster_path}`,

@@ -2,7 +2,7 @@ import { CardStyle } from "./styles";
 import { ReactElement } from "react";
 import StarRating from "../StarRating";
 
-export interface IMovieCardProps {
+interface IMovieCardProps {
   className?: string;
   src: string;
   review: number;
