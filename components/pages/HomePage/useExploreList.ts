@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 
 import GlobalContext from "context/GlobalContext";
 import { IShortMovieDetails } from "types/movie";
+import { Links } from "utils";
 
 export enum ExploreMovies {
   IN_THEATRES = "In Theatres",
@@ -164,7 +165,7 @@ export default function useExploreList() {
           const movieCardDetails: IShortMovieDetails = {
             movieTitle: _result.title,
             movieReleaseDate: _result.release_date,
-            src: `https://image.tmdb.org/t/p/original/${_result.poster_path}`,
+            src: `${Links.tmdbImageURL}original/${_result.poster_path}`,
             review: _result.vote_average,
           };
           return movieCardDetails;
@@ -189,7 +190,7 @@ export default function useExploreList() {
           const movieCardDetails: IShortMovieDetails = {
             movieTitle: _result.name,
             movieReleaseDate: _result.first_air_date,
-            src: `https://image.tmdb.org/t/p/original/${_result.poster_path}`,
+            src: `${Links.tmdbImageURL}original/${_result.poster_path}`,
             review: _result.vote_average,
           };
           return movieCardDetails;
