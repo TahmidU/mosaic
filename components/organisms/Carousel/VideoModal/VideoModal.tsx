@@ -18,6 +18,7 @@ import {
 import ClientPortal from "components/atoms/ClientPortal";
 import { GrClose } from "react-icons/gr";
 import { IVideo } from "types/api/videos";
+import { Links } from "utils";
 
 interface IVideoModalProps {
   modalOpen: { open: boolean; initialIndex: number };
@@ -55,7 +56,7 @@ export default function VideoModal({
         />
         <VideoContainer>
           <Frame
-            src={`https://www.youtube-nocookie.com/embed/${videos.results[videoIndex].key}`}
+            src={`${Links.youtubeVideoURL}${videos.results[videoIndex].key}`}
             title="YouTube video player"
             frameBorder="0"
             allow="accelerometer; rel=0; showinfo=0; autohide=1; clipboard-write; encrypted-media; gyroscope;"

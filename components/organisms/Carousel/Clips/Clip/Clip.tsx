@@ -2,6 +2,7 @@ import { Container, ImageContainer } from "./styles";
 import { ReactElement, useState } from "react";
 
 import Image from "next/image";
+import { Links } from "utils";
 
 interface IClipProps {
   YTKey: string;
@@ -20,7 +21,7 @@ export default function Clip({
     <Container onClick={onClick}>
       <ImageContainer>
         <Image
-          src={`https://img.youtube.com/vi/${YTKey}/mqdefault.jpg`}
+          src={`${Links.youtubeThumbnailURL}${YTKey}/mqdefault.jpg`}
           alt="ClipThumbnail"
           placeholder="empty"
           width={160}
