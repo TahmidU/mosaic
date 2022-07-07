@@ -2,7 +2,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ImageStyle, ImageWrapper, LinearGradient } from "./styles";
 import { ReactElement, Ref } from "react";
 
-import Links from "utils/Links";
+import { Links } from "utils";
 import { carouselImageAnimVariant } from "./animation-variants";
 
 interface ICarouselImageProps {
@@ -63,12 +63,12 @@ export default function CarouselImage({
           src={
             local
               ? require("" + imageURL)
-              : `${Links.tmdbImage}w1280${imageURL}`
+              : `${Links.tmdbImageURL}w1280${imageURL}`
           }
           blurDataURL={
             local
               ? require("" + imageURL)
-              : `https://image.tmdb.org/t/p/w300${imageURL}`
+              : `${Links.tmdbImageURL}w300${imageURL}`
           }
           placeholder="blur"
           width={1280}
