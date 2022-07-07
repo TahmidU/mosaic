@@ -6,16 +6,17 @@ export const Container = styled.div`
   width: 100%;
   min-height: 100vh;
   height: 100%;
-  background-color: red;
+  /*background-color: red;*/
   padding: 0 3rem;
 
+  /*
   > div:first-child {
     border: 1px solid magenta;
   }
 
   > div:last-child {
     border: 1px solid blue;
-  }
+  }*/
 
   @media only screen and (max-width: 1200px) {
     display: flex;
