@@ -1,3 +1,4 @@
+import { IMovieDetails } from "types/movie";
 import { IPayload } from "types/story";
 import MovieDetails from "./MovieDetails";
 
@@ -7,7 +8,8 @@ const payload: IPayload = {
 };
 export default payload;
 
-const FakeData = {
+//https://api.themoviedb.org/3/movie/453395?api_key=API_KEY&language=en-US&append_to_response=external_ids
+const FakeData: IMovieDetails = {
   adult: false,
   backdrop_path: "/wcKFYIiVDvRURrzglV9kGu7fpfY.jpg",
   belongs_to_collection: {
@@ -39,7 +41,7 @@ const FakeData = {
   original_title: "Doctor Strange in the Multiverse of Madness",
   overview:
     "Doctor Strange, with the help of mystical allies both old and new, traverses the mind-bending and dangerous alternate realities of the Multiverse to confront a mysterious new adversary.",
-  popularity: 7160.223,
+  popularity: 6647.226,
   poster_path: "/9Gtg2DzBhmYamXBS1hKAhiwbBKS.jpg",
   production_companies: [
     {
@@ -86,7 +88,13 @@ const FakeData = {
   title: "Doctor Strange in the Multiverse of Madness",
   video: false,
   vote_average: 7.5,
-  vote_count: 4049,
+  vote_count: 4082,
+  external_ids: {
+    imdb_id: "tt9419884",
+    facebook_id: "DoctorStrangeOfficial",
+    instagram_id: "doctorstrangeofficial",
+    twitter_id: "DrStrange",
+  },
 };
 
 export const Basic = (args: any) => <MovieDetails movie={FakeData} {...args} />;

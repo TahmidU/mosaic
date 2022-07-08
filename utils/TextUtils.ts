@@ -4,7 +4,7 @@
  * @param indexes : 0 - font-family and 1 - font-size
  * @returns font-family + font-size string
  */
-function fontImportancePlacer(font: string, indexes: number[]): string {
+export function fontImportancePlacer(font: string, indexes: number[]): string {
   if (indexes.length > 2) return "";
 
   return font
@@ -13,7 +13,7 @@ function fontImportancePlacer(font: string, indexes: number[]): string {
     .join(";");
 }
 
-function dateFormatter(date: string): string {
+export function dateFormatter(date: string): string {
   if (!date) return date; //! Somehow an undefined date param is passed in storybook
 
   const [year, month, day] = date.split("-");

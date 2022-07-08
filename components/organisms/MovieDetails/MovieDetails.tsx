@@ -1,15 +1,20 @@
 import {
   Container,
+  ExternalLinkIcon,
+  FacebookIcon,
+  InstagramIcon,
   MainSection,
   Socials,
+  StarRatingStyle,
   SubSection,
   TitleBlock,
+  TwitterIcon,
 } from "./styles";
 
 import { IMovieDetails } from "types/movie";
 import { Links } from "utils";
 import { ReactElement } from "react";
-import StarRating from "components/molecules/StarRating";
+import { dateFormatter } from "utils/TextUtils";
 import { shortenRuntime } from "utils/MathUtils";
 
 interface IMovieDetailsProps {
@@ -30,13 +35,18 @@ export default function ({ movie }: IMovieDetailsProps): ReactElement {
         <TitleBlock>
           <span>{movie.original_title}</span>
           <span>
-            {movie.release_date} |{" "}
+            {dateFormatter(movie.release_date)} |{" "}
             {movie.genres.map((_genre) => _genre.name).join(", ")} |{" "}
             {shortenRuntime(movie.runtime)}
           </span>
         </TitleBlock>
-        <StarRating rating={movie.vote_average} />
-        <Socials></Socials>
+        <StarRatingStyle rating={movie.vote_average} />
+        <Socials>
+          <ExternalLinkIcon />
+          <FacebookIcon />
+          <InstagramIcon />
+          <TwitterIcon />
+        </Socials>
       </MainSection>
       <SubSection></SubSection>
     </Container>

@@ -1,3 +1,5 @@
+import { ISocials } from "./socials";
+
 export interface IShortMovieDetails {
   src: string;
   review: number;
@@ -19,7 +21,7 @@ export interface IMovieGenre {
 
 export interface IProductionCompanies {
   id: number;
-  logo_path: string;
+  logo_path: ?string;
   name: string;
   origin_country: string;
 }
@@ -60,4 +62,5 @@ export interface IMovieDetails {
   video: boolean;
   vote_average: number;
   vote_count: number;
+  external_ids: ?ISocials;
 }
