@@ -1,4 +1,4 @@
-import { IMovieDetails, ITVShowDetails } from "types/api/explore";
+import { IExploreMovieDetails, ITVShowDetails } from "types/api/explore";
 import { useContext, useEffect, useState } from "react";
 
 import GlobalContext from "context/GlobalContext";
@@ -160,7 +160,7 @@ export default function useExploreList() {
     return await globalRequests?.api
       .get(`/explore/movies/${selectReq}`)
       .then((_result) => _result.data.results)
-      .then((_results: IMovieDetails[]) =>
+      .then((_results: IExploreMovieDetails[]) =>
         _results.map((_result) => {
           const movieCardDetails: IShortMovieDetails = {
             movieTitle: _result.title,

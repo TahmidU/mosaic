@@ -34,7 +34,7 @@ export interface ISpokenLanguages {
   iso_639_1: string;
   name: string;
 }
-export interface IMovieDetail {
+export interface IMovieDetails {
   adult: boolean;
   backdrop_path: string;
   belongs_to_collection: IMovieCollection;
