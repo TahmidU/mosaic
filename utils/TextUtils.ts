@@ -1,3 +1,5 @@
+import { ICrew } from "types/movie";
+
 /**
  *
  * @param font : font from IFonts;
@@ -23,9 +25,17 @@ export function dateFormatter(date: string): string {
   return date;
 }
 
+export function findInCrewNamesByJob(crew: ICrew[], job: string): string {
+  return crew
+    .filter((_person) => _person.job === job)
+    .map((_director) => _director.name)
+    .join(",");
+}
+
 const TextUtils = {
   dateFormatter,
   fontImportancePlacer,
+  findInCrewNamesByJob,
 };
 
 export default TextUtils;

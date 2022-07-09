@@ -10,11 +10,11 @@ import {
   TitleBlock,
   TwitterIcon,
 } from "./styles";
+import { dateFormatter, findInCrewNamesByJob } from "utils/TextUtils";
 
 import { IMovieDetails } from "types/movie";
 import { Links } from "utils";
 import { ReactElement } from "react";
-import { dateFormatter } from "utils/TextUtils";
 import { shortenRuntime } from "utils/MathUtils";
 
 interface IMovieDetailsProps {
@@ -22,8 +22,6 @@ interface IMovieDetailsProps {
 }
 
 export default function ({ movie }: IMovieDetailsProps): ReactElement {
-  console.log(movie);
-
   return (
     <Container
       variant="vertical_image"
@@ -48,7 +46,34 @@ export default function ({ movie }: IMovieDetailsProps): ReactElement {
           <TwitterIcon />
         </Socials>
       </MainSection>
-      <SubSection></SubSection>
+      <SubSection>
+        <p>
+          <span>Original Language</span>
+          <span>{movie.original_language}</span>
+        </p>
+        <p>
+          <span>Director(s)</span>
+          <span>
+            {movie.credits?.crew &&
+              findInCrewNamesByJob(movie.credits?.crew, "Director")}
+          </span>
+        </p>
+        <p>
+          <span>Writer(s)</span>
+          <span>
+            {movie.credits?.crew &&
+              findInCrewNamesByJob(movie.credits?.crew, "Writer")}
+          </span>
+        </p>
+        <p>
+          <span>Budget</span>
+          <span>${movie.budget}</span>
+        </p>
+        <p>
+          <span>Revenue</span>
+          <span>${movie.revenue}</span>
+        </p>
+      </SubSection>
     </Container>
   );
 }
