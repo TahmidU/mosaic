@@ -32,10 +32,15 @@ export function findInCrewNamesByJob(crew: ICrew[], job: string): string {
     .join(",");
 }
 
+export function numberWithCommas(x: number): string {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 const TextUtils = {
   dateFormatter,
   fontImportancePlacer,
   findInCrewNamesByJob,
+  numberWithCommas,
 };
 
 export default TextUtils;

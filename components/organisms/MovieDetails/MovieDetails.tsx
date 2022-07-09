@@ -11,7 +11,11 @@ import {
   TwitterIcon,
 } from "./styles";
 import { ICrew, IMovieGenre } from "types/movie";
-import { dateFormatter, findInCrewNamesByJob } from "utils/TextUtils";
+import {
+  dateFormatter,
+  findInCrewNamesByJob,
+  numberWithCommas,
+} from "utils/TextUtils";
 
 import { ISocials } from "types/socials";
 import { Links } from "utils";
@@ -47,6 +51,7 @@ export default function ({
   revenue,
   crew,
 }: IMovieDetailsProps): ReactElement {
+  console.log(numberWithCommas(budget));
   return (
     <Container
       variant="vertical_image"
@@ -114,11 +119,11 @@ export default function ({
         </p>
         <p>
           <span>Budget</span>
-          <span>${budget}</span>
+          <span>${numberWithCommas(budget)}</span>
         </p>
         <p>
           <span>Revenue</span>
-          <span>${revenue}</span>
+          <span>${numberWithCommas(revenue)}</span>
         </p>
       </SubSection>
     </Container>
