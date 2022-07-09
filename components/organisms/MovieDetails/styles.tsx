@@ -74,15 +74,19 @@ export const Socials = styled.div`
   flex-direction: row;
   width: 100%;
 
-  svg:first-child {
+  > a {
+    all: unset;
+  }
+
+  a:first-child {
     margin: 0 0.5rem 0 0;
   }
 
-  svg:not(:first-child):not(:last-child) {
+  a:not(:first-child):not(:last-child) {
     margin: 0 0.5rem;
   }
 
-  svg:last-child {
+  a:last-child {
     margin: 0 0 0 0.5rem;
   }
 `;
@@ -114,5 +118,26 @@ export const TwitterIcon = styled(BsTwitter)`
 `;
 TwitterIcon.displayName = "TwitterIcon";
 
-export const SubSection = styled.div``;
+export const SubSection = styled.div`
+  margin: 1rem 0;
+  width: 100%;
+  justify-content: start;
+  > p {
+    text-align: start;
+    display: flex;
+    flex-direction: column;
+    > span:first-child {
+      ${({ theme }) => theme.fonts.main.medium};
+      font-weight: bold;
+    }
+    > span:last-child {
+      ${({ theme }) => theme.fonts.main.regular};
+      font-weight: 300;
+    }
+  }
+
+  > p:first-child > span:last-child {
+    text-transform: uppercase;
+  }
+`;
 SubSection.displayName = "SubSection";

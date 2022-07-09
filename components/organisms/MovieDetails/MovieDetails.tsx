@@ -40,10 +40,42 @@ export default function ({ movie }: IMovieDetailsProps): ReactElement {
         </TitleBlock>
         <StarRatingStyle rating={movie.vote_average} />
         <Socials>
-          <ExternalLinkIcon />
-          <FacebookIcon />
-          <InstagramIcon />
-          <TwitterIcon />
+          <a target="_blank" href={movie.homepage} rel="noopener noreferrer">
+            <ExternalLinkIcon />
+          </a>
+          <a
+            target="_blank"
+            href={
+              movie.external_ids
+                ? `${Links.facebookURL}${movie.external_ids.facebook_id}`
+                : ""
+            }
+            rel="noopener noreferrer"
+          >
+            <FacebookIcon />
+          </a>
+          <a
+            target="_blank"
+            href={
+              movie.external_ids
+                ? `${Links.instagramURL}${movie.external_ids.instagram_id}`
+                : ""
+            }
+            rel="noopener noreferrer"
+          >
+            <InstagramIcon />
+          </a>
+          <a
+            target="_blank"
+            href={
+              movie.external_ids
+                ? `${Links.twitterURL}${movie.external_ids.twitter_id}`
+                : ""
+            }
+            rel="noopener noreferrer"
+          >
+            <TwitterIcon />
+          </a>
         </Socials>
       </MainSection>
       <SubSection>
