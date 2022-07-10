@@ -10,120 +10,103 @@ import {
   TitleBlock,
   TwitterIcon,
 } from "./styles";
-import { ICrew, IMovieGenre } from "types/movie";
 import {
   dateFormatter,
   findInCrewNamesByJob,
   numberWithCommas,
 } from "utils/TextUtils";
 
-import { ISocials } from "types/socials";
+import { IMovieDetails } from "types/movie";
 import { Links } from "utils";
 import { ReactElement } from "react";
 import { shortenRuntime } from "utils/MathUtils";
 
 interface IMovieDetailsProps {
-  posterPath: string;
-  title: string;
-  releaseDate: string;
-  runtime: number;
-  rating: number;
-  genres: IMovieGenre[];
-  homepage: string;
-  externals?: ISocials;
-  originalLanguage: string;
-  budget: number;
-  revenue: number;
-  crew: ICrew[];
+  movieDetail: IMovieDetails;
 }
 
-export default function ({
-  posterPath,
-  title,
-  releaseDate,
-  genres,
-  runtime,
-  rating,
-  homepage,
-  externals,
-  originalLanguage,
-  budget,
-  revenue,
-  crew,
-}: IMovieDetailsProps): ReactElement {
-  console.log(numberWithCommas(budget));
+export default function ({ movieDetail }: IMovieDetailsProps): ReactElement {
   return (
     <Container
       variant="vertical_image"
-      src={`${Links.tmdbImageURL}original${posterPath}`}
+      src={`${Links.tmdbImageURL}original${movieDetail.poster_path}`}
       imageWidth={379}
       imageHeight={580}
     >
       <MainSection>
         <TitleBlock>
-          <span>{title}</span>
+          <span>{movieDetail.original_title}</span>
           <span>
-            {dateFormatter(releaseDate)} |{" "}
-            {genres.map((_genre) => _genre.name).join(", ")} |{" "}
-            {shortenRuntime(runtime)}
+            {dateFormatter(movieDetail.release_date)} |{" "}
+            {movieDetail.genres.map((_genre) => _genre.name).join(", ")} |{" "}
+            {shortenRuntime(movieDetail.runtime)}
           </span>
         </TitleBlock>
-        <StarRatingStyle rating={rating} />
-        {externals && (
-          <Socials>
-            <a target="_blank" href={homepage} rel="noopener noreferrer">
-              <ExternalLinkIcon />
+        <StarRatingStyle rating={movieDetail.vote_average} />
+
+        <Socials>
+          <a
+            target="_blank"
+            href={movieDetail.homepage}
+            rel="noopener noreferrer"
+          >
+            <ExternalLinkIcon />
+          </a>
+          {movieDetail?.external_ids?.facebook_id && (
+            <a
+              target="_blank"
+              href={`${Links.facebookURL}${movieDetail.external_ids.facebook_id}`}
+              rel="noopener noreferrer"
+            >
+              <FacebookIcon />
             </a>
-            {externals.facebook_id && (
-              <a
-                target="_blank"
-                href={`${Links.facebookURL}${externals.facebook_id}`}
-                rel="noopener noreferrer"
-              >
-                <FacebookIcon />
-              </a>
-            )}
-            {externals.instagram_id && (
-              <a
-                target="_blank"
-                href={`${Links.instagramURL}${externals.instagram_id}`}
-                rel="noopener noreferrer"
-              >
-                <InstagramIcon />
-              </a>
-            )}
-            {externals.twitter_id && (
-              <a
-                target="_blank"
-                href={`${Links.twitterURL}${externals.twitter_id}`}
-                rel="noopener noreferrer"
-              >
-                <TwitterIcon />
-              </a>
-            )}
-          </Socials>
-        )}
+          )}
+          {movieDetail?.external_ids?.instagram_id && (
+            <a
+              target="_blank"
+              href={`${Links.instagramURL}${movieDetail.external_ids.instagram_id}`}
+              rel="noopener noreferrer"
+            >
+              <InstagramIcon />
+            </a>
+          )}
+          {movieDetail?.external_ids?.twitter_id && (
+            <a
+              target="_blank"
+              href={`${Links.twitterURL}${movieDetail.external_ids.twitter_id}`}
+              rel="noopener noreferrer"
+            >
+              <TwitterIcon />
+            </a>
+          )}
+        </Socials>
       </MainSection>
       <SubSection>
         <p>
           <span>Original Language</span>
-          <span>{originalLanguage}</span>
+          <span>{movieDetail.original_language}</span>
         </p>
         <p>
           <span>Director(s)</span>
-          <span>{crew && findInCrewNamesByJob(crew, "Director")}</span>
+          <span>
+            {movieDetail.credits?.crew &&
+              findInCrewNamesByJob(movieDetail.credits.crew, "Director")}
+          </span>
         </p>
         <p>
           <span>Writer(s)</span>
-          <span>{crew && findInCrewNamesByJob(crew, "Writer")}</span>
+          <span>
+            {movieDetail.credits?.crew &&
+              findInCrewNamesByJob(movieDetail.credits.crew, "Writer")}
+          </span>
         </p>
         <p>
           <span>Budget</span>
-          <span>${numberWithCommas(budget)}</span>
+          <span>${numberWithCommas(movieDetail.budget)}</span>
         </p>
         <p>
           <span>Revenue</span>
-          <span>${numberWithCommas(revenue)}</span>
+          <span>${numberWithCommas(movieDetail.revenue)}</span>
         </p>
       </SubSection>
     </Container>
