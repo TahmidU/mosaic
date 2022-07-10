@@ -1,4 +1,5 @@
 import CastCard from "./CastCard";
+import { FakeMovieData } from "resources/TestResources/MovieDetails";
 import { IPayload } from "types/story";
 
 const payload: IPayload = {
@@ -7,5 +8,7 @@ const payload: IPayload = {
 };
 export default payload;
 
-export const Basic = (args: any) => <CastCard {...args} />;
+export const Basic = (args: any) => (
+  <CastCard person={FakeMovieData.credits?.cast[0]} {...args} />
+);
 Basic.args = {};

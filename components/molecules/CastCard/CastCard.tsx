@@ -1,20 +1,24 @@
 import { Container, TextSection } from "./styles";
 
+import { ICast } from "types/movie";
 import { Links } from "utils";
 import { ReactElement } from "react";
 
-interface ICastCardProps {}
+interface ICastCardProps {
+  person: ICast;
+}
 
-export default function CastCard({}: ICastCardProps): ReactElement {
+export default function CastCard({ person }: ICastCardProps): ReactElement {
   return (
     <Container
       variant="vertical_image"
-      src={`${Links.tmdbImageURL}original/9Gtg2DzBhmYamXBS1hKAhiwbBKS.jpg`}
+      src={`${Links.tmdbImageURL}original${person.profile_path}`}
     >
       <TextSection>
-        <span>Name</span>
-        <span>Played</span>
-        <span>Played</span>
+        <span>{person.name}</span>
+        {person.character.split("/").map((_played, index) => (
+          <span key={index}>{_played}</span>
+        ))}
       </TextSection>
     </Container>
   );
