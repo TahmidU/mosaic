@@ -1,10 +1,10 @@
+import { MovieCardStyle, MovieCardWrapper } from "./styles";
 import { ReactElement, useContext } from "react";
 
 import GlobalContext from "context/GlobalContext";
 import HorizontalList from "components/molecules/HorizontalList";
 import { IShortMovieDetails } from "types/movie";
 import MovieCard from "components/molecules/MovieCard";
-import { MovieCardWrapper } from "./styles";
 
 interface IMovieListProps<T> {
   title: string;
@@ -37,7 +37,7 @@ export default function MovieList<T>({
           console.log(_movie.id);
           return (
             <MovieCardWrapper key={index}>
-              <MovieCard
+              <MovieCardStyle
                 src={_movie.src}
                 review={_movie.review}
                 movieTitle={_movie.movieTitle}

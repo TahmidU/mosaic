@@ -1,4 +1,13 @@
+import MovieCard from "components/molecules/MovieCard";
 import styled from "styled-components";
+
+export const MovieCardStyle = styled(MovieCard)`
+  cursor: pointer;
+  :hover {
+    background-color: ${({ theme }) => theme.cGrey.alpha(0.2).toString()};
+  }
+`;
+MovieCardStyle.displayName = "MovieCardStyle";
 
 export const MovieCardWrapper = styled.div`
   display: inline-block;
