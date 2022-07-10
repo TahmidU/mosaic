@@ -1,6 +1,7 @@
 import { ISocials } from "./socials";
 
 export interface IShortMovieDetails {
+  id: number;
   src: string;
   review: number;
   movieTitle: string;

@@ -1,9 +1,9 @@
-import { ITheme, Theme } from "../types/context";
+import { IUseTheme, Theme } from "../types/context";
 
 import getTheme from "../resources/themes";
 import { useState } from "react";
 
-export default function useTheme(): ITheme {
+export default function useTheme(): IUseTheme {
   const [currentTheme, setCurrentTheme] = useState<Theme>("light");
 
   return {

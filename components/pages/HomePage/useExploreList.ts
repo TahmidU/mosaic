@@ -163,6 +163,7 @@ export default function useExploreList() {
       .then((_results: IExploreMovieDetails[]) =>
         _results.map((_result) => {
           const movieCardDetails: IShortMovieDetails = {
+            id: _result.id,
             movieTitle: _result.title,
             movieReleaseDate: _result.release_date,
             src: `${Links.tmdbImageURL}original/${_result.poster_path}`,
@@ -188,6 +189,7 @@ export default function useExploreList() {
       .then((_results: ITVShowDetails[]) =>
         _results.map((_result) => {
           const movieCardDetails: IShortMovieDetails = {
+            id: _result.id,
             movieTitle: _result.name,
             movieReleaseDate: _result.first_air_date,
             src: `${Links.tmdbImageURL}original/${_result.poster_path}`,

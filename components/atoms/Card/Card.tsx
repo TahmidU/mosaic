@@ -9,6 +9,7 @@ interface ICardProps {
   imageHeight?: number;
   className?: string;
   children?: ReactNode;
+  onClick: () => void;
 }
 
 export default function Card({
@@ -18,10 +19,11 @@ export default function Card({
   imageHeight = 225,
   className,
   children,
+  onClick,
 }: ICardProps): ReactElement {
   if (variant === "vertical_image") {
     return (
-      <Container className={className}>
+      <Container className={className} onClick={onClick}>
         <Wrapper>
           <MovieImage
             src={src || ""}
