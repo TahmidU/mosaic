@@ -1,4 +1,4 @@
-import { FakeMovieData } from "./FakeData";
+import { FakeMovieData } from "../../../resources/TestResources/MovieDetails";
 import { IPayload } from "types/story";
 import MovieDetails from "./MovieDetails";
 
