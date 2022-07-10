@@ -1,4 +1,5 @@
 import { IPayload } from "types/story";
+import { Links } from "utils";
 import MediaCard from "./MediaCard";
 
 const payload: IPayload = {
@@ -7,5 +8,11 @@ const payload: IPayload = {
 };
 export default payload;
 
-export const Basic = (args: any) => <MediaCard {...args} />;
+export const Basic = (args: any) => (
+  <MediaCard
+    title="Official Trailer"
+    src={`${Links.youtubeThumbnailURL}GfbNLLcrItI/hqdefault.jpg`}
+    {...args}
+  />
+);
 Basic.args = {};

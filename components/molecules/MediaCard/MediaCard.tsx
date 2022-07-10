@@ -1,22 +1,22 @@
 import { FatContainer, TitleText } from "./styles";
 
-import Links from "utils/Links";
 import { ReactElement } from "react";
 
 type Variant = "Fat" | "Long";
 
 interface IMediaCardProps {
   variant: Variant;
+  title: string;
+  src: string;
 }
 
-export default function MediaCard({}: IMediaCardProps): ReactElement {
+export default function MediaCard({
+  title,
+  src,
+}: IMediaCardProps): ReactElement {
   return (
-    <FatContainer
-      variant="vertical_image"
-      src={`${Links.youtubeThumbnailURL}GfbNLLcrItI/hqdefault.jpg`}
-      imageWidth={500}
-    >
-      <TitleText>Title</TitleText>
+    <FatContainer variant="vertical_image" src={src} imageWidth={500}>
+      <TitleText>{title}</TitleText>
     </FatContainer>
   );
 }
