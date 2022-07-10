@@ -15,7 +15,12 @@ export default function MediaCard({
   src,
 }: IMediaCardProps): ReactElement {
   return (
-    <FatContainer variant="vertical_image" src={src} imageWidth={500}>
+    <FatContainer
+      variant="vertical_image"
+      src={src}
+      imageWidth={500}
+      imageHeight={350}
+    >
       <TitleText>{title}</TitleText>
     </FatContainer>
   );
