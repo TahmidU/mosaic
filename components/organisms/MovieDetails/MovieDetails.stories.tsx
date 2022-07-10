@@ -9,20 +9,6 @@ const payload: IPayload = {
 export default payload;
 
 export const Basic = (args: any) => (
-  <MovieDetails
-    posterPath={FakeMovieData.poster_path}
-    title={FakeMovieData.title}
-    releaseDate={FakeMovieData.release_date}
-    genres={FakeMovieData.genres}
-    runtime={FakeMovieData.runtime}
-    rating={FakeMovieData.vote_average}
-    homepage={FakeMovieData.homepage}
-    externals={FakeMovieData.external_ids}
-    originalLanguage={FakeMovieData.original_language}
-    budget={FakeMovieData.budget}
-    revenue={FakeMovieData.budget}
-    crew={FakeMovieData.credits?.crew}
-    {...args}
-  />
+  <MovieDetails movieDetail={FakeMovieData} {...args} />
 );
 Basic.args = {};
