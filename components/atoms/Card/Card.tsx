@@ -9,7 +9,7 @@ interface ICardProps {
   imageHeight?: number;
   className?: string;
   children?: ReactNode;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 export default function Card({
