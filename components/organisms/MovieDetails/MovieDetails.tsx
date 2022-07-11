@@ -22,58 +22,60 @@ import { ReactElement } from "react";
 import { shortenRuntime } from "utils/MathUtils";
 
 interface IMovieDetailsProps {
-  movieDetail: IMovieDetails;
+  movieDetails: IMovieDetails;
 }
 
-export default function ({ movieDetail }: IMovieDetailsProps): ReactElement {
+export default function MovieDetail({
+  movieDetails,
+}: IMovieDetailsProps): ReactElement {
   return (
     <Container
       variant="vertical_image"
-      src={`${Links.tmdbImageURL}original${movieDetail.poster_path}`}
+      src={`${Links.tmdbImageURL}original${movieDetails.poster_path}`}
       imageWidth={379}
       imageHeight={580}
     >
       <MainSection>
         <TitleBlock>
-          <span>{movieDetail.original_title}</span>
+          <span>{movieDetails.original_title}</span>
           <span>
-            {dateFormatter(movieDetail.release_date)} |{" "}
-            {movieDetail.genres.map((_genre) => _genre.name).join(", ")} |{" "}
-            {shortenRuntime(movieDetail.runtime)}
+            {dateFormatter(movieDetails.release_date)} |{" "}
+            {movieDetails.genres.map((_genre) => _genre.name).join(", ")} |{" "}
+            {shortenRuntime(movieDetails.runtime)}
           </span>
         </TitleBlock>
-        <StarRatingStyle rating={movieDetail.vote_average} />
+        <StarRatingStyle rating={movieDetails.vote_average} />
 
         <Socials>
           <a
             target="_blank"
-            href={movieDetail.homepage}
+            href={movieDetails.homepage}
             rel="noopener noreferrer"
           >
             <ExternalLinkIcon />
           </a>
-          {movieDetail?.external_ids?.facebook_id && (
+          {movieDetails?.external_ids?.facebook_id && (
             <a
               target="_blank"
-              href={`${Links.facebookURL}${movieDetail.external_ids.facebook_id}`}
+              href={`${Links.facebookURL}${movieDetails.external_ids.facebook_id}`}
               rel="noopener noreferrer"
             >
               <FacebookIcon />
             </a>
           )}
-          {movieDetail?.external_ids?.instagram_id && (
+          {movieDetails?.external_ids?.instagram_id && (
             <a
               target="_blank"
-              href={`${Links.instagramURL}${movieDetail.external_ids.instagram_id}`}
+              href={`${Links.instagramURL}${movieDetails.external_ids.instagram_id}`}
               rel="noopener noreferrer"
             >
               <InstagramIcon />
             </a>
           )}
-          {movieDetail?.external_ids?.twitter_id && (
+          {movieDetails?.external_ids?.twitter_id && (
             <a
               target="_blank"
-              href={`${Links.twitterURL}${movieDetail.external_ids.twitter_id}`}
+              href={`${Links.twitterURL}${movieDetails.external_ids.twitter_id}`}
               rel="noopener noreferrer"
             >
               <TwitterIcon />
@@ -84,29 +86,29 @@ export default function ({ movieDetail }: IMovieDetailsProps): ReactElement {
       <SubSection>
         <p>
           <span>Original Language</span>
-          <span>{movieDetail.original_language}</span>
+          <span>{movieDetails.original_language}</span>
         </p>
         <p>
           <span>Director(s)</span>
           <span>
-            {movieDetail.credits?.crew &&
-              findInCrewNamesByJob(movieDetail.credits.crew, "Director")}
+            {movieDetails.credits?.crew &&
+              findInCrewNamesByJob(movieDetails.credits.crew, "Director")}
           </span>
         </p>
         <p>
           <span>Writer(s)</span>
           <span>
-            {movieDetail.credits?.crew &&
-              findInCrewNamesByJob(movieDetail.credits.crew, "Writer")}
+            {movieDetails.credits?.crew &&
+              findInCrewNamesByJob(movieDetails.credits.crew, "Writer")}
           </span>
         </p>
         <p>
           <span>Budget</span>
-          <span>${numberWithCommas(movieDetail.budget)}</span>
+          <span>${numberWithCommas(movieDetails.budget)}</span>
         </p>
         <p>
           <span>Revenue</span>
-          <span>${numberWithCommas(movieDetail.revenue)}</span>
+          <span>${numberWithCommas(movieDetails.revenue)}</span>
         </p>
       </SubSection>
     </Container>

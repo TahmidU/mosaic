@@ -9,6 +9,6 @@ const payload: IPayload = {
 export default payload;
 
 export const Basic = (args: any) => (
-  <MovieDetails movieDetail={FakeMovieData} {...args} />
+  <MovieDetails movieDetails={FakeMovieData} {...args} />
 );
 Basic.args = {};

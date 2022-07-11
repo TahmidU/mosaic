@@ -29,7 +29,7 @@ export function findInCrewNamesByJob(crew: ICrew[], job: string): string {
   return crew
     .filter((_person) => _person.job === job)
     .map((_director) => _director.name)
-    .join(",");
+    .join(", ");
 }
 
 export function numberWithCommas(x: number): string {
