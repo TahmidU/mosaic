@@ -1,6 +1,6 @@
 import { Container, TextSection } from "./styles";
 
-import { ICast } from "types/movie";
+import { ICast } from "types/tv_movies";
 import { Links } from "utils";
 import { ReactElement } from "react";
 
