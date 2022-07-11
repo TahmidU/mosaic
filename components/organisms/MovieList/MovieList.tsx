@@ -34,7 +34,6 @@ export default function MovieList<T>({
     >
       {movies &&
         movies.map((_movie, index) => {
-          console.log(_movie.id);
           return (
             <MovieCardWrapper key={index}>
               <MovieCardStyle
