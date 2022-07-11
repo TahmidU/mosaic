@@ -21,12 +21,15 @@ import { Links } from "utils";
 import { ReactElement } from "react";
 import { shortenRuntime } from "utils/MathUtils";
 
+type Variant = "movie" | "tv";
 interface IMovieDetailsProps {
   movieDetails: IMovieDetails;
+  variant?: Variant;
 }
 
 export default function MovieDetail({
   movieDetails,
+  variant = "movie",
 }: IMovieDetailsProps): ReactElement {
   return (
     <Container

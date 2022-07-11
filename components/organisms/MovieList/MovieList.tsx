@@ -4,7 +4,6 @@ import { ReactElement, useContext } from "react";
 import GlobalContext from "context/GlobalContext";
 import HorizontalList from "components/molecules/HorizontalList";
 import { IShortMovieDetails } from "types/movie";
-import MovieCard from "components/molecules/MovieCard";
 
 interface IMovieListProps<T> {
   title: string;
@@ -13,6 +12,7 @@ interface IMovieListProps<T> {
   onSubTitleClick: (title: T) => void;
   className?: string;
   loading?: boolean;
+  type?: "tv" | "movie";
 }
 
 export default function MovieList<T>({
@@ -22,6 +22,7 @@ export default function MovieList<T>({
   movies,
   className,
   loading = false,
+  type = "movie",
 }: IMovieListProps<T>): ReactElement {
   const { routes } = useContext(GlobalContext);
   return (
@@ -41,7 +42,7 @@ export default function MovieList<T>({
                 review={_movie.review}
                 movieTitle={_movie.movieTitle}
                 movieReleaseDate={_movie.movieReleaseDate}
-                onClick={() => routes?.goToMovieDetails(_movie.id)}
+                onClick={() => routes?.goToDetails(_movie.id, type)}
               />
             </MovieCardWrapper>
           );

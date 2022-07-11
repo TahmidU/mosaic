@@ -5,12 +5,13 @@ export default function useRoutes(): IUseRoutes {
   const router = useRouter();
 
   const goToHomePage = () => router.replace(`/`),
-    goToMovieDetails = (movieId: number) => router.replace(`/movie/${movieId}`),
+    goToDetails = (id: number, type: "movie" | "tv" = "movie") =>
+      router.replace(`/${type}/${id}`),
     goToSearchPage = (search: string) => router.replace(`/search?q=${search}`);
 
   return {
     goToHomePage,
-    goToMovieDetails,
+    goToDetails,
     goToSearchPage,
   };
 }

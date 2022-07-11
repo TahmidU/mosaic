@@ -49,7 +49,7 @@ export default function MobileCarousel({
           onClick={() => handlePageDirectionChange(-1)}
         />
         <ImageContainer
-          onClick={() => routes?.goToMovieDetails(carouselData[page].id)}
+          onClick={() => routes?.goToDetails(carouselData[page].id)}
         >
           <CarouselImage
             direction={direction}

@@ -14,7 +14,7 @@ export type GlobalRequests = ReturnType<typeof useAxios>;
 
 export interface IUseRoutes {
   goToHomePage: () => void;
-  goToMovieDetails: (movieId: number) => void;
+  goToDetails: (id: number, type: "movie" | "tv" = "movie") => void;
   goToSearchPage: (search: string) => void;
 }
 

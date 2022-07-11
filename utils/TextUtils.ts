@@ -1,4 +1,4 @@
-import { ICrew } from "types/movie";
+import { ICrew } from "types/tv_movies";
 
 /**
  *
@@ -32,8 +32,8 @@ export function findInCrewNamesByJob(crew: ICrew[], job: string): string {
     .join(", ");
 }
 
-export function numberWithCommas(x: number): string {
-  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+export function numberWithCommas(x?: number): string {
+  return x ? x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : "";
 }
 
 const TextUtils = {
