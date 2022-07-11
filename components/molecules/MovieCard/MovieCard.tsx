@@ -8,7 +8,7 @@ interface IMovieCardProps {
   review: number;
   movieTitle: string;
   movieReleaseDate: string;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 export default function MovieCard({

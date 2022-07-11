@@ -1,6 +1,12 @@
 import MovieCard from "components/molecules/MovieCard";
 import styled from "styled-components";
 
+export const LinkBtn = styled.a`
+  width: fit-content;
+  height: fit-content;
+`;
+LinkBtn.displayName = "LinkBtn";
+
 export const MovieCardStyle = styled(MovieCard)`
   cursor: pointer;
   :hover {
