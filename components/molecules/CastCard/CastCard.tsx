@@ -6,11 +6,16 @@ import { ReactElement } from "react";
 
 interface ICastCardProps {
   person: ICast;
+  className?: string;
 }
 
-export default function CastCard({ person }: ICastCardProps): ReactElement {
+export default function CastCard({
+  person,
+  className,
+}: ICastCardProps): ReactElement {
   return (
     <Container
+      className={className}
       variant="vertical_image"
       src={`${Links.tmdbImageURL}original${person.profile_path}`}
     >

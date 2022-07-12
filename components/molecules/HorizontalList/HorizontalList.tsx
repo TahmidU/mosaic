@@ -15,9 +15,9 @@ import { Loader } from "@mantine/core";
 
 interface IHorizontalListProps<T> {
   title: string;
-  subListTitles: T[];
+  subListTitles?: T[];
   children?: ReactNode;
-  onSubTitleClick: (title: T) => void;
+  onSubTitleClick?: (title: T) => void;
   className?: string;
   loading?: boolean;
 }
@@ -66,10 +66,12 @@ export default function HorizontalList<T>({
   return (
     <Container className={className}>
       <h1>{title}</h1>
-      <SubListStyle
-        options={subListTitles}
-        onChange={(_selected: any) => onSubTitleClick(_selected as T)}
-      />
+      {subListTitles && (
+        <SubListStyle
+          options={subListTitles}
+          onChange={(_selected: any) => onSubTitleClick(_selected as T)}
+        />
+      )}
       <ListWrapper>
         {loading ? (
           <AnimatePresence>

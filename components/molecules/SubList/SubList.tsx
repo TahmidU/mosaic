@@ -1,11 +1,11 @@
 import { ReactElement, useState } from "react";
 
-import SelectTitleList from "components/atoms/SelectTitleList";
 import DropdownList from "components/atoms/DropdownList";
+import SelectTitleList from "components/atoms/SelectTitleList";
 import { useMediaQuery } from "react-responsive";
 
 interface ISubListProps<T> {
-  options: T[];
+  options?: T[];
   onChange?: (selected: T) => void;
   className?: string;
 }
@@ -19,6 +19,8 @@ export default function SubList<T>({
   const isMobile = useMediaQuery({
     query: "(max-width: 768px)",
   });
+
+  if (!options) return <></>;
 
   return (
     <>
