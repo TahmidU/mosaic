@@ -4,6 +4,7 @@ import {
   IGenre,
   IProductionCompanies,
   IProductionCountries,
+  IProviders,
   ISpokenLanguages,
 } from "./tv_movies";
 
@@ -58,9 +59,9 @@ export interface ITVDetails {
   in_production: boolean;
   languages: string[];
   last_air_date: string;
-  last_episode_to_air: IEpisodeAir;
+  last_episode_to_air: ?IEpisodeAir;
   name: string;
-  next_episode_to_air: IEpisodeAir;
+  next_episode_to_air: ?IEpisodeAir;
   networks: INetworks[];
   number_of_episodes: number;
   number_of_seasons: number;
@@ -79,6 +80,7 @@ export interface ITVDetails {
   type: string;
   vote_average: number;
   vote_count: number;
-  external_ids: ISocials;
+  external_ids: ?ISocials;
   credits: ICredit;
+  "watch/providers"?: IProviders;
 }
