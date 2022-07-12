@@ -9,6 +9,7 @@ import {
   SubSection,
   TitleBlock,
   TwitterIcon,
+  WatchOn,
 } from "./styles";
 import {
   dateFormatter,
@@ -18,6 +19,7 @@ import {
 
 import { IMovieDetails } from "types/movie";
 import { ITVDetails } from "types/tv";
+import Image from "next/image";
 import { Links } from "utils";
 import { ReactElement } from "react";
 import { shortenRuntime } from "utils/MathUtils";
@@ -32,8 +34,6 @@ export default function MovieDetail({
   tvDetails,
 }: IMovieDetailsProps): ReactElement {
   if (!movieDetails && !tvDetails) return <></>;
-
-  console.log(tvDetails?.poster_path);
 
   return (
     <Container
@@ -193,6 +193,98 @@ export default function MovieDetail({
               <span>{tvDetails.number_of_episodes}</span>
             </p>
           </>
+        )}
+
+        {movieDetails &&
+          movieDetails["watch/providers"]?.results?.GB !== undefined && (
+            <>
+              <WatchOn>
+                <span>Purchase On (GB)</span>
+                <>
+                  {movieDetails["watch/providers"]?.results?.GB?.buy?.map(
+                    (_purchase_on, index) => (
+                      <div key={index}>
+                        <div>
+                          <Image
+                            alt="logo"
+                            src={
+                              _purchase_on.logo_path
+                                ? `${Links.tmdbImageURL}original${_purchase_on.logo_path}`
+                                : ""
+                            }
+                            width={24}
+                            height={24}
+                            layout="responsive"
+                          />
+                        </div>
+
+                        <span>{_purchase_on.provider_name}</span>
+                      </div>
+                    )
+                  )}
+                </>
+              </WatchOn>
+            </>
+          )}
+
+        {movieDetails &&
+        movieDetails["watch/providers"]?.results?.GB !== undefined ? (
+          <WatchOn>
+            <span>Stream On (GB)</span>
+            <>
+              {movieDetails["watch/providers"]?.results?.GB?.flatrate?.map(
+                (_stream_on, index) => (
+                  <div key={index}>
+                    <div>
+                      <Image
+                        alt="logo"
+                        src={
+                          _stream_on.logo_path
+                            ? `${Links.tmdbImageURL}original${_stream_on.logo_path}`
+                            : ""
+                        }
+                        width={24}
+                        height={24}
+                        layout="responsive"
+                      />
+                    </div>
+
+                    <span>{_stream_on.provider_name}</span>
+                  </div>
+                )
+              )}
+            </>
+          </WatchOn>
+        ) : tvDetails &&
+          tvDetails["watch/providers"]?.results?.GB !== undefined ? (
+          <WatchOn>
+            <span>Stream On (GB)</span>
+            <>
+              {tvDetails["watch/providers"]?.results?.GB?.flatrate?.map(
+                (_stream_on, index) => (
+                  <div key={index}>
+                    <div>
+                      <Image
+                        alt="logo"
+                        src={
+                          _stream_on.logo_path
+                            ? `${Links.tmdbImageURL}original${_stream_on.logo_path}`
+                            : ""
+                        }
+                        width={24}
+                        height={24}
+                        layout="responsive"
+                      />
+                    </div>
+
+                    <span>{_stream_on.provider_name}</span>
+                  </div>
+                )
+              )}
+            </>
+          </WatchOn>
+        ) : (
+          <></>
         )}
       </SubSection>
     </Container>

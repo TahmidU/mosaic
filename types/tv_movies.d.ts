@@ -71,12 +71,28 @@ export interface IStreamServiceProvider {
   provider_name: string;
 }
 
+export interface IRentProvider {
+  display_priority: number;
+  logo_path: ?string;
+  provider_id: number;
+  provider_name: string;
+}
+
+export interface IFreeProvider {
+  display_priority: number;
+  logo_path: ?string;
+  provider_id: number;
+  provider_name: string;
+}
+
 export interface IProviders {
   results: {
-    [country]: {
+    [country: string]: {
       link: ?string;
-      buy: IPurchaseProvider[];
-      flatrate: IStreamServiceProvider[];
+      buy?: IPurchaseProvider[];
+      flatrate?: IStreamServiceProvider[];
+      rent?: IRentProvider[];
+      free?: IFreeProvider[];
     };
   };
 }
