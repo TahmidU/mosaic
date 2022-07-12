@@ -56,3 +56,27 @@ export interface ICredit {
   cast: ICast[];
   crew: ICrew[];
 }
+
+export interface IPurchaseProvider {
+  display_priority: number;
+  logo_path: ?string;
+  provider_id: number;
+  provider_name: string;
+}
+
+export interface IStreamServiceProvider {
+  display_priority: number;
+  logo_path: ?string;
+  provider_id: number;
+  provider_name: string;
+}
+
+export interface IProviders {
+  results: {
+    [country]: {
+      link: ?string;
+      buy: IPurchaseProvider[];
+      flatrate: IStreamServiceProvider[];
+    };
+  };
+}

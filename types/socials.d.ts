@@ -3,5 +3,5 @@ export interface ISocials {
   facebook_id: ?string;
   instagram_id: ?string;
   twitter_id: ?string;
-  id: number;
+  id?: ?number;
 }

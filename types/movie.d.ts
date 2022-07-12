@@ -7,6 +7,7 @@ import {
   ICast,
   ICrew,
   ICredit,
+  IProviders,
 } from "./tv_movies";
 
 export interface IShortMovieDetails {
@@ -51,4 +52,5 @@ export interface IMovieDetails {
   vote_count: number;
   external_ids: ?ISocials;
   credits?: ICredit;
+  "watch/providers"?: IProviders;
 }
