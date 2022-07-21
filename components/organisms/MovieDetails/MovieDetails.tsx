@@ -196,31 +196,36 @@ export default function MovieDetail({
         )}
 
         {movieDetails &&
-          movieDetails["watch/providers"]?.results?.GB !== undefined && (
+          movieDetails["watch/providers"]?.results?.GB !== undefined &&
+          movieDetails["watch/providers"]?.results?.GB?.buy && (
             <>
               <WatchOn>
                 <span>Purchase On (GB)</span>
                 <>
                   {movieDetails["watch/providers"]?.results?.GB?.buy?.map(
-                    (_purchase_on, index) => (
-                      <div key={index}>
-                        <div>
-                          <Image
-                            alt="logo"
-                            src={
-                              _purchase_on.logo_path
-                                ? `${Links.tmdbImageURL}original${_purchase_on.logo_path}`
-                                : ""
-                            }
-                            width={24}
-                            height={24}
-                            layout="responsive"
-                          />
-                        </div>
+                    (_purchase_on, index) => {
+                      console.log(_purchase_on);
 
-                        <span>{_purchase_on.provider_name}</span>
-                      </div>
-                    )
+                      return (
+                        <div key={index}>
+                          <div>
+                            <Image
+                              alt="logo"
+                              src={
+                                _purchase_on.logo_path
+                                  ? `${Links.tmdbImageURL}original${_purchase_on.logo_path}`
+                                  : ""
+                              }
+                              width={24}
+                              height={24}
+                              layout="responsive"
+                            />
+                          </div>
+
+                          <span>{_purchase_on.provider_name}</span>
+                        </div>
+                      );
+                    }
                   )}
                 </>
               </WatchOn>
@@ -228,7 +233,8 @@ export default function MovieDetail({
           )}
 
         {movieDetails &&
-        movieDetails["watch/providers"]?.results?.GB !== undefined ? (
+        movieDetails["watch/providers"]?.results?.GB !== undefined &&
+        movieDetails["watch/providers"]?.results?.GB?.flatrate ? (
           <WatchOn>
             <span>Stream On (GB)</span>
             <>
@@ -256,7 +262,8 @@ export default function MovieDetail({
             </>
           </WatchOn>
         ) : tvDetails &&
-          tvDetails["watch/providers"]?.results?.GB !== undefined ? (
+          tvDetails["watch/providers"]?.results?.GB !== undefined &&
+          tvDetails["watch/providers"]?.results?.GB?.flatrate ? (
           <WatchOn>
             <span>Stream On (GB)</span>
             <>

@@ -20,6 +20,11 @@ Container.displayName = "Container";
 export const ShortDetailSection = styled.div`
   width: 100%;
   height: 100%;
+
+  @media only screen and (max-width: 1200px) {
+    display: flex;
+    justify-content: center;
+  }
 `;
 ShortDetailSection.displayName = "ShortDetailSection";
 
