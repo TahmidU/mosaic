@@ -1,11 +1,19 @@
-import { ReactElement } from "react";
+import { FC, ReactChild, ReactElement, ReactNode } from "react";
 
-interface ISocialProps {}
+import { FaExternalLinkAlt } from "react-icons/fa";
+import { IconType } from "react-icons/lib";
 
-export default function Social({}: ISocialProps): ReactElement {
+interface ISocialProps {
+  href?: string;
+  icon: FC;
+}
+
+export default function Social({ href, icon }: ISocialProps): ReactElement {
+  const IconNode = icon;
+
   return (
-    <div>
-      <div></div>
-    </div>
+    <a target="_blank" href={href} rel="noopener noreferrer">
+      <IconNode />
+    </a>
   );
 }
