@@ -1,4 +1,5 @@
 import CastCard from "components/molecules/CastCard";
+import HorizontalList from "components/molecules/HorizontalList";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -34,16 +35,27 @@ export const ExtraDetailSection = styled.div`
       font-weight: bold;
     }
   }
-
-  > div:nth-child(2) {
-    width: 100%;
-  }
 `;
 ExtraDetailSection.displayName = "ExtraDetailSection";
 
+export const HorizontalListStyle = styled(HorizontalList)`
+  > div:last-child {
+    height: 390px;
+
+    > div:first-child {
+      max-height: 390px;
+
+      > div:nth-child(2) {
+        max-height: 390px;
+      }
+    }
+  }
+`;
+HorizontalListStyle.displayName = "HorizontalListStyle";
+
 export const CastListWrapper = styled.div`
-  display: inline-block;
-  width: calc((100%) / 3);
+  display: inline-grid;
+  width: calc(100% / 7);
 
   > div {
     margin: 0 auto;
@@ -52,6 +64,12 @@ export const CastListWrapper = styled.div`
 CastListWrapper.displayName = "CastListWrapper";
 
 export const CastCardStyle = styled(CastCard)`
-  display: inline-block;
+  cursor: unset;
 `;
 CastCardStyle.displayName = "CastCardStyle";
+
+export const LinkBtn = styled.a`
+  width: fit-content;
+  height: fit-content;
+`;
+LinkBtn.displayName = "LinkBtn";

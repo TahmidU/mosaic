@@ -3,6 +3,8 @@ import {
   CastListWrapper,
   Container,
   ExtraDetailSection,
+  HorizontalListStyle,
+  LinkBtn,
   ShortDetailSection,
 } from "./styles";
 
@@ -34,17 +36,15 @@ export default function DetailsPage({
           <p>{movieDetails?.overview || tvDetails?.overview}</p>
         </div>
 
-        <div>
-          <HorizontalList title="Cast">
-            <CastListWrapper>
-              {movieDetails
-                ? movieDetails.credits?.cast.map((_actor, index) => (
-                    <CastCardStyle key={index} person={_actor} />
-                  ))
-                : tvDetails?.credits.cast.map((_actor, index) => <></>)}
-            </CastListWrapper>
-          </HorizontalList>
-        </div>
+        <HorizontalListStyle title="Cast">
+          {movieDetails
+            ? movieDetails.credits?.cast.map((_actor, index) => (
+                <CastListWrapper key={index}>
+                  <CastCardStyle person={_actor} />
+                </CastListWrapper>
+              ))
+            : tvDetails?.credits.cast.map((_actor, index) => <></>)}
+        </HorizontalListStyle>
 
         <div>
           <p>Media</p>
