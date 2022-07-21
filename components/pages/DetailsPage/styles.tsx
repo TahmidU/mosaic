@@ -24,8 +24,9 @@ export const ShortDetailSection = styled.div`
 ShortDetailSection.displayName = "ShortDetailSection";
 
 export const ExtraDetailSection = styled.div`
-  width: 100%;
+  max-width: 100%;
   height: 100%;
+  overflow: hidden;
   ${({ theme }) => theme.fonts.main.big};
 
   > div {
@@ -39,6 +40,12 @@ export const ExtraDetailSection = styled.div`
 ExtraDetailSection.displayName = "ExtraDetailSection";
 
 export const HorizontalListStyle = styled(HorizontalList)`
+  display: block;
+
+  > h1:first-child {
+    ${({ theme }) => theme.fonts.main.bigger};
+  }
+
   > div:last-child {
     height: 390px;
 
@@ -48,17 +55,37 @@ export const HorizontalListStyle = styled(HorizontalList)`
       > div:nth-child(2) {
         max-height: 390px;
       }
+
+      > div:first-child {
+        left: 0;
+      }
+
+      > div:last-child {
+        right: 0;
+      }
     }
   }
 `;
 HorizontalListStyle.displayName = "HorizontalListStyle";
 
 export const CastListWrapper = styled.div`
-  display: inline-grid;
+  display: inline-block;
   width: calc(100% / 7);
 
   > div {
     margin: 0 auto;
+  }
+
+  @media only screen and (max-width: 1729px) {
+    width: calc(100% / 5);
+  }
+
+  @media only screen and (max-width: 1400px) {
+    width: calc(100% / 3);
+  }
+
+  @media only screen and (max-width: 600px) {
+    width: calc(100% / 2);
   }
 `;
 CastListWrapper.displayName = "CastListWrapper";
