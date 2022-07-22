@@ -1,20 +1,23 @@
 import {
   CastCardStyle,
+  CastHorizontalList,
   CastListWrapper,
   Container,
   ExtraDetailSection,
-  HorizontalListStyle,
-  LinkBtn,
+  MediaCardStyle,
+  MediaHorizontalList,
+  MediaListWrapper,
   ShortDetailSection,
 } from "./styles";
+import { IVideo, IVideoResult } from "types/api/videos";
+import { ReactElement, useContext, useEffect, useState } from "react";
 
-import CastCard from "components/molecules/CastCard";
-import HorizontalList from "components/molecules/HorizontalList";
+import GlobalContext from "context/GlobalContext";
 import { IMovieDetails } from "types/movie";
 import { ITVDetails } from "types/tv";
-import { MediaType } from "types/tv_movies";
+import { Links } from "utils";
 import MovieDetails from "components/organisms/MovieDetails";
-import { ReactElement } from "react";
+import { useRouter } from "next/router";
 
 interface IDetailsPageProps {
   movieDetails?: IMovieDetails;
@@ -25,6 +28,30 @@ export default function DetailsPage({
   movieDetails,
   tvDetails,
 }: IDetailsPageProps): ReactElement {
+  const { globalRequests } = useContext(GlobalContext);
+  const [videoData, setVideoData] = useState<IVideoResult[]>();
+  const router = useRouter();
+
+  useEffect(() => {
+    const { id } = router.query;
+
+    id &&
+      globalRequests
+        ?.getVideoData(
+          Number(id),
+          router.route === "/movie/[id]" ? "movies" : "tv"
+        )
+        .then((data: IVideo) => {
+          setVideoData(data.results);
+        });
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const details = movieDetails ? movieDetails : tvDetails;
+
+  if (!details) return <></>;
+
   return (
     <Container>
       <ShortDetailSection>
@@ -33,22 +60,28 @@ export default function DetailsPage({
       <ExtraDetailSection>
         <div>
           <p>Description</p>
-          <p>{movieDetails?.overview || tvDetails?.overview}</p>
+          <p>{details.overview}</p>
         </div>
 
-        <HorizontalListStyle title="Cast">
-          {movieDetails
-            ? movieDetails.credits?.cast.map((_actor, index) => (
-                <CastListWrapper key={index}>
-                  <CastCardStyle person={_actor} />
-                </CastListWrapper>
-              ))
-            : tvDetails?.credits.cast.map((_actor, index) => <></>)}
-        </HorizontalListStyle>
+        <CastHorizontalList title="Cast">
+          {details.credits?.cast.map((_actor, index) => (
+            <CastListWrapper key={index}>
+              <CastCardStyle person={_actor} />
+            </CastListWrapper>
+          ))}
+        </CastHorizontalList>
 
-        <div>
-          <p>Media</p>
-        </div>
+        <MediaHorizontalList title="Media">
+          {videoData &&
+            videoData.map((_video, index) => (
+              <MediaListWrapper key={index}>
+                <MediaCardStyle
+                  title={_video.name}
+                  src={`${Links.youtubeThumbnailURL}${_video.key}/hqdefault.jpg`}
+                />
+              </MediaListWrapper>
+            ))}
+        </MediaHorizontalList>
       </ExtraDetailSection>
     </Container>
   );

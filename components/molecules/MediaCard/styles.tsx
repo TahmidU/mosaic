@@ -24,5 +24,6 @@ export const TitleText = styled.p`
   ${({ theme }) => theme.fonts.main.bigger};
   margin: 0;
   font-weight: bold;
+  white-space: normal;
 `;
 TitleText.displayName = "TitleText";

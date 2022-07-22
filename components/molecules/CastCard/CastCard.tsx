@@ -21,9 +21,15 @@ export default function CastCard({
     >
       <TextSection>
         <span>{person.name}</span>
-        {person.character.split("/").map((_played, index) => (
-          <span key={index}>{_played}</span>
-        ))}
+        {person.character.split("/").map((_played, index) => {
+          {
+            return index < 3 ? (
+              <span key={index}>{_played}</span>
+            ) : (
+              <span>...</span>
+            );
+          }
+        })}
       </TextSection>
     </Container>
   );
