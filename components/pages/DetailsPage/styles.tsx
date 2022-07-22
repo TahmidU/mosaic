@@ -10,6 +10,7 @@ export const Container = styled.div`
   min-height: 100vh;
   height: 100%;
   padding: 0 3rem;
+  margin: 0 0 1rem 0;
 
   @media only screen and (max-width: 1200px) {
     display: flex;
@@ -36,10 +37,26 @@ export const ExtraDetailSection = styled.div`
   ${({ theme }) => theme.fonts.main.big};
 
   > div {
-    margin: 0 0 3rem 0;
+    margin: 3rem 0;
+  }
+
+  > div:first-child {
     > p:first-child {
       ${({ theme }) => theme.fonts.main.bigger};
       font-weight: bold;
+      margin: 0;
+    }
+  }
+
+  @media only screen and (max-width: 1200px) {
+    > div:first-child > p:last-child {
+      ${({ theme }) => theme.fonts.main.medium};
+    }
+  }
+
+  @media only screen and (max-width: 500px) {
+    > div:first-child > p:last-child {
+      ${({ theme }) => theme.fonts.main.regular};
     }
   }
 `;
@@ -189,7 +206,6 @@ export const MediaListWrapper = styled.div`
 MediaListWrapper.displayName = "MediaListWrapper";
 
 export const MediaCardStyle = styled(MediaCard)`
-  padding: 0 1rem;
   width: 100%;
 
   @media only screen and (max-width: 426px) {

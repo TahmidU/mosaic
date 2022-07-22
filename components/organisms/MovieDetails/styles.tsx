@@ -14,6 +14,7 @@ export const Container = styled(Card)`
   height: fit-content;
   cursor: unset;
 
+  /*
   > div:first-child {
     width: 379px;
     height: 580px;
@@ -24,7 +25,7 @@ export const Container = styled(Card)`
       width: 379px;
       height: 580px;
     }
-  }
+  }*/
 
   > div:nth-child(2) {
     width: 100%;
