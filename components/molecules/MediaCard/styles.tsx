@@ -25,7 +25,7 @@ export const TitleText = styled.p`
   width: 100%;
   ${({ theme }) => theme.fonts.main.bigger};
   padding: 0 1em;
-  margin: 0.25em 0 0 0;
+  margin: 0.25em 0;
   font-weight: bold;
   white-space: normal;
   display: -webkit-box;
