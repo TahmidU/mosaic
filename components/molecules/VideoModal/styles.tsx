@@ -1,4 +1,3 @@
-import GrClose from "react-icons/gr";
 import SlideButton from "../SlideButton";
 import styled from "styled-components";
 
@@ -23,14 +22,21 @@ export const Container = styled.div`
 `;
 Container.displayName = "Container";
 
-export const LeftBtn = styled(SlideButton)`
+const SlideBtn = styled(SlideButton)`
+  @media only screen and (max-width: 768px) {
+    display: none;
+  }
+`;
+SlideBtn.displayName = "SlideBtn";
+
+export const LeftBtn = styled(SlideBtn)`
   position: fixed;
   top: 40%;
   left: 2%;
 `;
 LeftBtn.displayName = "LeftBtn";
 
-export const RightBtn = styled(SlideButton)`
+export const RightBtn = styled(SlideBtn)`
   position: fixed;
   top: 40%;
   right: 2%;
@@ -48,6 +54,20 @@ export const VideoContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media only screen and (max-width: 768px) {
+    width: 90%;
+    height: 45%;
+    right: 5%;
+    top: 28%;
+  }
+
+  @media only screen and (max-width: 500px) {
+    width: 90%;
+    height: 30%;
+    right: 5%;
+    top: 28%;
+  }
 `;
 VideoContainer.displayName = "VideoContainer";
 
@@ -88,6 +108,13 @@ export const CloseBtn = styled.button`
       fill: ${({ theme }) => theme.cAlmostWhite.alpha(0.85).toString()};
       stroke: ${({ theme }) => theme.cAlmostWhite.alpha(0.85).toString()};
     }
+  }
+
+  @media only screen and (max-width: 768px) {
+    width: 36px;
+    height: 36px;
+    right: 5%;
+    top: 15%;
   }
 `;
 CloseBtn.displayName = "CloseBtn";
