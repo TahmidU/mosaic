@@ -17,6 +17,7 @@ import { IMovieDetails } from "types/movie";
 import { ITVDetails } from "types/tv";
 import { Links } from "utils";
 import MovieDetails from "components/organisms/MovieDetails";
+import VideoModal from "components/organisms/Carousel/VideoModal";
 import { useRouter } from "next/router";
 
 interface IDetailsPageProps {
@@ -29,7 +30,11 @@ export default function DetailsPage({
   tvDetails,
 }: IDetailsPageProps): ReactElement {
   const { globalRequests } = useContext(GlobalContext);
-  const [videoData, setVideoData] = useState<IVideoResult[]>();
+  const [videoData, setVideoData] = useState<IVideo>();
+  const [modal, setModal] = useState({
+    open: false,
+    initialIndex: 0,
+  });
   const router = useRouter();
 
   useEffect(() => {
@@ -42,7 +47,7 @@ export default function DetailsPage({
           router.route === "/movie/[id]" ? "movies" : "tv"
         )
         .then((data: IVideo) => {
-          setVideoData(data.results);
+          setVideoData(data);
         });
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -53,36 +58,46 @@ export default function DetailsPage({
   if (!details) return <></>;
 
   return (
-    <Container>
-      <ShortDetailSection>
-        <MovieDetails movieDetails={movieDetails} tvDetails={tvDetails} />
-      </ShortDetailSection>
-      <ExtraDetailSection>
-        <div>
-          <p>Description</p>
-          <p>{details.overview}</p>
-        </div>
+    <>
+      <Container>
+        <ShortDetailSection>
+          <MovieDetails movieDetails={movieDetails} tvDetails={tvDetails} />
+        </ShortDetailSection>
+        <ExtraDetailSection>
+          <div>
+            <p>Description</p>
+            <p>{details.overview}</p>
+          </div>
 
-        <CastHorizontalList title="Cast">
-          {details.credits?.cast.map((_actor, index) => (
-            <CastListWrapper key={index}>
-              <CastCardStyle person={_actor} />
-            </CastListWrapper>
-          ))}
-        </CastHorizontalList>
-
-        <MediaHorizontalList title="Media">
-          {videoData &&
-            videoData.map((_video, index) => (
-              <MediaListWrapper key={index}>
-                <MediaCardStyle
-                  title={_video.name}
-                  src={`${Links.youtubeThumbnailURL}${_video.key}/hqdefault.jpg`}
-                />
-              </MediaListWrapper>
+          <CastHorizontalList title="Cast">
+            {details.credits?.cast.map((_actor, index) => (
+              <CastListWrapper key={index}>
+                <CastCardStyle person={_actor} />
+              </CastListWrapper>
             ))}
-        </MediaHorizontalList>
-      </ExtraDetailSection>
-    </Container>
+          </CastHorizontalList>
+
+          <MediaHorizontalList title="Media">
+            {videoData &&
+              videoData.results.map((_video, index) => (
+                <MediaListWrapper key={index}>
+                  <MediaCardStyle
+                    title={_video.name}
+                    src={`${Links.youtubeThumbnailURL}${_video.key}/hqdefault.jpg`}
+                    onClick={() =>
+                      setModal({ open: true, initialIndex: index })
+                    }
+                  />
+                </MediaListWrapper>
+              ))}
+          </MediaHorizontalList>
+        </ExtraDetailSection>
+      </Container>
+      <VideoModal
+        modalOpen={modal}
+        setModalOpen={setModal}
+        videos={videoData}
+      />
+    </>
   );
 }

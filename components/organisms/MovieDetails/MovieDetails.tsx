@@ -204,8 +204,6 @@ export default function MovieDetail({
                 <>
                   {movieDetails["watch/providers"]?.results?.GB?.buy?.map(
                     (_purchase_on, index) => {
-                      console.log(_purchase_on);
-
                       return (
                         <div key={index}>
                           <div>

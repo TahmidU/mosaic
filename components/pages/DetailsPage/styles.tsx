@@ -15,6 +15,7 @@ export const Container = styled.div`
   @media only screen and (max-width: 1200px) {
     display: flex;
     flex-direction: column;
+    padding: 0 1rem;
   }
 `;
 Container.displayName = "Container";
@@ -207,6 +208,11 @@ MediaListWrapper.displayName = "MediaListWrapper";
 
 export const MediaCardStyle = styled(MediaCard)`
   width: 100%;
+
+  cursor: pointer;
+  :hover {
+    background-color: ${({ theme }) => theme.cGrey.alpha(0.2).toString()};
+  }
 
   @media only screen and (max-width: 426px) {
     height: ${mediaSmallHeight};

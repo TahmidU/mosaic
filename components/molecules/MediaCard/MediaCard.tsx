@@ -8,6 +8,7 @@ interface IMediaCardProps {
   variant?: Variant;
   title: string;
   src: string;
+  onClick?: () => void;
   className?: string;
 }
 
@@ -15,6 +16,7 @@ export default function MediaCard({
   variant = "Fat",
   title,
   src,
+  onClick,
   className,
 }: IMediaCardProps): ReactElement {
   return (
@@ -24,6 +26,7 @@ export default function MediaCard({
       src={src}
       imageWidth={500}
       imageHeight={350}
+      onClick={onClick}
     >
       <TitleText>{title}</TitleText>
     </FatContainer>
