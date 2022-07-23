@@ -17,7 +17,7 @@ import { IMovieDetails } from "types/movie";
 import { ITVDetails } from "types/tv";
 import { Links } from "utils";
 import MovieDetails from "components/organisms/MovieDetails";
-import VideoModal from "components/organisms/Carousel/VideoModal";
+import VideoModal from "components/molecules/VideoModal";
 import { useRouter } from "next/router";
 
 interface IDetailsPageProps {

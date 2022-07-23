@@ -21,7 +21,9 @@ import MovieInfo from "./MovieInfo";
 import ProgressiveBar from "./ProgressiveBar";
 import dynamic from "next/dynamic";
 
-const VideoModal = dynamic(() => import("./VideoModal"), { ssr: false });
+const VideoModal = dynamic(() => import("../../molecules/VideoModal"), {
+  ssr: false,
+});
 
 interface ICarouselProps {
   carouselData?: IDiscoverMovie[];
