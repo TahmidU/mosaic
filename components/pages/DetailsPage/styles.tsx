@@ -101,52 +101,21 @@ export const CastHorizontalList = styled(HorizontalListStyle)`
 `;
 CastHorizontalList.displayName = "CastHorizontalList";
 
-const mediaNormalHeight = "470px",
-  mediaSmallHeight = "275px";
-const mediaPadding = "45px",
-  mediaExtraPadding = "60px";
 export const MediaHorizontalList = styled(HorizontalListStyle)`
   > div:last-child {
-    height: ${mediaNormalHeight};
+    height: fit-content;
 
     > div:first-child {
-      max-height: ${mediaNormalHeight};
+      max-height: fit-content;
 
       > div:nth-child(2) {
-        max-height: ${mediaNormalHeight};
+        max-height: fit-content;
+        padding: 1.5rem 0;
       }
 
       > div:first-child,
       > div:last-child {
         top: 35%;
-      }
-    }
-  }
-
-  @media only screen and (max-width: 426px) {
-    > div:last-child {
-      height: calc(${mediaSmallHeight} + ${mediaPadding});
-
-      > div:first-child {
-        max-height: calc(${mediaSmallHeight} + ${mediaPadding});
-
-        > div:nth-child(2) {
-          max-height: calc(${mediaSmallHeight} + ${mediaPadding});
-        }
-      }
-    }
-  }
-
-  @media only screen and (max-width: 360px) {
-    > div:last-child {
-      height: calc(${mediaSmallHeight} + ${mediaExtraPadding});
-
-      > div:first-child {
-        max-height: calc(${mediaSmallHeight} + ${mediaExtraPadding});
-
-        > div:nth-child(2) {
-          max-height: calc(${mediaSmallHeight} + ${mediaExtraPadding});
-        }
       }
     }
   }
@@ -208,15 +177,12 @@ MediaListWrapper.displayName = "MediaListWrapper";
 
 export const MediaCardStyle = styled(MediaCard)`
   width: 100%;
-
   cursor: pointer;
   :hover {
     background-color: ${({ theme }) => theme.cGrey.alpha(0.2).toString()};
   }
 
   @media only screen and (max-width: 426px) {
-    height: ${mediaSmallHeight};
-
     p {
       ${({ theme }) => theme.fonts.main.big};
     }
