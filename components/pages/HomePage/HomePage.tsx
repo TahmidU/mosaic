@@ -68,6 +68,7 @@ export default function HomePage({
           subListTitles={[ExploreTVs.ON_AIR, ExploreTVs.POPULAR]}
           onSubTitleClick={(subTitle: ExploreTVs) => exploreTVSelect(subTitle)}
           movies={exploreTVsList}
+          type="tv"
         />
       </Element>
     </Container>

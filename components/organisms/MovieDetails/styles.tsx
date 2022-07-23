@@ -11,9 +11,10 @@ export const Container = styled(Card)`
   width: 436px;
   max-width: unset;
   max-height: unset;
-  height: 1398px;
+  height: fit-content;
   cursor: unset;
 
+  /*
   > div:first-child {
     width: 379px;
     height: 580px;
@@ -24,7 +25,7 @@ export const Container = styled(Card)`
       width: 379px;
       height: 580px;
     }
-  }
+  }*/
 
   > div:nth-child(2) {
     width: 100%;
@@ -32,6 +33,7 @@ export const Container = styled(Card)`
 
   box-shadow: unset;
   border: unset;
+  margin: 0 0 1rem 0;
 `;
 Container.displayName = "Container";
 
@@ -141,3 +143,30 @@ export const SubSection = styled.div`
   }
 `;
 SubSection.displayName = "SubSection";
+
+export const WatchOn = styled.p`
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+
+  > span:first-child {
+    ${({ theme }) => theme.fonts.main.medium};
+    font-weight: bold;
+  }
+  > div {
+    display: flex;
+    flex-direction: row;
+    ${({ theme }) => theme.fonts.main.regular};
+    font-weight: 300;
+    margin: 0.5rem 0;
+
+    > div:first-child {
+      width: 24px;
+      height: 24px;
+      border-radius: 12px;
+      overflow: hidden;
+      margin: 0 0.5em;
+    }
+  }
+`;
+WatchOn.displayName = "WatchOn";

@@ -8,11 +8,12 @@ import {
   StepStatusStyle,
   StepsContainer,
 } from "./styles";
+import { ReactElement, useContext } from "react";
 
 import { AnimationControls } from "framer-motion";
 import CarouselImage from "components/organisms/Carousel/CarouselImage";
+import GlobalContext from "context/GlobalContext";
 import { IDiscoverMovie } from "types/api/discover";
-import { ReactElement } from "react";
 
 interface IMobileCarouselProps {
   carouselData?: IDiscoverMovie[];
@@ -33,10 +34,11 @@ export default function MobileCarousel({
   handlePageChange,
   textAnimControls,
 }: IMobileCarouselProps): ReactElement {
+  const { routes } = useContext(GlobalContext);
+
   if (!carouselData || carouselData.length === 0) {
     return <></>;
   }
-  console.log(carouselData);
 
   return (
     <Container>
@@ -46,7 +48,9 @@ export default function MobileCarousel({
           variant="simpleLeft"
           onClick={() => handlePageDirectionChange(-1)}
         />
-        <ImageContainer>
+        <ImageContainer
+          onClick={() => routes?.goToDetails(carouselData[page].id)}
+        >
           <CarouselImage
             direction={direction}
             imageURL={carouselData[page]?.backdrop_path}

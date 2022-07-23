@@ -2,6 +2,11 @@ import Card from "components/atoms/Card";
 import styled from "styled-components";
 
 export const CardStyle = styled(Card)`
+  > div:first-child {
+    max-width: 150px;
+    max-height: 225px;
+  }
+
   > div:last-child {
     display: flex;
     flex-direction: column;

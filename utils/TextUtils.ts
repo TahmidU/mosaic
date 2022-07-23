@@ -1,4 +1,4 @@
-import { ICrew } from "types/movie";
+import { ICrew } from "types/tv_movies";
 
 /**
  *
@@ -15,7 +15,7 @@ export function fontImportancePlacer(font: string, indexes: number[]): string {
     .join(";");
 }
 
-export function dateFormatter(date: string): string {
+export function dateFormatter(date?: string) {
   if (!date) return date; //! Somehow an undefined date param is passed in storybook
 
   const [year, month, day] = date.split("-");
@@ -25,15 +25,17 @@ export function dateFormatter(date: string): string {
   return date;
 }
 
-export function findInCrewNamesByJob(crew: ICrew[], job: string): string {
+export function findInCrewNamesByJob(crew?: ICrew[], job?: string) {
+  if (!crew || !job) return undefined;
+
   return crew
     .filter((_person) => _person.job === job)
     .map((_director) => _director.name)
-    .join(",");
+    .join(", ");
 }
 
-export function numberWithCommas(x: number): string {
-  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+export function numberWithCommas(x?: number): string {
+  return x ? x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : "";
 }
 
 const TextUtils = {

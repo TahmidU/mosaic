@@ -20,9 +20,9 @@ Container.displayName = "Container";
 
 export const Wrapper = styled.div`
   width: 100%;
-  max-width: 150px;
-  height: 100%;
-  max-height: 225px;
+  max-width: 379px;
+  height: fit-content;
+  max-height: 580px;
   position: relative;
 `;
 Wrapper.displayName = "Wrapper";

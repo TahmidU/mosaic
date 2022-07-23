@@ -2,6 +2,11 @@ import Card from "components/atoms/Card";
 import styled from "styled-components";
 
 export const Container = styled(Card)`
+  > div:first-child {
+    max-width: 150px;
+    max-height: 225px;
+  }
+
   div:nth-child(2) {
     width: 90%;
   }

@@ -1,4 +1,5 @@
-import { FakeMovieData } from "../../../resources/TestResources/MovieDetails";
+import { FakeMovieData } from "resources/TestResources/MovieDetails";
+import { FakeTVData } from "resources/TestResources/TVDetails";
 import { IPayload } from "types/story";
 import MovieDetails from "./MovieDetails";
 
@@ -8,7 +9,12 @@ const payload: IPayload = {
 };
 export default payload;
 
-export const Basic = (args: any) => (
-  <MovieDetails movieDetail={FakeMovieData} {...args} />
+export const Movie = (args: any) => (
+  <MovieDetails movieDetails={FakeMovieData} {...args} />
 );
-Basic.args = {};
+Movie.args = {};
+
+export const TV = (args: any) => (
+  <MovieDetails tvDetails={FakeTVData} {...args} />
+);
+TV.args = {};

@@ -6,17 +6,20 @@ import {
   OptionsContainer,
   SearchIcon,
 } from "./styles";
+import { ReactElement, useContext } from "react";
 
+import GlobalContext from "context/GlobalContext";
 import Logo from "../../../img/Logo";
-import { ReactElement } from "react";
 
 interface INavbarProps {}
 
 export default function Navbar({}: INavbarProps): ReactElement {
+  const { routes } = useContext(GlobalContext);
+
   return (
     <NavbarContainer>
       <div>
-        <Logo />
+        <Logo onClick={routes?.goToHomePage} />
         <MenuContainer>{/* */}</MenuContainer>
       </div>
       <OptionsContainer>

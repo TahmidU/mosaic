@@ -1,6 +1,6 @@
 import { IMovieDetails } from "types/movie";
 
-//https://api.themoviedb.org/3/movie/453395?api_key=API_KEY&language=en-US&append_to_response=external_ids,credits
+//https://api.themoviedb.org/3/movie/453395?api_key=API_KEY&language=en-US&append_to_response=external_ids,credits,watch/providers
 export const FakeMovieData: IMovieDetails = {
   adult: false,
   backdrop_path: "/wcKFYIiVDvRURrzglV9kGu7fpfY.jpg",
@@ -33,7 +33,7 @@ export const FakeMovieData: IMovieDetails = {
   original_title: "Doctor Strange in the Multiverse of Madness",
   overview:
     "Doctor Strange, with the help of mystical allies both old and new, traverses the mind-bending and dangerous alternate realities of the Multiverse to confront a mysterious new adversary.",
-  popularity: 6343.173,
+  popularity: 5940.233,
   poster_path: "/9Gtg2DzBhmYamXBS1hKAhiwbBKS.jpg",
   production_companies: [
     {
@@ -80,13 +80,12 @@ export const FakeMovieData: IMovieDetails = {
   title: "Doctor Strange in the Multiverse of Madness",
   video: false,
   vote_average: 7.5,
-  vote_count: 4131,
+  vote_count: 4266,
   external_ids: {
     imdb_id: "tt9419884",
     facebook_id: "DoctorStrangeOfficial",
     instagram_id: "doctorstrangeofficial",
     twitter_id: "DrStrange",
-    id: 1,
   },
   credits: {
     cast: [
@@ -97,7 +96,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Acting",
         name: "Benedict Cumberbatch",
         original_name: "Benedict Cumberbatch",
-        popularity: 59.549,
+        popularity: 43.552,
         profile_path: "/fBEucxECxGLKVHBznO0qHtCGiMO.jpg",
         cast_id: 2,
         character: "Dr. Stephen Strange / Sinister Strange / Defender Strange",
@@ -111,7 +110,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Acting",
         name: "Elizabeth Olsen",
         original_name: "Elizabeth Olsen",
-        popularity: 45.499,
+        popularity: 49.433,
         profile_path: "/wIU675y4dofIDVuhaNWPizJNtep.jpg",
         cast_id: 10,
         character: "Wanda Maximoff / The Scarlet Witch",
@@ -125,7 +124,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Acting",
         name: "Chiwetel Ejiofor",
         original_name: "Chiwetel Ejiofor",
-        popularity: 27.66,
+        popularity: 25.987,
         profile_path: "/kq5DDnqqofoRI0t6ddtRlsJnNPT.jpg",
         cast_id: 12,
         character: "Baron Karl Mordo",
@@ -139,7 +138,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Acting",
         name: "Benedict Wong",
         original_name: "Benedict Wong",
-        popularity: 32.837,
+        popularity: 34.871,
         profile_path: "/ukmfsl59Isvn9odgzMWBidA3cmt.jpg",
         cast_id: 3,
         character: "Wong",
@@ -153,8 +152,8 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Acting",
         name: "Xochitl Gomez",
         original_name: "Xochitl Gomez",
-        popularity: 55.439,
-        profile_path: "/y3aFdIpfT7GqVoVa523PqF9cJgO.jpg",
+        popularity: 50.081,
+        profile_path: "/oo1wzI9zaRWvZOsae43raoPykgb.jpg",
         cast_id: 29,
         character: "America Chavez",
         credit_id: "5f89c52be9da69003ae63fc8",
@@ -167,7 +166,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Acting",
         name: "Jett Klyne",
         original_name: "Jett Klyne",
-        popularity: 19.489,
+        popularity: 16.734,
         profile_path: "/yrbY3ebII569deRr9NLD9kKV0HO.jpg",
         cast_id: 114,
         character: "Tommy Maximoff",
@@ -181,7 +180,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Acting",
         name: "Julian Hilliard",
         original_name: "Julian Hilliard",
-        popularity: 14.218,
+        popularity: 13.592,
         profile_path: "/umnRZFm9pQ9xB53PQwUPFOVul4j.jpg",
         cast_id: 113,
         character: "Billy Maximoff",
@@ -195,7 +194,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Acting",
         name: "Sheila Atim",
         original_name: "Sheila Atim",
-        popularity: 17.41,
+        popularity: 7.414,
         profile_path: "/vUNzuhGFT4SVeu5HqxKVU9eFCE.jpg",
         cast_id: 128,
         character: "Sara",
@@ -209,7 +208,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Acting",
         name: "Adam Hugill",
         original_name: "Adam Hugill",
-        popularity: 5.233,
+        popularity: 5.049,
         profile_path: "/o0XToJB2MrTtNm5n2g3UYxcMNrV.jpg",
         cast_id: 70,
         character: "Rintrah (voice)",
@@ -223,7 +222,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Acting",
         name: "Michael Stuhlbarg",
         original_name: "Michael Stuhlbarg",
-        popularity: 22.763,
+        popularity: 17.563,
         profile_path: "/seBk12MUK51aUoYX4OW1itfOpJ6.jpg",
         cast_id: 66,
         character: "Dr. Nicodemus 'Nic' West",
@@ -237,8 +236,8 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Acting",
         name: "Rachel McAdams",
         original_name: "Rachel McAdams",
-        popularity: 26.862,
-        profile_path: "/fxeMrZswIPIWhipvdRrHOVuPlQY.jpg",
+        popularity: 23.413,
+        profile_path: "/pRMo594QmEvTvxu8NdtUhHP1QP8.jpg",
         cast_id: 30,
         character: "Dr. Christine Palmer",
         credit_id: "5fd2552e1bf266003f04d9ce",
@@ -251,7 +250,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Acting",
         name: "Hayley Atwell",
         original_name: "Hayley Atwell",
-        popularity: 54.415,
+        popularity: 44.153,
         profile_path: "/qpU7tIYUkKrVZXcEiULsvOawt48.jpg",
         cast_id: 121,
         character: "Peggy Carter / Captain Carter",
@@ -265,7 +264,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Acting",
         name: "Anson Mount",
         original_name: "Anson Mount",
-        popularity: 51.612,
+        popularity: 43.098,
         profile_path: "/qU6GGvUqwFMbfK2Bk7Gg7dK1KD6.jpg",
         cast_id: 125,
         character: "Blackagar Boltagon / Black Bolt",
@@ -279,7 +278,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Acting",
         name: "Lashana Lynch",
         original_name: "Lashana Lynch",
-        popularity: 20.6,
+        popularity: 18.696,
         profile_path: "/ypNxRag9uJ5nzPAN2um3amQK340.jpg",
         cast_id: 122,
         character: "Maria Rambeau / Captain Marvel",
@@ -293,7 +292,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Acting",
         name: "John Krasinski",
         original_name: "John Krasinski",
-        popularity: 39.412,
+        popularity: 44.724,
         profile_path: "/qyOE30A2ctnn7QnPjXgxLAnBore.jpg",
         cast_id: 127,
         character: "Reed Richards / Mr. Fantastic",
@@ -307,7 +306,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Acting",
         name: "Patrick Stewart",
         original_name: "Patrick Stewart",
-        popularity: 31.107,
+        popularity: 35.64,
         profile_path: "/wEy5qSDT5jT3ZASc2hbwi59voPL.jpg",
         cast_id: 120,
         character: "Professor Charles Xavier / Professor X",
@@ -321,7 +320,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Acting",
         name: "Charlize Theron",
         original_name: "Charlize Theron",
-        popularity: 42.076,
+        popularity: 42.264,
         profile_path: "/1HloWLLhL3iTrmDtMigiitLB9Qx.jpg",
         cast_id: 126,
         character: "Clea",
@@ -335,7 +334,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Acting",
         name: "Bruce Campbell",
         original_name: "Bruce Campbell",
-        popularity: 14.644,
+        popularity: 6.863,
         profile_path: "/p9335ljr7luOWsfwZSOlsIzFJKE.jpg",
         cast_id: 71,
         character: "Pizza Poppa",
@@ -349,7 +348,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Acting",
         name: "Ross Marquand",
         original_name: "Ross Marquand",
-        popularity: 12.75,
+        popularity: 8.636,
         profile_path: "/jIGiAslF6KWcdHMV2sf4bETv72C.jpg",
         cast_id: 129,
         character: "Ultron (voice)",
@@ -363,7 +362,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Acting",
         name: "Andy Bale",
         original_name: "Andy Bale",
-        popularity: 0.94,
+        popularity: 0.6,
         profile_path: "/jS51V2u8iNyu5gCDq5woAj36HA8.jpg",
         cast_id: 130,
         character: "Memory Lane Salesperson (voice)",
@@ -377,7 +376,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Acting",
         name: "Ako Mitchell",
         original_name: "Ako Mitchell",
-        popularity: 1.361,
+        popularity: 1.921,
         profile_path: "/5qxRjBZPP7RfRBDuzBf87TNkRia.jpg",
         cast_id: 131,
         character: "Charlie",
@@ -391,7 +390,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Acting",
         name: "Momo Yeung",
         original_name: "Momo Yeung",
-        popularity: 3.676,
+        popularity: 1.903,
         profile_path: "/7WypnP8AJtGtklaFqdbluGMlOm6.jpg",
         cast_id: 132,
         character: "Hong Kong Master",
@@ -419,7 +418,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Acting",
         name: "Topo Wresniwiro",
         original_name: "Topo Wresniwiro",
-        popularity: 5.785,
+        popularity: 3.188,
         profile_path: "/xwpye9I6xOGOjE8JgizR7uylpfx.jpg",
         cast_id: 109,
         character: "Master Hamir",
@@ -489,7 +488,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Acting",
         name: "Ruth Livier",
         original_name: "Ruth Livier",
-        popularity: 6.571,
+        popularity: 3.485,
         profile_path: null,
         cast_id: 135,
         character: "Elena Chavez",
@@ -517,7 +516,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Acting",
         name: "David Tse",
         original_name: "David Tse",
-        popularity: 1.558,
+        popularity: 1.988,
         profile_path: "/oJIcI5es35mHPBpyn9ohdog14hG.jpg",
         cast_id: 136,
         character: "Kamar-Taj Teacher",
@@ -573,7 +572,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Acting",
         name: "Victoria Grove",
         original_name: "Victoria Grove",
-        popularity: 1.139,
+        popularity: 0.6,
         profile_path: null,
         cast_id: 157,
         character: "Shield Bearer #2",
@@ -587,7 +586,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Acting",
         name: "Joshua Peace",
         original_name: "Joshua Peace",
-        popularity: 5.379,
+        popularity: 3.146,
         profile_path: "/hzBO3jGfWLUwvcolw2zFxHlaRvO.jpg",
         cast_id: 137,
         character: "NY Passerby 616",
@@ -769,7 +768,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Writing",
         name: "Michael Waldron",
         original_name: "Michael Waldron",
-        popularity: 6.555,
+        popularity: 7.938,
         profile_path: "/5d6wkYnJgkVAzThqnnwOLNDzACM.jpg",
         cast_id: 139,
         character: "Charlie's Best Man",
@@ -783,7 +782,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Acting",
         name: "Bridget Hoffman",
         original_name: "Bridget Hoffman",
-        popularity: 4.939,
+        popularity: 3.387,
         profile_path: "/fmA0h836dBXd6Uhh3kqfmbG3X0O.jpg",
         cast_id: 169,
         character: "Soul of the Damned (voice)",
@@ -797,7 +796,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Acting",
         name: "Scott Spiegel",
         original_name: "Scott Spiegel",
-        popularity: 6.77,
+        popularity: 3.975,
         profile_path: "/3dKveWiEUeQbAxC7o9AKkIUymPQ.jpg",
         cast_id: 170,
         character: "Soul of the Damned (voice)",
@@ -811,7 +810,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Acting",
         name: "Jessica Pennington",
         original_name: "Jessica Pennington",
-        popularity: 1.22,
+        popularity: 0.6,
         profile_path: null,
         cast_id: 171,
         character: "Soul of the Damned (voice)",
@@ -825,7 +824,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Sound",
         name: "Andrew Morgado",
         original_name: "Andrew Morgado",
-        popularity: 5.952,
+        popularity: 6.201,
         profile_path: "/rDkWTPcsFtw5MQCi1qxSXXZlXG2.jpg",
         cast_id: 172,
         character: "Soul of the Damned (voice)",
@@ -839,7 +838,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Acting",
         name: "Audrey Wasilewski",
         original_name: "Audrey Wasilewski",
-        popularity: 10.986,
+        popularity: 13.001,
         profile_path: "/4iUq8nA7hm2taO0vMMvvwtQvLr2.jpg",
         cast_id: 173,
         character: "Soul of the Damned (voice)",
@@ -867,7 +866,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Production",
         name: "Richie Palmer",
         original_name: "Richie Palmer",
-        popularity: 2.686,
+        popularity: 2.297,
         profile_path: null,
         cast_id: 175,
         character: "Soul of the Damned (voice)",
@@ -883,7 +882,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Sound",
         name: "Danny Elfman",
         original_name: "Danny Elfman",
-        popularity: 3.381,
+        popularity: 2.823,
         profile_path: "/zFladKAPypbzp26Tfyeiy23vanH.jpg",
         credit_id: "602e756b0f3655003f275914",
         department: "Sound",
@@ -896,7 +895,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Camera",
         name: "John Mathieson",
         original_name: "John Mathieson",
-        popularity: 6.694,
+        popularity: 6.281,
         profile_path: "/AkWm67UMEWHhF3BDfH32HkRl5oM.jpg",
         credit_id: "603fe1304d679100244fc408",
         department: "Camera",
@@ -909,7 +908,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Production",
         name: "Sarah Halley Finn",
         original_name: "Sarah Halley Finn",
-        popularity: 9.03,
+        popularity: 11.196,
         profile_path: "/pI3OhmnHhXLEwuv0Vq6qJHivCJA.jpg",
         credit_id: "6030d94dfab3fa003efd0704",
         department: "Production",
@@ -922,8 +921,8 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Directing",
         name: "Sam Raimi",
         original_name: "Sam Raimi",
-        popularity: 38.411,
-        profile_path: "/rJJYL7N8OBL31K4anhZGv30NiL1.jpg",
+        popularity: 32.897,
+        profile_path: "/8gssvwiPrFRuFRlr5ruKx68k1Jl.jpg",
         credit_id: "5e3b5fa3ac8e6b0011cab4cf",
         department: "Directing",
         job: "Director",
@@ -935,7 +934,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Writing",
         name: "Stan Lee",
         original_name: "Stan Lee",
-        popularity: 18.603,
+        popularity: 13.53,
         profile_path: "/kKeyWoFtTqOPsbmwylNHmuB3En9.jpg",
         credit_id: "619f1c0cbc2cb30042862359",
         department: "Writing",
@@ -948,7 +947,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Writing",
         name: "Steve Ditko",
         original_name: "Steve Ditko",
-        popularity: 7.846,
+        popularity: 7.309,
         profile_path: "/x270c7XwNTnt8qhoZhW4xUzAqEX.jpg",
         credit_id: "619f1c21f90b1900614b3e32",
         department: "Writing",
@@ -961,7 +960,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Editing",
         name: "Bob Murawski",
         original_name: "Bob Murawski",
-        popularity: 5.326,
+        popularity: 2.804,
         profile_path: null,
         credit_id: "615c63fbb1f68d006768ac4b",
         department: "Editing",
@@ -974,7 +973,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Production",
         name: "Kevin Feige",
         original_name: "Kevin Feige",
-        popularity: 9.494,
+        popularity: 4.425,
         profile_path: "/kCBqXZ5PT5udYGEj2wfTSFbLMvT.jpg",
         credit_id: "58fa848a925141643c0024c0",
         department: "Production",
@@ -987,7 +986,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Sound",
         name: "Juan Peralta",
         original_name: "Juan Peralta",
-        popularity: 2.748,
+        popularity: 1.708,
         profile_path: "/6ImDm04R5VmUAwBiXbvkJgJO480.jpg",
         credit_id: "6275a46e61bac40067b4a853",
         department: "Sound",
@@ -1000,7 +999,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Production",
         name: "Helen Pollak",
         original_name: "Helen Pollak",
-        popularity: 1.518,
+        popularity: 2.151,
         profile_path: null,
         credit_id: "6275a38ee786870051d6f3ef",
         department: "Production",
@@ -1013,7 +1012,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Production",
         name: "Helen Pollak",
         original_name: "Helen Pollak",
-        popularity: 1.518,
+        popularity: 2.151,
         profile_path: null,
         credit_id: "6275a383a5046e00505e427d",
         department: "Production",
@@ -1026,7 +1025,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Art",
         name: "Julian Ashby",
         original_name: "Julian Ashby",
-        popularity: 3.901,
+        popularity: 2.049,
         profile_path: null,
         credit_id: "61d22428e210230042212f99",
         department: "Art",
@@ -1039,7 +1038,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Writing",
         name: "Jack Kirby",
         original_name: "Jack Kirby",
-        popularity: 5.697,
+        popularity: 3.414,
         profile_path: "/ihhR019gL1WrXdSQNJITAY6dont.jpg",
         credit_id: "6275acf8d236e60066e20356",
         department: "Crew",
@@ -1065,7 +1064,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Sound",
         name: "Dave Jordan",
         original_name: "Dave Jordan",
-        popularity: 1.097,
+        popularity: 0.778,
         profile_path: null,
         credit_id: "624dbf3b629b2c0050556d38",
         department: "Sound",
@@ -1078,7 +1077,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Editing",
         name: "Tia Nolan",
         original_name: "Tia Nolan",
-        popularity: 2.262,
+        popularity: 1.91,
         profile_path: null,
         credit_id: "623b2d42719aeb005dc491a5",
         department: "Editing",
@@ -1091,7 +1090,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Art",
         name: "Charles Wood",
         original_name: "Charles Wood",
-        popularity: 4.431,
+        popularity: 4.312,
         profile_path: "/lxhuwWMdbvuPzher5TSdGFsel1S.jpg",
         credit_id: "6032633f6e3deb003e0aa802",
         department: "Art",
@@ -1104,7 +1103,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Directing",
         name: "Scott Derrickson",
         original_name: "Scott Derrickson",
-        popularity: 5.699,
+        popularity: 6.918,
         profile_path: "/nOQkRTC6OPkUHebBfjIgtiZ0hvE.jpg",
         credit_id: "62099c6929733800f7afd9e6",
         department: "Production",
@@ -1117,7 +1116,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Production",
         name: "Louis D'Esposito",
         original_name: "Louis D'Esposito",
-        popularity: 9.177,
+        popularity: 9.728,
         profile_path: "/k9k3WWYdD3uDnrtwM60QirzG9cH.jpg",
         credit_id: "603264280a517c004194693f",
         department: "Production",
@@ -1130,7 +1129,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Production",
         name: "Victoria Alonso",
         original_name: "Victoria Alonso",
-        popularity: 6.931,
+        popularity: 7.611,
         profile_path: "/xF7Qe1tqgk9KtY8kThKHBWhMqxc.jpg",
         credit_id: "58fab827925141642f004ca1",
         department: "Production",
@@ -1143,7 +1142,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Writing",
         name: "Gerry Conway",
         original_name: "Gerry Conway",
-        popularity: 6.062,
+        popularity: 5.764,
         profile_path: "/6OkW13BXA30UR7g1v93gqTuOIeq.jpg",
         credit_id: "6275abc9713ea60066c2a6fd",
         department: "Crew",
@@ -1169,7 +1168,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Writing",
         name: "Roy Thomas",
         original_name: "Roy Thomas",
-        popularity: 3.601,
+        popularity: 3.334,
         profile_path: null,
         credit_id: "6275ada99450fe00a71b3a8a",
         department: "Crew",
@@ -1182,7 +1181,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Acting",
         name: "Jim Lee",
         original_name: "Jim Lee",
-        popularity: 1.163,
+        popularity: 1.367,
         profile_path: "/cgCv75VFYq1LH8f0DzzBBrFwUJn.jpg",
         credit_id: "6275acff9979d2009b64da40",
         department: "Crew",
@@ -1195,7 +1194,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Writing",
         name: "Brian K. Vaughan",
         original_name: "Brian K. Vaughan",
-        popularity: 1.847,
+        popularity: 2.286,
         profile_path: null,
         credit_id: "6275add1cf48a100abeacca7",
         department: "Crew",
@@ -1208,7 +1207,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Acting",
         name: "Matt Fraction",
         original_name: "Matt Fraction",
-        popularity: 1.388,
+        popularity: 1.55,
         profile_path: null,
         credit_id: "6275ac7477b1fb0050e9eeba",
         department: "Crew",
@@ -1221,7 +1220,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Acting",
         name: "Chris Claremont",
         original_name: "Chris Claremont",
-        popularity: 1.994,
+        popularity: 1.703,
         profile_path: "/wp5aESx8Hqa0aq4sN2m3L34FH3N.jpg",
         credit_id: "6275abba63a695004fd33374",
         department: "Crew",
@@ -1234,7 +1233,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Art",
         name: "Mike Stallion",
         original_name: "Mike Stallion",
-        popularity: 2.716,
+        popularity: 1.342,
         profile_path: null,
         credit_id: "61d22487e10f460069621689",
         department: "Art",
@@ -1247,7 +1246,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Acting",
         name: "Samuel Le",
         original_name: "Samuel Le",
-        popularity: 1.646,
+        popularity: 0.6,
         profile_path: "/hluSVTYn19L6yn6bF96O9baQNrp.jpg",
         credit_id: "6275a9c303bf840050a2c0b4",
         department: "Crew",
@@ -1260,7 +1259,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Writing",
         name: "Gene Colan",
         original_name: "Gene Colan",
-        popularity: 2.835,
+        popularity: 0.769,
         profile_path: "/f3N37BElhbJwjEY2EI0JMdK9PTU.jpg",
         credit_id: "6275abc0cf48a100abeac4e1",
         department: "Crew",
@@ -1273,7 +1272,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Production",
         name: "Mitchell Bell",
         original_name: "Mitchell Bell",
-        popularity: 1.694,
+        popularity: 1.383,
         profile_path: null,
         credit_id: "6065e1d3daf57c002903d949",
         department: "Production",
@@ -1312,7 +1311,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Crew",
         name: "John Byrne",
         original_name: "John Byrne",
-        popularity: 3.087,
+        popularity: 1.727,
         profile_path: null,
         credit_id: "6275abab77b1fb009f494ece",
         department: "Crew",
@@ -1325,7 +1324,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Writing",
         name: "John Romita, Sr.",
         original_name: "John Romita, Sr.",
-        popularity: 1.388,
+        popularity: 1.632,
         profile_path: null,
         credit_id: "6275ad7c9450fe00a71b3a0f",
         department: "Crew",
@@ -1338,7 +1337,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Writing",
         name: "David Michelinie",
         original_name: "David Michelinie",
-        popularity: 2.528,
+        popularity: 0.993,
         profile_path: null,
         credit_id: "6275ad38a5046e00505e6403",
         department: "Crew",
@@ -1364,7 +1363,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Writing",
         name: "Bryan Andrews",
         original_name: "Bryan Andrews",
-        popularity: 6.235,
+        popularity: 5.066,
         profile_path: null,
         credit_id: "6275ae5ca5046e00505e6702",
         department: "Crew",
@@ -1390,7 +1389,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Creator",
         name: "Joe Casey",
         original_name: "Joe Casey",
-        popularity: 1.842,
+        popularity: 1.184,
         profile_path: null,
         credit_id: "6275abb361bac400513caa7b",
         department: "Crew",
@@ -1403,7 +1402,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Costume & Make-Up",
         name: "Nicky Barron",
         original_name: "Nicky Barron",
-        popularity: 1.22,
+        popularity: 0.6,
         profile_path: null,
         credit_id: "61d227a48c22c000998da229",
         department: "Costume & Make-Up",
@@ -1416,7 +1415,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Costume & Make-Up",
         name: "Graham Churchyard",
         original_name: "Graham Churchyard",
-        popularity: 1.801,
+        popularity: 1.4,
         profile_path: null,
         credit_id: "624dc030c39266009c0bc304",
         department: "Costume & Make-Up",
@@ -1429,7 +1428,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Art",
         name: "Thomas Brown",
         original_name: "Thomas Brown",
-        popularity: 0.98,
+        popularity: 1.579,
         profile_path: null,
         credit_id: "61d224381c09fb0041e30536",
         department: "Art",
@@ -1442,7 +1441,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Art",
         name: "Mark Swain",
         original_name: "Mark Swain",
-        popularity: 2.801,
+        popularity: 2.793,
         profile_path: null,
         credit_id: "61d22490aaec710066c67b42",
         department: "Art",
@@ -1455,7 +1454,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Sound",
         name: "Lora Hirschberg",
         original_name: "Lora Hirschberg",
-        popularity: 2.25,
+        popularity: 2.646,
         profile_path: "/gL4qn7THQn33BgSN2H4jRfuJJbU.jpg",
         credit_id: "6275a4659566580065b1bcb1",
         department: "Sound",
@@ -1468,7 +1467,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Sound",
         name: "Addison Teague",
         original_name: "Addison Teague",
-        popularity: 1.166,
+        popularity: 0.744,
         profile_path: null,
         credit_id: "61d22642f1b5710068962960",
         department: "Sound",
@@ -1481,7 +1480,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Writing",
         name: "Steve Englehart",
         original_name: "Steve Englehart",
-        popularity: 3.842,
+        popularity: 4.068,
         profile_path: null,
         credit_id: "6275ac5b9979d20067b6986d",
         department: "Crew",
@@ -1494,7 +1493,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Writing",
         name: "Brian Michael Bendis",
         original_name: "Brian Michael Bendis",
-        popularity: 1.822,
+        popularity: 1.186,
         profile_path: "/zYcyWooAjXFJCU7GVyzvHDqpPP0.jpg",
         credit_id: "6275ab8661bac40067b4c061",
         department: "Crew",
@@ -1507,7 +1506,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Visual Effects",
         name: "Cyndi Ochs",
         original_name: "Cyndi Ochs",
-        popularity: 1.179,
+        popularity: 1.4,
         profile_path: null,
         credit_id: "6275a328724de10066ac83ad",
         department: "Visual Effects",
@@ -1520,7 +1519,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Visual Effects",
         name: "Janek Sirrs",
         original_name: "Janek Sirrs",
-        popularity: 5.564,
+        popularity: 5.981,
         profile_path: null,
         credit_id: "6275a2f59450fe0051efea75",
         department: "Visual Effects",
@@ -1559,7 +1558,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Sound",
         name: "Katy Wood",
         original_name: "Katy Wood",
-        popularity: 1.62,
+        popularity: 1.128,
         profile_path: null,
         credit_id: "6275a414323eba00a761beb1",
         department: "Sound",
@@ -1572,7 +1571,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Visual Effects",
         name: "Jamie Hallett",
         original_name: "Jamie Hallett",
-        popularity: 2.843,
+        popularity: 0.707,
         profile_path: null,
         credit_id: "61d227249a3c4900417c8a32",
         department: "Visual Effects",
@@ -1585,7 +1584,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Production",
         name: "Jamie Christopher",
         original_name: "Jamie Christopher",
-        popularity: 6.691,
+        popularity: 5.957,
         profile_path: null,
         credit_id: "61f7688cac8e6b001c981471",
         department: "Production",
@@ -1598,7 +1597,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Directing",
         name: "Dominic Fysh",
         original_name: "Dominic Fysh",
-        popularity: 0.84,
+        popularity: 0.6,
         profile_path: null,
         credit_id: "6275a3c777b1fb009f49340a",
         department: "Directing",
@@ -1611,7 +1610,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Art",
         name: "Oliver Carroll",
         original_name: "Oliver Carroll",
-        popularity: 1.22,
+        popularity: 0.682,
         profile_path: null,
         credit_id: "6275aa1f77b1fb009f4949a2",
         department: "Art",
@@ -1624,7 +1623,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Art",
         name: "Darrin Denlinger",
         original_name: "Darrin Denlinger",
-        popularity: 1.4,
+        popularity: 0.6,
         profile_path: null,
         credit_id: "6065e22b0ff15a005878c585",
         department: "Art",
@@ -1650,7 +1649,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Art",
         name: "Aoife Warren",
         original_name: "Aoife Warren",
-        popularity: 1.094,
+        popularity: 0.6,
         profile_path: null,
         credit_id: "61d225b3e10f4600926a608f",
         department: "Art",
@@ -1676,7 +1675,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Production",
         name: "Eric Hauserman Carroll",
         original_name: "Eric Hauserman Carroll",
-        popularity: 1.427,
+        popularity: 1.093,
         profile_path: "/6rswcsUV6vrAgx0hM5pOpnhlaQl.jpg",
         credit_id: "61f767ec1092300095b6eead",
         department: "Production",
@@ -1689,7 +1688,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Art",
         name: "Jeremy Simser",
         original_name: "Jeremy Simser",
-        popularity: 0.75,
+        popularity: 0.665,
         profile_path: null,
         credit_id: "603263f85c3247003ede17e7",
         department: "Art",
@@ -1702,7 +1701,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Visual Effects",
         name: "Joel Behrens",
         original_name: "Joel Behrens",
-        popularity: 1.38,
+        popularity: 0.6,
         profile_path: null,
         credit_id: "61d226b77dfda60043b6837c",
         department: "Visual Effects",
@@ -1715,7 +1714,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Crew",
         name: "Brycen Counts",
         original_name: "Brycen Counts",
-        popularity: 1.073,
+        popularity: 0.602,
         profile_path: null,
         credit_id: "6275a9b367e0f70066d4ae7a",
         department: "Crew",
@@ -1754,7 +1753,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Writing",
         name: "Bill Mantlo",
         original_name: "Bill Mantlo",
-        popularity: 0.6,
+        popularity: 0.766,
         profile_path: null,
         credit_id: "6275ad099450fe00a71b388a",
         department: "Crew",
@@ -1767,7 +1766,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Art",
         name: "David Allcock",
         original_name: "David Allcock",
-        popularity: 1.159,
+        popularity: 1.4,
         profile_path: null,
         credit_id: "6065e293a4af8f0057dfd3f8",
         department: "Art",
@@ -1780,7 +1779,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Crew",
         name: "Roger Stern",
         original_name: "Roger Stern",
-        popularity: 1.936,
+        popularity: 1.448,
         profile_path: null,
         credit_id: "6275ad9877b1fb0065870131",
         department: "Crew",
@@ -1819,7 +1818,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Crew",
         name: "Russell Hopwood",
         original_name: "Russell Hopwood",
-        popularity: 0.6,
+        popularity: 1.4,
         profile_path: null,
         credit_id: "61d2273a8c22c0001c2aa386",
         department: "Visual Effects",
@@ -1884,7 +1883,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Production",
         name: "Richie Palmer",
         original_name: "Richie Palmer",
-        popularity: 2.686,
+        popularity: 2.297,
         profile_path: null,
         credit_id: "624dbf864975600067569077",
         department: "Production",
@@ -1897,7 +1896,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Writing",
         name: "Michael Waldron",
         original_name: "Michael Waldron",
-        popularity: 6.555,
+        popularity: 7.938,
         profile_path: "/5d6wkYnJgkVAzThqnnwOLNDzACM.jpg",
         credit_id: "5e3de21c98f1f1000f0eac07",
         department: "Writing",
@@ -1910,7 +1909,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Art",
         name: "Richard Usher",
         original_name: "Richard Usher",
-        popularity: 1.4,
+        popularity: 0.833,
         profile_path: null,
         credit_id: "61d225a8f1b5710043da59b5",
         department: "Art",
@@ -1949,7 +1948,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Sound",
         name: "Paola Magrans",
         original_name: "Paola Magrans",
-        popularity: 1.38,
+        popularity: 0.6,
         profile_path: null,
         credit_id: "61d226364284ea0065fa2130",
         department: "Sound",
@@ -1962,7 +1961,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Art",
         name: "Rupert Hancock",
         original_name: "Rupert Hancock",
-        popularity: 0.98,
+        popularity: 0.6,
         profile_path: null,
         credit_id: "61d22519ec370c001ae4556e",
         department: "Art",
@@ -1975,7 +1974,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Art",
         name: "Amy Herring",
         original_name: "Amy Herring",
-        popularity: 0.6,
+        popularity: 1.128,
         profile_path: null,
         credit_id: "6275aac3323eba0066ce7220",
         department: "Art",
@@ -2027,7 +2026,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Art",
         name: "Soren Bendt Aaboe Pedersen",
         original_name: "Soren Bendt Aaboe Pedersen",
-        popularity: 1.388,
+        popularity: 0.6,
         profile_path: null,
         credit_id: "6065e264136545004023d94e",
         department: "Art",
@@ -2079,7 +2078,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Visual Effects",
         name: "Reetu Aggarwal",
         original_name: "Reetu Aggarwal",
-        popularity: 0.694,
+        popularity: 0.828,
         profile_path: null,
         credit_id: "619a00229603310062d471ac",
         department: "Visual Effects",
@@ -2144,7 +2143,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Art",
         name: "James Flanagan",
         original_name: "James Flanagan",
-        popularity: 0.6,
+        popularity: 0.84,
         profile_path: null,
         credit_id: "61d22500d19a33008e77c193",
         department: "Art",
@@ -2196,7 +2195,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Art",
         name: "Thomas du Crest",
         original_name: "Thomas du Crest",
-        popularity: 0.728,
+        popularity: 0.766,
         profile_path: null,
         credit_id: "603263e57f6c8d003c118a56",
         department: "Art",
@@ -2222,7 +2221,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Visual Effects",
         name: "Jörundur Rafn Arnarson",
         original_name: "Jörundur Rafn Arnarson",
-        popularity: 0.98,
+        popularity: 0.6,
         profile_path: null,
         credit_id: "61d226a58c22c00041381ed1",
         department: "Visual Effects",
@@ -2235,7 +2234,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Crew",
         name: "Kieron Gillen",
         original_name: "Kieron Gillen",
-        popularity: 0.625,
+        popularity: 0.6,
         profile_path: null,
         credit_id: "6275ac7b724de100503c4fa5",
         department: "Crew",
@@ -2261,7 +2260,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Visual Effects",
         name: "Daniel Hazeltine",
         original_name: "Daniel Hazeltine",
-        popularity: 3.65,
+        popularity: 1.803,
         profile_path: null,
         credit_id: "61d2272ee194b000413c3d9e",
         department: "Visual Effects",
@@ -2326,7 +2325,7 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Costume & Make-Up",
         name: "Sally Crawshaw",
         original_name: "Sally Crawshaw",
-        popularity: 0.6,
+        popularity: 0.648,
         profile_path: null,
         credit_id: "61d224a95541fa008b130657",
         department: "Costume & Make-Up",
@@ -2573,12 +2572,1640 @@ export const FakeMovieData: IMovieDetails = {
         known_for_department: "Crew",
         name: "Al Milgrom",
         original_name: "Al Milgrom",
-        popularity: 0.84,
+        popularity: 1.686,
         profile_path: null,
         credit_id: "62c2c0c7544c41004cb787d0",
         department: "Crew",
         job: "Thanks",
       },
     ],
+  },
+  "watch/providers": {
+    results: {
+      AD: {
+        link:
+          "https://www.themoviedb.org/movie/453395-doctor-strange-in-the-multiverse-of-madness/watch?locale=AD",
+        flatrate: [
+          {
+            display_priority: 30,
+            logo_path: "/7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg",
+            provider_id: 337,
+            provider_name: "Disney Plus",
+          },
+        ],
+      },
+      AL: {
+        link:
+          "https://www.themoviedb.org/movie/453395-doctor-strange-in-the-multiverse-of-madness/watch?locale=AL",
+        flatrate: [
+          {
+            display_priority: 30,
+            logo_path: "/7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg",
+            provider_id: 337,
+            provider_name: "Disney Plus",
+          },
+        ],
+      },
+      AR: {
+        link:
+          "https://www.themoviedb.org/movie/453395-doctor-strange-in-the-multiverse-of-madness/watch?locale=AR",
+        flatrate: [
+          {
+            display_priority: 30,
+            logo_path: "/7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg",
+            provider_id: 337,
+            provider_name: "Disney Plus",
+          },
+        ],
+      },
+      AT: {
+        link:
+          "https://www.themoviedb.org/movie/453395-doctor-strange-in-the-multiverse-of-madness/watch?locale=AT",
+        flatrate: [
+          {
+            display_priority: 30,
+            logo_path: "/7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg",
+            provider_id: 337,
+            provider_name: "Disney Plus",
+          },
+        ],
+        buy: [
+          {
+            display_priority: 3,
+            logo_path: "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+            provider_id: 3,
+            provider_name: "Google Play Movies",
+          },
+          {
+            display_priority: 8,
+            logo_path: "/2pCbao1J9s0DMak2KKnEzmzHni8.jpg",
+            provider_id: 130,
+            provider_name: "Sky Store",
+          },
+          {
+            display_priority: 9,
+            logo_path: "/5GEbAhFW2S5T8zVc1MNvz00pIzM.jpg",
+            provider_id: 35,
+            provider_name: "Rakuten TV",
+          },
+          {
+            display_priority: 10,
+            logo_path: "/mT9kIe6JVz72ikWJ58x0q8ckUW3.jpg",
+            provider_id: 40,
+            provider_name: "Chili",
+          },
+          {
+            display_priority: 11,
+            logo_path: "/5NyLm42TmCqCMOZFvH4fcoSNKEW.jpg",
+            provider_id: 10,
+            provider_name: "Amazon Video",
+          },
+          {
+            display_priority: 15,
+            logo_path: "/2PTFxgrswnEuK0szl87iSd8Yszz.jpg",
+            provider_id: 20,
+            provider_name: "maxdome Store",
+          },
+          {
+            display_priority: 48,
+            logo_path: "/shq88b09gTBYC4hA7K7MUL8Q4zP.jpg",
+            provider_id: 68,
+            provider_name: "Microsoft Store",
+          },
+        ],
+      },
+      AU: {
+        link:
+          "https://www.themoviedb.org/movie/453395-doctor-strange-in-the-multiverse-of-madness/watch?locale=AU",
+        buy: [
+          {
+            display_priority: 3,
+            logo_path: "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+            provider_id: 3,
+            provider_name: "Google Play Movies",
+          },
+          {
+            display_priority: 11,
+            logo_path: "/5NyLm42TmCqCMOZFvH4fcoSNKEW.jpg",
+            provider_id: 10,
+            provider_name: "Amazon Video",
+          },
+          {
+            display_priority: 13,
+            logo_path: "/oIkQkEkwfmcG7IGpRR1NB8frZZM.jpg",
+            provider_id: 192,
+            provider_name: "YouTube",
+          },
+          {
+            display_priority: 31,
+            logo_path: "/zXDDsD9M5vO7lqoqlBQCOcZtKBS.jpg",
+            provider_id: 429,
+            provider_name: "Telstra TV",
+          },
+          {
+            display_priority: 48,
+            logo_path: "/shq88b09gTBYC4hA7K7MUL8Q4zP.jpg",
+            provider_id: 68,
+            provider_name: "Microsoft Store",
+          },
+        ],
+        flatrate: [
+          {
+            display_priority: 30,
+            logo_path: "/7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg",
+            provider_id: 337,
+            provider_name: "Disney Plus",
+          },
+        ],
+      },
+      BA: {
+        link:
+          "https://www.themoviedb.org/movie/453395-doctor-strange-in-the-multiverse-of-madness/watch?locale=BA",
+        flatrate: [
+          {
+            display_priority: 30,
+            logo_path: "/7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg",
+            provider_id: 337,
+            provider_name: "Disney Plus",
+          },
+        ],
+      },
+      BE: {
+        link:
+          "https://www.themoviedb.org/movie/453395-doctor-strange-in-the-multiverse-of-madness/watch?locale=BE",
+        buy: [
+          {
+            display_priority: 2,
+            logo_path: "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
+            provider_id: 2,
+            provider_name: "Apple iTunes",
+          },
+          {
+            display_priority: 3,
+            logo_path: "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+            provider_id: 3,
+            provider_name: "Google Play Movies",
+          },
+          {
+            display_priority: 9,
+            logo_path: "/5GEbAhFW2S5T8zVc1MNvz00pIzM.jpg",
+            provider_id: 35,
+            provider_name: "Rakuten TV",
+          },
+        ],
+        flatrate: [
+          {
+            display_priority: 30,
+            logo_path: "/7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg",
+            provider_id: 337,
+            provider_name: "Disney Plus",
+          },
+        ],
+      },
+      BG: {
+        link:
+          "https://www.themoviedb.org/movie/453395-doctor-strange-in-the-multiverse-of-madness/watch?locale=BG",
+        flatrate: [
+          {
+            display_priority: 30,
+            logo_path: "/7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg",
+            provider_id: 337,
+            provider_name: "Disney Plus",
+          },
+        ],
+      },
+      BO: {
+        link:
+          "https://www.themoviedb.org/movie/453395-doctor-strange-in-the-multiverse-of-madness/watch?locale=BO",
+        flatrate: [
+          {
+            display_priority: 30,
+            logo_path: "/7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg",
+            provider_id: 337,
+            provider_name: "Disney Plus",
+          },
+        ],
+      },
+      BR: {
+        link:
+          "https://www.themoviedb.org/movie/453395-doctor-strange-in-the-multiverse-of-madness/watch?locale=BR",
+        flatrate: [
+          {
+            display_priority: 30,
+            logo_path: "/7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg",
+            provider_id: 337,
+            provider_name: "Disney Plus",
+          },
+        ],
+      },
+      CA: {
+        link:
+          "https://www.themoviedb.org/movie/453395-doctor-strange-in-the-multiverse-of-madness/watch?locale=CA",
+        flatrate: [
+          {
+            display_priority: 30,
+            logo_path: "/7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg",
+            provider_id: 337,
+            provider_name: "Disney Plus",
+          },
+        ],
+        buy: [
+          {
+            display_priority: 2,
+            logo_path: "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
+            provider_id: 2,
+            provider_name: "Apple iTunes",
+          },
+          {
+            display_priority: 3,
+            logo_path: "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+            provider_id: 3,
+            provider_name: "Google Play Movies",
+          },
+          {
+            display_priority: 11,
+            logo_path: "/5NyLm42TmCqCMOZFvH4fcoSNKEW.jpg",
+            provider_id: 10,
+            provider_name: "Amazon Video",
+          },
+          {
+            display_priority: 12,
+            logo_path: "/sN8B7EweqmOmWm5ALdOAxCquuv1.jpg",
+            provider_id: 140,
+            provider_name: "Cineplex",
+          },
+          {
+            display_priority: 13,
+            logo_path: "/oIkQkEkwfmcG7IGpRR1NB8frZZM.jpg",
+            provider_id: 192,
+            provider_name: "YouTube",
+          },
+          {
+            display_priority: 48,
+            logo_path: "/shq88b09gTBYC4hA7K7MUL8Q4zP.jpg",
+            provider_id: 68,
+            provider_name: "Microsoft Store",
+          },
+        ],
+      },
+      CH: {
+        link:
+          "https://www.themoviedb.org/movie/453395-doctor-strange-in-the-multiverse-of-madness/watch?locale=CH",
+        buy: [
+          {
+            display_priority: 2,
+            logo_path: "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
+            provider_id: 2,
+            provider_name: "Apple iTunes",
+          },
+          {
+            display_priority: 3,
+            logo_path: "/2LS6g6iE5DiAIDiZTAK8mbQQTuE.jpg",
+            provider_id: 150,
+            provider_name: "SwissCom",
+          },
+          {
+            display_priority: 8,
+            logo_path: "/2pCbao1J9s0DMak2KKnEzmzHni8.jpg",
+            provider_id: 130,
+            provider_name: "Sky Store",
+          },
+          {
+            display_priority: 8,
+            logo_path: "/jmyYN1124dDIzqMysLekixy3AzF.jpg",
+            provider_id: 164,
+            provider_name: "Hollystar",
+          },
+          {
+            display_priority: 9,
+            logo_path: "/5GEbAhFW2S5T8zVc1MNvz00pIzM.jpg",
+            provider_id: 35,
+            provider_name: "Rakuten TV",
+          },
+          {
+            display_priority: 48,
+            logo_path: "/shq88b09gTBYC4hA7K7MUL8Q4zP.jpg",
+            provider_id: 68,
+            provider_name: "Microsoft Store",
+          },
+        ],
+        flatrate: [
+          {
+            display_priority: 30,
+            logo_path: "/7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg",
+            provider_id: 337,
+            provider_name: "Disney Plus",
+          },
+        ],
+      },
+      CL: {
+        link:
+          "https://www.themoviedb.org/movie/453395-doctor-strange-in-the-multiverse-of-madness/watch?locale=CL",
+        flatrate: [
+          {
+            display_priority: 9,
+            logo_path: "/cDzkhgvozSr4GW2aRdV22uDuFpw.jpg",
+            provider_id: 339,
+            provider_name: "Movistar Play",
+          },
+          {
+            display_priority: 30,
+            logo_path: "/7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg",
+            provider_id: 337,
+            provider_name: "Disney Plus",
+          },
+        ],
+      },
+      CO: {
+        link:
+          "https://www.themoviedb.org/movie/453395-doctor-strange-in-the-multiverse-of-madness/watch?locale=CO",
+        flatrate: [
+          {
+            display_priority: 9,
+            logo_path: "/cDzkhgvozSr4GW2aRdV22uDuFpw.jpg",
+            provider_id: 339,
+            provider_name: "Movistar Play",
+          },
+          {
+            display_priority: 30,
+            logo_path: "/7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg",
+            provider_id: 337,
+            provider_name: "Disney Plus",
+          },
+        ],
+      },
+      CR: {
+        link:
+          "https://www.themoviedb.org/movie/453395-doctor-strange-in-the-multiverse-of-madness/watch?locale=CR",
+        flatrate: [
+          {
+            display_priority: 30,
+            logo_path: "/7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg",
+            provider_id: 337,
+            provider_name: "Disney Plus",
+          },
+        ],
+      },
+      CZ: {
+        link:
+          "https://www.themoviedb.org/movie/453395-doctor-strange-in-the-multiverse-of-madness/watch?locale=CZ",
+        flatrate: [
+          {
+            display_priority: 30,
+            logo_path: "/7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg",
+            provider_id: 337,
+            provider_name: "Disney Plus",
+          },
+        ],
+      },
+      DE: {
+        link:
+          "https://www.themoviedb.org/movie/453395-doctor-strange-in-the-multiverse-of-madness/watch?locale=DE",
+        buy: [
+          {
+            display_priority: 3,
+            logo_path: "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+            provider_id: 3,
+            provider_name: "Google Play Movies",
+          },
+          {
+            display_priority: 8,
+            logo_path: "/2pCbao1J9s0DMak2KKnEzmzHni8.jpg",
+            provider_id: 130,
+            provider_name: "Sky Store",
+          },
+          {
+            display_priority: 9,
+            logo_path: "/5GEbAhFW2S5T8zVc1MNvz00pIzM.jpg",
+            provider_id: 35,
+            provider_name: "Rakuten TV",
+          },
+          {
+            display_priority: 10,
+            logo_path: "/mT9kIe6JVz72ikWJ58x0q8ckUW3.jpg",
+            provider_id: 40,
+            provider_name: "Chili",
+          },
+          {
+            display_priority: 11,
+            logo_path: "/5NyLm42TmCqCMOZFvH4fcoSNKEW.jpg",
+            provider_id: 10,
+            provider_name: "Amazon Video",
+          },
+          {
+            display_priority: 13,
+            logo_path: "/oIkQkEkwfmcG7IGpRR1NB8frZZM.jpg",
+            provider_id: 192,
+            provider_name: "YouTube",
+          },
+          {
+            display_priority: 15,
+            logo_path: "/2PTFxgrswnEuK0szl87iSd8Yszz.jpg",
+            provider_id: 20,
+            provider_name: "maxdome Store",
+          },
+          {
+            display_priority: 28,
+            logo_path: "/uULoezj2skPc6amfwru72UPjYXV.jpg",
+            provider_id: 178,
+            provider_name: "MagentaTV",
+          },
+          {
+            display_priority: 48,
+            logo_path: "/shq88b09gTBYC4hA7K7MUL8Q4zP.jpg",
+            provider_id: 68,
+            provider_name: "Microsoft Store",
+          },
+        ],
+        flatrate: [
+          {
+            display_priority: 30,
+            logo_path: "/7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg",
+            provider_id: 337,
+            provider_name: "Disney Plus",
+          },
+        ],
+      },
+      DK: {
+        link:
+          "https://www.themoviedb.org/movie/453395-doctor-strange-in-the-multiverse-of-madness/watch?locale=DK",
+        buy: [
+          {
+            display_priority: 3,
+            logo_path: "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+            provider_id: 3,
+            provider_name: "Google Play Movies",
+          },
+          {
+            display_priority: 6,
+            logo_path: "/cvl65OJnz14LUlC3yGK1KHj8UYs.jpg",
+            provider_id: 76,
+            provider_name: "Viaplay",
+          },
+          {
+            display_priority: 9,
+            logo_path: "/5GEbAhFW2S5T8zVc1MNvz00pIzM.jpg",
+            provider_id: 35,
+            provider_name: "Rakuten TV",
+          },
+          {
+            display_priority: 21,
+            logo_path: "/dNcz2AZHPEgt4BIKJe56r4visuK.jpg",
+            provider_id: 426,
+            provider_name: "SF Anytime",
+          },
+          {
+            display_priority: 48,
+            logo_path: "/shq88b09gTBYC4hA7K7MUL8Q4zP.jpg",
+            provider_id: 68,
+            provider_name: "Microsoft Store",
+          },
+        ],
+        flatrate: [
+          {
+            display_priority: 30,
+            logo_path: "/7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg",
+            provider_id: 337,
+            provider_name: "Disney Plus",
+          },
+        ],
+      },
+      DO: {
+        link:
+          "https://www.themoviedb.org/movie/453395-doctor-strange-in-the-multiverse-of-madness/watch?locale=DO",
+        flatrate: [
+          {
+            display_priority: 30,
+            logo_path: "/7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg",
+            provider_id: 337,
+            provider_name: "Disney Plus",
+          },
+        ],
+      },
+      EC: {
+        link:
+          "https://www.themoviedb.org/movie/453395-doctor-strange-in-the-multiverse-of-madness/watch?locale=EC",
+        flatrate: [
+          {
+            display_priority: 30,
+            logo_path: "/7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg",
+            provider_id: 337,
+            provider_name: "Disney Plus",
+          },
+        ],
+      },
+      EE: {
+        link:
+          "https://www.themoviedb.org/movie/453395-doctor-strange-in-the-multiverse-of-madness/watch?locale=EE",
+        buy: [
+          {
+            display_priority: 3,
+            logo_path: "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+            provider_id: 3,
+            provider_name: "Google Play Movies",
+          },
+        ],
+        flatrate: [
+          {
+            display_priority: 30,
+            logo_path: "/7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg",
+            provider_id: 337,
+            provider_name: "Disney Plus",
+          },
+        ],
+      },
+      ES: {
+        link:
+          "https://www.themoviedb.org/movie/453395-doctor-strange-in-the-multiverse-of-madness/watch?locale=ES",
+        buy: [
+          {
+            display_priority: 3,
+            logo_path: "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+            provider_id: 3,
+            provider_name: "Google Play Movies",
+          },
+          {
+            display_priority: 9,
+            logo_path: "/5GEbAhFW2S5T8zVc1MNvz00pIzM.jpg",
+            provider_id: 35,
+            provider_name: "Rakuten TV",
+          },
+          {
+            display_priority: 11,
+            logo_path: "/5NyLm42TmCqCMOZFvH4fcoSNKEW.jpg",
+            provider_id: 10,
+            provider_name: "Amazon Video",
+          },
+          {
+            display_priority: 48,
+            logo_path: "/shq88b09gTBYC4hA7K7MUL8Q4zP.jpg",
+            provider_id: 68,
+            provider_name: "Microsoft Store",
+          },
+        ],
+        flatrate: [
+          {
+            display_priority: 30,
+            logo_path: "/7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg",
+            provider_id: 337,
+            provider_name: "Disney Plus",
+          },
+        ],
+      },
+      FI: {
+        link:
+          "https://www.themoviedb.org/movie/453395-doctor-strange-in-the-multiverse-of-madness/watch?locale=FI",
+        buy: [
+          {
+            display_priority: 3,
+            logo_path: "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+            provider_id: 3,
+            provider_name: "Google Play Movies",
+          },
+          {
+            display_priority: 6,
+            logo_path: "/cvl65OJnz14LUlC3yGK1KHj8UYs.jpg",
+            provider_id: 76,
+            provider_name: "Viaplay",
+          },
+          {
+            display_priority: 9,
+            logo_path: "/5GEbAhFW2S5T8zVc1MNvz00pIzM.jpg",
+            provider_id: 35,
+            provider_name: "Rakuten TV",
+          },
+          {
+            display_priority: 20,
+            logo_path: "/3QsJbibv5dFW2IYuXbTjxDmGGRZ.jpg",
+            provider_id: 423,
+            provider_name: "Blockbuster",
+          },
+          {
+            display_priority: 21,
+            logo_path: "/dNcz2AZHPEgt4BIKJe56r4visuK.jpg",
+            provider_id: 426,
+            provider_name: "SF Anytime",
+          },
+          {
+            display_priority: 48,
+            logo_path: "/shq88b09gTBYC4hA7K7MUL8Q4zP.jpg",
+            provider_id: 68,
+            provider_name: "Microsoft Store",
+          },
+        ],
+        flatrate: [
+          {
+            display_priority: 30,
+            logo_path: "/7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg",
+            provider_id: 337,
+            provider_name: "Disney Plus",
+          },
+        ],
+      },
+      GB: {
+        link:
+          "https://www.themoviedb.org/movie/453395-doctor-strange-in-the-multiverse-of-madness/watch?locale=GB",
+        buy: [
+          {
+            display_priority: 3,
+            logo_path: "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+            provider_id: 3,
+            provider_name: "Google Play Movies",
+          },
+          {
+            display_priority: 8,
+            logo_path: "/2pCbao1J9s0DMak2KKnEzmzHni8.jpg",
+            provider_id: 130,
+            provider_name: "Sky Store",
+          },
+          {
+            display_priority: 9,
+            logo_path: "/5GEbAhFW2S5T8zVc1MNvz00pIzM.jpg",
+            provider_id: 35,
+            provider_name: "Rakuten TV",
+          },
+          {
+            display_priority: 10,
+            logo_path: "/mT9kIe6JVz72ikWJ58x0q8ckUW3.jpg",
+            provider_id: 40,
+            provider_name: "Chili",
+          },
+          {
+            display_priority: 11,
+            logo_path: "/5NyLm42TmCqCMOZFvH4fcoSNKEW.jpg",
+            provider_id: 10,
+            provider_name: "Amazon Video",
+          },
+          {
+            display_priority: 13,
+            logo_path: "/oIkQkEkwfmcG7IGpRR1NB8frZZM.jpg",
+            provider_id: 192,
+            provider_name: "YouTube",
+          },
+          {
+            display_priority: 48,
+            logo_path: "/shq88b09gTBYC4hA7K7MUL8Q4zP.jpg",
+            provider_id: 68,
+            provider_name: "Microsoft Store",
+          },
+        ],
+        flatrate: [
+          {
+            display_priority: 30,
+            logo_path: "/7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg",
+            provider_id: 337,
+            provider_name: "Disney Plus",
+          },
+          {
+            display_priority: 63,
+            logo_path: "/o6li3XZrBKXSqyNRS39UQEfPTCH.jpg",
+            provider_id: 594,
+            provider_name: "Virgin TV Go",
+          },
+        ],
+      },
+      GR: {
+        link:
+          "https://www.themoviedb.org/movie/453395-doctor-strange-in-the-multiverse-of-madness/watch?locale=GR",
+        flatrate: [
+          {
+            display_priority: 30,
+            logo_path: "/7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg",
+            provider_id: 337,
+            provider_name: "Disney Plus",
+          },
+        ],
+      },
+      GT: {
+        link:
+          "https://www.themoviedb.org/movie/453395-doctor-strange-in-the-multiverse-of-madness/watch?locale=GT",
+        flatrate: [
+          {
+            display_priority: 30,
+            logo_path: "/7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg",
+            provider_id: 337,
+            provider_name: "Disney Plus",
+          },
+        ],
+      },
+      HK: {
+        link:
+          "https://www.themoviedb.org/movie/453395-doctor-strange-in-the-multiverse-of-madness/watch?locale=HK",
+        flatrate: [
+          {
+            display_priority: 30,
+            logo_path: "/7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg",
+            provider_id: 337,
+            provider_name: "Disney Plus",
+          },
+        ],
+        buy: [
+          {
+            display_priority: 3,
+            logo_path: "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+            provider_id: 3,
+            provider_name: "Google Play Movies",
+          },
+        ],
+      },
+      HN: {
+        link:
+          "https://www.themoviedb.org/movie/453395-doctor-strange-in-the-multiverse-of-madness/watch?locale=HN",
+        flatrate: [
+          {
+            display_priority: 30,
+            logo_path: "/7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg",
+            provider_id: 337,
+            provider_name: "Disney Plus",
+          },
+        ],
+      },
+      HR: {
+        link:
+          "https://www.themoviedb.org/movie/453395-doctor-strange-in-the-multiverse-of-madness/watch?locale=HR",
+        flatrate: [
+          {
+            display_priority: 30,
+            logo_path: "/7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg",
+            provider_id: 337,
+            provider_name: "Disney Plus",
+          },
+        ],
+      },
+      HU: {
+        link:
+          "https://www.themoviedb.org/movie/453395-doctor-strange-in-the-multiverse-of-madness/watch?locale=HU",
+        flatrate: [
+          {
+            display_priority: 30,
+            logo_path: "/7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg",
+            provider_id: 337,
+            provider_name: "Disney Plus",
+          },
+        ],
+      },
+      ID: {
+        link:
+          "https://www.themoviedb.org/movie/453395-doctor-strange-in-the-multiverse-of-madness/watch?locale=ID",
+        buy: [
+          {
+            display_priority: 2,
+            logo_path: "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
+            provider_id: 2,
+            provider_name: "Apple iTunes",
+          },
+          {
+            display_priority: 3,
+            logo_path: "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+            provider_id: 3,
+            provider_name: "Google Play Movies",
+          },
+        ],
+        flatrate: [
+          {
+            display_priority: 0,
+            logo_path: "/7Fl8ylPDclt3ZYgNbW2t7rbZE9I.jpg",
+            provider_id: 122,
+            provider_name: "Hotstar",
+          },
+        ],
+        rent: [
+          {
+            display_priority: 3,
+            logo_path: "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+            provider_id: 3,
+            provider_name: "Google Play Movies",
+          },
+        ],
+      },
+      IE: {
+        link:
+          "https://www.themoviedb.org/movie/453395-doctor-strange-in-the-multiverse-of-madness/watch?locale=IE",
+        buy: [
+          {
+            display_priority: 3,
+            logo_path: "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+            provider_id: 3,
+            provider_name: "Google Play Movies",
+          },
+          {
+            display_priority: 9,
+            logo_path: "/5GEbAhFW2S5T8zVc1MNvz00pIzM.jpg",
+            provider_id: 35,
+            provider_name: "Rakuten TV",
+          },
+          {
+            display_priority: 48,
+            logo_path: "/shq88b09gTBYC4hA7K7MUL8Q4zP.jpg",
+            provider_id: 68,
+            provider_name: "Microsoft Store",
+          },
+        ],
+        flatrate: [
+          {
+            display_priority: 30,
+            logo_path: "/7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg",
+            provider_id: 337,
+            provider_name: "Disney Plus",
+          },
+        ],
+      },
+      IN: {
+        link:
+          "https://www.themoviedb.org/movie/453395-doctor-strange-in-the-multiverse-of-madness/watch?locale=IN",
+        flatrate: [
+          {
+            display_priority: 0,
+            logo_path: "/7Fl8ylPDclt3ZYgNbW2t7rbZE9I.jpg",
+            provider_id: 122,
+            provider_name: "Hotstar",
+          },
+        ],
+      },
+      IS: {
+        link:
+          "https://www.themoviedb.org/movie/453395-doctor-strange-in-the-multiverse-of-madness/watch?locale=IS",
+        buy: [
+          {
+            display_priority: 3,
+            logo_path: "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+            provider_id: 3,
+            provider_name: "Google Play Movies",
+          },
+          {
+            display_priority: 6,
+            logo_path: "/cvl65OJnz14LUlC3yGK1KHj8UYs.jpg",
+            provider_id: 76,
+            provider_name: "Viaplay",
+          },
+        ],
+        flatrate: [
+          {
+            display_priority: 30,
+            logo_path: "/7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg",
+            provider_id: 337,
+            provider_name: "Disney Plus",
+          },
+        ],
+      },
+      IT: {
+        link:
+          "https://www.themoviedb.org/movie/453395-doctor-strange-in-the-multiverse-of-madness/watch?locale=IT",
+        flatrate: [
+          {
+            display_priority: 30,
+            logo_path: "/7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg",
+            provider_id: 337,
+            provider_name: "Disney Plus",
+          },
+        ],
+        buy: [
+          {
+            display_priority: 3,
+            logo_path: "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+            provider_id: 3,
+            provider_name: "Google Play Movies",
+          },
+          {
+            display_priority: 9,
+            logo_path: "/5GEbAhFW2S5T8zVc1MNvz00pIzM.jpg",
+            provider_id: 35,
+            provider_name: "Rakuten TV",
+          },
+          {
+            display_priority: 10,
+            logo_path: "/mT9kIe6JVz72ikWJ58x0q8ckUW3.jpg",
+            provider_id: 40,
+            provider_name: "Chili",
+          },
+          {
+            display_priority: 11,
+            logo_path: "/5NyLm42TmCqCMOZFvH4fcoSNKEW.jpg",
+            provider_id: 10,
+            provider_name: "Amazon Video",
+          },
+          {
+            display_priority: 13,
+            logo_path: "/ftxHS1anAWTYgtDtIDv8VLXoepH.jpg",
+            provider_id: 109,
+            provider_name: "Timvision",
+          },
+          {
+            display_priority: 48,
+            logo_path: "/shq88b09gTBYC4hA7K7MUL8Q4zP.jpg",
+            provider_id: 68,
+            provider_name: "Microsoft Store",
+          },
+        ],
+      },
+      JP: {
+        link:
+          "https://www.themoviedb.org/movie/453395-doctor-strange-in-the-multiverse-of-madness/watch?locale=JP",
+        buy: [
+          {
+            display_priority: 3,
+            logo_path: "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+            provider_id: 3,
+            provider_name: "Google Play Movies",
+          },
+          {
+            display_priority: 11,
+            logo_path: "/5NyLm42TmCqCMOZFvH4fcoSNKEW.jpg",
+            provider_id: 10,
+            provider_name: "Amazon Video",
+          },
+        ],
+        flatrate: [
+          {
+            display_priority: 30,
+            logo_path: "/7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg",
+            provider_id: 337,
+            provider_name: "Disney Plus",
+          },
+        ],
+        rent: [
+          {
+            display_priority: 3,
+            logo_path: "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+            provider_id: 3,
+            provider_name: "Google Play Movies",
+          },
+          {
+            display_priority: 4,
+            logo_path: "/9pS9Y3xkCLJnti9pi1AyrD5KbZe.jpg",
+            provider_id: 84,
+            provider_name: "U-NEXT",
+          },
+          {
+            display_priority: 11,
+            logo_path: "/5NyLm42TmCqCMOZFvH4fcoSNKEW.jpg",
+            provider_id: 10,
+            provider_name: "Amazon Video",
+          },
+        ],
+      },
+      KR: {
+        link:
+          "https://www.themoviedb.org/movie/453395-doctor-strange-in-the-multiverse-of-madness/watch?locale=KR",
+        flatrate: [
+          {
+            display_priority: 30,
+            logo_path: "/7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg",
+            provider_id: 337,
+            provider_name: "Disney Plus",
+          },
+        ],
+        buy: [
+          {
+            display_priority: 3,
+            logo_path: "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+            provider_id: 3,
+            provider_name: "Google Play Movies",
+          },
+        ],
+      },
+      LI: {
+        link:
+          "https://www.themoviedb.org/movie/453395-doctor-strange-in-the-multiverse-of-madness/watch?locale=LI",
+        flatrate: [
+          {
+            display_priority: 30,
+            logo_path: "/7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg",
+            provider_id: 337,
+            provider_name: "Disney Plus",
+          },
+        ],
+      },
+      LT: {
+        link:
+          "https://www.themoviedb.org/movie/453395-doctor-strange-in-the-multiverse-of-madness/watch?locale=LT",
+        flatrate: [
+          {
+            display_priority: 30,
+            logo_path: "/7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg",
+            provider_id: 337,
+            provider_name: "Disney Plus",
+          },
+        ],
+        buy: [
+          {
+            display_priority: 3,
+            logo_path: "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+            provider_id: 3,
+            provider_name: "Google Play Movies",
+          },
+        ],
+      },
+      LV: {
+        link:
+          "https://www.themoviedb.org/movie/453395-doctor-strange-in-the-multiverse-of-madness/watch?locale=LV",
+        buy: [
+          {
+            display_priority: 3,
+            logo_path: "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+            provider_id: 3,
+            provider_name: "Google Play Movies",
+          },
+        ],
+        flatrate: [
+          {
+            display_priority: 30,
+            logo_path: "/7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg",
+            provider_id: 337,
+            provider_name: "Disney Plus",
+          },
+        ],
+      },
+      MK: {
+        link:
+          "https://www.themoviedb.org/movie/453395-doctor-strange-in-the-multiverse-of-madness/watch?locale=MK",
+        flatrate: [
+          {
+            display_priority: 30,
+            logo_path: "/7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg",
+            provider_id: 337,
+            provider_name: "Disney Plus",
+          },
+        ],
+      },
+      MT: {
+        link:
+          "https://www.themoviedb.org/movie/453395-doctor-strange-in-the-multiverse-of-madness/watch?locale=MT",
+        flatrate: [
+          {
+            display_priority: 30,
+            logo_path: "/7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg",
+            provider_id: 337,
+            provider_name: "Disney Plus",
+          },
+        ],
+      },
+      MX: {
+        link:
+          "https://www.themoviedb.org/movie/453395-doctor-strange-in-the-multiverse-of-madness/watch?locale=MX",
+        flatrate: [
+          {
+            display_priority: 30,
+            logo_path: "/7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg",
+            provider_id: 337,
+            provider_name: "Disney Plus",
+          },
+        ],
+      },
+      MY: {
+        link:
+          "https://www.themoviedb.org/movie/453395-doctor-strange-in-the-multiverse-of-madness/watch?locale=MY",
+        flatrate: [
+          {
+            display_priority: 0,
+            logo_path: "/7Fl8ylPDclt3ZYgNbW2t7rbZE9I.jpg",
+            provider_id: 122,
+            provider_name: "Hotstar",
+          },
+        ],
+      },
+      NL: {
+        link:
+          "https://www.themoviedb.org/movie/453395-doctor-strange-in-the-multiverse-of-madness/watch?locale=NL",
+        flatrate: [
+          {
+            display_priority: 30,
+            logo_path: "/7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg",
+            provider_id: 337,
+            provider_name: "Disney Plus",
+          },
+        ],
+        buy: [
+          {
+            display_priority: 3,
+            logo_path: "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+            provider_id: 3,
+            provider_name: "Google Play Movies",
+          },
+          {
+            display_priority: 7,
+            logo_path: "/llmnYOyknekZsXtkCaazKjhTLvG.jpg",
+            provider_id: 71,
+            provider_name: "Pathé Thuis",
+          },
+          {
+            display_priority: 9,
+            logo_path: "/5GEbAhFW2S5T8zVc1MNvz00pIzM.jpg",
+            provider_id: 35,
+            provider_name: "Rakuten TV",
+          },
+          {
+            display_priority: 11,
+            logo_path: "/5NyLm42TmCqCMOZFvH4fcoSNKEW.jpg",
+            provider_id: 10,
+            provider_name: "Amazon Video",
+          },
+          {
+            display_priority: 48,
+            logo_path: "/shq88b09gTBYC4hA7K7MUL8Q4zP.jpg",
+            provider_id: 68,
+            provider_name: "Microsoft Store",
+          },
+        ],
+      },
+      NO: {
+        link:
+          "https://www.themoviedb.org/movie/453395-doctor-strange-in-the-multiverse-of-madness/watch?locale=NO",
+        flatrate: [
+          {
+            display_priority: 30,
+            logo_path: "/7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg",
+            provider_id: 337,
+            provider_name: "Disney Plus",
+          },
+        ],
+        buy: [
+          {
+            display_priority: 3,
+            logo_path: "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+            provider_id: 3,
+            provider_name: "Google Play Movies",
+          },
+          {
+            display_priority: 6,
+            logo_path: "/cvl65OJnz14LUlC3yGK1KHj8UYs.jpg",
+            provider_id: 76,
+            provider_name: "Viaplay",
+          },
+          {
+            display_priority: 9,
+            logo_path: "/5GEbAhFW2S5T8zVc1MNvz00pIzM.jpg",
+            provider_id: 35,
+            provider_name: "Rakuten TV",
+          },
+          {
+            display_priority: 20,
+            logo_path: "/3QsJbibv5dFW2IYuXbTjxDmGGRZ.jpg",
+            provider_id: 423,
+            provider_name: "Blockbuster",
+          },
+          {
+            display_priority: 21,
+            logo_path: "/dNcz2AZHPEgt4BIKJe56r4visuK.jpg",
+            provider_id: 426,
+            provider_name: "SF Anytime",
+          },
+          {
+            display_priority: 23,
+            logo_path: "/5nECaP8nhtrzZfx7oG0yoFMfqiA.jpg",
+            provider_id: 431,
+            provider_name: "SumoTV",
+          },
+          {
+            display_priority: 48,
+            logo_path: "/shq88b09gTBYC4hA7K7MUL8Q4zP.jpg",
+            provider_id: 68,
+            provider_name: "Microsoft Store",
+          },
+        ],
+      },
+      NZ: {
+        link:
+          "https://www.themoviedb.org/movie/453395-doctor-strange-in-the-multiverse-of-madness/watch?locale=NZ",
+        flatrate: [
+          {
+            display_priority: 30,
+            logo_path: "/7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg",
+            provider_id: 337,
+            provider_name: "Disney Plus",
+          },
+        ],
+        buy: [
+          {
+            display_priority: 2,
+            logo_path: "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
+            provider_id: 2,
+            provider_name: "Apple iTunes",
+          },
+          {
+            display_priority: 3,
+            logo_path: "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+            provider_id: 3,
+            provider_name: "Google Play Movies",
+          },
+          {
+            display_priority: 48,
+            logo_path: "/shq88b09gTBYC4hA7K7MUL8Q4zP.jpg",
+            provider_id: 68,
+            provider_name: "Microsoft Store",
+          },
+        ],
+      },
+      PE: {
+        link:
+          "https://www.themoviedb.org/movie/453395-doctor-strange-in-the-multiverse-of-madness/watch?locale=PE",
+        flatrate: [
+          {
+            display_priority: 30,
+            logo_path: "/7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg",
+            provider_id: 337,
+            provider_name: "Disney Plus",
+          },
+        ],
+      },
+      PH: {
+        link:
+          "https://www.themoviedb.org/movie/453395-doctor-strange-in-the-multiverse-of-madness/watch?locale=PH",
+        buy: [
+          {
+            display_priority: 2,
+            logo_path: "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
+            provider_id: 2,
+            provider_name: "Apple iTunes",
+          },
+          {
+            display_priority: 3,
+            logo_path: "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+            provider_id: 3,
+            provider_name: "Google Play Movies",
+          },
+        ],
+        rent: [
+          {
+            display_priority: 3,
+            logo_path: "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+            provider_id: 3,
+            provider_name: "Google Play Movies",
+          },
+        ],
+      },
+      PL: {
+        link:
+          "https://www.themoviedb.org/movie/453395-doctor-strange-in-the-multiverse-of-madness/watch?locale=PL",
+        flatrate: [
+          {
+            display_priority: 30,
+            logo_path: "/7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg",
+            provider_id: 337,
+            provider_name: "Disney Plus",
+          },
+        ],
+        buy: [
+          {
+            display_priority: 3,
+            logo_path: "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+            provider_id: 3,
+            provider_name: "Google Play Movies",
+          },
+          {
+            display_priority: 10,
+            logo_path: "/mT9kIe6JVz72ikWJ58x0q8ckUW3.jpg",
+            provider_id: 40,
+            provider_name: "Chili",
+          },
+          {
+            display_priority: 13,
+            logo_path: "/oIkQkEkwfmcG7IGpRR1NB8frZZM.jpg",
+            provider_id: 192,
+            provider_name: "YouTube",
+          },
+        ],
+        free: [
+          {
+            display_priority: 5,
+            logo_path: "/kplaFNfZXsdyqsz4TAK8xaKU9Qa.jpg",
+            provider_id: 245,
+            provider_name: "VOD Poland",
+          },
+        ],
+      },
+      PT: {
+        link:
+          "https://www.themoviedb.org/movie/453395-doctor-strange-in-the-multiverse-of-madness/watch?locale=PT",
+        flatrate: [
+          {
+            display_priority: 30,
+            logo_path: "/7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg",
+            provider_id: 337,
+            provider_name: "Disney Plus",
+          },
+        ],
+        buy: [
+          {
+            display_priority: 3,
+            logo_path: "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+            provider_id: 3,
+            provider_name: "Google Play Movies",
+          },
+          {
+            display_priority: 9,
+            logo_path: "/5GEbAhFW2S5T8zVc1MNvz00pIzM.jpg",
+            provider_id: 35,
+            provider_name: "Rakuten TV",
+          },
+          {
+            display_priority: 13,
+            logo_path: "/oIkQkEkwfmcG7IGpRR1NB8frZZM.jpg",
+            provider_id: 192,
+            provider_name: "YouTube",
+          },
+        ],
+      },
+      PY: {
+        link:
+          "https://www.themoviedb.org/movie/453395-doctor-strange-in-the-multiverse-of-madness/watch?locale=PY",
+        flatrate: [
+          {
+            display_priority: 30,
+            logo_path: "/7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg",
+            provider_id: 337,
+            provider_name: "Disney Plus",
+          },
+        ],
+      },
+      RO: {
+        link:
+          "https://www.themoviedb.org/movie/453395-doctor-strange-in-the-multiverse-of-madness/watch?locale=RO",
+        flatrate: [
+          {
+            display_priority: 30,
+            logo_path: "/7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg",
+            provider_id: 337,
+            provider_name: "Disney Plus",
+          },
+        ],
+      },
+      RS: {
+        link:
+          "https://www.themoviedb.org/movie/453395-doctor-strange-in-the-multiverse-of-madness/watch?locale=RS",
+        flatrate: [
+          {
+            display_priority: 30,
+            logo_path: "/7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg",
+            provider_id: 337,
+            provider_name: "Disney Plus",
+          },
+        ],
+      },
+      SE: {
+        link:
+          "https://www.themoviedb.org/movie/453395-doctor-strange-in-the-multiverse-of-madness/watch?locale=SE",
+        buy: [
+          {
+            display_priority: 3,
+            logo_path: "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+            provider_id: 3,
+            provider_name: "Google Play Movies",
+          },
+          {
+            display_priority: 6,
+            logo_path: "/cvl65OJnz14LUlC3yGK1KHj8UYs.jpg",
+            provider_id: 76,
+            provider_name: "Viaplay",
+          },
+          {
+            display_priority: 9,
+            logo_path: "/5GEbAhFW2S5T8zVc1MNvz00pIzM.jpg",
+            provider_id: 35,
+            provider_name: "Rakuten TV",
+          },
+          {
+            display_priority: 20,
+            logo_path: "/3QsJbibv5dFW2IYuXbTjxDmGGRZ.jpg",
+            provider_id: 423,
+            provider_name: "Blockbuster",
+          },
+          {
+            display_priority: 21,
+            logo_path: "/dNcz2AZHPEgt4BIKJe56r4visuK.jpg",
+            provider_id: 426,
+            provider_name: "SF Anytime",
+          },
+          {
+            display_priority: 48,
+            logo_path: "/shq88b09gTBYC4hA7K7MUL8Q4zP.jpg",
+            provider_id: 68,
+            provider_name: "Microsoft Store",
+          },
+        ],
+        flatrate: [
+          {
+            display_priority: 30,
+            logo_path: "/7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg",
+            provider_id: 337,
+            provider_name: "Disney Plus",
+          },
+        ],
+      },
+      SG: {
+        link:
+          "https://www.themoviedb.org/movie/453395-doctor-strange-in-the-multiverse-of-madness/watch?locale=SG",
+        buy: [
+          {
+            display_priority: 2,
+            logo_path: "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
+            provider_id: 2,
+            provider_name: "Apple iTunes",
+          },
+          {
+            display_priority: 3,
+            logo_path: "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+            provider_id: 3,
+            provider_name: "Google Play Movies",
+          },
+        ],
+        rent: [
+          {
+            display_priority: 3,
+            logo_path: "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+            provider_id: 3,
+            provider_name: "Google Play Movies",
+          },
+        ],
+        flatrate: [
+          {
+            display_priority: 30,
+            logo_path: "/7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg",
+            provider_id: 337,
+            provider_name: "Disney Plus",
+          },
+        ],
+      },
+      SI: {
+        link:
+          "https://www.themoviedb.org/movie/453395-doctor-strange-in-the-multiverse-of-madness/watch?locale=SI",
+        flatrate: [
+          {
+            display_priority: 30,
+            logo_path: "/7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg",
+            provider_id: 337,
+            provider_name: "Disney Plus",
+          },
+        ],
+      },
+      SK: {
+        link:
+          "https://www.themoviedb.org/movie/453395-doctor-strange-in-the-multiverse-of-madness/watch?locale=SK",
+        flatrate: [
+          {
+            display_priority: 30,
+            logo_path: "/7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg",
+            provider_id: 337,
+            provider_name: "Disney Plus",
+          },
+        ],
+      },
+      SM: {
+        link:
+          "https://www.themoviedb.org/movie/453395-doctor-strange-in-the-multiverse-of-madness/watch?locale=SM",
+        flatrate: [
+          {
+            display_priority: 30,
+            logo_path: "/7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg",
+            provider_id: 337,
+            provider_name: "Disney Plus",
+          },
+        ],
+      },
+      TH: {
+        link:
+          "https://www.themoviedb.org/movie/453395-doctor-strange-in-the-multiverse-of-madness/watch?locale=TH",
+        flatrate: [
+          {
+            display_priority: 0,
+            logo_path: "/7Fl8ylPDclt3ZYgNbW2t7rbZE9I.jpg",
+            provider_id: 122,
+            provider_name: "Hotstar",
+          },
+        ],
+        buy: [
+          {
+            display_priority: 3,
+            logo_path: "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+            provider_id: 3,
+            provider_name: "Google Play Movies",
+          },
+        ],
+      },
+      TW: {
+        link:
+          "https://www.themoviedb.org/movie/453395-doctor-strange-in-the-multiverse-of-madness/watch?locale=TW",
+        buy: [
+          {
+            display_priority: 3,
+            logo_path: "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+            provider_id: 3,
+            provider_name: "Google Play Movies",
+          },
+        ],
+        flatrate: [
+          {
+            display_priority: 30,
+            logo_path: "/7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg",
+            provider_id: 337,
+            provider_name: "Disney Plus",
+          },
+        ],
+      },
+      US: {
+        link:
+          "https://www.themoviedb.org/movie/453395-doctor-strange-in-the-multiverse-of-madness/watch?locale=US",
+        flatrate: [
+          {
+            display_priority: 30,
+            logo_path: "/7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg",
+            provider_id: 337,
+            provider_name: "Disney Plus",
+          },
+        ],
+        buy: [
+          {
+            display_priority: 2,
+            logo_path: "/peURlLlr8jggOwK53fJ5wdQl05y.jpg",
+            provider_id: 2,
+            provider_name: "Apple iTunes",
+          },
+          {
+            display_priority: 3,
+            logo_path: "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+            provider_id: 3,
+            provider_name: "Google Play Movies",
+          },
+          {
+            display_priority: 11,
+            logo_path: "/5NyLm42TmCqCMOZFvH4fcoSNKEW.jpg",
+            provider_id: 10,
+            provider_name: "Amazon Video",
+          },
+          {
+            display_priority: 13,
+            logo_path: "/oIkQkEkwfmcG7IGpRR1NB8frZZM.jpg",
+            provider_id: 192,
+            provider_name: "YouTube",
+          },
+          {
+            display_priority: 37,
+            logo_path: "/21dEscfO8n1tL35k4DANixhffsR.jpg",
+            provider_id: 7,
+            provider_name: "Vudu",
+          },
+          {
+            display_priority: 48,
+            logo_path: "/shq88b09gTBYC4hA7K7MUL8Q4zP.jpg",
+            provider_id: 68,
+            provider_name: "Microsoft Store",
+          },
+          {
+            display_priority: 50,
+            logo_path: "/gbyLHzl4eYP0oP9oJZ2oKbpkhND.jpg",
+            provider_id: 279,
+            provider_name: "Redbox",
+          },
+          {
+            display_priority: 54,
+            logo_path: "/xL9SUR63qrEjFZAhtsipskeAMR7.jpg",
+            provider_id: 358,
+            provider_name: "DIRECTV",
+          },
+          {
+            display_priority: 134,
+            logo_path: "/kJlVJLgbNPvKDYC0YMp3yA2OKq2.jpg",
+            provider_id: 352,
+            provider_name: "AMC on Demand",
+          },
+        ],
+      },
+      UY: {
+        link:
+          "https://www.themoviedb.org/movie/453395-doctor-strange-in-the-multiverse-of-madness/watch?locale=UY",
+        flatrate: [
+          {
+            display_priority: 30,
+            logo_path: "/7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg",
+            provider_id: 337,
+            provider_name: "Disney Plus",
+          },
+        ],
+      },
+      VE: {
+        link:
+          "https://www.themoviedb.org/movie/453395-doctor-strange-in-the-multiverse-of-madness/watch?locale=VE",
+        flatrate: [
+          {
+            display_priority: 30,
+            logo_path: "/7rwgEs15tFwyR9NPQ5vpzxTj19Q.jpg",
+            provider_id: 337,
+            provider_name: "Disney Plus",
+          },
+        ],
+      },
+      ZA: {
+        link:
+          "https://www.themoviedb.org/movie/453395-doctor-strange-in-the-multiverse-of-madness/watch?locale=ZA",
+        buy: [
+          {
+            display_priority: 3,
+            logo_path: "/tbEdFQDwx5LEVr8WpSeXQSIirVq.jpg",
+            provider_id: 3,
+            provider_name: "Google Play Movies",
+          },
+        ],
+      },
+    },
   },
 };
