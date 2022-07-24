@@ -1,6 +1,7 @@
 import { BsFacebook } from "react-icons/bs";
 import { BsInstagram } from "react-icons/bs";
 import { BsTwitter } from "react-icons/bs";
+import { Container } from "./styles";
 import ExternalLink from "components/atoms/ExternalLink";
 import { FaExternalLinkAlt } from "react-icons/fa";
 import { ReactElement } from "react";
@@ -8,38 +9,25 @@ import { ReactElement } from "react";
 export type Variant = "external" | "facebook" | "instagram" | "twitter";
 
 interface ISocialsProps {
-  variant?: Variant;
-  href?: string;
+  links: { variant: Variant; href: string }[];
 }
 
-export default function Socials({
-  variant = "external",
-  href,
-}: ISocialsProps): ReactElement {
-  if (variant === "facebook")
-    return (
-      <ExternalLink href={href}>
-        <BsFacebook />
-      </ExternalLink>
-    );
-
-  if (variant === "instagram")
-    return (
-      <ExternalLink href={href}>
-        <BsInstagram />
-      </ExternalLink>
-    );
-
-  if (variant === "twitter")
-    return (
-      <ExternalLink href={href}>
-        <BsTwitter />
-      </ExternalLink>
-    );
-
+export default function Socials({ links }: ISocialsProps): ReactElement {
   return (
-    <ExternalLink href={href}>
-      <FaExternalLinkAlt />
-    </ExternalLink>
+    <Container>
+      {links.map((_link, _index) => (
+        <ExternalLink key={_index} href={_link.href}>
+          {_link.variant === "external" ? (
+            <FaExternalLinkAlt />
+          ) : _link.variant === "facebook" ? (
+            <BsFacebook />
+          ) : _link.variant === "instagram" ? (
+            <BsInstagram />
+          ) : (
+            <BsTwitter />
+          )}
+        </ExternalLink>
+      ))}
+    </Container>
   );
 }

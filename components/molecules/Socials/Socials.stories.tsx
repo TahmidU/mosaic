@@ -8,7 +8,11 @@ const payload: IPayload = {
 export default payload;
 
 export const Basic = (args: any) => <Socials {...args} />;
-Basic.arg = {
-  href: "",
-  variant: "external",
+Basic.args = {
+  links: [
+    { variant: "external", href: "" },
+    { variant: "facebook", href: "" },
+    { variant: "instagram", href: "" },
+    { variant: "twitter", href: "" },
+  ],
 };
