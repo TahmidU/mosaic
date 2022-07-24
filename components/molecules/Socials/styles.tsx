@@ -7,6 +7,7 @@ export const Container = styled.div`
 
   > a {
     all: unset;
+    cursor: pointer;
   }
 
   a:first-child {
