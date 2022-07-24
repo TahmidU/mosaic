@@ -4,7 +4,6 @@ import {
   FacebookIcon,
   InstagramIcon,
   MainSection,
-  Socials,
   StarRatingStyle,
   SubSection,
   TitleBlock,
@@ -22,6 +21,8 @@ import { ITVDetails } from "types/tv";
 import Image from "next/image";
 import { Links } from "utils";
 import { ReactElement } from "react";
+import { SocialTypes } from "types/socials";
+import Socials from "components/molecules/Socials";
 import { shortenRuntime } from "utils/MathUtils";
 
 interface IMovieDetailsProps {
@@ -34,6 +35,20 @@ export default function MovieDetail({
   tvDetails,
 }: IMovieDetailsProps): ReactElement {
   if (!movieDetails && !tvDetails) return <></>;
+
+  const details = movieDetails ? movieDetails : tvDetails;
+
+  // Socials
+  const socialLinks = Object.keys(details?.external_ids).map(
+    (_external_link: string, _index) => ({
+      variant: _external_link.split("_")[0] as SocialTypes,
+      href: details?.external_ids[_external_link],
+    })
+  );
+  const externalLinks = [
+    { variant: "external" as SocialTypes, href: details?.homepage },
+    ...socialLinks,
+  ];
 
   return (
     <Container
@@ -64,87 +79,7 @@ export default function MovieDetail({
           rating={movieDetails?.vote_average || tvDetails?.vote_average || 0}
         />
 
-        <Socials>
-          {movieDetails?.homepage ? (
-            <a
-              target="_blank"
-              href={movieDetails?.homepage}
-              rel="noopener noreferrer"
-            >
-              <ExternalLinkIcon />
-            </a>
-          ) : tvDetails?.homepage ? (
-            <a
-              target="_blank"
-              href={tvDetails?.homepage}
-              rel="noopener noreferrer"
-            >
-              <ExternalLinkIcon />
-            </a>
-          ) : (
-            <></>
-          )}
-
-          {movieDetails?.external_ids?.facebook_id ? (
-            <a
-              target="_blank"
-              href={`${Links.facebookURL}${movieDetails?.external_ids?.facebook_id}`}
-              rel="noopener noreferrer"
-            >
-              <FacebookIcon />
-            </a>
-          ) : tvDetails?.external_ids?.facebook_id ? (
-            <a
-              target="_blank"
-              href={`${Links.facebookURL}${tvDetails?.external_ids?.facebook_id}`}
-              rel="noopener noreferrer"
-            >
-              <FacebookIcon />
-            </a>
-          ) : (
-            <></>
-          )}
-
-          {movieDetails?.external_ids?.instagram_id ? (
-            <a
-              target="_blank"
-              href={`${Links.instagramURL}${movieDetails?.external_ids?.instagram_id}`}
-              rel="noopener noreferrer"
-            >
-              <InstagramIcon />
-            </a>
-          ) : tvDetails?.external_ids?.instagram_id ? (
-            <a
-              target="_blank"
-              href={`${Links.instagramURL}${tvDetails?.external_ids?.instagram_id}`}
-              rel="noopener noreferrer"
-            >
-              <InstagramIcon />
-            </a>
-          ) : (
-            <></>
-          )}
-
-          {movieDetails?.external_ids?.twitter_id ? (
-            <a
-              target="_blank"
-              href={`${Links.twitterURL}${movieDetails?.external_ids?.twitter_id}`}
-              rel="noopener noreferrer"
-            >
-              <TwitterIcon />
-            </a>
-          ) : tvDetails?.external_ids?.twitter_id ? (
-            <a
-              target="_blank"
-              href={`${Links.twitterURL}${tvDetails?.external_ids?.twitter_id}`}
-              rel="noopener noreferrer"
-            >
-              <TwitterIcon />
-            </a>
-          ) : (
-            <></>
-          )}
-        </Socials>
+        {externalLinks && <Socials links={externalLinks} />}
       </MainSection>
       <SubSection>
         <p>

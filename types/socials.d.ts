@@ -1,5 +1,6 @@
+export type SocialTypes = "external" | "facebook" | "instagram" | "twitter";
+
 export interface Partial<ISocials> {
-  imdb_id: ?string;
   facebook_id: ?string;
   instagram_id: ?string;
   twitter_id: ?string;
