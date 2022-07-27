@@ -34,9 +34,7 @@ export default function SearchBtn({
     }
   };
 
-  const onHandleClickSearch = (
-    e: MouseEvent<Element, globalThis.MouseEvent>
-  ) => {
+  const onHandleClickSearch = () => {
     onEnter(text);
   };
 
@@ -57,7 +55,7 @@ export default function SearchBtn({
           onKeyDown={onHandleKeydownSearch}
         />
       </div>
-      <SearchIcon onClick={(e) => isOpen && onHandleClickSearch(e)} />
+      <SearchIcon onClick={() => isOpen && onHandleClickSearch()} />
     </Container>
   );
 }
