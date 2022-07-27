@@ -10,7 +10,7 @@ import { Container, SearchIcon, SearchInput } from "./styles";
 import { searchContainerAnimVariant } from "./animation-variants";
 import useOuterClick from "hooks/useOuterClick";
 
-interface ISearchBtn {
+interface ISearchBtnProp {
   onTextChange: (text: string) => void;
   onEnter: (text: string) => void;
 }
@@ -18,7 +18,7 @@ interface ISearchBtn {
 export default function SearchBtn({
   onTextChange,
   onEnter,
-}: ISearchBtn): ReactElement {
+}: ISearchBtnProp): ReactElement {
   const [isOpen, setOpen] = useState(false);
   const [text, setText] = useState("");
   const { reference: containerRef } = useOuterClick(setOpen);
