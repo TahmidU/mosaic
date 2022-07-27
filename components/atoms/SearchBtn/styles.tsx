@@ -9,6 +9,7 @@ export const Container = styled(motion.div)<{ show: boolean }>`
   padding: 0.625rem;
   border-radius: 2rem;
   background-color: ${({ theme }) => theme.cAlmostWhite.alpha(0.25).toString()};
+  backdrop-filter: blur(4px);
 
   > div:first-child {
     width: 100%;
@@ -20,7 +21,7 @@ export const SearchInput = styled.input<{ show: boolean }>`
   all: unset;
   ${({ show }) => (show ? "width: 100%;" : "display:none;")}
   margin: 0 1rem;
-  ${({ theme }) => theme.fonts.main.regular};
+  ${({ theme }) => theme.fonts.main.medium};
 `;
 SearchInput.displayName = "SearchInput";
 
