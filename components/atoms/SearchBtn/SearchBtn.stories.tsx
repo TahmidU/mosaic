@@ -7,5 +7,9 @@ const payload: IPayload = {
 };
 export default payload;
 
-export const Basic = (args: any) => <SearchBtn {...args} />;
+export const Basic = (args: any) => (
+  <div style={{ width: "100%", display: "flex", flexDirection: "row-reverse" }}>
+    <SearchBtn {...args} />
+  </div>
+);
 Basic.args = {};
