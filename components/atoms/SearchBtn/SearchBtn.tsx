@@ -1,15 +1,44 @@
+import {
+  ChangeEvent,
+  KeyboardEvent,
+  MouseEvent,
+  ReactElement,
+  useState,
+} from "react";
 import { Container, SearchIcon, SearchInput } from "./styles";
-import { ReactElement, useCallback, useEffect, useRef, useState } from "react";
 
 import { searchContainerAnimVariant } from "./animation-variants";
 import useOuterClick from "hooks/useOuterClick";
 
-interface ISearchBtn {}
+interface ISearchBtn {
+  onTextChange: (text: string) => void;
+  onEnter: (text: string) => void;
+}
 
-export default function SearchBtn({}: ISearchBtn): ReactElement {
+export default function SearchBtn({
+  onTextChange,
+  onEnter,
+}: ISearchBtn): ReactElement {
   const [isOpen, setOpen] = useState(false);
-
+  const [text, setText] = useState("");
   const { reference: containerRef } = useOuterClick(setOpen);
+
+  const onHandleTextChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const text = e.target.value;
+    setText(text), onTextChange(text);
+  };
+
+  const onHandleKeydownSearch = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      onEnter(text);
+    }
+  };
+
+  const onHandleClickSearch = (
+    e: MouseEvent<Element, globalThis.MouseEvent>
+  ) => {
+    onEnter(text);
+  };
 
   return (
     <Container
@@ -21,9 +50,14 @@ export default function SearchBtn({}: ISearchBtn): ReactElement {
       ref={containerRef}
     >
       <div>
-        <SearchInput show={isOpen} />
+        <SearchInput
+          show={isOpen}
+          value={text}
+          onChange={onHandleTextChange}
+          onKeyDown={onHandleKeydownSearch}
+        />
       </div>
-      <SearchIcon />
+      <SearchIcon onClick={(e) => isOpen && onHandleClickSearch(e)} />
     </Container>
   );
 }
