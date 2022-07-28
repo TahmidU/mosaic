@@ -8,8 +8,12 @@ export const Container = styled(motion.div)<{ show: boolean }>`
   max-width: 18.75rem;
   padding: 0.625rem;
   border-radius: 2rem;
-  background-color: ${({ theme }) => theme.cAlmostWhite.alpha(0.25).toString()};
+  background-color: ${({ theme }) => theme.cAlmostWhite.alpha(0.45).toString()};
+  border: 1px solid
+    ${({ theme, show }) =>
+      show ? theme.cBlack.alpha(0.05).toString() : "transparent;"};
   backdrop-filter: blur(4px);
+  justify-content: end;
 
   > div:first-child {
     width: 100%;
@@ -17,9 +21,8 @@ export const Container = styled(motion.div)<{ show: boolean }>`
 `;
 Container.displayName = "Container";
 
-export const SearchInput = styled.input<{ show: boolean }>`
+export const SearchInput = styled(motion.input)`
   all: unset;
-  ${({ show }) => (show ? "width: 100%;" : "display:none;")}
   margin: 0 1rem;
   ${({ theme }) => theme.fonts.main.medium};
 `;

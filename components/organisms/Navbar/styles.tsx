@@ -1,4 +1,4 @@
-import { BsSearch } from "react-icons/bs";
+import SearchBtn from "components/atoms/SearchBtn";
 import styled from "styled-components";
 
 export const NavbarContainer = styled.div`
@@ -44,16 +44,7 @@ export const MenuContainer = styled.div`
 `;
 MenuContainer.displayName = "MenuContainer";
 
-export const OptionsContainer = styled.div`
-  display: inline-flex;
-  align-items: center;
+export const SearchBtnStyle = styled(SearchBtn)`
   margin-right: 2rem;
 `;
-OptionsContainer.displayName = "OptionsContainer";
-
-export const SearchIcon = styled(BsSearch)`
-  width: 28px;
-  height: auto;
-  cursor: pointer;
-`;
-SearchIcon.displayName = "SearchIcon";
+SearchBtnStyle.displayName = "SearchBtnStyle";

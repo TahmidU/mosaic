@@ -1,11 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 
-import {
-  MenuContainer,
-  NavbarContainer,
-  OptionsContainer,
-  SearchIcon,
-} from "./styles";
+import { MenuContainer, NavbarContainer, SearchBtnStyle } from "./styles";
 import { ReactElement, useContext } from "react";
 
 import GlobalContext from "context/GlobalContext";
@@ -22,9 +17,8 @@ export default function Navbar({}: INavbarProps): ReactElement {
         <Logo onClick={routes?.goToHomePage} />
         <MenuContainer>{/* */}</MenuContainer>
       </div>
-      <OptionsContainer>
-        <SearchIcon />
-      </OptionsContainer>
+
+      <SearchBtnStyle />
     </NavbarContainer>
   );
 }

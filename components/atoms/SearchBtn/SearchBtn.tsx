@@ -6,18 +6,23 @@ import {
   useState,
 } from "react";
 import { Container, SearchIcon, SearchInput } from "./styles";
+import {
+  searchContainerAnimVariant,
+  searchInputAnimVariant,
+} from "./animation-variants";
 
-import { searchContainerAnimVariant } from "./animation-variants";
 import useOuterClick from "hooks/useOuterClick";
 
 interface ISearchBtnProp {
-  onTextChange: (text: string) => void;
-  onEnter: (text: string) => void;
+  onTextChange?: (text: string) => void;
+  onEnter?: (text: string) => void;
+  className?: string;
 }
 
 export default function SearchBtn({
   onTextChange,
   onEnter,
+  className,
 }: ISearchBtnProp): ReactElement {
   const [isOpen, setOpen] = useState(false);
   const [text, setText] = useState("");
@@ -25,17 +30,17 @@ export default function SearchBtn({
 
   const onHandleTextChange = (e: ChangeEvent<HTMLInputElement>) => {
     const text = e.target.value;
-    setText(text), onTextChange(text);
+    setText(text), onTextChange?.(text);
   };
 
   const onHandleKeydownSearch = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
-      onEnter(text);
+      onEnter?.(text);
     }
   };
 
   const onHandleClickSearch = () => {
-    onEnter(text);
+    onEnter?.(text);
   };
 
   return (
@@ -43,18 +48,21 @@ export default function SearchBtn({
       onClick={() => setOpen(true)}
       variants={searchContainerAnimVariant}
       animate={isOpen ? "open" : "close"}
+      transition={{ duration: 0.25, ease: "linear" }}
       show={isOpen}
-      transition={{ type: "just" }}
       ref={containerRef}
+      className={className}
     >
       <div>
         <SearchInput
-          show={isOpen}
+          variants={searchInputAnimVariant}
+          animate={isOpen ? "open" : "close"}
           value={text}
           onChange={onHandleTextChange}
           onKeyDown={onHandleKeydownSearch}
         />
       </div>
+
       <SearchIcon onClick={() => isOpen && onHandleClickSearch()} />
     </Container>
   );
