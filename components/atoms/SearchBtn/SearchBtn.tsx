@@ -16,7 +16,6 @@ export default function SearchBtn({
 }: ISearchBtnProp): ReactElement {
   const [isOpen, setOpen] = useState(false);
   const [text, setText] = useState("");
-  const { reference: containerRef } = useOuterClick(setOpen);
   const { reference: inputRef, isActive: isInputActive } = useOuterClick();
 
   const onHandleTextChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -37,7 +36,6 @@ export default function SearchBtn({
   return (
     <Container
       onClick={() => setOpen(true)}
-      ref={containerRef}
       className={className}
       isInputActive={isInputActive}
     >
