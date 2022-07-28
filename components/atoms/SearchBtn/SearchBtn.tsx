@@ -1,9 +1,5 @@
 import { ChangeEvent, KeyboardEvent, ReactElement, useState } from "react";
 import { Container, SearchIcon, SearchInput } from "./styles";
-import {
-  searchContainerAnimVariant,
-  searchInputAnimVariant,
-} from "./animation-variants";
 
 import useOuterClick from "hooks/useOuterClick";
 
@@ -41,17 +37,12 @@ export default function SearchBtn({
   return (
     <Container
       onClick={() => setOpen(true)}
-      variants={searchContainerAnimVariant}
-      animate={isOpen ? (isInputActive ? "active" : "open") : "close"}
-      transition={{ duration: 0.25, ease: "linear" }}
-      show={isOpen}
       ref={containerRef}
       className={className}
+      isInputActive={isInputActive}
     >
       <div>
         <SearchInput
-          variants={searchInputAnimVariant}
-          animate={isOpen ? "open" : "close"}
           value={text}
           onChange={onHandleTextChange}
           onKeyDown={onHandleKeydownSearch}
