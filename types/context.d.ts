@@ -16,7 +16,7 @@ export type GlobalRequests = ReturnType<typeof useAxios>;
 export interface IUseRoutes {
   goToHomePage: () => void;
   goToDetails: (id: number, type: MediaType = "movie") => void;
-  goToSearchPage: (search: string) => void;
+  goToSearchPage: (search?: string) => void;
 }
 
 export interface IGlobalContext {
