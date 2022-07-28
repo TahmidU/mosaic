@@ -8,8 +8,11 @@ export default function useRoutes(): IUseRoutes {
   const goToHomePage = () => router.replace(`/`),
     goToDetails = (id: number, type: MediaType = "movie") =>
       router.replace(`/${type}/${id}`),
-    goToSearchPage = (search: string) => router.replace(`/search?q=${search}`);
-
+    goToSearchPage = (search?: string) =>
+      router.replace({
+        pathname: "/search",
+        query: search ? { query: search } : {},
+      });
   return {
     goToHomePage,
     goToDetails,

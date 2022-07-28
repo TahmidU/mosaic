@@ -24,6 +24,10 @@ export const SearchInput = styled(motion.input)`
   all: unset;
   margin: 0 1rem;
   ${({ theme }) => theme.fonts.main.medium};
+
+  :not(:focus) {
+    color: ${({ theme }) => theme.cBlack.alpha(0.625).toString()};
+  }
 `;
 SearchInput.displayName = "SearchInput";
 
