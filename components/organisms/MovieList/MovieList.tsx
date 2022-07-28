@@ -4,7 +4,7 @@ import { ReactElement, useContext } from "react";
 import GlobalContext from "context/GlobalContext";
 import HorizontalList from "components/molecules/HorizontalList";
 import { IShortMovieDetails } from "types/movie";
-import { goToDetails } from "utils/RoutingUtils";
+import useRoutes from "hooks/useRoutes";
 
 interface IMovieListProps<T> {
   title: string;
@@ -25,6 +25,8 @@ export default function MovieList<T>({
   loading = false,
   type = "movie",
 }: IMovieListProps<T>): ReactElement {
+  const { generateDetailsURL } = useRoutes();
+
   return (
     <HorizontalList
       title={title}
@@ -36,7 +38,7 @@ export default function MovieList<T>({
       {movies &&
         movies.map((_movie, index) => {
           return (
-            <LinkBtn key={index} href={goToDetails(_movie.id, type)}>
+            <LinkBtn key={index} href={generateDetailsURL(_movie.id, type)}>
               <MovieCardWrapper>
                 <MovieCardStyle
                   src={_movie.src}

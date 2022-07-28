@@ -1,9 +1,22 @@
-import { MediaType } from "types/tv_movies";
+export const filterQuery = (
+  queries: { [key: string]: any },
+  urlQuery: { [key: string]: string | string[] | undefined } = {}
+) => {
+  const exclude = [undefined, ""];
+  var query = urlQuery;
+  for (const key of Object.keys(queries)) {
+    if (exclude.includes(queries[key])) {
+      query.hasOwnProperty(key) && delete query[key];
+    } else {
+      query = {
+        ...query,
+        [key]: queries[key],
+      };
+    }
+  }
+  return query;
+};
 
-export const goToHomePage = () => "/",
-  goToDetails = (id: number, type: MediaType = "movie") => `/${type}/${id}`,
-  goToSearchPage = (search: string) => `/search?q=${search}`;
-
-const RoutingUtils = { goToDetails };
+const RoutingUtils = { filterQuery };
 
 export default RoutingUtils;
