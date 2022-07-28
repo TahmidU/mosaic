@@ -8,7 +8,6 @@ export const Container = styled(motion.div)<{ show: boolean }>`
   max-width: 18.75rem;
   padding: 0.625rem;
   border-radius: 2rem;
-  background-color: ${({ theme }) => theme.cAlmostWhite.alpha(0.45).toString()};
   border: 1px solid
     ${({ theme, show }) =>
       show ? theme.cBlack.alpha(0.05).toString() : "transparent;"};

@@ -4,17 +4,21 @@ import {
   useCallback,
   useEffect,
   useRef,
+  useState,
 } from "react";
 
 export default function useOuterClick(
-  setOpen: Dispatch<SetStateAction<boolean>>
+  setOpen?: Dispatch<SetStateAction<boolean>>
 ) {
-  const reference = useRef<null | HTMLDivElement>(null);
+  const reference = useRef<null | any>(null);
+  const [isActive, setActive] = useState(false);
 
   const handleClickOut = useCallback(
     (e: MouseEvent) => {
       if (reference.current && !reference.current.contains(e.target as Node)) {
-        setOpen(false);
+        setOpen?.(false), setActive(false);
+      } else {
+        setActive(true);
       }
     },
     [setOpen, reference]
@@ -30,5 +34,6 @@ export default function useOuterClick(
 
   return {
     reference,
+    isActive,
   };
 }
