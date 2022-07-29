@@ -12,7 +12,7 @@ const SearchBtnSkeleton = styled(Skeleton)`
   }
 `;
 
-const SearchBtn = dynamic(() => import("components/atoms/SearchBtn"), {
+const SearchBtn = dynamic(() => import("components/organisms/SearchBtn"), {
   ssr: false,
   loading: () => <SearchBtnSkeleton />,
 });

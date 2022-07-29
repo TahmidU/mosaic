@@ -2,7 +2,7 @@ import { IPayload } from "types/story";
 import MobileSearchBtn from "./MobileSearchBtn";
 
 const payload: IPayload = {
-  title: "ATOMS/MobileSearchBtn",
+  title: "ORGANISMS/MobileSearchBtn",
   component: MobileSearchBtn,
 };
 export default payload;
