@@ -26,6 +26,14 @@ export const Container = styled.div<{ isInputActive: boolean }>`
         ? theme.cBlack.alpha(1).toString()
         : theme.cBlack.alpha(0.5).toString()};
   }
+
+  :hover {
+    ${({ theme, isInputActive }) =>
+      !isInputActive
+        ? `border-color:${theme.cBlack.alpha(0.25).toString()};`
+        : ""}
+    cursor: pointer;
+  }
 `;
 Container.displayName = "Container";
 
