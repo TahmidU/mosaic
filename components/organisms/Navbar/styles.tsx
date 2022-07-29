@@ -1,9 +1,20 @@
+import Skeleton from "react-loading-skeleton";
 import dynamic from "next/dynamic";
 import styled from "styled-components";
 
+const SearchBtnSkeleton = styled(Skeleton)`
+  width: 285px;
+  height: 40px;
+  margin-right: 2rem;
+
+  @media only screen and (max-width: 768px) {
+    width: 25px;
+  }
+`;
+
 const SearchBtn = dynamic(() => import("components/atoms/SearchBtn"), {
   ssr: false,
-  loading: () => <p>Loading...</p>,
+  loading: () => <SearchBtnSkeleton />,
 });
 
 export const NavbarContainer = styled.div`

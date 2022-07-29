@@ -1,5 +1,6 @@
 import "../styles/globals.css";
 import "../styles/fonts.css";
+import "react-loading-skeleton/dist/skeleton.css";
 
 import type { AppProps } from "next/app";
 import GlobalContext from "../context/GlobalContext";
