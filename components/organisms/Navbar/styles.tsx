@@ -1,5 +1,10 @@
-import SearchBtn from "components/atoms/SearchBtn";
+import dynamic from "next/dynamic";
 import styled from "styled-components";
+
+const SearchBtn = dynamic(() => import("components/atoms/SearchBtn"), {
+  ssr: false,
+  loading: () => <p>Loading...</p>,
+});
 
 export const NavbarContainer = styled.div`
   display: flex;
