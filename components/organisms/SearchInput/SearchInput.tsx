@@ -1,5 +1,5 @@
 import { ChangeEvent, KeyboardEvent, ReactElement, useState } from "react";
-import { Container, SearchIcon, SearchInput } from "./styles";
+import { Container, InputStyle, SearchIcon } from "./styles";
 
 import useOuterClick from "hooks/useOuterClick";
 
@@ -9,7 +9,7 @@ interface ISearchBtnProp {
   className?: string;
 }
 
-export default function SearchBtn({
+export default function SearchInput({
   onTextChange,
   onEnter,
   className,
@@ -35,7 +35,7 @@ export default function SearchBtn({
   return (
     <Container className={className} isInputActive={isInputActive}>
       <div>
-        <SearchInput
+        <InputStyle
           value={text}
           onChange={onHandleTextChange}
           onKeyDown={onHandleKeydownSearch}

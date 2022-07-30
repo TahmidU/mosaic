@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 
-import { MenuContainer, NavbarContainer, SearchBtnStyle } from "./styles";
+import { MenuContainer, NavbarContainer, SearchInputStyle } from "./styles";
 import { ReactElement, useContext } from "react";
 
 import GlobalContext from "context/GlobalContext";
@@ -20,7 +20,7 @@ export default function Navbar({}: INavbarProps): ReactElement {
         <MenuContainer>{/* */}</MenuContainer>
       </div>
 
-      <SearchBtnStyle
+      <SearchInputStyle
         onEnter={(text) => goToSearchPage(text.length > 0 ? text : undefined)}
       />
     </NavbarContainer>

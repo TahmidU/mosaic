@@ -37,7 +37,7 @@ export const Container = styled.div<{ isInputActive: boolean }>`
 `;
 Container.displayName = "Container";
 
-export const SearchInput = styled.input`
+export const InputStyle = styled.input`
   all: unset;
   margin: 0 1rem;
   ${({ theme }) => theme.fonts.main.medium};
@@ -46,7 +46,7 @@ export const SearchInput = styled.input`
     color: ${({ theme }) => theme.cBlack.alpha(0.625).toString()};
   }
 `;
-SearchInput.displayName = "SearchInput";
+InputStyle.displayName = "InputStyle";
 
 export const SearchIcon = styled(BsSearch)`
   justify-self: center;

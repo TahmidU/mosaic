@@ -12,7 +12,7 @@ const SearchBtnSkeleton = styled(Skeleton)`
   }
 `;
 
-const SearchBtn = dynamic(() => import("components/organisms/SearchBtn"), {
+const SearchInput = dynamic(() => import("components/organisms/SearchInput"), {
   ssr: false,
   loading: () => <SearchBtnSkeleton />,
 });
@@ -60,7 +60,7 @@ export const MenuContainer = styled.div`
 `;
 MenuContainer.displayName = "MenuContainer";
 
-export const SearchBtnStyle = styled(SearchBtn)`
+export const SearchInputStyle = styled(SearchInput)`
   margin-right: 2rem;
 `;
-SearchBtnStyle.displayName = "SearchBtnStyle";
+SearchInputStyle.displayName = "SearchInputStyle";

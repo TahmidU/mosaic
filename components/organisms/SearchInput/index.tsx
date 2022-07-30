@@ -1,4 +1,4 @@
-import { default as DesktopSearchBtn } from "./SearchBtn";
+import { default as DesktopSearchBtn } from "./SearchInput";
 import MobileSearchBtn from "./MobileSearchBtn";
 import { ReactElement } from "react";
 import { useMediaQuery } from "react-responsive";
@@ -9,7 +9,7 @@ interface ISearchBtnProp {
   className?: string;
 }
 
-export default function SearchBtn({
+export default function SearchInput({
   onTextChange,
   onEnter,
   className,
