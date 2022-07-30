@@ -1,29 +1,31 @@
-import { ChangeEvent, KeyboardEvent, ReactElement } from "react";
+import {
+  ChangeEvent,
+  HTMLInputTypeAttribute,
+  KeyboardEvent,
+  ReactElement,
+  useState,
+} from "react";
 import { Container, InputStyle } from "./styles";
 
-type Variant = "stateless" | "stateful";
-
 interface IInputProps {
-  variant?: Variant;
   onTextChange?: (text: string) => void;
   onKeyDown?: (e: KeyboardEvent<HTMLInputElement>) => void;
   postfix?: ReactElement<any, any>;
   prefix?: ReactElement<any, any>;
+  type?: HTMLInputTypeAttribute;
   className?: string;
 }
 
 export default function Input({
-  variant = "stateless",
   onTextChange,
   onKeyDown,
   postfix,
   prefix,
+  type = "text",
   className,
 }: IInputProps): ReactElement {
   const PostfixNode = () => (postfix ? postfix : <></>),
     PrefixNode = () => (prefix ? prefix : <></>);
-
-  if (variant === "stateful") return <></>;
 
   const onHandleStatelessTextChange = (e: ChangeEvent<HTMLInputElement>) => {
     const text = e.target.value;
@@ -36,6 +38,7 @@ export default function Input({
       <InputStyle
         onChange={onHandleStatelessTextChange}
         onKeyDown={onKeyDown}
+        type={type}
       />
       <PostfixNode />
     </Container>
