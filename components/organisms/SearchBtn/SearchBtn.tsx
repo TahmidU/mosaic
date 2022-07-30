@@ -14,7 +14,6 @@ export default function SearchBtn({
   onEnter,
   className,
 }: ISearchBtnProp): ReactElement {
-  const [isOpen, setOpen] = useState(false);
   const [text, setText] = useState("");
   const { reference: inputRef, isActive: isInputActive } = useOuterClick();
 
@@ -34,11 +33,7 @@ export default function SearchBtn({
   };
 
   return (
-    <Container
-      onClick={() => setOpen(true)}
-      className={className}
-      isInputActive={isInputActive}
-    >
+    <Container className={className} isInputActive={isInputActive}>
       <div>
         <SearchInput
           value={text}
@@ -47,7 +42,7 @@ export default function SearchBtn({
           ref={inputRef}
         />
       </div>
-      <SearchIcon onClick={() => isOpen && onHandleClickSearch()} />
+      <SearchIcon onClick={() => onHandleClickSearch()} />
     </Container>
   );
 }
