@@ -1,7 +1,7 @@
-import { ChangeEvent, KeyboardEvent, ReactElement, useState } from "react";
-import { Container, InputStyle, SearchIcon } from "./styles";
+import { KeyboardEvent, ReactElement, useState } from "react";
 
-import useOuterClick from "hooks/useOuterClick";
+import Input from "components/atoms/Input";
+import { SearchIconStyling } from "./styles";
 
 interface ISearchBtnProp {
   onTextChange?: (text: string) => void;
@@ -9,18 +9,14 @@ interface ISearchBtnProp {
   className?: string;
 }
 
+const SearchIcon = (props: any) => (
+  <SearchIconStyling onClick={props.onClick} />
+);
 export default function SearchInput({
-  onTextChange,
   onEnter,
   className,
 }: ISearchBtnProp): ReactElement {
   const [text, setText] = useState("");
-  const { reference: inputRef, isActive: isInputActive } = useOuterClick();
-
-  const onHandleTextChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const text = e.target.value;
-    setText(text), onTextChange?.(text);
-  };
 
   const onHandleKeydownSearch = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
@@ -33,16 +29,11 @@ export default function SearchInput({
   };
 
   return (
-    <Container className={className} isInputActive={isInputActive}>
-      <div>
-        <InputStyle
-          value={text}
-          onChange={onHandleTextChange}
-          onKeyDown={onHandleKeydownSearch}
-          ref={inputRef}
-        />
-      </div>
-      <SearchIcon onClick={() => onHandleClickSearch()} />
-    </Container>
+    <Input
+      className={className}
+      onTextChange={(text) => setText(text)}
+      onKeyDown={onHandleKeydownSearch}
+      postfix={<SearchIcon onClick={onHandleClickSearch} />}
+    />
   );
 }

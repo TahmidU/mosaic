@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import { SearchIcon } from "../styles";
+import { SearchIcon } from "./styles";
 
 interface IMobileSearchBtnProps {
   className?: string;

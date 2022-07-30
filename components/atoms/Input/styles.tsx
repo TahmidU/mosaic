@@ -1,18 +1,14 @@
 import { BsSearch } from "react-icons/bs";
 import styled from "styled-components";
 
-export const Container = styled.div<{ isInputActive: boolean }>`
+export const Container = styled.div`
   display: flex;
   width: 100%;
   max-width: 18.75rem;
   padding: 0.625rem;
   border-radius: 2rem;
   background-color: ${({ theme }) => theme.white};
-  border: 1px solid
-    ${({ theme, isInputActive }) =>
-      isInputActive
-        ? theme.cBlack.alpha(0.5).toString()
-        : theme.cBlack.alpha(0.1).toString()};
+  border: 1px solid ${({ theme }) => theme.cBlack.alpha(0.1).toString()};
   backdrop-filter: blur(4px);
   justify-content: end;
 
@@ -21,17 +17,19 @@ export const Container = styled.div<{ isInputActive: boolean }>`
   }
 
   > svg:last-child {
-    color: ${({ theme, isInputActive }) =>
-      isInputActive
-        ? theme.cBlack.alpha(1).toString()
-        : theme.cBlack.alpha(0.5).toString()};
+    color: ${({ theme }) => theme.cBlack.alpha(0.5).toString()};
   }
 
   :hover {
-    ${({ theme, isInputActive }) =>
-      !isInputActive
-        ? `border-color:${theme.cBlack.alpha(0.25).toString()};`
-        : ""}
+    ${({ theme }) => `border-color:${theme.cBlack.alpha(0.25).toString()};`}
+  }
+
+  :focus-within {
+    border-color: ${({ theme }) => theme.cBlack.alpha(0.5).toString()};
+
+    > svg:last-child {
+      color: ${({ theme }) => theme.cBlack.alpha(1).toString()};
+    }
   }
 `;
 Container.displayName = "Container";
@@ -47,11 +45,11 @@ export const InputStyle = styled.input`
 `;
 InputStyle.displayName = "InputStyle";
 
-export const SearchIconStyling = styled(BsSearch)`
+export const SearchIcon = styled(BsSearch)`
   justify-self: center;
   min-width: 24px;
   width: 24px;
   height: auto;
   cursor: pointer;
 `;
-SearchIconStyling.displayName = "SearchIconStyling";
+SearchIcon.displayName = "SearchIcon";
