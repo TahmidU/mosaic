@@ -1,4 +1,3 @@
-import { BsSearch } from "react-icons/bs";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -44,12 +43,3 @@ export const InputStyle = styled.input`
   }
 `;
 InputStyle.displayName = "InputStyle";
-
-export const SearchIcon = styled(BsSearch)`
-  justify-self: center;
-  min-width: 24px;
-  width: 24px;
-  height: auto;
-  cursor: pointer;
-`;
-SearchIcon.displayName = "SearchIcon";
