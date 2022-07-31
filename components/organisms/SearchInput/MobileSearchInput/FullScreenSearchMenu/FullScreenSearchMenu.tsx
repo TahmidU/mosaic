@@ -1,4 +1,11 @@
-import { Container, OptionsWrapper, SearchInputStyle } from "./styles";
+import {
+  CloseBtn,
+  CloseIcon,
+  Container,
+  Header,
+  OptionsWrapper,
+  SearchInputStyle,
+} from "./styles";
 import {
   Dispatch,
   KeyboardEvent,
@@ -36,15 +43,21 @@ export default function FullScreenSearchMenu({
       variants={ContainerAnimVariant}
       initial={"close"}
       animate={isMenuOpen ? "open" : "close"}
-      transition={{ ease: "easeIn", duration: 0.425 }}
+      transition={{ ease: "easeIn", duration: 0.5 }}
     >
       <OptionsWrapper>
+        <Header>
+          <div></div>
+          <span>Search {"&"} Filter</span>
+          <CloseBtn onClick={() => setMenuOpen(false)}>
+            <CloseIcon />
+          </CloseBtn>
+        </Header>
         <SearchInputStyle
           type="search"
           onTextChange={setText}
           onKeyDown={onHandleKeyDown}
         />
-        <button onClick={() => setMenuOpen(false)}>Close</button>
       </OptionsWrapper>
     </Container>
   );

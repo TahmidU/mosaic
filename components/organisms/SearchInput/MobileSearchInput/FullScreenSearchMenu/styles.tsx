@@ -1,3 +1,4 @@
+import { AiOutlineClose } from "react-icons/ai";
 import Input from "components/atoms/Input";
 import { motion } from "framer-motion";
 import styled from "styled-components";
@@ -18,6 +19,33 @@ export const OptionsWrapper = styled.div`
   height: 100%;
 `;
 OptionsWrapper.displayName = "OptionsWrapper";
+
+export const Header = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem 0;
+  padding: 0 1rem;
+
+  ${({ theme }) => theme.fonts.main.medium};
+  span {
+    text-align: center;
+  }
+`;
+Header.displayName = "Header";
+
+export const CloseBtn = styled.button`
+  all: unset;
+  cursor: pointer;
+`;
+CloseBtn.displayName = "CloseBtn";
+
+export const CloseIcon = styled(AiOutlineClose)`
+  width: 24px;
+  height: 24px;
+`;
+CloseIcon.displayName = "CloseIcon";
 
 export const SearchInputStyle = styled(Input)`
   width: 70%;
