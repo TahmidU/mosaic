@@ -22,5 +22,16 @@ OptionsWrapper.displayName = "OptionsWrapper";
 export const SearchInputStyle = styled(Input)`
   width: 70%;
   margin: 0 auto;
+
+  input::-webkit-search-cancel-button {
+    /* Remove default */
+    -webkit-appearance: none;
+    /*Your new styles */
+    height: 16px;
+    width: 16px;
+    background: url(https://pro.fontawesome.com/releases/v5.10.0/svgs/solid/times-circle.svg)
+      no-repeat 50% 50%;
+    background-size: contain;
+  }
 `;
 SearchInputStyle.displayName = "SearchInputStyle";
