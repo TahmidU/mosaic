@@ -1,12 +1,12 @@
 import { ReactElement } from "react";
 import { SearchIcon } from "./styles";
 
-interface IMobileSearchBtnProps {
+interface IMobileSearchInputProps {
   className?: string;
 }
 
-export default function MobileSearchBtn({
+export default function MobileSearchInput({
   className,
-}: IMobileSearchBtnProps): ReactElement {
+}: IMobileSearchInputProps): ReactElement {
   return <SearchIcon onClick={() => {}} className={className} />;
 }

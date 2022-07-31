@@ -1,5 +1,5 @@
-import { default as DesktopSearchBtn } from "./SearchInput";
-import MobileSearchBtn from "./MobileSearchBtn";
+import { default as DesktopSearchInput } from "./SearchInput";
+import MobileSearchInput from "./MobileSearchInput";
 import { ReactElement } from "react";
 import { useMediaQuery } from "react-responsive";
 
@@ -19,11 +19,11 @@ export default function SearchInput({
   });
 
   if (isMobile) {
-    return <MobileSearchBtn className={className} />;
+    return <MobileSearchInput className={className} />;
   }
 
   return (
-    <DesktopSearchBtn
+    <DesktopSearchInput
       className={className}
       onTextChange={onTextChange}
       onEnter={onEnter}
