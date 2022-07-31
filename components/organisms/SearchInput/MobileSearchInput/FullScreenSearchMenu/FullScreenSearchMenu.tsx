@@ -1,20 +1,31 @@
-import { Container, OptionsWrapper } from "./styles";
-import { ReactElement, useState } from "react";
+import { Container, OptionsWrapper, SearchInputStyle } from "./styles";
+import { Dispatch, ReactElement, SetStateAction, useState } from "react";
 
+import { ContainerAnimVariant } from "./animation-variants";
 import Input from "components/atoms/Input";
 import useRoutes from "hooks/useRoutes";
 
-interface IFullScreenSearchMenuProps {}
+interface IFullScreenSearchMenuProps {
+  setMenuOpen: Dispatch<SetStateAction<boolean>>;
+  isMenuOpen: boolean;
+}
 
-export default function FullScreenSearchMenu({}: IFullScreenSearchMenuProps): ReactElement {
+export default function FullScreenSearchMenu({
+  setMenuOpen,
+  isMenuOpen,
+}: IFullScreenSearchMenuProps): ReactElement {
   const { goToSearchPage } = useRoutes();
-  const [test, setTest] = useState("FooBar");
 
   return (
-    <Container>
+    <Container
+      variants={ContainerAnimVariant}
+      initial={"close"}
+      animate={isMenuOpen ? "open" : "close"}
+      transition={{ ease: "easeIn", duration: 0.425 }}
+    >
       <OptionsWrapper>
-        <Input type="search" />
-        <p>{test}</p>
+        <SearchInputStyle type="search" />
+        <button onClick={() => setMenuOpen(false)}>Close</button>
       </OptionsWrapper>
     </Container>
   );

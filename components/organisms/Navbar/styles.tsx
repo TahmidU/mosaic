@@ -26,7 +26,7 @@ export const NavbarContainer = styled.div`
   min-height: 80px;
   height: auto;
 
-  div:first-child {
+  > div:first-child {
     display: flex;
     flex-direction: row;
     justify-content: unset;
