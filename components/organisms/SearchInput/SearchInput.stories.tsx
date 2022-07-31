@@ -1,15 +1,15 @@
 import { IPayload } from "types/story";
-import SearchBtn from "./SearchBtn";
+import SearchInput from "./SearchInput";
 
 const payload: IPayload = {
-  title: "ATOMS/SearchBtn",
-  component: SearchBtn,
+  title: "ORGANISMS/SearchInput",
+  component: SearchInput,
 };
 export default payload;
 
 export const Basic = (args: any) => (
   <div style={{ width: "100%", display: "flex", flexDirection: "row-reverse" }}>
-    <SearchBtn {...args} />
+    <SearchInput {...args} />
   </div>
 );
 Basic.args = {};

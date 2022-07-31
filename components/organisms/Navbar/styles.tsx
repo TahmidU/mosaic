@@ -1,5 +1,21 @@
-import SearchBtn from "components/atoms/SearchBtn";
+import Skeleton from "react-loading-skeleton";
+import dynamic from "next/dynamic";
 import styled from "styled-components";
+
+const SearchBtnSkeleton = styled(Skeleton)`
+  width: 285px;
+  height: 40px;
+  margin-right: 2rem;
+
+  @media only screen and (max-width: 768px) {
+    width: 25px;
+  }
+`;
+
+const SearchInput = dynamic(() => import("components/organisms/SearchInput"), {
+  ssr: false,
+  loading: () => <SearchBtnSkeleton />,
+});
 
 export const NavbarContainer = styled.div`
   display: flex;
@@ -10,7 +26,7 @@ export const NavbarContainer = styled.div`
   min-height: 80px;
   height: auto;
 
-  div:first-child {
+  > div:first-child {
     display: flex;
     flex-direction: row;
     justify-content: unset;
@@ -44,7 +60,7 @@ export const MenuContainer = styled.div`
 `;
 MenuContainer.displayName = "MenuContainer";
 
-export const SearchBtnStyle = styled(SearchBtn)`
+export const SearchInputStyle = styled(SearchInput)`
   margin-right: 2rem;
 `;
-SearchBtnStyle.displayName = "SearchBtnStyle";
+SearchInputStyle.displayName = "SearchInputStyle";
