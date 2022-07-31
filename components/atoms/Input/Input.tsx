@@ -3,7 +3,6 @@ import {
   HTMLInputTypeAttribute,
   KeyboardEvent,
   ReactElement,
-  useState,
 } from "react";
 import { Container, InputStyle } from "./styles";
 

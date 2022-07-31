@@ -19,14 +19,8 @@ export default function SearchInput({
   });
 
   if (isMobile) {
-    return <MobileSearchInput className={className} />;
+    return <MobileSearchInput {...{ className, onEnter }} />;
   }
 
-  return (
-    <DesktopSearchInput
-      className={className}
-      onTextChange={onTextChange}
-      onEnter={onEnter}
-    />
-  );
+  return <DesktopSearchInput {...{ className, onTextChange, onEnter }} />;
 }

@@ -4,10 +4,12 @@ import FullScreenSearchMenu from "./FullScreenSearchMenu";
 import { SearchIcon } from "./styles";
 
 interface IMobileSearchInputProps {
+  onEnter?: (text: string) => void;
   className?: string;
 }
 
 export default function MobileSearchInput({
+  onEnter,
   className,
 }: IMobileSearchInputProps): ReactElement {
   const [isMenuOpen, setMenuOpen] = useState(false);
@@ -15,7 +17,7 @@ export default function MobileSearchInput({
   return (
     <>
       <SearchIcon onClick={() => setMenuOpen(true)} className={className} />
-      <FullScreenSearchMenu {...{ isMenuOpen, setMenuOpen }} />
+      <FullScreenSearchMenu {...{ isMenuOpen, setMenuOpen, onEnter }} />
     </>
   );
 }
