@@ -1,24 +1,23 @@
-import { Dispatch, ReactElement, SetStateAction } from "react";
+import { Dispatch, ReactElement, ReactNode, SetStateAction } from "react";
 
 import { Container } from "./styles";
 
 interface ICheckboxProps {
-  title: string;
-  setSelection: Dispatch<SetStateAction<boolean>>;
+  children: ReactNode;
+  onClick?: () => void;
   isSelected: boolean;
+  className?: string;
 }
 
 export default function Checkbox({
-  title,
-  setSelection,
+  children,
+  onClick,
   isSelected,
+  className,
 }: ICheckboxProps): ReactElement {
   return (
-    <Container
-      isSelected={isSelected}
-      onClick={() => setSelection((prev) => !prev)}
-    >
-      <span>{title}</span>
+    <Container className={className} isSelected={isSelected} onClick={onClick}>
+      {children}
     </Container>
   );
 }

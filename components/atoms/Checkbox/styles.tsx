@@ -2,9 +2,9 @@ import styled from "styled-components";
 
 export const Container = styled.div<{ isSelected: boolean }>`
   user-select: none;
-  height: 32px;
+  height: fit-content;
   width: fit-content;
-  padding: 0.1rem 1rem;
+  padding: 0.425rem 1rem;
   border: 1px solid ${({ theme }) => theme.cBlack.alpha(0.5).toString()};
   border-radius: 2rem;
 
