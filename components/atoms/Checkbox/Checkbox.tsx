@@ -1,11 +1,29 @@
-import { ReactElement } from "react";
+import { ReactElement, useState } from "react";
 
-interface ICheckboxProps {}
+import { Container } from "./styles";
 
-export default function Checkbox({}: ICheckboxProps): ReactElement {
+interface ICheckboxProps {
+  title: string;
+  onToggle: (toggle: boolean) => void;
+}
+
+export default function Checkbox({
+  title,
+  onToggle,
+}: ICheckboxProps): ReactElement {
+  const [isSelected, setSelection] = useState(false);
+
+  const onHandleClick = () => {
+    setSelection((prev) => {
+      const result = !prev;
+      onToggle(!prev);
+      return result;
+    });
+  };
+
   return (
-    <div>
-      <div></div>
-    </div>
+    <Container isSelected={isSelected} onClick={onHandleClick}>
+      <span>{title}</span>
+    </Container>
   );
 }

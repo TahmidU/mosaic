@@ -7,5 +7,9 @@ const payload: IPayload = {
 };
 export default payload;
 
-export const Basic = (args: any) => <Checkbox {...args} />;
-Basic.args = {};
+export const Basic = (args: any) => (
+  <Checkbox onToggle={console.log} {...args} />
+);
+Basic.args = {
+  title: "Testing",
+};
