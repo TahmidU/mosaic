@@ -16,8 +16,8 @@ export default function Filters({ className }: IFiltersProps): ReactElement {
       <span>Type:</span>
       <FilterWrapper>
         <Checkbox
-          isSelected={filters.type === "movies"}
-          onClick={() => setType("movies")}
+          isSelected={filters.type === "movie"}
+          onClick={() => setType("movie")}
         >
           <span>Movies</span>
         </Checkbox>

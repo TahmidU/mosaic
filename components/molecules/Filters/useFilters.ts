@@ -9,7 +9,7 @@ export default function useFilters() {
   const [filters, setFilters] = useState<IFilter>({
     type: getQueryFromURL("type")
       ? (getQueryFromURL("type") as SearchType)
-      : "movies",
+      : "movie",
   });
 
   useEffect(() => {

@@ -18,7 +18,10 @@ export default function useRoutes() {
     goToSearchPage = (search?: string) =>
       router.replace({
         pathname: "/search",
-        query: filterQuery({ query: search }, router.query),
+        query: filterQuery(
+          { query: search, page: 1, type: "movie" },
+          router.query
+        ),
       });
 
   return {
