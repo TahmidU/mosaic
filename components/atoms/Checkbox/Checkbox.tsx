@@ -1,4 +1,4 @@
-import { Dispatch, ReactElement, ReactNode, SetStateAction } from "react";
+import { ReactElement, ReactNode } from "react";
 
 import { Container } from "./styles";
 

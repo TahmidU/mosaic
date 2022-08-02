@@ -8,16 +8,14 @@ const payload: IPayload = {
 };
 export default payload;
 
-export const Basic = (args: any) => {
+export const Basic = () => {
   const [isSelected, setSelection] = useState(false);
   return (
     <Checkbox
-      {...{ isSelected }}
+      isSelected={isSelected}
       onClick={() => setSelection((prev) => !prev)}
-      {...args}
     >
       <span>Testing</span>
     </Checkbox>
   );
 };
-Basic.args = {};
