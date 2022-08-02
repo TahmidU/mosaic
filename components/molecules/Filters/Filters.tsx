@@ -4,13 +4,15 @@ import { ReactElement, useState } from "react";
 import Checkbox from "components/atoms/Checkbox";
 import useFilters from "./useFilters";
 
-interface IFiltersProps {}
+interface IFiltersProps {
+  className?: string;
+}
 
-export default function Filters({}: IFiltersProps): ReactElement {
+export default function Filters({ className }: IFiltersProps): ReactElement {
   const { filters, setType } = useFilters();
 
   return (
-    <Container>
+    <Container {...{ className }}>
       <span>Type:</span>
       <FilterWrapper>
         <Checkbox

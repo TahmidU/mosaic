@@ -1,4 +1,4 @@
-import { Container, FiltersStyle } from "./styles";
+import { Container, FiltersStyle, Header } from "./styles";
 
 import { ReactElement } from "react";
 
@@ -7,7 +7,10 @@ interface ISearchPageProps {}
 export default function SearchPage({}: ISearchPageProps): ReactElement {
   return (
     <Container>
-      <FiltersStyle />
+      <Header>
+        <span>Search results: 0</span>
+        <FiltersStyle />
+      </Header>
     </Container>
   );
 }
