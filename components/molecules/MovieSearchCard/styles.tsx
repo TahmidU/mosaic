@@ -4,8 +4,11 @@ import styled from "styled-components";
 export const Container = styled(Card)`
   display: flex;
   flex-direction: row;
-  max-width: 1020px;
-  height: 142px;
+  max-width: unset;
+  width: 100%;
+  height: unset;
+  min-height: 142px;
+  padding: 1rem;
 
   > div:first-child {
     margin-right: 0.8rem;

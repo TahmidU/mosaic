@@ -1,5 +1,6 @@
+import { SearchMovie, SearchTV, SearchType } from "types/search";
+
 import { GetServerSideProps } from "next";
-import { SearchType } from "types/search";
 import axios from "axios";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
@@ -25,19 +26,17 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const url = `${process.env.MOVIE_DB_WEB_URL}/search/${type}?language=en-US&include_adult=false&api_key=${process.env.MOVIE_DB_API_KEY}`.concat(
     `&${extracted.join("&")}`
   );
-  console.log(url);
 
   const searchResults = await axios({
     method: "get",
     headers: { "Content-type": "application/json" },
     url: url,
   });
-  const searchData = searchResults.data;
-  console.log(searchData);
 
   return {
     props: {
-      searchData,
+      searchData: searchResults.data,
+      type,
     },
   };
 };

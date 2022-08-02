@@ -1,4 +1,3 @@
-import { IUseRoutes } from "types/context";
 import { MediaType } from "types/tv_movies";
 import { filterQuery } from "utils/RoutingUtils";
 import { useRouter } from "next/router";

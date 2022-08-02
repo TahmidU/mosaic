@@ -6,6 +6,7 @@ export const Container = styled.div`
   flex-direction: column;
   min-height: 100vh;
   padding: 1rem 1.5rem;
+  position: relative;
 `;
 Container.displayName = "Container";
 
@@ -38,3 +39,19 @@ export const FiltersStyle = styled(Filters)`
   }
 `;
 FiltersStyle.displayName = "FiltersStyle";
+
+export const ResultsContainer = styled.div`
+  height: 100%;
+  margin: 1rem 0;
+
+  > div {
+    margin: 1rem 0;
+  }
+`;
+ResultsContainer.displayName = "ResultsContainer";
+
+export const Footer = styled.div`
+  position: absolute;
+  bottom: 0;
+`;
+Footer.displayName = "Footer";
