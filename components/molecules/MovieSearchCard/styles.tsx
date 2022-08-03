@@ -5,9 +5,9 @@ export const Container = styled(Card)`
   display: flex;
   flex-direction: row;
   max-width: unset;
+  align-items: flex-start;
   width: 100%;
-  height: unset;
-  min-height: 142px;
+  height: 180px;
   padding: 1rem;
 
   > div:first-child {
@@ -45,6 +45,22 @@ export const Container = styled(Card)`
       -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
       overflow: hidden;
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+    > div:last-child {
+      > span:first-child {
+        ${({ theme }) => theme.fonts.main.medium};
+      }
+
+      > span:last-child {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        ${({ theme }) => theme.fonts.main.regular};
+      }
     }
   }
 `;
