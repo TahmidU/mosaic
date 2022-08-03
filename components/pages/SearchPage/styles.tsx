@@ -1,4 +1,5 @@
 import Filters from "components/molecules/Filters";
+import MovieSearchCard from "components/molecules/MovieSearchCard";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -44,11 +45,24 @@ export const ResultsContainer = styled.div`
   height: 100%;
   margin: 1rem 0;
 
-  > div {
+  > a > div {
     margin: 1rem 0;
   }
 `;
 ResultsContainer.displayName = "ResultsContainer";
+
+export const LinkBtn = styled.a`
+  width: fit-content;
+  height: fit-content;
+`;
+LinkBtn.displayName = "LinkBtn";
+
+export const MovieSearchResult = styled(MovieSearchCard)`
+  :hover {
+    background-color: ${({ theme }) => theme.cGrey.alpha(0.2).toString()};
+  }
+`;
+MovieSearchResult.displayName = "MovieSearchResult";
 
 export const Footer = styled.div`
   position: absolute;

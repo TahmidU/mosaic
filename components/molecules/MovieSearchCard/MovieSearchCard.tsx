@@ -11,6 +11,7 @@ interface IMovieSearchCardProps {
   releaseDate: string;
   rating: number;
   src?: string;
+  className?: string;
 }
 
 export default function MovieSearchCard({
@@ -19,9 +20,10 @@ export default function MovieSearchCard({
   releaseDate,
   rating,
   src,
+  className,
 }: IMovieSearchCardProps): ReactElement {
   return (
-    <Container>
+    <Container className={className}>
       <div>
         <ImageWrapper>
           {src ? (
