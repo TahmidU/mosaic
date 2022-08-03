@@ -65,7 +65,10 @@ export const MovieSearchResult = styled(MovieSearchCard)`
 MovieSearchResult.displayName = "MovieSearchResult";
 
 export const Footer = styled.div`
-  position: absolute;
-  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem 0;
 `;
 Footer.displayName = "Footer";
