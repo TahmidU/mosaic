@@ -30,9 +30,11 @@ export default function SearchPage({
           return (
             <MovieSearchCard
               key={index}
-              title={_result.name || _result.title || "test"}
+              title={_result.name || _result.title}
               src={_result.poster_path}
               desc={_result.overview}
+              releaseDate={_result.release_date || _result.first_air_date}
+              rating={_result.vote_average}
             />
           );
         })}

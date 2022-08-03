@@ -17,14 +17,30 @@ export const Container = styled(Card)`
   > div:last-child {
     display: flex;
     flex-direction: column;
+    height: 100%;
+    align-self: flex-start;
+    ${({ theme }) => theme.fonts.main.medium};
 
     > span:first-child {
       ${({ theme }) => theme.fonts.main.bigger};
       font-weight: bold;
     }
 
+    > div:nth-child(2) {
+      display: flex;
+      flex-direction: row;
+      margin: 0 0 0.7em 0;
+      align-items: center;
+
+      > span:first-child {
+        margin-right: 1rem;
+        ${({ theme }) => theme.fonts.main.regular};
+        color: ${({ theme }) => theme.cAlmostBlack.alpha(0.7)};
+        font-weight: 100;
+      }
+    }
+
     > span:last-child {
-      ${({ theme }) => theme.fonts.main.regular};
       display: -webkit-box;
       -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;

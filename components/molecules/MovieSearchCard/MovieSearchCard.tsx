@@ -1,22 +1,25 @@
 import { Container, ImageWrapper } from "./styles";
+import { Links, TextUtils } from "utils";
 
 import Image from "next/image";
-import { Links } from "utils";
 import { ReactElement } from "react";
+import StarRating from "../StarRating";
 
 interface IMovieSearchCardProps {
   title: string;
   desc: string;
+  releaseDate: string;
+  rating: number;
   src?: string;
 }
 
 export default function MovieSearchCard({
   title,
   desc,
+  releaseDate,
+  rating,
   src,
 }: IMovieSearchCardProps): ReactElement {
-  console.log(`${Links.tmdbImageURL}${src?.split("/")[1]}`);
-
   return (
     <Container>
       <div>
@@ -36,6 +39,10 @@ export default function MovieSearchCard({
       </div>
       <div>
         <span>{title}</span>
+        <div>
+          <span>{TextUtils.dateFormatter(releaseDate)}</span>
+          <StarRating rating={rating} />
+        </div>
         <span>{desc}</span>
       </div>
     </Container>

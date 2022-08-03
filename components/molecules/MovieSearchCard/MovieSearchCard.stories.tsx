@@ -14,4 +14,6 @@ Basic.args = {
     "Lo ipsum foobar random description. Lo ipsum foobar random description. Lo ipsum foobar random description. Lo ipsum foobar random description. Lo ipsum foobar random description. Lo ipsum foobar random description. Lo ipsum foobar random description.",
   src:
     "https://image.tmdb.org/t/p/w220_and_h330_face/9Gtg2DzBhmYamXBS1hKAhiwbBKS.jpg",
+  rating: 5,
+  releaseDate: "2022-01-02",
 };
