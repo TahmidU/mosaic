@@ -13,16 +13,20 @@ export default function useFilters() {
   });
 
   useEffect(() => {
-    router.replace({
-      pathname: router.pathname,
-      query: filterQuery(
-        {
-          ...router.query,
-          ...filters,
-        },
-        router.query
-      ),
-    });
+    const query = getQueryFromURL("query");
+
+    query &&
+      query.length > 0 &&
+      router.replace({
+        pathname: router.pathname,
+        query: filterQuery(
+          {
+            ...router.query,
+            ...filters,
+          },
+          router.query
+        ),
+      });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filters]);
 

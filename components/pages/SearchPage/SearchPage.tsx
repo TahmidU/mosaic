@@ -7,9 +7,8 @@ import {
   MovieSearchResult,
   ResultsContainer,
 } from "./styles";
-import { SearchMovie, SearchResult, SearchTV, SearchType } from "types/search";
+import { SearchResult, SearchType } from "types/search";
 
-import MovieSearchCard from "components/molecules/MovieSearchCard";
 import { Pagination } from "@mantine/core";
 import { ReactElement } from "react";
 import usePagination from "hooks/usePagination";
@@ -69,4 +68,5 @@ export default function SearchPage({
       </Footer>
     </Container>
   );
+  return <div></div>;
 }
