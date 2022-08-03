@@ -10,7 +10,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   let query = context.query.query as string | undefined;
   let type: SearchType = context.query.type as SearchType;
 
-  if (!query || type !== "movie") {
+  if (!query) {
     return {
       props: {},
     };
