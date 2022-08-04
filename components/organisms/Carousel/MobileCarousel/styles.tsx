@@ -31,6 +31,7 @@ export const ImageContainer = styled.div`
   height: 100%;
   width: 100%;
   overflow: hidden;
+  cursor: pointer;
 `;
 ImageContainer.displayName = "ImageContainer";
 

@@ -3,7 +3,7 @@ import "jest-styled-components";
 import { cleanup, fireEvent, render } from "utils/test-config";
 
 import Carousel from "./Carousel";
-import { FakeDiscoverMovie } from "../../../resources/TestResources/data";
+import { FakeDiscoverMovie } from "../../../resources/TestResources/DiscoverMovie";
 import React from "react";
 import { TextUtils } from "utils";
 

@@ -1,10 +1,12 @@
+import { ICrew } from "types/tv_movies";
+
 /**
  *
  * @param font : font from IFonts;
  * @param indexes : 0 - font-family and 1 - font-size
  * @returns font-family + font-size string
  */
-function fontImportancePlacer(font: string, indexes: number[]): string {
+export function fontImportancePlacer(font: string, indexes: number[]): string {
   if (indexes.length > 2) return "";
 
   return font
@@ -13,7 +15,7 @@ function fontImportancePlacer(font: string, indexes: number[]): string {
     .join(";");
 }
 
-function dateFormatter(date: string): string {
+export function dateFormatter(date?: string) {
   if (!date) return date; //! Somehow an undefined date param is passed in storybook
 
   const [year, month, day] = date.split("-");
@@ -23,9 +25,24 @@ function dateFormatter(date: string): string {
   return date;
 }
 
+export function findInCrewNamesByJob(crew?: ICrew[], job?: string) {
+  if (!crew || !job) return undefined;
+
+  return crew
+    .filter((_person) => _person.job === job)
+    .map((_director) => _director.name)
+    .join(", ");
+}
+
+export function numberWithCommas(x?: number): string {
+  return x ? x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : "";
+}
+
 const TextUtils = {
   dateFormatter,
   fontImportancePlacer,
+  findInCrewNamesByJob,
+  numberWithCommas,
 };
 
 export default TextUtils;

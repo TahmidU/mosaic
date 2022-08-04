@@ -9,18 +9,21 @@ import {
   StepsContainer,
   StepsStyle,
 } from "./styles";
-import { ReactElement, useEffect, useRef, useState } from "react";
+import { ReactElement, useContext, useEffect, useRef, useState } from "react";
 
 import { AnimationControls } from "framer-motion";
 import CarouselImage from "components/organisms/Carousel/CarouselImage";
 import Clips from "./Clips";
+import GlobalContext from "context/GlobalContext";
 import { IDiscoverMovie } from "../../../types/api/discover";
 import { IVideo } from "types/api/videos";
 import MovieInfo from "./MovieInfo";
 import ProgressiveBar from "./ProgressiveBar";
 import dynamic from "next/dynamic";
 
-const VideoModal = dynamic(() => import("./VideoModal"), { ssr: false });
+const VideoModal = dynamic(() => import("../../molecules/VideoModal"), {
+  ssr: false,
+});
 
 interface ICarouselProps {
   carouselData?: IDiscoverMovie[];
@@ -47,6 +50,8 @@ export default function Carousel({
   handlePageChange,
   textAnimControls,
 }: ICarouselProps): ReactElement {
+  const { routes } = useContext(GlobalContext);
+
   // Carousel Slide
   const [isTimerPaused, setTimerConfig] = useState(false);
 
@@ -108,7 +113,9 @@ export default function Carousel({
             strokeWidth={3}
             onClick={() => handlePageDirectionChange(-1)}
           />
-          <ImageContainer>
+          <ImageContainer
+            onClick={() => routes?.goToDetails(carouselData[page].id)}
+          >
             <CarouselImage
               direction={direction}
               imageURL={carouselData[page].backdrop_path}
@@ -117,18 +124,6 @@ export default function Carousel({
               handlePageChange={handlePageDirectionChange}
             />
 
-            <StepsContainer>
-              {carouselData.map((_, index) => {
-                return (
-                  <StepsStyle
-                    key={index}
-                    enabled={index <= page}
-                    onClick={() => handlePageChange(index)}
-                  />
-                );
-              })}
-            </StepsContainer>
-
             <MovieInfo
               title={carouselData[page]?.title}
               desc={carouselData[page]?.overview}
@@ -136,6 +131,17 @@ export default function Carousel({
               animationControls={textAnimControls}
             />
           </ImageContainer>
+          <StepsContainer>
+            {carouselData.map((_, index) => {
+              return (
+                <StepsStyle
+                  key={index}
+                  enabled={index <= page}
+                  onClick={() => handlePageChange(index)}
+                />
+              );
+            })}
+          </StepsContainer>
           <NextBtn
             dataTestId="CarouselNextBtn"
             variant="right"

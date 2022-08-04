@@ -1,4 +1,4 @@
 import { IGlobalContext } from "../types/context";
 import { createContext } from "react";
 
-export default createContext<Partial<IGlobalContext>>({});
+export default createContext<IGlobalContext>({});

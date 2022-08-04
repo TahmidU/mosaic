@@ -1,16 +1,19 @@
+import { LinkBtn, MovieCardStyle, MovieCardWrapper } from "./styles";
+import { ReactElement, useContext } from "react";
+
+import GlobalContext from "context/GlobalContext";
 import HorizontalList from "components/molecules/HorizontalList";
-import { IMovieCardProps } from "components/molecules/MovieCard/MovieCard";
-import MovieCard from "components/molecules/MovieCard";
-import { MovieCardWrapper } from "./styles";
-import { ReactElement } from "react";
+import { IShortMovieDetails } from "types/movie";
+import useRoutes from "hooks/useRoutes";
 
 interface IMovieListProps<T> {
   title: string;
   subListTitles: T[];
-  movies?: IMovieCardProps[];
+  movies?: IShortMovieDetails[];
   onSubTitleClick: (title: T) => void;
   className?: string;
   loading?: boolean;
+  type?: "tv" | "movie";
 }
 
 export default function MovieList<T>({
@@ -20,7 +23,10 @@ export default function MovieList<T>({
   movies,
   className,
   loading = false,
+  type = "movie",
 }: IMovieListProps<T>): ReactElement {
+  const { generateDetailsURL } = useRoutes();
+
   return (
     <HorizontalList
       title={title}
@@ -32,14 +38,16 @@ export default function MovieList<T>({
       {movies &&
         movies.map((_movie, index) => {
           return (
-            <MovieCardWrapper key={index}>
-              <MovieCard
-                src={_movie.src}
-                review={_movie.review}
-                movieTitle={_movie.movieTitle}
-                movieReleaseDate={_movie.movieReleaseDate}
-              />
-            </MovieCardWrapper>
+            <LinkBtn key={index} href={generateDetailsURL(_movie.id, type)}>
+              <MovieCardWrapper>
+                <MovieCardStyle
+                  src={_movie.src}
+                  review={_movie.review}
+                  movieTitle={_movie.movieTitle}
+                  movieReleaseDate={_movie.movieReleaseDate}
+                />
+              </MovieCardWrapper>
+            </LinkBtn>
           );
         })}
     </HorizontalList>
