@@ -1,4 +1,5 @@
 import MovieSearchCard from "components/molecules/MovieSearchCard";
+import { Pagination } from "@mantine/core";
 import dynamic from "next/dynamic";
 import styled from "styled-components";
 
@@ -67,3 +68,6 @@ export const Footer = styled.div`
   margin: 1rem 0;
 `;
 Footer.displayName = "Footer";
+
+export const PaginationStyle = styled(Pagination)``;
+PaginationStyle.displayName = "PaginationStyle";

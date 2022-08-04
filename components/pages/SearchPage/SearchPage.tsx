@@ -9,11 +9,15 @@ import {
 } from "./styles";
 import { SearchResult, SearchType } from "types/search";
 
-import { Pagination } from "@mantine/core";
 import { ReactElement } from "react";
+import dynamic from "next/dynamic";
 import { useMediaQuery } from "react-responsive";
 import usePagination from "hooks/usePagination";
 import useRoutes from "hooks/useRoutes";
+
+const Pagination = dynamic(() => import("components/atoms/Pagination"), {
+  ssr: false,
+});
 
 interface ISearchPageProps {
   searchData: SearchResult;
@@ -66,6 +70,7 @@ export default function SearchPage({
             total={totalPages}
             color="red"
             radius="lg"
+            size={isMobile ? "xs" : undefined}
             withEdges
             onChange={(page) => onPageChange(page)}
           />
@@ -73,5 +78,4 @@ export default function SearchPage({
       </Footer>
     </Container>
   );
-  return <div></div>;
 }
