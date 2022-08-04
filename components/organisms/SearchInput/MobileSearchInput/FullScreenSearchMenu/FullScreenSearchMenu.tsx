@@ -7,21 +7,17 @@ import {
   SearchIconStyling,
   SearchInputStyle,
 } from "./styles";
-import {
-  Dispatch,
-  KeyboardEvent,
-  ReactElement,
-  SetStateAction,
-  useState,
-} from "react";
+import { Dispatch, KeyboardEvent, ReactElement, SetStateAction } from "react";
 
 import { ContainerAnimVariant } from "./animation-variants";
-import useRoutes from "hooks/useRoutes";
 
 interface IFullScreenSearchMenuProps {
   setMenuOpen: Dispatch<SetStateAction<boolean>>;
   isMenuOpen: boolean;
-  onEnter?: (text: string) => void;
+  setSearchText: Dispatch<SetStateAction<string>>;
+  searchText: string;
+  onHandleClickSearch: () => void;
+  onHandleKeyDown: (e: KeyboardEvent<HTMLInputElement>) => void;
 }
 
 const SearchIcon = (props: any) => (
@@ -31,20 +27,19 @@ const SearchIcon = (props: any) => (
 export default function FullScreenSearchMenu({
   setMenuOpen,
   isMenuOpen,
-  onEnter,
+  setSearchText,
+  searchText,
+  onHandleClickSearch,
+  onHandleKeyDown,
 }: IFullScreenSearchMenuProps): ReactElement {
-  const [text, setText] = useState("");
-
-  const onHandleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+  const onHandleMenuKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
-      console.log(onEnter?.(text));
-      onEnter?.(text);
-      setMenuOpen(false);
+      setMenuOpen(false), onHandleKeyDown(e);
     }
   };
 
-  const onHandleClickSearch = () => {
-    onEnter?.(text);
+  const onHandleMenuClickSearch = () => {
+    setMenuOpen(false), onHandleClickSearch();
   };
 
   return (
@@ -64,9 +59,11 @@ export default function FullScreenSearchMenu({
         </Header>
         <SearchInputStyle
           type="search"
-          onTextChange={setText}
-          onKeyDown={onHandleKeyDown}
-          postfix={<SearchIcon onClick={onHandleClickSearch} />}
+          variant="stateful"
+          value={searchText}
+          onTextChange={setSearchText}
+          onKeyDown={onHandleMenuKeyDown}
+          postfix={<SearchIcon onClick={onHandleMenuClickSearch} />}
         />
       </OptionsWrapper>
     </Container>

@@ -5,13 +5,11 @@ import { ReactElement, useContext } from "react";
 
 import GlobalContext from "context/GlobalContext";
 import Logo from "../../../img/Logo";
-import useRoutes from "hooks/useRoutes";
 
 interface INavbarProps {}
 
 export default function Navbar({}: INavbarProps): ReactElement {
   const { routes } = useContext(GlobalContext);
-  const { goToSearchPage } = useRoutes();
 
   return (
     <NavbarContainer>
@@ -20,9 +18,7 @@ export default function Navbar({}: INavbarProps): ReactElement {
         <MenuContainer>{/* */}</MenuContainer>
       </div>
 
-      <SearchInputStyle
-        onEnter={(text) => goToSearchPage(text.length > 0 ? text : undefined)}
-      />
+      <SearchInputStyle />
     </NavbarContainer>
   );
 }
