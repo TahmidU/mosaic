@@ -18,7 +18,7 @@ export default function useFilters() {
     query &&
       query.length > 0 &&
       router.replace({
-        pathname: router.pathname,
+        pathname: "/search",
         query: filterQuery(
           {
             ...router.query,
@@ -27,6 +27,7 @@ export default function useFilters() {
           router.query
         ),
       });
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filters]);
 

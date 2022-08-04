@@ -3,13 +3,17 @@ import {
   CloseIcon,
   Container,
   Header,
+  MobileContainer,
   OptionsWrapper,
   SearchIconStyling,
   SearchInputStyle,
 } from "./styles";
 import { Dispatch, KeyboardEvent, ReactElement, SetStateAction } from "react";
 
+import Checkbox from "components/atoms/Checkbox";
 import { ContainerAnimVariant } from "./animation-variants";
+import Filters from "components/molecules/Filters";
+import useSearch from "./useSearch";
 
 interface IFullScreenSearchMenuProps {
   setMenuOpen: Dispatch<SetStateAction<boolean>>;
@@ -32,15 +36,12 @@ export default function FullScreenSearchMenu({
   onHandleClickSearch,
   onHandleKeyDown,
 }: IFullScreenSearchMenuProps): ReactElement {
-  const onHandleMenuKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") {
-      setMenuOpen(false), onHandleKeyDown(e);
-    }
-  };
-
-  const onHandleMenuClickSearch = () => {
-    setMenuOpen(false), onHandleClickSearch();
-  };
+  const {
+    onHandleMenuKeyDown,
+    onHandleMenuClickSearch,
+    filters,
+    setType,
+  } = useSearch(searchText, setMenuOpen);
 
   return (
     <Container
@@ -65,6 +66,26 @@ export default function FullScreenSearchMenu({
           onKeyDown={onHandleMenuKeyDown}
           postfix={<SearchIcon onClick={onHandleMenuClickSearch} />}
         />
+
+        <MobileContainer>
+          <span>Type:</span>
+
+          <div>
+            <Checkbox
+              isSelected={filters.type === "movie"}
+              onClick={() => setType("movie")}
+            >
+              <span>Movies</span>
+            </Checkbox>
+
+            <Checkbox
+              isSelected={filters.type === "tv"}
+              onClick={() => setType("tv")}
+            >
+              <span>TV</span>
+            </Checkbox>
+          </div>
+        </MobileContainer>
       </OptionsWrapper>
     </Container>
   );

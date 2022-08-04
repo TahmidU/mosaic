@@ -74,3 +74,31 @@ export const SearchIconStyling = styled(BsSearch)`
   cursor: pointer;
 `;
 SearchIconStyling.displayName = "SearchIconStyling";
+
+export const MobileContainer = styled.div`
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  margin: 1rem 0;
+
+  > div:nth-child(2) {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+
+    > div {
+      width: 100%;
+      max-width: unset;
+    }
+  }
+
+  > span:first-child {
+    ${({ theme }) => theme.fonts.main.medium};
+  }
+
+  > span,
+  > div {
+    margin: 0.25rem 1rem;
+  }
+`;
+MobileContainer.displayName = "MobileContainer";
