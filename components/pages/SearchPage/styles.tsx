@@ -1,7 +1,7 @@
 import MovieSearchCard from "components/molecules/MovieSearchCard";
+import { Pagination } from "@mantine/core";
 import dynamic from "next/dynamic";
 import styled from "styled-components";
-import { Pagination } from "@mantine/core";
 
 const Filters = dynamic(() => import("components/molecules/Filters"), {
   ssr: false,

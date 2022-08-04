@@ -2,11 +2,12 @@ import Checkbox from "components/atoms/Checkbox";
 import styled from "styled-components";
 
 export const Container = styled.div`
-  display: block;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   width: fit-content;
   height: fit-content;
-  overflow-y: hidden;
-  overflow-x: auto;
 
   > span:first-child {
     ${({ theme }) => theme.fonts.main.medium};

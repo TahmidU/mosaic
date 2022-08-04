@@ -15,10 +15,6 @@ import { useMediaQuery } from "react-responsive";
 import usePagination from "hooks/usePagination";
 import useRoutes from "hooks/useRoutes";
 
-//import { Pagination } from "@mantine/core";
-
-//import Pagination from "components/atoms/Pagination";
-
 const Pagination = dynamic(() => import("components/atoms/Pagination"), {
   ssr: false,
 });
