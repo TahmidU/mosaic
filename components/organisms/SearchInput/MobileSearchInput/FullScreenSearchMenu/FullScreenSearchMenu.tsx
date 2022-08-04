@@ -4,6 +4,7 @@ import {
   Container,
   Header,
   OptionsWrapper,
+  SearchIconStyling,
   SearchInputStyle,
 } from "./styles";
 import {
@@ -23,6 +24,10 @@ interface IFullScreenSearchMenuProps {
   onEnter?: (text: string) => void;
 }
 
+const SearchIcon = (props: any) => (
+  <SearchIconStyling onClick={props.onClick} />
+);
+
 export default function FullScreenSearchMenu({
   setMenuOpen,
   isMenuOpen,
@@ -36,6 +41,10 @@ export default function FullScreenSearchMenu({
       onEnter?.(text);
       setMenuOpen(false);
     }
+  };
+
+  const onHandleClickSearch = () => {
+    onEnter?.(text);
   };
 
   return (
@@ -57,6 +66,7 @@ export default function FullScreenSearchMenu({
           type="search"
           onTextChange={setText}
           onKeyDown={onHandleKeyDown}
+          postfix={<SearchIcon onClick={onHandleClickSearch} />}
         />
       </OptionsWrapper>
     </Container>

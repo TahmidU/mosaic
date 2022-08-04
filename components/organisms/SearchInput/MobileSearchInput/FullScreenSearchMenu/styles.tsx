@@ -1,4 +1,5 @@
 import { AiOutlineClose } from "react-icons/ai";
+import { BsSearch } from "react-icons/bs";
 import Input from "components/atoms/Input";
 import { motion } from "framer-motion";
 import styled from "styled-components";
@@ -48,7 +49,8 @@ export const CloseIcon = styled(AiOutlineClose)`
 CloseIcon.displayName = "CloseIcon";
 
 export const SearchInputStyle = styled(Input)`
-  width: 70%;
+  width: 80%;
+  max-width: unset;
   margin: 0 auto;
 
   input::-webkit-search-cancel-button {
@@ -63,3 +65,12 @@ export const SearchInputStyle = styled(Input)`
   }
 `;
 SearchInputStyle.displayName = "SearchInputStyle";
+
+export const SearchIconStyling = styled(BsSearch)`
+  justify-self: center;
+  min-width: 24px;
+  width: 24px;
+  height: auto;
+  cursor: pointer;
+`;
+SearchIconStyling.displayName = "SearchIconStyling";
