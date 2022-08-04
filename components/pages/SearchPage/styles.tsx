@@ -1,6 +1,10 @@
-import Filters from "components/molecules/Filters";
 import MovieSearchCard from "components/molecules/MovieSearchCard";
+import dynamic from "next/dynamic";
 import styled from "styled-components";
+
+const Filters = dynamic(() => import("components/molecules/Filters"), {
+  ssr: false,
+});
 
 export const Container = styled.div`
   display: flex;
@@ -29,16 +33,7 @@ export const Header = styled.div`
 `;
 Header.displayName = "Header";
 
-export const FiltersStyle = styled(Filters)`
-  width: fit-content;
-
-  @media only screen and (max-width: 768px) {
-    margin: 0 0 1rem 0;
-    > span:first-child {
-      margin: 0;
-    }
-  }
-`;
+export const FiltersStyle = styled(Filters)``;
 FiltersStyle.displayName = "FiltersStyle";
 
 export const ResultsContainer = styled.div`

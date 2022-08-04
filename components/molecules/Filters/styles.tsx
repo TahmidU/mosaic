@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   display: block;
-  width: 100%;
+  width: fit-content;
   height: fit-content;
   overflow-y: hidden;
   overflow-x: auto;

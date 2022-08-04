@@ -11,6 +11,7 @@ import { SearchResult, SearchType } from "types/search";
 
 import { Pagination } from "@mantine/core";
 import { ReactElement } from "react";
+import { useMediaQuery } from "react-responsive";
 import usePagination from "hooks/usePagination";
 import useRoutes from "hooks/useRoutes";
 
@@ -26,6 +27,10 @@ export default function SearchPage({
   const { generateDetailsURL } = useRoutes();
   const { getInitialPage, onPageChange } = usePagination();
 
+  const isMobile = useMediaQuery({
+    query: "(max-width: 768px)",
+  });
+
   let totalResults = searchData ? searchData.total_results : 0;
   let totalPages = searchData ? searchData.total_pages : 0;
 
@@ -33,7 +38,7 @@ export default function SearchPage({
     <Container>
       <Header>
         <span>Search Results Found: {totalResults}</span>
-        <FiltersStyle />
+        {!isMobile && <FiltersStyle />}
       </Header>
       <ResultsContainer>
         {searchData ? (

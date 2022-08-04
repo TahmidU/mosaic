@@ -1,11 +1,14 @@
-import { KeyboardEvent, ReactElement, useState } from "react";
+import { Dispatch, KeyboardEvent, ReactElement, SetStateAction } from "react";
 
 import Input from "components/atoms/Input";
 import { SearchIconStyling } from "./styles";
 
 interface ISearchBtnProp {
   onTextChange?: (text: string) => void;
-  onEnter?: (text: string) => void;
+  text: string;
+  setText: Dispatch<SetStateAction<string>>;
+  onHandleClickSearch: () => void;
+  onHandleKeyDown: (e: KeyboardEvent<HTMLInputElement>) => void;
   className?: string;
 }
 
@@ -13,26 +16,19 @@ const SearchIcon = (props: any) => (
   <SearchIconStyling onClick={props.onClick} />
 );
 export default function SearchInput({
-  onEnter,
+  text,
+  setText,
+  onHandleClickSearch,
+  onHandleKeyDown,
   className,
 }: ISearchBtnProp): ReactElement {
-  const [text, setText] = useState("");
-
-  const onHandleKeydownSearch = (e: KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") {
-      onEnter?.(text);
-    }
-  };
-
-  const onHandleClickSearch = () => {
-    onEnter?.(text);
-  };
-
   return (
     <Input
+      variant="stateful"
+      value={text}
       className={className}
-      onTextChange={(text) => setText(text)}
-      onKeyDown={onHandleKeydownSearch}
+      onTextChange={setText}
+      onKeyDown={onHandleKeyDown}
       postfix={<SearchIcon onClick={onHandleClickSearch} />}
     />
   );

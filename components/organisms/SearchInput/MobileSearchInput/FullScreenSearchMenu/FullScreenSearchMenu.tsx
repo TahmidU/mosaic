@@ -3,40 +3,45 @@ import {
   CloseIcon,
   Container,
   Header,
+  MobileContainer,
   OptionsWrapper,
+  SearchIconStyling,
   SearchInputStyle,
 } from "./styles";
-import {
-  Dispatch,
-  KeyboardEvent,
-  ReactElement,
-  SetStateAction,
-  useState,
-} from "react";
+import { Dispatch, KeyboardEvent, ReactElement, SetStateAction } from "react";
 
+import Checkbox from "components/atoms/Checkbox";
 import { ContainerAnimVariant } from "./animation-variants";
-import useRoutes from "hooks/useRoutes";
+import Filters from "components/molecules/Filters";
+import useSearch from "./useSearch";
 
 interface IFullScreenSearchMenuProps {
   setMenuOpen: Dispatch<SetStateAction<boolean>>;
   isMenuOpen: boolean;
-  onEnter?: (text: string) => void;
+  setSearchText: Dispatch<SetStateAction<string>>;
+  searchText: string;
+  onHandleClickSearch: () => void;
+  onHandleKeyDown: (e: KeyboardEvent<HTMLInputElement>) => void;
 }
+
+const SearchIcon = (props: any) => (
+  <SearchIconStyling onClick={props.onClick} />
+);
 
 export default function FullScreenSearchMenu({
   setMenuOpen,
   isMenuOpen,
-  onEnter,
+  setSearchText,
+  searchText,
+  onHandleClickSearch,
+  onHandleKeyDown,
 }: IFullScreenSearchMenuProps): ReactElement {
-  const [text, setText] = useState("");
-
-  const onHandleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") {
-      console.log(onEnter?.(text));
-      onEnter?.(text);
-      setMenuOpen(false);
-    }
-  };
+  const {
+    onHandleMenuKeyDown,
+    onHandleMenuClickSearch,
+    filters,
+    setType,
+  } = useSearch(searchText, setMenuOpen);
 
   return (
     <Container
@@ -55,9 +60,32 @@ export default function FullScreenSearchMenu({
         </Header>
         <SearchInputStyle
           type="search"
-          onTextChange={setText}
-          onKeyDown={onHandleKeyDown}
+          variant="stateful"
+          value={searchText}
+          onTextChange={setSearchText}
+          onKeyDown={onHandleMenuKeyDown}
+          postfix={<SearchIcon onClick={onHandleMenuClickSearch} />}
         />
+
+        <MobileContainer>
+          <span>Type:</span>
+
+          <div>
+            <Checkbox
+              isSelected={filters.type === "movie"}
+              onClick={() => setType("movie")}
+            >
+              <span>Movies</span>
+            </Checkbox>
+
+            <Checkbox
+              isSelected={filters.type === "tv"}
+              onClick={() => setType("tv")}
+            >
+              <span>TV</span>
+            </Checkbox>
+          </div>
+        </MobileContainer>
       </OptionsWrapper>
     </Container>
   );
