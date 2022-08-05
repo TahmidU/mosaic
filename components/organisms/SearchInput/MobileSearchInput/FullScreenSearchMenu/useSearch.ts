@@ -17,6 +17,7 @@ interface IMobileFilter {
 
 export default function useSearch(
   searchText: string,
+  isMenuOpen: boolean,
   setMenuOpen: Dispatch<SetStateAction<boolean>>
 ) {
   const router = useRouter();
@@ -36,12 +37,22 @@ export default function useSearch(
   });
 
   useEffect(() => {
-    setFilters((prev) => ({
-      ...prev,
-      type: getQueryFromURL("type") as SearchType,
-    }));
+    if (isMenuOpen) {
+      setFilters((prev) => {
+        const newValue = {
+          ...prev,
+          type: getQueryFromURL("type") as SearchType,
+        };
+
+        return {
+          selected: newValue,
+          applied: newValue,
+        };
+      });
+    }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [router.query]);
+  }, [isMenuOpen]);
 
   function getQueryFromURL(query: string) {
     return router.query[query];
