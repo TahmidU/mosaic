@@ -40,6 +40,7 @@ export default function FullScreenSearchMenu({
     onHandleMenuKeyDown,
     onHandleMenuClickSearch,
     filters,
+    cancelFilters,
     setType,
   } = useSearch(searchText, setMenuOpen);
 
@@ -54,7 +55,11 @@ export default function FullScreenSearchMenu({
         <Header>
           <div></div>
           <span>Search {"&"} Filter</span>
-          <CloseBtn onClick={() => setMenuOpen(false)}>
+          <CloseBtn
+            onClick={() => {
+              setMenuOpen(false), cancelFilters();
+            }}
+          >
             <CloseIcon />
           </CloseBtn>
         </Header>

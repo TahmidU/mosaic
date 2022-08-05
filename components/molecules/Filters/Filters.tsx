@@ -8,12 +8,6 @@ interface IFiltersProps {
   className?: string;
 }
 
-/**
- * Due to the simplicity of the filters there's no need
- * to splits the filters into separate filters,
- * since there's only one (Type).
- *  */
-
 export default function Filters({ className }: IFiltersProps): ReactElement {
   const { filters, setType } = useFilters();
   return (

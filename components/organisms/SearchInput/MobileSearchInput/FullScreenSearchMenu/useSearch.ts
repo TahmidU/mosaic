@@ -1,8 +1,19 @@
-import { Dispatch, KeyboardEvent, SetStateAction, useState } from "react";
+import {
+  Dispatch,
+  KeyboardEvent,
+  SetStateAction,
+  useEffect,
+  useState,
+} from "react";
 import { IFilter, SearchType } from "types/search";
 
 import { useRouter } from "next/router";
 import useRoutes from "hooks/useRoutes";
+
+interface IMobileFilter {
+  selected: IFilter;
+  applied: IFilter;
+}
 
 export default function useSearch(
   searchText: string,
@@ -11,11 +22,26 @@ export default function useSearch(
   const router = useRouter();
   const { goToSearchPage } = useRoutes();
 
-  const [filters, setFilters] = useState<IFilter>({
-    type: getQueryFromURL("type")
-      ? (getQueryFromURL("type") as SearchType)
-      : "movie",
+  const [filters, setFilters] = useState<IMobileFilter>({
+    selected: {
+      type: getQueryFromURL("type")
+        ? (getQueryFromURL("type") as SearchType)
+        : "movie",
+    },
+    applied: {
+      type: getQueryFromURL("type")
+        ? (getQueryFromURL("type") as SearchType)
+        : "movie",
+    },
   });
+
+  useEffect(() => {
+    setFilters((prev) => ({
+      ...prev,
+      type: getQueryFromURL("type") as SearchType,
+    }));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [router.query]);
 
   function getQueryFromURL(query: string) {
     return router.query[query];
@@ -23,17 +49,31 @@ export default function useSearch(
 
   function onHandleMenuKeyDown(e: KeyboardEvent<HTMLInputElement>) {
     if (e.key === "Enter") {
-      setMenuOpen(false), goToSearchPage(searchText, filters.type);
+      setMenuOpen(false),
+        goToSearchPage(searchText, filters.selected.type),
+        setFilters((prev) => ({ ...prev, applied: prev.selected }));
     }
   }
 
   function onHandleMenuClickSearch() {
-    setMenuOpen(false), goToSearchPage(searchText, filters.type);
+    setMenuOpen(false),
+      goToSearchPage(searchText, filters.selected.type),
+      setFilters((prev) => ({ ...prev, applied: prev.selected }));
   }
 
   function setType(type: SearchType) {
-    setFilters((prev) => ({ ...prev, type: type }));
+    setFilters((prev) => ({ ...prev, selected: { type: type } }));
   }
 
-  return { onHandleMenuKeyDown, onHandleMenuClickSearch, setType, filters };
+  function cancelFilters() {
+    setFilters((prev) => ({ ...prev, selected: prev.applied }));
+  }
+
+  return {
+    onHandleMenuKeyDown,
+    onHandleMenuClickSearch,
+    setType,
+    filters: filters.selected,
+    cancelFilters,
+  };
 }
