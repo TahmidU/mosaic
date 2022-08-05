@@ -42,7 +42,7 @@ export default function SearchPage({
     <Container>
       <Header>
         <span>Search Results Found: {totalResults}</span>
-        {!isMobile && <FiltersStyle />}
+        <FiltersStyle />
       </Header>
       <ResultsContainer>
         {searchData ? (
@@ -70,8 +70,7 @@ export default function SearchPage({
             total={totalPages}
             color="red"
             radius="lg"
-            size={isMobile ? "xs" : undefined}
-            withEdges
+            size={isMobile ? "sm" : undefined}
             onChange={(page) => onPageChange(page)}
           />
         )}

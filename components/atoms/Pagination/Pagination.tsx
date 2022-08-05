@@ -7,7 +7,7 @@ interface IPaginationProps {
   color: string;
   radius?: MantineNumberSize;
   size?: MantineNumberSize;
-  withEdges: boolean;
+  withEdges?: boolean;
   onChange?: (page: number) => void;
   className?: string;
 }

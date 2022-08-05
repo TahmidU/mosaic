@@ -13,30 +13,28 @@ export default function useFilters() {
   });
 
   useEffect(() => {
-    const query = getQueryFromURL("query");
-
-    query &&
-      query.length > 0 &&
-      router.replace({
-        pathname: "/search",
-        query: filterQuery(
-          {
-            ...router.query,
-            ...filters,
-          },
-          router.query
-        ),
-      });
-
+    setFilters((prev) => ({
+      ...prev,
+      type: getQueryFromURL("type") as SearchType,
+    }));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [filters]);
+  }, [router.query]);
 
   function getQueryFromURL(query: string) {
     return router.query[query];
   }
 
   function setType(type: SearchType) {
-    setFilters((prev) => ({ ...prev, type: type }));
+    router.replace({
+      pathname: "/search",
+      query: filterQuery(
+        {
+          ...router.query,
+          type: type,
+        },
+        router.query
+      ),
+    });
   }
 
   return { filters, setType };

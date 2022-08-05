@@ -1,40 +1,17 @@
-import { Container, FilterWrapper } from "./styles";
-import { ReactElement, useState } from "react";
-
-import Checkbox from "components/atoms/Checkbox";
+import { Container } from "./styles";
+import { ReactElement } from "react";
+import TypeFilter from "./TypeFilter";
 import useFilters from "./useFilters";
 
 interface IFiltersProps {
   className?: string;
 }
 
-/**
- * Due to the simplicity of the filters there's no need
- * to splits the filters into separate filters,
- * since there's only one (Type).
- *  */
-
 export default function Filters({ className }: IFiltersProps): ReactElement {
   const { filters, setType } = useFilters();
   return (
     <Container {...{ className }}>
-      <span>Type:</span>
-      <FilterWrapper>
-        <Checkbox
-          isSelected={filters.type === "movie"}
-          onClick={() => setType("movie")}
-        >
-          <span>Movies</span>
-        </Checkbox>
-      </FilterWrapper>
-      <FilterWrapper>
-        <Checkbox
-          isSelected={filters.type === "tv"}
-          onClick={() => setType("tv")}
-        >
-          <span>TV</span>
-        </Checkbox>
-      </FilterWrapper>
+      <TypeFilter selected={filters.type} setType={setType} />
     </Container>
   );
 }
