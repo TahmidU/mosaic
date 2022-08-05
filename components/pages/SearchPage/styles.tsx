@@ -1,11 +1,6 @@
+import Filters from "components/molecules/Filters";
 import MovieSearchCard from "components/molecules/MovieSearchCard";
-import { Pagination } from "@mantine/core";
-import dynamic from "next/dynamic";
 import styled from "styled-components";
-
-const Filters = dynamic(() => import("components/molecules/Filters"), {
-  ssr: false,
-});
 
 export const Container = styled.div`
   display: flex;
@@ -24,7 +19,7 @@ export const Header = styled.div`
   width: 100%;
 
   @media only screen and (max-width: 768px) {
-    flex-direction: column-reverse;
+    flex-direction: column;
     align-items: unset;
   }
 
@@ -34,7 +29,15 @@ export const Header = styled.div`
 `;
 Header.displayName = "Header";
 
-export const FiltersStyle = styled(Filters)``;
+export const FiltersStyle = styled(Filters)`
+  @media only screen and (max-width: 768px) {
+    margin: 1rem 0 0 0;
+
+    > div:first-child > span:first-child {
+      margin: 0;
+    }
+  }
+`;
 FiltersStyle.displayName = "FiltersStyle";
 
 export const ResultsContainer = styled.div`
@@ -68,6 +71,3 @@ export const Footer = styled.div`
   margin: 1rem 0;
 `;
 Footer.displayName = "Footer";
-
-export const PaginationStyle = styled(Pagination)``;
-PaginationStyle.displayName = "PaginationStyle";
