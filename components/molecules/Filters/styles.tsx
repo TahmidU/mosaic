@@ -1,6 +1,12 @@
-import Checkbox from "components/atoms/Checkbox";
 import styled from "styled-components";
 
+export const Container = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+Container.displayName = "Container";
+
+/*
 export const Container = styled.div`
   display: flex;
   flex-direction: row;
@@ -28,4 +34,4 @@ export const FilterWrapper = styled.div`
 FilterWrapper.displayName = "FilterWrapper";
 
 export const CheckboxStyle = styled(Checkbox)``;
-CheckboxStyle.displayName = "CheckboxStyle";
+CheckboxStyle.displayName = "CheckboxStyle";*/
