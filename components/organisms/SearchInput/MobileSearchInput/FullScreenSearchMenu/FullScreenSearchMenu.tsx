@@ -8,11 +8,10 @@ import {
   SearchIconStyling,
   SearchInputStyle,
 } from "./styles";
-import { Dispatch, KeyboardEvent, ReactElement, SetStateAction } from "react";
+import { Dispatch, ReactElement, SetStateAction } from "react";
 
 import Checkbox from "components/atoms/Checkbox";
 import { ContainerAnimVariant } from "./animation-variants";
-import Filters from "components/molecules/Filters";
 import useSearch from "./useSearch";
 
 interface IFullScreenSearchMenuProps {
@@ -20,8 +19,6 @@ interface IFullScreenSearchMenuProps {
   isMenuOpen: boolean;
   setSearchText: Dispatch<SetStateAction<string>>;
   searchText: string;
-  onHandleClickSearch: () => void;
-  onHandleKeyDown: (e: KeyboardEvent<HTMLInputElement>) => void;
 }
 
 const SearchIcon = (props: any) => (
@@ -33,15 +30,14 @@ export default function FullScreenSearchMenu({
   isMenuOpen,
   setSearchText,
   searchText,
-  onHandleClickSearch,
-  onHandleKeyDown,
 }: IFullScreenSearchMenuProps): ReactElement {
   const {
     onHandleMenuKeyDown,
     onHandleMenuClickSearch,
     filters,
+    cancelFilters,
     setType,
-  } = useSearch(searchText, setMenuOpen);
+  } = useSearch(searchText, isMenuOpen, setMenuOpen);
 
   return (
     <Container
@@ -54,7 +50,11 @@ export default function FullScreenSearchMenu({
         <Header>
           <div></div>
           <span>Search {"&"} Filter</span>
-          <CloseBtn onClick={() => setMenuOpen(false)}>
+          <CloseBtn
+            onClick={() => {
+              setMenuOpen(false), cancelFilters();
+            }}
+          >
             <CloseIcon />
           </CloseBtn>
         </Header>
