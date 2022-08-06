@@ -31,6 +31,7 @@ export default function useFilters() {
         {
           ...router.query,
           type: type,
+          page: 1,
         },
         router.query
       ),
