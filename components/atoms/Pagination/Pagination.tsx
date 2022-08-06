@@ -1,8 +1,10 @@
-import { ForwardRefExoticComponent, ReactElement } from "react";
-import { MantineNumberSize, Pagination, PaginationProps } from "@mantine/core";
+import { MantineNumberSize, Pagination } from "@mantine/core";
+
+import { ReactElement } from "react";
 
 interface IPaginationProps {
-  initialPage: number;
+  initialPage?: number;
+  page?: number;
   total: number;
   color: string;
   radius?: MantineNumberSize;
@@ -14,6 +16,7 @@ interface IPaginationProps {
 
 export default function PaginationCustom({
   initialPage,
+  page,
   total,
   color,
   radius,
@@ -24,7 +27,17 @@ export default function PaginationCustom({
 }: IPaginationProps): ReactElement {
   return (
     <Pagination
-      {...{ className, total, color, radius, withEdges, onChange, size }}
+      {...{
+        className,
+        initialPage,
+        page,
+        total,
+        color,
+        radius,
+        withEdges,
+        onChange,
+        size,
+      }}
     />
   );
 }

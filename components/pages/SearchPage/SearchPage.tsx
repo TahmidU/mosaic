@@ -29,7 +29,7 @@ export default function SearchPage({
   type,
 }: ISearchPageProps): ReactElement {
   const { generateDetailsURL } = useRoutes();
-  const { getInitialPage, onPageChange } = usePagination();
+  const { getInitialPage, onPageChange, page } = usePagination();
 
   const isMobile = useMediaQuery({
     query: "(max-width: 768px)",
@@ -66,7 +66,7 @@ export default function SearchPage({
       <Footer>
         {searchData && (
           <Pagination
-            initialPage={getInitialPage()}
+            page={page}
             total={totalPages}
             color="red"
             radius="lg"
