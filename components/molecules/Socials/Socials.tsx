@@ -1,3 +1,4 @@
+import { AllowedSocialTypes } from "utils/TypeCheckUtils";
 import { BsFacebook } from "react-icons/bs";
 import { BsInstagram } from "react-icons/bs";
 import { BsTwitter } from "react-icons/bs";
@@ -15,39 +16,36 @@ interface ISocialsProps {
 }
 
 export default function Socials({ links }: ISocialsProps): ReactElement {
+  const supportedLinks = links.filter((_link) =>
+    AllowedSocialTypes.includes(_link.variant)
+  );
+
   return (
     <Container>
-      {links.map((_link, _index) =>
-        (_link.variant === "external" && _link.href) ||
-        (_link.variant === "instagram" && _link.href) ||
-        (_link.variant === "facebook" && _link.href) ||
-        (_link.variant === "twitter" && _link.href) ? (
-          <ExternalLink
-            key={_index}
-            href={
-              _link.variant === "external"
-                ? _link.href
-                : _link.variant === "facebook"
-                ? `${Links.facebookURL}${_link.href}`
-                : _link.variant === "instagram"
-                ? `${Links.instagramURL}${_link.href}`
-                : `${Links.twitterURL}${_link.href}`
-            }
-          >
-            {_link.variant === "external" ? (
-              <FaExternalLinkAlt />
-            ) : _link.variant === "facebook" ? (
-              <BsFacebook />
-            ) : _link.variant === "instagram" ? (
-              <BsInstagram />
-            ) : (
-              <BsTwitter />
-            )}
-          </ExternalLink>
-        ) : (
-          <></>
-        )
-      )}
+      {supportedLinks.map((_link, _index) => (
+        <ExternalLink
+          key={_index}
+          href={
+            _link.variant === "external"
+              ? _link.href
+              : _link.variant === "facebook"
+              ? `${Links.facebookURL}${_link.href}`
+              : _link.variant === "instagram"
+              ? `${Links.instagramURL}${_link.href}`
+              : `${Links.twitterURL}${_link.href}`
+          }
+        >
+          {_link.variant === "external" ? (
+            <FaExternalLinkAlt />
+          ) : _link.variant === "facebook" ? (
+            <BsFacebook />
+          ) : _link.variant === "instagram" ? (
+            <BsInstagram />
+          ) : (
+            <BsTwitter />
+          )}
+        </ExternalLink>
+      ))}
     </Container>
   );
 }
