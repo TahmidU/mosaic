@@ -1,11 +1,4 @@
-import {
-  Container,
-  ExtraDetailSection,
-  MediaCardStyle,
-  MediaHorizontalList,
-  MediaListWrapper,
-  ShortDetailSection,
-} from "./styles";
+import { Container, ExtraDetailSection, ShortDetailSection } from "./styles";
 import { IVideo, IVideoResult } from "types/api/videos";
 import { ReactElement, useContext, useEffect, useState } from "react";
 
@@ -13,7 +6,7 @@ import CastList from "components/organisms/CastList";
 import GlobalContext from "context/GlobalContext";
 import { IMovieDetails } from "types/movie";
 import { ITVDetails } from "types/tv";
-import { Links } from "utils";
+import MediaList from "components/organisms/MediaList";
 import MovieDetails from "components/organisms/MovieDetails";
 import VideoModal from "components/molecules/VideoModal";
 import { useRouter } from "next/router";
@@ -69,20 +62,7 @@ export default function DetailsPage({
 
           <CastList movieDetails={details} />
 
-          <MediaHorizontalList title="Media">
-            {videoData &&
-              videoData.results.map((_video, index) => (
-                <MediaListWrapper key={index}>
-                  <MediaCardStyle
-                    title={_video.name}
-                    src={`${Links.youtubeThumbnailURL}${_video.key}/hqdefault.jpg`}
-                    onClick={() =>
-                      setModal({ open: true, initialIndex: index })
-                    }
-                  />
-                </MediaListWrapper>
-              ))}
-          </MediaHorizontalList>
+          <MediaList {...{ setModal, videoData }} />
         </ExtraDetailSection>
       </Container>
       <VideoModal
