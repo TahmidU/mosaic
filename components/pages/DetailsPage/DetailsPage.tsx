@@ -1,7 +1,4 @@
 import {
-  CastCardStyle,
-  CastHorizontalList,
-  CastListWrapper,
   Container,
   ExtraDetailSection,
   MediaCardStyle,
@@ -12,6 +9,7 @@ import {
 import { IVideo, IVideoResult } from "types/api/videos";
 import { ReactElement, useContext, useEffect, useState } from "react";
 
+import CastList from "components/organisms/CastList";
 import GlobalContext from "context/GlobalContext";
 import { IMovieDetails } from "types/movie";
 import { ITVDetails } from "types/tv";
@@ -69,13 +67,7 @@ export default function DetailsPage({
             <p>{details.overview}</p>
           </div>
 
-          <CastHorizontalList title="Cast">
-            {details.credits?.cast.map((_actor, index) => (
-              <CastListWrapper key={index}>
-                <CastCardStyle person={_actor} />
-              </CastListWrapper>
-            ))}
-          </CastHorizontalList>
+          <CastList movieDetails={details} />
 
           <MediaHorizontalList title="Media">
             {videoData &&
