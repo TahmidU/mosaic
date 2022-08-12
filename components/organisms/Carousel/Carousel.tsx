@@ -16,7 +16,7 @@ import CarouselImage from "components/organisms/Carousel/CarouselImage";
 import Clips from "./Clips";
 import GlobalContext from "context/GlobalContext";
 import { IDiscoverMovie } from "../../../types/api/discover";
-import { IVideo } from "types/api/videos";
+import { IVideos } from "types/api/videos";
 import MovieInfo from "./MovieInfo";
 import ProgressiveBar from "./ProgressiveBar";
 import dynamic from "next/dynamic";
@@ -27,7 +27,7 @@ const VideoModal = dynamic(() => import("../../molecules/VideoModal"), {
 
 interface ICarouselProps {
   carouselData?: IDiscoverMovie[];
-  videos?: IVideo;
+  videos?: IVideos;
   localImages?: boolean;
   disableAutoSlide?: boolean;
   autoSlideDuration?: number;

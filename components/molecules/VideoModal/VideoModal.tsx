@@ -17,7 +17,7 @@ import {
 
 import ClientPortal from "components/atoms/ClientPortal";
 import { GrClose } from "react-icons/gr";
-import { IVideo } from "types/api/videos";
+import { IVideos } from "types/api/videos";
 import { Links } from "utils";
 
 interface IVideoModalProps {
@@ -25,7 +25,7 @@ interface IVideoModalProps {
   setModalOpen: Dispatch<
     SetStateAction<{ open: boolean; initialIndex: number }>
   >;
-  videos?: IVideo;
+  videos?: IVideos;
 }
 
 export default function VideoModal({

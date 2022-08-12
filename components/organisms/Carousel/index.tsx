@@ -2,7 +2,7 @@ import { ReactElement, useEffect, useState } from "react";
 
 import { default as DesktopCarousel } from "./Carousel";
 import { IDiscoverMovie } from "types/api/discover";
-import { IVideo } from "types/api/videos";
+import { IVideos } from "types/api/videos";
 import { MathUtils } from "utils";
 import MobileCarousel from "./MobileCarousel";
 import { textAnimVariant } from "./MovieInfo/animation-variants";
@@ -11,10 +11,14 @@ import { useMediaQuery } from "react-responsive";
 
 interface ICarouselProps {
   carouselData?: IDiscoverMovie[];
-  videos?: IVideo;
+  videos?: IVideos;
   startPage?: number;
-  onPageChange?: (step: number) => void;
+  onPageChange?: (videoId: number) => void;
 }
+
+export const carouselMediaQuery = {
+  query: "(max-width: 1264px)",
+};
 
 export default function Carousel({
   carouselData = [],
@@ -31,14 +35,12 @@ export default function Carousel({
     textAnimControls.set(textAnimVariant.hide);
     textAnimControls.start(() => textAnimVariant.show);
 
-    onPageChange && onPageChange(page);
+    onPageChange && carouselData && onPageChange(carouselData[page].id);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page]);
 
-  const isMobile = useMediaQuery({
-    query: "(max-width: 1264px)",
-  });
+  const isMobile = useMediaQuery(carouselMediaQuery);
 
   function handlePageDirectionChange(direction: 1 | -1) {
     setPage(([_page, _direction]) => [

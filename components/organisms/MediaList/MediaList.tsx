@@ -5,11 +5,11 @@ import {
   MediaListWrapper,
 } from "./styles";
 
-import { IVideo } from "types/api/videos";
+import { IVideos } from "types/api/videos";
 import { Links } from "utils";
 
 interface IMediaListProps {
-  videoData?: IVideo;
+  videoData?: IVideos;
   setModal: Dispatch<
     SetStateAction<{
       open: boolean;

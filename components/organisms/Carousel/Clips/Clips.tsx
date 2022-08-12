@@ -2,10 +2,10 @@ import { Container, Content } from "./styles";
 import { ReactElement, useEffect, useState } from "react";
 
 import Clip from "./Clip";
-import { IVideo } from "types/api/videos";
+import { IVideos } from "types/api/videos";
 
 interface IClipsProps {
-  videos?: IVideo;
+  videos?: IVideos;
   onClipClickedCallback: (videoIndex: number) => void;
 }
 

@@ -1,5 +1,5 @@
 import { Container, ExtraDetailSection, ShortDetailSection } from "./styles";
-import { IVideo, IVideoResult } from "types/api/videos";
+import { IVideoResult, IVideos } from "types/api/videos";
 import { ReactElement, useContext, useEffect, useState } from "react";
 
 import CastList from "components/organisms/CastList";
@@ -21,7 +21,7 @@ export default function DetailsPage({
   tvDetails,
 }: IDetailsPageProps): ReactElement {
   const { globalRequests } = useContext(GlobalContext);
-  const [videoData, setVideoData] = useState<IVideo>();
+  const [videoData, setVideoData] = useState<IVideos>();
   const [modal, setModal] = useState({
     open: false,
     initialIndex: 0,
@@ -37,7 +37,7 @@ export default function DetailsPage({
           Number(id),
           router.route === "/movie/[id]" ? "movies" : "tv"
         )
-        .then((data: IVideo) => {
+        .then((data: IVideos) => {
           setVideoData(data);
         });
 
