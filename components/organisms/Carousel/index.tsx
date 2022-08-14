@@ -2,18 +2,16 @@ import { ReactElement, useEffect, useState } from "react";
 
 import { default as DesktopCarousel } from "./Carousel";
 import { IDiscoverMovie } from "types/api/discover";
-import { IVideos } from "types/api/videos";
 import { MathUtils } from "utils";
 import MobileCarousel from "./MobileCarousel";
 import { textAnimVariant } from "./MovieInfo/animationVariants";
 import { useAnimation } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
+import useVideoInfoCache from "./useCarouselVideoCache";
 
 interface ICarouselProps {
   carouselData?: IDiscoverMovie[];
-  videos?: IVideos;
   startPage?: number;
-  onPageChange?: (videoId: number) => void;
 }
 
 export const carouselMediaQuery = {
@@ -22,11 +20,10 @@ export const carouselMediaQuery = {
 
 export default function Carousel({
   carouselData = [],
-  videos,
   startPage = 0,
-  onPageChange,
 }: ICarouselProps): ReactElement {
   const [[page, direction], setPage] = useState([startPage, 0]);
+  const { currentVideos, onPageChange } = useVideoInfoCache();
 
   // Text Animations
   const textAnimControls = useAnimation();
@@ -67,7 +64,7 @@ export default function Carousel({
       ) : (
         <DesktopCarousel
           carouselData={carouselData}
-          videos={videos}
+          videos={currentVideos}
           handlePageDirectionChange={handlePageDirectionChange}
           handlePageChange={handlePageChange}
           page={page}
