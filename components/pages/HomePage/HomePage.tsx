@@ -11,7 +11,6 @@ import { IDiscoverMovie } from "types/api/discover";
 import { ReactElement } from "react";
 import ScrollDownBtn from "components/molecules/ScrollDownBtn";
 import dynamic from "next/dynamic";
-import useVideoInfoCache from "components/organisms/Carousel/useCarouselVideoCache";
 
 const Carousel = dynamic(() => import("components/organisms/Carousel"), {
   ssr: false,
@@ -30,16 +29,11 @@ export default function HomePage({
     exploreTVSelect,
     exploreTVsList,
   } = useExploreList();
-  const { currentVideos, onPageChange } = useVideoInfoCache();
 
   return (
     <Container>
       <HeroSection>
-        <Carousel
-          carouselData={carouselData}
-          videos={currentVideos}
-          onPageChange={onPageChange}
-        />
+        <Carousel carouselData={carouselData} />
 
         <ScrollDownContainer>
           <ScrollDownBtn to="ContentSection" />
