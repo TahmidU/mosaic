@@ -1,7 +1,7 @@
 import { AnimatedCircle, Container } from "./styles";
 
 import { ReactElement } from "react";
-import { produceProgressiveCircleAnimVariant } from "./animation-variants";
+import { produceProgressiveCircleAnimVariant } from "./animationVariants";
 
 interface IProgressiveCircleProps {
   width: number;

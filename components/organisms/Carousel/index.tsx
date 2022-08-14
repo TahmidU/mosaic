@@ -5,7 +5,7 @@ import { IDiscoverMovie } from "types/api/discover";
 import { IVideos } from "types/api/videos";
 import { MathUtils } from "utils";
 import MobileCarousel from "./MobileCarousel";
-import { textAnimVariant } from "./MovieInfo/animation-variants";
+import { textAnimVariant } from "./MovieInfo/animationVariants";
 import { useAnimation } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
 

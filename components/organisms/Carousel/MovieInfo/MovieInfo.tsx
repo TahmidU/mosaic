@@ -2,7 +2,7 @@ import { AnimationControls } from "framer-motion";
 import { ReactElement } from "react";
 import { TextStyle } from "./styles";
 import { TextUtils } from "utils";
-import { textAnimVariant } from "./animation-variants";
+import { textAnimVariant } from "./animationVariants";
 
 interface IMovieInfoProps {
   title: string;
