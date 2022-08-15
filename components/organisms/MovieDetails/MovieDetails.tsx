@@ -28,11 +28,13 @@ import { shortenRuntime } from "utils/MathUtils";
 interface IMovieDetailsProps {
   movieDetails?: IMovieDetails;
   tvDetails?: ITVDetails;
+  className?: string;
 }
 
 export default function MovieDetail({
   movieDetails,
   tvDetails,
+  className,
 }: IMovieDetailsProps): ReactElement {
   if (!movieDetails && !tvDetails) return <></>;
 
@@ -52,6 +54,7 @@ export default function MovieDetail({
 
   return (
     <Container
+      className={className}
       variant="vertical_image"
       src={
         movieDetails?.poster_path

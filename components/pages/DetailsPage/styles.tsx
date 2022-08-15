@@ -1,3 +1,4 @@
+import MovieDetails from "components/organisms/MovieDetails";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -50,6 +51,10 @@ export const ExtraDetailSection = styled.div`
     > div:first-child > p:last-child {
       ${({ theme }) => theme.fonts.main.medium};
     }
+
+    > div:first-child {
+      margin: 0.125rem 0 3rem 0;
+    }
   }
 
   @media only screen and (max-width: 500px) {
@@ -59,3 +64,10 @@ export const ExtraDetailSection = styled.div`
   }
 `;
 ExtraDetailSection.displayName = "ExtraDetailSection";
+
+export const MovieDetailsStyle = styled(MovieDetails)`
+  @media only screen and (max-width: 1200px) {
+    margin: 0;
+  }
+`;
+MovieDetailsStyle.displayName = "MovieDetailsStyle";

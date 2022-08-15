@@ -1,13 +1,17 @@
-import { Container, ExtraDetailSection, ShortDetailSection } from "./styles";
-import { IVideoResult, IVideos } from "types/api/videos";
+import {
+  Container,
+  ExtraDetailSection,
+  MovieDetailsStyle,
+  ShortDetailSection,
+} from "./styles";
 import { ReactElement, useContext, useEffect, useState } from "react";
 
 import CastList from "components/organisms/CastList";
 import GlobalContext from "context/GlobalContext";
 import { IMovieDetails } from "types/movie";
 import { ITVDetails } from "types/tv";
+import { IVideos } from "types/api/videos";
 import MediaList from "components/organisms/MediaList";
-import MovieDetails from "components/organisms/MovieDetails";
 import VideoModal from "components/molecules/VideoModal";
 import { useRouter } from "next/router";
 
@@ -52,7 +56,10 @@ export default function DetailsPage({
     <>
       <Container>
         <ShortDetailSection>
-          <MovieDetails movieDetails={movieDetails} tvDetails={tvDetails} />
+          <MovieDetailsStyle
+            movieDetails={movieDetails}
+            tvDetails={tvDetails}
+          />
         </ShortDetailSection>
         <ExtraDetailSection>
           <div>
