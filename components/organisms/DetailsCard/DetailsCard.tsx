@@ -16,6 +16,7 @@ import {
   numberWithCommas,
 } from "utils/TextUtils";
 
+import AdditionalDetails from "./AdditionalDetails";
 import { IMovieDetails } from "types/movie";
 import { ITVDetails } from "types/tv";
 import Image from "next/image";
@@ -89,47 +90,7 @@ export default function MovieDetail({
           <span>Original Language</span>
           <span>{details?.original_language}</span>
         </p>
-        {movieDetails && (
-          <>
-            <p>
-              <span>Director(s)</span>
-              <span>
-                {findInCrewNamesByJob(movieDetails?.credits?.crew, "Director")}
-              </span>
-            </p>
-            <p>
-              <span>Writer(s)</span>
-              <span>
-                {findInCrewNamesByJob(movieDetails?.credits?.crew, "Writer")}
-              </span>
-            </p>
-
-            <p>
-              <span>Budget</span>
-              <span>${numberWithCommas(movieDetails.budget)}</span>
-            </p>
-            <p>
-              <span>Revenue</span>
-              <span>${numberWithCommas(movieDetails.revenue)}</span>
-            </p>
-          </>
-        )}
-        {tvDetails && (
-          <>
-            <p>
-              <span>Type</span>
-              <span>{tvDetails.type}</span>
-            </p>
-            <p>
-              <span>Number of Seasons</span>
-              <span>{tvDetails.number_of_seasons}</span>
-            </p>
-            <p>
-              <span>Number of Episodes</span>
-              <span>{tvDetails.number_of_episodes}</span>
-            </p>
-          </>
-        )}
+        {details && <AdditionalDetails details={details} variant={mediaType} />}
 
         {movieDetails &&
           movieDetails["watch/providers"]?.results?.GB !== undefined &&
