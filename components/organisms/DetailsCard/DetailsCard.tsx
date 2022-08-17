@@ -20,25 +20,28 @@ import { IMovieDetails } from "types/movie";
 import { ITVDetails } from "types/tv";
 import Image from "next/image";
 import { Links } from "utils";
+import { MediaType } from "types/tv_movies";
 import { ReactElement } from "react";
 import { SocialTypes } from "types/socials";
 import Socials from "components/molecules/Socials";
 import { shortenRuntime } from "utils/MathUtils";
 
 interface IMovieDetailsProps {
+  details?: IMovieDetails & ITVDetails;
   movieDetails?: IMovieDetails;
   tvDetails?: ITVDetails;
+  mediaType: MediaType;
   className?: string;
 }
 
 export default function MovieDetail({
+  details,
+  mediaType,
   movieDetails,
   tvDetails,
   className,
 }: IMovieDetailsProps): ReactElement {
-  if (!movieDetails && !tvDetails) return <></>;
-
-  const details = movieDetails ? movieDetails : tvDetails;
+  if (!details) return <></>;
 
   // Socials
   const socialLinks = Object.keys(details?.external_ids).map(
@@ -52,44 +55,39 @@ export default function MovieDetail({
     ...socialLinks,
   ];
 
+  // TV or Movie Details
+  const posterPath = `${Links.tmdbImageURL}original${details?.poster_path}`;
+  const title = details?.original_title || details?.original_name;
+  const releaseDate =
+    dateFormatter(details?.release_date) ||
+    dateFormatter(details?.first_air_date);
+  const movieRuntime = ` | ${shortenRuntime(details?.runtime)}` || "";
+
   return (
     <Container
       className={className}
       variant="vertical_image"
-      src={
-        movieDetails?.poster_path
-          ? `${Links.tmdbImageURL}original${movieDetails?.poster_path}`
-          : `${Links.tmdbImageURL}original${tvDetails?.poster_path}`
-      }
+      src={posterPath}
       imageWidth={379}
       imageHeight={580}
     >
       <MainSection>
         <TitleBlock>
+          <span>{title}</span>
           <span>
-            {movieDetails?.original_title || tvDetails?.original_name}
-          </span>
-          <span>
-            {dateFormatter(movieDetails?.release_date) ||
-              dateFormatter(tvDetails?.first_air_date)}{" "}
-            |{" "}
-            {movieDetails?.genres.map((_genre) => _genre.name).join(", ") ||
-              tvDetails?.genres.map((_genre) => _genre.name).join(", ")}
-            {movieDetails ? ` | ${shortenRuntime(movieDetails?.runtime)}` : ""}
+            {releaseDate} |{" "}
+            {details?.genres.map((_genre) => _genre.name).join(", ")}
+            {movieRuntime}
           </span>
         </TitleBlock>
-        <StarRatingStyle
-          rating={movieDetails?.vote_average || tvDetails?.vote_average || 0}
-        />
+        <StarRatingStyle rating={details?.vote_average || 0} />
 
         {externalLinks && <Socials links={externalLinks} />}
       </MainSection>
       <SubSection>
         <p>
           <span>Original Language</span>
-          <span>
-            {movieDetails?.original_language || tvDetails?.original_language}
-          </span>
+          <span>{details?.original_language}</span>
         </p>
         {movieDetails && (
           <>

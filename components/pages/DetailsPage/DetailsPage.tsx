@@ -12,17 +12,22 @@ import { IMovieDetails } from "types/movie";
 import { ITVDetails } from "types/tv";
 import { IVideos } from "types/api/videos";
 import MediaList from "components/organisms/MediaList";
+import { MediaType } from "types/tv_movies";
 import VideoModal from "components/molecules/VideoModal";
 import { useRouter } from "next/router";
 
 interface IDetailsPageProps {
+  details?: IMovieDetails & ITVDetails;
   movieDetails?: IMovieDetails;
   tvDetails?: ITVDetails;
+  mediaType: MediaType;
 }
 
 export default function DetailsPage({
+  details,
   movieDetails,
   tvDetails,
+  mediaType,
 }: IDetailsPageProps): ReactElement {
   const { globalRequests } = useContext(GlobalContext);
   const [videoData, setVideoData] = useState<IVideos>();
@@ -48,7 +53,9 @@ export default function DetailsPage({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const details = movieDetails ? movieDetails : tvDetails;
+  console.log(mediaType);
+
+  //const details = movieDetails ? movieDetails : tvDetails;
 
   if (!details) return <></>;
 
@@ -57,8 +64,10 @@ export default function DetailsPage({
       <Container>
         <ShortDetailSection>
           <MovieDetailsStyle
+            details={details}
             movieDetails={movieDetails}
             tvDetails={tvDetails}
+            mediaType={mediaType}
           />
         </ShortDetailSection>
         <ExtraDetailSection>

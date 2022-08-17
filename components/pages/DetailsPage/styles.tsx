@@ -1,4 +1,4 @@
-import MovieDetails from "components/organisms/MovieDetails";
+import MovieDetails from "components/organisms/DetailsCard";
 import styled from "styled-components";
 
 export const Container = styled.div`
