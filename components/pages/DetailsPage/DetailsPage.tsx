@@ -18,15 +18,11 @@ import { useRouter } from "next/router";
 
 interface IDetailsPageProps {
   details?: IMovieDetails & ITVDetails;
-  movieDetails?: IMovieDetails;
-  tvDetails?: ITVDetails;
   mediaType: MediaType;
 }
 
 export default function DetailsPage({
   details,
-  movieDetails,
-  tvDetails,
   mediaType,
 }: IDetailsPageProps): ReactElement {
   const { globalRequests } = useContext(GlobalContext);
@@ -63,12 +59,7 @@ export default function DetailsPage({
     <>
       <Container>
         <ShortDetailSection>
-          <MovieDetailsStyle
-            details={details}
-            movieDetails={movieDetails}
-            tvDetails={tvDetails}
-            mediaType={mediaType}
-          />
+          <MovieDetailsStyle details={details} mediaType={mediaType} />
         </ShortDetailSection>
         <ExtraDetailSection>
           <div>

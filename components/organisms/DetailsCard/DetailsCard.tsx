@@ -1,14 +1,9 @@
 import {
   Container,
-  ExternalLinkIcon,
-  FacebookIcon,
-  InstagramIcon,
   MainSection,
   StarRatingStyle,
   SubSection,
   TitleBlock,
-  TwitterIcon,
-  WatchOn,
 } from "./styles";
 
 import AdditionalDetails from "./AdditionalDetails";
@@ -25,8 +20,6 @@ import { shortenRuntime } from "utils/MathUtils";
 
 interface IMovieDetailsProps {
   details?: IMovieDetails & ITVDetails;
-  movieDetails?: IMovieDetails;
-  tvDetails?: ITVDetails;
   mediaType: MediaType;
   className?: string;
 }
@@ -34,8 +27,6 @@ interface IMovieDetailsProps {
 export default function MovieDetail({
   details,
   mediaType,
-  movieDetails,
-  tvDetails,
   className,
 }: IMovieDetailsProps): ReactElement {
   if (!details) return <></>;
