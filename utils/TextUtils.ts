@@ -28,14 +28,15 @@ export function dateFormatter(date?: string) {
 export function findInCrewNamesByJob(crew?: ICrew[], job?: string) {
   if (!crew || !job) return undefined;
 
-  return crew
+  const foundCrew = crew
     .filter((_person) => _person.job === job)
-    .map((_director) => _director.name)
-    .join(", ");
+    .map((_director) => _director.name);
+
+  return foundCrew.length > 0 ? foundCrew.join(", ") : "";
 }
 
-export function numberWithCommas(x?: number): string {
-  return x ? x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : "";
+export function numberWithCommas(x?: number): string | undefined {
+  return x ? x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") : undefined;
 }
 
 const TextUtils = {

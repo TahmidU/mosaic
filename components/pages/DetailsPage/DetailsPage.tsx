@@ -1,24 +1,29 @@
-import { Container, ExtraDetailSection, ShortDetailSection } from "./styles";
-import { IVideoResult, IVideos } from "types/api/videos";
+import {
+  Container,
+  ExtraDetailSection,
+  MovieDetailsStyle,
+  ShortDetailSection,
+} from "./styles";
 import { ReactElement, useContext, useEffect, useState } from "react";
 
 import CastList from "components/organisms/CastList";
 import GlobalContext from "context/GlobalContext";
 import { IMovieDetails } from "types/movie";
 import { ITVDetails } from "types/tv";
+import { IVideos } from "types/api/videos";
 import MediaList from "components/organisms/MediaList";
-import MovieDetails from "components/organisms/MovieDetails";
+import { MediaType } from "types/tv_movies";
 import VideoModal from "components/molecules/VideoModal";
 import { useRouter } from "next/router";
 
 interface IDetailsPageProps {
-  movieDetails?: IMovieDetails;
-  tvDetails?: ITVDetails;
+  details?: IMovieDetails & ITVDetails;
+  mediaType: MediaType;
 }
 
 export default function DetailsPage({
-  movieDetails,
-  tvDetails,
+  details,
+  mediaType,
 }: IDetailsPageProps): ReactElement {
   const { globalRequests } = useContext(GlobalContext);
   const [videoData, setVideoData] = useState<IVideos>();
@@ -44,7 +49,9 @@ export default function DetailsPage({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const details = movieDetails ? movieDetails : tvDetails;
+  console.log(mediaType);
+
+  //const details = movieDetails ? movieDetails : tvDetails;
 
   if (!details) return <></>;
 
@@ -52,7 +59,7 @@ export default function DetailsPage({
     <>
       <Container>
         <ShortDetailSection>
-          <MovieDetails movieDetails={movieDetails} tvDetails={tvDetails} />
+          <MovieDetailsStyle details={details} mediaType={mediaType} />
         </ShortDetailSection>
         <ExtraDetailSection>
           <div>
