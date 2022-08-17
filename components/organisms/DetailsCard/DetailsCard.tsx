@@ -10,21 +10,17 @@ import {
   TwitterIcon,
   WatchOn,
 } from "./styles";
-import {
-  dateFormatter,
-  findInCrewNamesByJob,
-  numberWithCommas,
-} from "utils/TextUtils";
 
 import AdditionalDetails from "./AdditionalDetails";
 import { IMovieDetails } from "types/movie";
 import { ITVDetails } from "types/tv";
-import Image from "next/image";
 import { Links } from "utils";
 import { MediaType } from "types/tv_movies";
+import Providers from "./Providers";
 import { ReactElement } from "react";
 import { SocialTypes } from "types/socials";
 import Socials from "components/molecules/Socials";
+import { dateFormatter } from "utils/TextUtils";
 import { shortenRuntime } from "utils/MathUtils";
 
 interface IMovieDetailsProps {
@@ -92,102 +88,7 @@ export default function MovieDetail({
         </p>
         {details && <AdditionalDetails details={details} variant={mediaType} />}
 
-        {movieDetails &&
-          movieDetails["watch/providers"]?.results?.GB !== undefined &&
-          movieDetails["watch/providers"]?.results?.GB?.buy && (
-            <>
-              <WatchOn>
-                <span>Purchase On (GB)</span>
-                <>
-                  {movieDetails["watch/providers"]?.results?.GB?.buy?.map(
-                    (_purchase_on, index) => {
-                      return (
-                        <div key={index}>
-                          <div>
-                            <Image
-                              alt="logo"
-                              src={
-                                _purchase_on.logo_path
-                                  ? `${Links.tmdbImageURL}original${_purchase_on.logo_path}`
-                                  : ""
-                              }
-                              width={24}
-                              height={24}
-                              layout="responsive"
-                            />
-                          </div>
-
-                          <span>{_purchase_on.provider_name}</span>
-                        </div>
-                      );
-                    }
-                  )}
-                </>
-              </WatchOn>
-            </>
-          )}
-
-        {movieDetails &&
-        movieDetails["watch/providers"]?.results?.GB !== undefined &&
-        movieDetails["watch/providers"]?.results?.GB?.flatrate ? (
-          <WatchOn>
-            <span>Stream On (GB)</span>
-            <>
-              {movieDetails["watch/providers"]?.results?.GB?.flatrate?.map(
-                (_stream_on, index) => (
-                  <div key={index}>
-                    <div>
-                      <Image
-                        alt="logo"
-                        src={
-                          _stream_on.logo_path
-                            ? `${Links.tmdbImageURL}original${_stream_on.logo_path}`
-                            : ""
-                        }
-                        width={24}
-                        height={24}
-                        layout="responsive"
-                      />
-                    </div>
-
-                    <span>{_stream_on.provider_name}</span>
-                  </div>
-                )
-              )}
-            </>
-          </WatchOn>
-        ) : tvDetails &&
-          tvDetails["watch/providers"]?.results?.GB !== undefined &&
-          tvDetails["watch/providers"]?.results?.GB?.flatrate ? (
-          <WatchOn>
-            <span>Stream On (GB)</span>
-            <>
-              {tvDetails["watch/providers"]?.results?.GB?.flatrate?.map(
-                (_stream_on, index) => (
-                  <div key={index}>
-                    <div>
-                      <Image
-                        alt="logo"
-                        src={
-                          _stream_on.logo_path
-                            ? `${Links.tmdbImageURL}original${_stream_on.logo_path}`
-                            : ""
-                        }
-                        width={24}
-                        height={24}
-                        layout="responsive"
-                      />
-                    </div>
-
-                    <span>{_stream_on.provider_name}</span>
-                  </div>
-                )
-              )}
-            </>
-          </WatchOn>
-        ) : (
-          <></>
-        )}
+        <Providers details={details} variant={mediaType} />
       </SubSection>
     </Container>
   );
