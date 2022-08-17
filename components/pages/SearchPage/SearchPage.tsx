@@ -7,7 +7,7 @@ import {
   MovieSearchResult,
   ResultsContainer,
 } from "./styles";
-import { SearchResult, SearchType } from "types/search";
+import { ISearch, SearchType } from "types/search";
 
 import { ReactElement } from "react";
 import dynamic from "next/dynamic";
@@ -20,7 +20,7 @@ const Pagination = dynamic(() => import("components/atoms/Pagination"), {
 });
 
 interface ISearchPageProps {
-  searchData: SearchResult;
+  searchData: ISearch;
   type: SearchType;
 }
 
@@ -29,7 +29,7 @@ export default function SearchPage({
   type,
 }: ISearchPageProps): ReactElement {
   const { generateDetailsURL } = useRoutes();
-  const { getInitialPage, onPageChange, page } = usePagination();
+  const { onPageChange, page } = usePagination();
 
   const isMobile = useMediaQuery({
     query: "(max-width: 768px)",
@@ -46,7 +46,7 @@ export default function SearchPage({
       </Header>
       <ResultsContainer>
         {searchData ? (
-          searchData.results.map((_result, index) => {
+          searchData.results.map((_result: any, index) => {
             return (
               <LinkBtn key={index} href={generateDetailsURL(_result.id, type)}>
                 <MovieSearchResult
