@@ -22,8 +22,6 @@ export default function AdditionalDetails({
       writers = findInCrewNamesByJob(details?.credits?.crew, "Writer");
     }
 
-    console.log(details?.budget);
-
     return (
       <>
         {directors && (

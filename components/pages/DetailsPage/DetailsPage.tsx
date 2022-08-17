@@ -49,8 +49,6 @@ export default function DetailsPage({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  console.log(mediaType);
-
   //const details = movieDetails ? movieDetails : tvDetails;
 
   if (!details) return <></>;
