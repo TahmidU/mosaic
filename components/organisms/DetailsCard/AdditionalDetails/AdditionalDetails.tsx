@@ -15,39 +15,40 @@ export default function AdditionalDetails({
   details,
 }: IAdditionalDetailsProps): ReactElement {
   if (variant === "movie") {
+    let directors: string | undefined = "";
+    let writers: string | undefined = "";
+    if (details?.credits?.crew) {
+      directors = findInCrewNamesByJob(details?.credits?.crew, "Director");
+      writers = findInCrewNamesByJob(details?.credits?.crew, "Writer");
+    }
+
+    console.log(details?.budget);
+
     return (
       <>
-        {details?.credits?.crew && (
+        {directors && (
           <p>
             <span>Director(s)</span>
-            <span>
-              {findInCrewNamesByJob(details?.credits?.crew, "Director")}
-            </span>
+            <span>{directors}</span>
           </p>
         )}
 
-        {details?.credits?.crew && (
+        {writers && (
           <p>
             <span>Writer(s)</span>
-            <span>
-              {findInCrewNamesByJob(details?.credits?.crew, "Writer")}
-            </span>
+            <span>{writers}</span>
           </p>
         )}
 
-        {details?.budget && (
-          <p>
-            <span>Budget</span>
-            <span>${numberWithCommas(details.budget)}</span>
-          </p>
-        )}
+        <p>
+          <span>Budget</span>
+          <span>${numberWithCommas(details.budget)}</span>
+        </p>
 
-        {details?.revenue && (
-          <p>
-            <span>Revenue</span>
-            <span>${numberWithCommas(details.revenue)}</span>
-          </p>
-        )}
+        <p>
+          <span>Revenue</span>
+          <span>${numberWithCommas(details.revenue)}</span>
+        </p>
       </>
     );
   }
