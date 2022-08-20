@@ -8,7 +8,7 @@ export const Container = styled.div`
   max-width: 8rem;
   width: 100%;
   height: auto;
-  align-items: center;
+  align-items: baseline;
 
   > span:last-child {
     grid-area: rating;
@@ -24,7 +24,7 @@ export const StarWrapper = styled.div`
 `;
 StarWrapper.displayName = "StarWrapper";
 
-const starStrokeURL = "url(star_rating.png);";
+const starStrokeURL = "url('/star_rating.png');";
 export const StarStroke = styled.div`
   background-image: ${starStrokeURL};
   background-size: cover;
@@ -33,7 +33,7 @@ export const StarStroke = styled.div`
 `;
 StarStroke.displayName = "StarStroke";
 
-const maskURL = "url(star_rating_mask.png);";
+const maskURL = "url('/star_rating_mask.png');";
 export const StarGradient = styled.div<{ rating: number }>`
   background: ${({ rating }) =>
     `linear-gradient(to right, #FD1C1C ${rating}%, transparent ${rating}%);`};

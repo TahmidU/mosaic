@@ -36,6 +36,6 @@ export const CardStyle = styled(Card)`
 CardStyle.displayName = "CardStyle";
 
 export const StarRatingStyle = styled(StarRating)`
-  margin: 0 0 0.3rem 0;
+  margin: 0.2rem 0 0.3rem 0;
 `;
 StarRatingStyle.displayName = "StarRatingStyle";
