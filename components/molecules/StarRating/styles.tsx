@@ -39,7 +39,7 @@ export const StarGradient = styled.div<{ rating: number }>`
     `linear-gradient(to right, #FD1C1C ${rating}%, transparent ${rating}%);`};
   mask-image: ${maskURL};
   -webkit-mask-image: ${maskURL};
-  -webkit-mask-size: cover;
+  mask-size: cover;
   width: 100%;
   height: 100%;
 `;
