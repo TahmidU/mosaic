@@ -1,7 +1,7 @@
 import {
   Container,
+  DetailsCardStyle,
   ExtraDetailSection,
-  MovieDetailsStyle,
   ShortDetailSection,
 } from "./styles";
 import { ReactElement, useContext, useEffect, useState } from "react";
@@ -55,7 +55,7 @@ export default function DetailsPage({
     <>
       <Container>
         <ShortDetailSection>
-          <MovieDetailsStyle details={details} mediaType={mediaType} />
+          <DetailsCardStyle details={details} mediaType={mediaType} />
         </ShortDetailSection>
         <ExtraDetailSection>
           <div>

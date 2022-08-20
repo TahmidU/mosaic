@@ -1,4 +1,4 @@
-import MovieDetails from "components/organisms/DetailsCard";
+import DetailsCard from "components/organisms/DetailsCard";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -65,9 +65,9 @@ export const ExtraDetailSection = styled.div`
 `;
 ExtraDetailSection.displayName = "ExtraDetailSection";
 
-export const MovieDetailsStyle = styled(MovieDetails)`
+export const DetailsCardStyle = styled(DetailsCard)`
   @media only screen and (max-width: 1200px) {
     margin: 0;
   }
 `;
-MovieDetailsStyle.displayName = "MovieDetailsStyle";
+DetailsCardStyle.displayName = "DetailsCardStyle";

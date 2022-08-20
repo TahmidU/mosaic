@@ -18,17 +18,17 @@ import Socials from "components/molecules/Socials";
 import { dateFormatter } from "utils/TextUtils";
 import { shortenRuntime } from "utils/MathUtils";
 
-interface IMovieDetailsProps {
+interface IDetailsCardProps {
   details?: IMovieDetails & ITVDetails;
   mediaType: MediaType;
   className?: string;
 }
 
-export default function MovieDetail({
+export default function DetailsCard({
   details,
   mediaType,
   className,
-}: IMovieDetailsProps): ReactElement {
+}: IDetailsCardProps): ReactElement {
   if (!details) return <></>;
 
   // Socials
