@@ -1,4 +1,5 @@
 import Card from "components/atoms/Card";
+import StarRating from "../StarRating";
 import styled from "styled-components";
 
 export const CardStyle = styled(Card)`
@@ -12,6 +13,7 @@ export const CardStyle = styled(Card)`
     flex-direction: column;
     align-items: center;
     text-align: center;
+    width: 100%;
     > span:first-child {
       display: -webkit-box;
       -webkit-line-clamp: 2;
@@ -32,3 +34,8 @@ export const CardStyle = styled(Card)`
   }
 `;
 CardStyle.displayName = "CardStyle";
+
+export const StarRatingStyle = styled(StarRating)`
+  margin: 0.2rem 0 0.3rem 0;
+`;
+StarRatingStyle.displayName = "StarRatingStyle";
