@@ -6,6 +6,8 @@ import { useRouter } from "next/router";
 export default function useRoutes() {
   const router = useRouter();
 
+  const homePageURL = "/";
+
   const generateDetailsURL = (id: number, type: MediaType = "movie") =>
     `/${type}/${id}`;
 
@@ -27,6 +29,7 @@ export default function useRoutes() {
       });
 
   return {
+    homePageURL,
     goToHomePage,
     goToDetails,
     generateDetailsURL,

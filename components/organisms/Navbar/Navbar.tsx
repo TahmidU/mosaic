@@ -1,20 +1,28 @@
 /* eslint-disable @next/next/no-img-element */
 
-import { MenuContainer, NavbarContainer, SearchInputStyle } from "./styles";
-import { ReactElement, useContext } from "react";
+import {
+  LinkBtn,
+  MenuContainer,
+  NavbarContainer,
+  SearchInputStyle,
+} from "./styles";
 
-import GlobalContext from "context/GlobalContext";
 import Logo from "../../../img/Logo";
+import { ReactElement } from "react";
+import useRoutes from "hooks/useRoutes";
 
 interface INavbarProps {}
 
 export default function Navbar({}: INavbarProps): ReactElement {
-  const { routes } = useContext(GlobalContext);
+  const { homePageURL } = useRoutes();
 
   return (
     <NavbarContainer>
       <div>
-        <Logo onClick={routes?.goToHomePage} />
+        <LinkBtn href={homePageURL}>
+          <Logo />
+        </LinkBtn>
+
         <MenuContainer>{/* */}</MenuContainer>
       </div>
 
