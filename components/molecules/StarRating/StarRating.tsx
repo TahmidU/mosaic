@@ -1,7 +1,6 @@
 import { Container, StarGradient, StarStroke, StarWrapper } from "./styles";
 
 import { ReactElement } from "react";
-import { v4 as uuidv4 } from "uuid";
 
 interface IStarRatingProps {
   className?: string;
