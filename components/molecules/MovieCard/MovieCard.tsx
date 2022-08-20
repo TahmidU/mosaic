@@ -1,4 +1,5 @@
-import { CardStyle } from "./styles";
+import { CardStyle, StarRatingStyle } from "./styles";
+
 import { ReactElement } from "react";
 import StarRating from "../StarRating";
 
@@ -27,7 +28,7 @@ export default function MovieCard({
       onClick={onClick}
     >
       <span>{movieTitle}</span>
-      <StarRating rating={review || 0} />
+      <StarRatingStyle rating={review || 0} />
       <span>{movieReleaseDate}</span>
     </CardStyle>
   );
