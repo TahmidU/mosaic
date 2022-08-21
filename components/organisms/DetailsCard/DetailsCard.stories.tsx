@@ -1,20 +1,20 @@
+import DetailsCard from "./DetailsCard";
 import { FakeMovieData } from "resources/TestResources/MovieDetails";
 import { FakeTVData } from "resources/TestResources/TVDetails";
 import { IPayload } from "types/story";
-import MovieDetails from "./DetailsCard";
 
 const payload: IPayload = {
-  title: "ORGANISMS/MovieDetails",
-  component: MovieDetails,
+  title: "ORGANISMS/DetailsCard",
+  component: DetailsCard,
 };
 export default payload;
 
 export const Movie = (args: any) => (
-  <MovieDetails movieDetails={FakeMovieData} {...args} />
+  <DetailsCard movieDetails={FakeMovieData} {...args} />
 );
 Movie.args = {};
 
 export const TV = (args: any) => (
-  <MovieDetails tvDetails={FakeTVData} {...args} />
+  <DetailsCard tvDetails={FakeTVData} {...args} />
 );
 TV.args = {};

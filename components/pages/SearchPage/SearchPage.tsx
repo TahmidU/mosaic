@@ -4,8 +4,8 @@ import {
   Footer,
   Header,
   LinkBtn,
-  MovieSearchResult,
   ResultsContainer,
+  SearchResult,
 } from "./styles";
 import { ISearch, SearchType } from "types/search";
 
@@ -49,7 +49,7 @@ export default function SearchPage({
           searchData.results.map((_result: any, index) => {
             return (
               <LinkBtn key={index} href={generateDetailsURL(_result.id, type)}>
-                <MovieSearchResult
+                <SearchResult
                   title={_result.name || _result.title}
                   src={_result.poster_path}
                   desc={_result.overview}

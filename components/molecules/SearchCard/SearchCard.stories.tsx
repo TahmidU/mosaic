@@ -1,13 +1,13 @@
 import { IPayload } from "types/story";
-import MovieSearchCard from "./MovieSearchCard";
+import SearchCard from "./SearchCard";
 
 const payload: IPayload = {
-  title: "MOLECULES/MovieSearchCard",
-  component: MovieSearchCard,
+  title: "MOLECULES/SearchCard",
+  component: SearchCard,
 };
 export default payload;
 
-export const Basic = (args: any) => <MovieSearchCard {...args} />;
+export const Basic = (args: any) => <SearchCard {...args} />;
 Basic.args = {
   title: "FooBar",
   desc:
