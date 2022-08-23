@@ -1,5 +1,7 @@
 import {
   Container,
+  DetailImage,
+  ImageWrapper,
   MainSection,
   StarRatingStyle,
   SubSection,
@@ -52,13 +54,16 @@ export default function DetailsCard({
   const movieRuntime = ` | ${shortenRuntime(details?.runtime)}` || "";
 
   return (
-    <Container
-      className={className}
-      variant="vertical_image"
-      src={posterPath}
-      imageWidth={379}
-      imageHeight={580}
-    >
+    <Container className={className}>
+      <ImageWrapper>
+        <DetailImage
+          src={posterPath}
+          width={379}
+          height={580}
+          layout="responsive"
+        />
+      </ImageWrapper>
+
       <MainSection>
         <TitleBlock>
           <span>{title}</span>
@@ -72,6 +77,7 @@ export default function DetailsCard({
 
         {externalLinks && <Socials links={externalLinks} />}
       </MainSection>
+
       <SubSection>
         <p>
           <span>Original Language</span>
