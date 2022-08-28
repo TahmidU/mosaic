@@ -2,10 +2,7 @@ import { Container, ImageWrapper, MediaImage, TitleText } from "./styles";
 
 import { ReactElement } from "react";
 
-type Variant = "Fat" | "Long";
-
 interface IMediaCardProps {
-  variant?: Variant;
   title: string;
   src: string;
   onClick?: () => void;
@@ -13,7 +10,6 @@ interface IMediaCardProps {
 }
 
 export default function MediaCard({
-  variant = "Fat",
   title,
   src,
   onClick,
