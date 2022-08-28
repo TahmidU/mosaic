@@ -1,4 +1,4 @@
-import { FatContainer, TitleText } from "./styles";
+import { Container, ImageWrapper, MediaImage, TitleText } from "./styles";
 
 import { ReactElement } from "react";
 
@@ -20,15 +20,17 @@ export default function MediaCard({
   className,
 }: IMediaCardProps): ReactElement {
   return (
-    <FatContainer
-      className={className}
-      variant="vertical_image"
-      src={src}
-      imageWidth={500}
-      imageHeight={350}
-      onClick={onClick}
-    >
+    <Container className={className} onClick={onClick}>
+      <ImageWrapper>
+        <MediaImage
+          alt={title}
+          src={src}
+          width={500}
+          height={350}
+          layout="responsive"
+        />
+      </ImageWrapper>
       <TitleText>{title}</TitleText>
-    </FatContainer>
+    </Container>
   );
 }

@@ -37,5 +37,9 @@ export default function Card({
     );
   }
 
-  return <Container className={className}>{children}</Container>;
+  return (
+    <Container className={className} onClick={onClick}>
+      {children}
+    </Container>
+  );
 }
