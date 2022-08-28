@@ -1,4 +1,4 @@
-import { Container, TextSection } from "./styles";
+import { CastImage, Container, ImageWrapper, TextSection } from "./styles";
 
 import { ICast } from "types/tv_movies";
 import { Links } from "utils";
@@ -14,11 +14,16 @@ export default function CastCard({
   className,
 }: ICastCardProps): ReactElement {
   return (
-    <Container
-      className={className}
-      variant="vertical_image"
-      src={`${Links.tmdbImageURL}original${person.profile_path}`}
-    >
+    <Container className={className}>
+      <ImageWrapper>
+        <CastImage
+          alt={person.original_name}
+          src={`${Links.tmdbImageURL}original${person.profile_path}` || ""}
+          width={150}
+          height={225}
+          layout="responsive"
+        />
+      </ImageWrapper>
       <TextSection>
         <span>{person.name}</span>
         {person.character.split("/").map((_played, index) => {

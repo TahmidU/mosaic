@@ -1,4 +1,5 @@
 import Card from "components/atoms/Card";
+import Image from "next/image";
 import StarRating from "components/molecules/StarRating";
 import styled from "styled-components";
 
@@ -9,7 +10,7 @@ export const Container = styled(Card)`
   height: fit-content;
   cursor: unset;
 
-  > div:nth-child(2) {
+  > div:nth-child(3) {
     width: 100%;
   }
 
@@ -18,6 +19,22 @@ export const Container = styled(Card)`
   margin: 0 0 1rem 0;
 `;
 Container.displayName = "Container";
+
+export const ImageWrapper = styled.div`
+  width: 100%;
+  max-width: 379px;
+  height: fit-content;
+  max-height: 580px;
+  position: relative;
+`;
+ImageWrapper.displayName = "ImageWrapper";
+
+export const DetailImage = styled(Image)`
+  width: 100%;
+  height: 100%;
+  border-radius: 14px;
+`;
+DetailImage.displayName = "DetailImage";
 
 export const MainSection = styled.div`
   display: flex;
