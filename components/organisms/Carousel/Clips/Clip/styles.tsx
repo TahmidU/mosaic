@@ -1,20 +1,17 @@
+import Card from "components/atoms/Card";
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Container = styled(Card)`
   display: grid;
   grid-template-columns: 30% 70%;
   grid-template-areas: "thumb meta";
+  max-width: unset;
+  height: unset;
+  max-height: unset;
   cursor: pointer;
-  border-radius: 14px;
-  padding: 0.625em;
-  box-shadow: 2px 2px 8px 0px rgba(33, 31, 27, 0.14);
 
   :hover {
     background-color: ${({ theme }) => theme.cGrey.alpha(0.2).toString()};
-  }
-
-  > div:first-child {
-    grid-area: thumb;
   }
 
   > div:last-child {
