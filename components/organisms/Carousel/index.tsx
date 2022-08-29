@@ -1,3 +1,4 @@
+import { DesktopCarouselStyle, MobileCarouselStyle } from "./styles";
 import { ReactElement, useEffect, useState } from "react";
 
 import { default as DesktopCarousel } from "./Carousel";
@@ -53,7 +54,7 @@ export default function Carousel({
   return (
     <>
       {isMobile ? (
-        <MobileCarousel
+        <MobileCarouselStyle
           carouselData={carouselData}
           page={page}
           direction={direction}
@@ -62,7 +63,7 @@ export default function Carousel({
           textAnimControls={textAnimControls}
         />
       ) : (
-        <DesktopCarousel
+        <DesktopCarouselStyle
           carouselData={carouselData}
           videos={currentVideos}
           handlePageDirectionChange={handlePageDirectionChange}
