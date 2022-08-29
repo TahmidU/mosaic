@@ -1,3 +1,4 @@
+import LoadingSkeleton from "./LoadingSkeleton";
 import ReviewStat from "components/molecules/ReviewStat";
 import SlideButton from "../../molecules/SlideButton";
 import StepStatus from "./StepStatus";
@@ -174,7 +175,9 @@ CarouselReview.displayName = "CarouselReview";
 
 export const DesktopCarouselStyle = dynamic(() => import("./Carousel"), {
   ssr: false,
+  loading: () => <LoadingSkeleton />,
 });
 export const MobileCarouselStyle = dynamic(() => import("./MobileCarousel"), {
   ssr: false,
+  loading: () => <LoadingSkeleton />,
 });

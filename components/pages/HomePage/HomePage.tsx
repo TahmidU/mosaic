@@ -11,11 +11,6 @@ import { Element } from "react-scroll";
 import { IDiscoverMovie } from "types/api/discover";
 import { ReactElement } from "react";
 import ScrollDownBtn from "components/molecules/ScrollDownBtn";
-import dynamic from "next/dynamic";
-
-/*const Carousel = dynamic(() => import("components/organisms/Carousel"), {
-  ssr: false,
-});*/
 
 interface IHomePageProps {
   carouselData: IDiscoverMovie[];
