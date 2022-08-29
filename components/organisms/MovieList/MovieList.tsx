@@ -1,9 +1,8 @@
 import { LinkBtn, MovieCardStyle, MovieCardWrapper } from "./styles";
-import { ReactElement, useContext } from "react";
 
-import GlobalContext from "context/GlobalContext";
 import HorizontalList from "components/molecules/HorizontalList";
 import { IShortMovieDetails } from "types/movie";
+import { ReactElement } from "react";
 import useRoutes from "hooks/useRoutes";
 
 interface IMovieListProps<T> {

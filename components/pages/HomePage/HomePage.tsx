@@ -47,14 +47,16 @@ export default function HomePage({
           onSubTitleClick={(subTitle: ExploreMovies) =>
             exploreMovieSelect(subTitle)
           }
-          movies={exploreMoviesList}
+          movies={exploreMoviesList.list}
+          loading={exploreMoviesList.loading}
         />
 
         <MovieListStyle
           title="Explore TV Shows"
           subListTitles={[ExploreTVs.ON_AIR, ExploreTVs.POPULAR]}
           onSubTitleClick={(subTitle: ExploreTVs) => exploreTVSelect(subTitle)}
-          movies={exploreTVsList}
+          movies={exploreTVsList.list}
+          loading={exploreTVsList.loading}
           type="tv"
         />
       </Element>

@@ -203,11 +203,11 @@ export default function useExploreList() {
   return {
     exploreMovieSelect,
     exploreMoviesList: exploreMovies.loading
-      ? []
-      : exploreMovies.cache[exploreMovies.selected],
+      ? { list: [], loading: true }
+      : { list: exploreMovies.cache[exploreMovies.selected], loading: false },
     exploreTVSelect,
     exploreTVsList: exploreTVs.loading
-      ? []
-      : exploreTVs.cache[exploreTVs.selected],
+      ? { list: [], loading: true }
+      : { list: exploreTVs.cache[exploreTVs.selected], loading: false },
   };
 }

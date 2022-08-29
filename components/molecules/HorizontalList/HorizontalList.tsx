@@ -74,18 +74,9 @@ export default function HorizontalList<T>({
       )}
       <ListWrapper>
         {loading ? (
-          <AnimatePresence>
-            <LoadingContainer
-              key="modal"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 1.25 }}
-            >
-              <Loader size={120} color="red" variant="dots" />
-              <span>Loading</span>
-            </LoadingContainer>
-          </AnimatePresence>
+          <>
+            <Loader size={120} color="red" variant="dots" />
+          </>
         ) : (
           <AnimatePresence>
             <ListAnim
