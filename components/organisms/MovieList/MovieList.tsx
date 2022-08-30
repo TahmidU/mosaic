@@ -2,6 +2,7 @@ import { LinkBtn, MovieCardStyle, MovieCardWrapper } from "./styles";
 
 import HorizontalList from "components/molecules/HorizontalList";
 import { IShortMovieDetails } from "types/movie";
+import { default as MovieCardSkeleton } from "components/molecules/MovieCard/SkeletonLoading";
 import { ReactElement } from "react";
 import useRoutes from "hooks/useRoutes";
 
@@ -14,6 +15,18 @@ interface IMovieListProps<T> {
   loading?: boolean;
   type?: "tv" | "movie";
 }
+
+const LoadingList = (props: any) => (
+  <>
+    {[...Array(10)].map((_, index) => (
+      <MovieCardWrapper key={index}>
+        <MovieCardSkeleton />
+      </MovieCardWrapper>
+    ))}
+  </>
+);
+
+const Foo = (props: any) => <div>FOoo</div>;
 
 export default function MovieList<T>({
   title,
@@ -32,7 +45,8 @@ export default function MovieList<T>({
       subListTitles={subListTitles}
       onSubTitleClick={onSubTitleClick}
       className={className}
-      loading={loading}
+      loading={true}
+      loadingElements={<LoadingList />}
     >
       {movies &&
         movies.map((_movie, index) => {

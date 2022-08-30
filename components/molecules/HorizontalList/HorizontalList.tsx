@@ -8,7 +8,7 @@ import {
   RightSlideBtn,
   SubListStyle,
 } from "./styles";
-import { ReactElement, ReactNode, useRef } from "react";
+import { Props, ReactElement, ReactNode, useRef } from "react";
 
 import { AnimatePresence } from "framer-motion";
 import { Loader } from "@mantine/core";
@@ -20,6 +20,7 @@ interface IHorizontalListProps<T> {
   onSubTitleClick?: (title: T) => void;
   className?: string;
   loading?: boolean;
+  loadingElements?: ReactElement<any, any>;
 }
 
 export default function HorizontalList<T>({
@@ -29,8 +30,11 @@ export default function HorizontalList<T>({
   onSubTitleClick = () => {},
   className,
   loading,
+  loadingElements,
 }: IHorizontalListProps<T>): ReactElement {
   const ListRef = useRef<HTMLDivElement>(null);
+
+  const LoadingElements = () => (loadingElements ? loadingElements : <></>);
 
   function slideRight() {
     if (ListRef.current) {
@@ -74,9 +78,13 @@ export default function HorizontalList<T>({
       )}
       <ListWrapper>
         {loading ? (
-          <>
-            <Loader size={120} color="red" variant="dots" />
-          </>
+          !loadingElements ? (
+            <>
+              <Loader size={120} color="red" variant="dots" />
+            </>
+          ) : (
+            <LoadingElements />
+          )
         ) : (
           <AnimatePresence>
             <ListAnim

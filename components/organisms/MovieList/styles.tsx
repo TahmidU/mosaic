@@ -1,5 +1,6 @@
 import MovieCard from "components/molecules/MovieCard";
 import styled from "styled-components";
+import SkeletonLoading from "components/molecules/MovieCard/SkeletonLoading";
 
 export const LinkBtn = styled.a`
   width: fit-content;
