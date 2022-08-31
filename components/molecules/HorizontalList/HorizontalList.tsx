@@ -4,26 +4,24 @@ import {
   List,
   ListAnim,
   ListWrapper,
-  LoadingContainer,
   RightSlideBtn,
   SubListStyle,
 } from "./styles";
-import { Props, ReactElement, ReactNode, useRef } from "react";
+import { ReactElement, ReactNode, useRef } from "react";
 
 import { AnimatePresence } from "framer-motion";
-import { Loader } from "@mantine/core";
 
-interface IHorizontalListProps<T> {
+interface IHorizontalListProps {
   title: string;
-  subListTitles?: T[];
+  subListTitles?: string[];
   children?: ReactNode;
-  onSubTitleClick?: (title: T) => void;
+  onSubTitleClick?: (title: string) => void;
   className?: string;
   loading?: boolean;
   loadingElements?: ReactElement<any, any>;
 }
 
-export default function HorizontalList<T>({
+export default function HorizontalList({
   title,
   subListTitles,
   children,
@@ -31,7 +29,7 @@ export default function HorizontalList<T>({
   className,
   loading,
   loadingElements,
-}: IHorizontalListProps<T>): ReactElement {
+}: IHorizontalListProps): ReactElement {
   const ListRef = useRef<HTMLDivElement>(null);
 
   const LoadingElements = () => (loadingElements ? loadingElements : <></>);
@@ -73,15 +71,13 @@ export default function HorizontalList<T>({
       {subListTitles && (
         <SubListStyle
           options={subListTitles}
-          onChange={(_selected: any) => onSubTitleClick(_selected as T)}
+          onChange={(_selected: string) => onSubTitleClick(_selected)}
         />
       )}
       <ListWrapper>
         {loading ? (
           !loadingElements ? (
-            <>
-              <Loader size={120} color="red" variant="dots" />
-            </>
+            <></>
           ) : (
             <LoadingElements />
           )

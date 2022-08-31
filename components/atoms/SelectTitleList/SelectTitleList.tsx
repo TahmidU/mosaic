@@ -1,22 +1,22 @@
 import { Container, Option } from "./styles";
-import { Dispatch, ReactElement, SetStateAction, useState } from "react";
+import { Dispatch, ReactElement, SetStateAction } from "react";
 
-interface ISelectTitleListProps<T> {
-  options: T[];
-  onChange?: (selected: T) => void;
+interface ISelectTitleListProps {
+  options: string[];
+  onChange?: (selected: string) => void;
   selectedIndex: number;
   setSelectedIndex: Dispatch<SetStateAction<number>>;
   className?: string;
 }
 
-export default function SelectTitleList<T>({
+export default function SelectTitleList({
   options,
   onChange = () => {},
   selectedIndex,
   setSelectedIndex,
   className,
-}: ISelectTitleListProps<T>): ReactElement {
-  const onSelect = (selected: T, index: number) => {
+}: ISelectTitleListProps): ReactElement {
+  const onSelect = (selected: string, index: number) => {
     onChange(selected), setSelectedIndex(index);
   };
 

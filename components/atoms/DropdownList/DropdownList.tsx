@@ -15,21 +15,21 @@ import {
   useState,
 } from "react";
 
-interface IDropdownListProps<T> {
-  options: T[];
-  onChange?: (selected: T) => void;
+interface IDropdownListProps {
+  options: string[];
+  onChange?: (selected: string) => void;
   selectedIndex: number;
   setSelectedIndex: Dispatch<SetStateAction<number>>;
   className?: string;
 }
 
-export default function DropdownList<T>({
+export default function DropdownList({
   options,
   selectedIndex,
   setSelectedIndex,
   onChange = () => {},
   className,
-}: IDropdownListProps<T>): ReactElement {
+}: IDropdownListProps): ReactElement {
   const [isOpen, setOpen] = useState(false);
   const dropdownRef = useRef<null | HTMLDivElement>(null);
 
@@ -46,7 +46,7 @@ export default function DropdownList<T>({
   );
 
   const toggleDropdownMenu = () => setOpen((prev) => !prev);
-  const onSelect = (selected: T, index: number) => {
+  const onSelect = (selected: string, index: number) => {
     setSelectedIndex(index), onChange(selected), setOpen(false);
   };
 

@@ -11,11 +11,11 @@ import { default as MovieCardSkeleton } from "components/molecules/MovieCard/Ske
 import { ReactElement } from "react";
 import useRoutes from "hooks/useRoutes";
 
-interface IMovieListProps<T> {
+interface IMovieListProps {
   title: string;
-  subListTitles: T[];
+  subListTitles: string[];
   movies?: IShortMovieDetails[];
-  onSubTitleClick: (title: T) => void;
+  onSubTitleClick: (title: string) => void;
   className?: string;
   loading?: boolean;
   type?: "tv" | "movie";
@@ -31,7 +31,7 @@ const LoadingList = (props: any) => (
   </SkeletonWrapper>
 );
 
-export default function MovieList<T>({
+export default function MovieList({
   title,
   subListTitles,
   onSubTitleClick,
@@ -39,7 +39,7 @@ export default function MovieList<T>({
   className,
   loading = false,
   type = "movie",
-}: IMovieListProps<T>): ReactElement {
+}: IMovieListProps): ReactElement {
   const { generateDetailsURL } = useRoutes();
 
   return (

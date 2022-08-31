@@ -1,10 +1,12 @@
+import { default as LoadingDropdownList } from "components/atoms/DropdownList/SkeletonLoading";
 import SlideButton from "components/molecules/SlideButton";
 import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 
-const SubList = dynamic(() => import("components/molecules/SubList"), {
+const SubList = dynamic(() => import("../SubList"), {
   ssr: false,
+  loading: () => <LoadingDropdownList />,
 });
 
 export const Container = styled.div`
