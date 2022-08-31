@@ -28,7 +28,7 @@ export const Basic = (args: any) => {
         ExploreMovies.UPCOMING,
         ExploreMovies.TOP_RATED,
       ]}
-      onChange={(selected: ExploreMovies) => console.log(selected)}
+      onChange={(selected: string) => console.log(selected)}
       selectedIndex={selectedIndex}
       setSelectedIndex={setSelectedIndex}
     />
