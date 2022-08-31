@@ -1,4 +1,9 @@
-import { LinkBtn, MovieCardStyle, MovieCardWrapper } from "./styles";
+import {
+  LinkBtn,
+  MovieCardStyle,
+  MovieCardWrapper,
+  SkeletonWrapper,
+} from "./styles";
 
 import HorizontalList from "components/molecules/HorizontalList";
 import { IShortMovieDetails } from "types/movie";
@@ -17,16 +22,14 @@ interface IMovieListProps<T> {
 }
 
 const LoadingList = (props: any) => (
-  <>
+  <SkeletonWrapper>
     {[...Array(10)].map((_, index) => (
       <MovieCardWrapper key={index}>
         <MovieCardSkeleton />
       </MovieCardWrapper>
     ))}
-  </>
+  </SkeletonWrapper>
 );
-
-const Foo = (props: any) => <div>FOoo</div>;
 
 export default function MovieList<T>({
   title,
@@ -45,7 +48,7 @@ export default function MovieList<T>({
       subListTitles={subListTitles}
       onSubTitleClick={onSubTitleClick}
       className={className}
-      loading={true}
+      loading={loading}
       loadingElements={<LoadingList />}
     >
       {movies &&
