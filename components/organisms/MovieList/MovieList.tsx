@@ -1,22 +1,37 @@
-import { LinkBtn, MovieCardStyle, MovieCardWrapper } from "./styles";
-import { ReactElement, useContext } from "react";
+import {
+  LinkBtn,
+  MovieCardStyle,
+  MovieCardWrapper,
+  SkeletonWrapper,
+} from "./styles";
 
-import GlobalContext from "context/GlobalContext";
 import HorizontalList from "components/molecules/HorizontalList";
 import { IShortMovieDetails } from "types/movie";
+import { default as MovieCardSkeleton } from "components/molecules/MovieCard/SkeletonLoading";
+import { ReactElement } from "react";
 import useRoutes from "hooks/useRoutes";
 
-interface IMovieListProps<T> {
+interface IMovieListProps {
   title: string;
-  subListTitles: T[];
+  subListTitles: string[];
   movies?: IShortMovieDetails[];
-  onSubTitleClick: (title: T) => void;
+  onSubTitleClick: (title: string) => void;
   className?: string;
   loading?: boolean;
   type?: "tv" | "movie";
 }
 
-export default function MovieList<T>({
+const LoadingList = (props: any) => (
+  <SkeletonWrapper>
+    {[...Array(10)].map((_, index) => (
+      <MovieCardWrapper key={index}>
+        <MovieCardSkeleton />
+      </MovieCardWrapper>
+    ))}
+  </SkeletonWrapper>
+);
+
+export default function MovieList({
   title,
   subListTitles,
   onSubTitleClick,
@@ -24,7 +39,7 @@ export default function MovieList<T>({
   className,
   loading = false,
   type = "movie",
-}: IMovieListProps<T>): ReactElement {
+}: IMovieListProps): ReactElement {
   const { generateDetailsURL } = useRoutes();
 
   return (
@@ -34,6 +49,7 @@ export default function MovieList<T>({
       onSubTitleClick={onSubTitleClick}
       className={className}
       loading={loading}
+      loadingElements={<LoadingList />}
     >
       {movies &&
         movies.map((_movie, index) => {

@@ -1,6 +1,8 @@
+import LoadingSkeleton from "./LoadingSkeleton";
 import ReviewStat from "components/molecules/ReviewStat";
 import SlideButton from "../../molecules/SlideButton";
 import StepStatus from "./StepStatus";
+import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import styled from "styled-components";
 
@@ -170,3 +172,12 @@ export const CarouselReview = styled(ReviewStat)`
   }
 `;
 CarouselReview.displayName = "CarouselReview";
+
+export const DesktopCarouselStyle = dynamic(() => import("./Carousel"), {
+  ssr: false,
+  loading: () => <LoadingSkeleton />,
+});
+export const MobileCarouselStyle = dynamic(() => import("./MobileCarousel"), {
+  ssr: false,
+  loading: () => <LoadingSkeleton />,
+});

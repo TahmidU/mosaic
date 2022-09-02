@@ -6,15 +6,11 @@ import {
 } from "./styles";
 import useExploreList, { ExploreMovies, ExploreTVs } from "./useExploreList";
 
+import Carousel from "components/organisms/Carousel";
 import { Element } from "react-scroll";
 import { IDiscoverMovie } from "types/api/discover";
 import { ReactElement } from "react";
 import ScrollDownBtn from "components/molecules/ScrollDownBtn";
-import dynamic from "next/dynamic";
-
-const Carousel = dynamic(() => import("components/organisms/Carousel"), {
-  ssr: false,
-});
 
 interface IHomePageProps {
   carouselData: IDiscoverMovie[];
@@ -51,14 +47,16 @@ export default function HomePage({
           onSubTitleClick={(subTitle: ExploreMovies) =>
             exploreMovieSelect(subTitle)
           }
-          movies={exploreMoviesList}
+          movies={exploreMoviesList.list}
+          loading={exploreMoviesList.loading}
         />
 
         <MovieListStyle
           title="Explore TV Shows"
           subListTitles={[ExploreTVs.ON_AIR, ExploreTVs.POPULAR]}
           onSubTitleClick={(subTitle: ExploreTVs) => exploreTVSelect(subTitle)}
-          movies={exploreTVsList}
+          movies={exploreTVsList.list}
+          loading={exploreTVsList.loading}
           type="tv"
         />
       </Element>

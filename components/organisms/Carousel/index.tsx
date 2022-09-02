@@ -1,9 +1,8 @@
+import { DesktopCarouselStyle, MobileCarouselStyle } from "./styles";
 import { ReactElement, useEffect, useState } from "react";
 
-import { default as DesktopCarousel } from "./Carousel";
 import { IDiscoverMovie } from "types/api/discover";
 import { MathUtils } from "utils";
-import MobileCarousel from "./MobileCarousel";
 import { textAnimVariant } from "./MovieInfo/animationVariants";
 import { useAnimation } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
@@ -53,7 +52,7 @@ export default function Carousel({
   return (
     <>
       {isMobile ? (
-        <MobileCarousel
+        <MobileCarouselStyle
           carouselData={carouselData}
           page={page}
           direction={direction}
@@ -62,7 +61,7 @@ export default function Carousel({
           textAnimControls={textAnimControls}
         />
       ) : (
-        <DesktopCarousel
+        <DesktopCarouselStyle
           carouselData={carouselData}
           videos={currentVideos}
           handlePageDirectionChange={handlePageDirectionChange}
