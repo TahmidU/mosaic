@@ -1,4 +1,4 @@
-import { cleanup, render } from "utils/test-config";
+import { cleanup, render, screen } from "utils/test-config";
 
 import Button from ".";
 import React from "react";
@@ -9,8 +9,10 @@ describe("Button", () => {
   test("Text on Button component", () => {
     const expectedText = "Special Button";
 
-    const { getByText } = render(<Button>{expectedText}</Button>);
+    render(<Button>{expectedText}</Button>);
 
-    expect(getByText(expectedText, { selector: "button" })).toBeDefined();
+    expect(
+      screen.getByText(expectedText, { selector: "button" })
+    ).toBeDefined();
   });
 });
