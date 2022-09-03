@@ -16,7 +16,7 @@ export default function Card({
   testId = "Card",
 }: ICardProps): ReactElement {
   return (
-    <Container data-testId={testId} className={className} onClick={onClick}>
+    <Container data-testid={testId} className={className} onClick={onClick}>
       {children}
     </Container>
   );
