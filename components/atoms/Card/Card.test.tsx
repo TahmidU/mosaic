@@ -17,7 +17,8 @@ describe("Card", () => {
       </Card>
     );
 
-    expect(screen.getByTestId(expectedChildId)).toBeDefined();
+    const child = screen.getByTestId(expectedChildId);
+    expect(child).toBeDefined();
   });
 
   test("Card styling", () => {
@@ -37,6 +38,7 @@ describe("Card", () => {
       </Card>
     );
 
-    expect(screen.getByTestId(expectedTestId)).toHaveStyle(expectedStyle);
+    const card = screen.getByTestId(expectedTestId);
+    expect(card).toHaveStyle(expectedStyle);
   });
 });
