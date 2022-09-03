@@ -1,12 +1,16 @@
-import { cleanup, fireEvent, render } from "@testing-library/react";
+import { cleanup, render } from "utils/test-config";
 
 import Button from ".";
 import React from "react";
 
 afterEach(cleanup);
 
-it("Button", () => {
-  const { queryByLabelText, getByLabelText, getByText } = render(<Button />);
+describe("Button", () => {
+  test("Text on Button component", () => {
+    const expectedText = "Special Button";
 
-  expect(getByText("Special Button", { selector: "button" })).toBeDefined();
+    const { getByText } = render(<Button>{expectedText}</Button>);
+
+    expect(getByText(expectedText, { selector: "button" })).toBeDefined();
+  });
 });

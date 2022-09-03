@@ -8,6 +8,11 @@ import React from "react";
 import { TextUtils } from "utils";
 
 afterEach(cleanup);
+
+describe("Carousel", () => {
+  test("nothing", () => {});
+});
+
 /*
 describe("Carousel", () => {
   test("Title, description, and date", () => {
