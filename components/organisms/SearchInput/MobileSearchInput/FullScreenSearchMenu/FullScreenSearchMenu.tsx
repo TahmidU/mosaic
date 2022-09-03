@@ -11,7 +11,7 @@ import {
 import { Dispatch, ReactElement, SetStateAction } from "react";
 
 import Checkbox from "components/atoms/Checkbox";
-import { ContainerAnimVariant } from "./animation-variants";
+import { ContainerAnimVariant } from "./animationVariants";
 import useSearch from "./useSearch";
 
 interface IFullScreenSearchMenuProps {

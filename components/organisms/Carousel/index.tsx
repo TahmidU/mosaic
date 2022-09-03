@@ -1,28 +1,28 @@
+import { DesktopCarouselStyle, MobileCarouselStyle } from "./styles";
 import { ReactElement, useEffect, useState } from "react";
 
-import { default as DesktopCarousel } from "./Carousel";
 import { IDiscoverMovie } from "types/api/discover";
-import { IVideo } from "types/api/videos";
 import { MathUtils } from "utils";
-import MobileCarousel from "./MobileCarousel";
-import { textAnimVariant } from "./MovieInfo/animation-variants";
+import { textAnimVariant } from "./MovieInfo/animationVariants";
 import { useAnimation } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
+import useVideoInfoCache from "./useCarouselVideoCache";
 
 interface ICarouselProps {
   carouselData?: IDiscoverMovie[];
-  videos?: IVideo;
   startPage?: number;
-  onPageChange?: (step: number) => void;
 }
+
+export const carouselMediaQuery = {
+  query: "(max-width: 1264px)",
+};
 
 export default function Carousel({
   carouselData = [],
-  videos,
   startPage = 0,
-  onPageChange,
 }: ICarouselProps): ReactElement {
   const [[page, direction], setPage] = useState([startPage, 0]);
+  const { currentVideos, onPageChange } = useVideoInfoCache();
 
   // Text Animations
   const textAnimControls = useAnimation();
@@ -31,14 +31,12 @@ export default function Carousel({
     textAnimControls.set(textAnimVariant.hide);
     textAnimControls.start(() => textAnimVariant.show);
 
-    onPageChange && onPageChange(page);
+    onPageChange && carouselData && onPageChange(carouselData[page].id);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page]);
 
-  const isMobile = useMediaQuery({
-    query: "(max-width: 1264px)",
-  });
+  const isMobile = useMediaQuery(carouselMediaQuery);
 
   function handlePageDirectionChange(direction: 1 | -1) {
     setPage(([_page, _direction]) => [
@@ -54,7 +52,7 @@ export default function Carousel({
   return (
     <>
       {isMobile ? (
-        <MobileCarousel
+        <MobileCarouselStyle
           carouselData={carouselData}
           page={page}
           direction={direction}
@@ -63,9 +61,9 @@ export default function Carousel({
           textAnimControls={textAnimControls}
         />
       ) : (
-        <DesktopCarousel
+        <DesktopCarouselStyle
           carouselData={carouselData}
-          videos={videos}
+          videos={currentVideos}
           handlePageDirectionChange={handlePageDirectionChange}
           handlePageChange={handlePageChange}
           page={page}

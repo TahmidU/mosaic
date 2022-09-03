@@ -78,8 +78,8 @@ const fakeAPI: { [key in ExploreMovies]: IShortMovieDetails[] } = {
 export const Basic = () => {
   const [movies, setMovies] = useState(fakeAPI["In Theatres"]);
 
-  function getFromFakeAPI(subTitle: ExploreMovies) {
-    setMovies(fakeAPI[subTitle]);
+  function getFromFakeAPI(subTitle: string) {
+    setMovies(fakeAPI[subTitle as ExploreMovies]);
   }
 
   return (
@@ -92,7 +92,7 @@ export const Basic = () => {
         ExploreMovies.UPCOMING,
         ExploreMovies.TOP_RATED,
       ]}
-      onSubTitleClick={(subTitle: ExploreMovies) => getFromFakeAPI(subTitle)}
+      onSubTitleClick={(subTitle: string) => getFromFakeAPI(subTitle)}
       movies={movies}
     />
   );

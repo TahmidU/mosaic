@@ -9,17 +9,18 @@ import {
   StepsContainer,
   StepsStyle,
 } from "./styles";
-import { ReactElement, useContext, useEffect, useRef, useState } from "react";
+import { ReactElement, useContext, useState } from "react";
 
 import { AnimationControls } from "framer-motion";
 import CarouselImage from "components/organisms/Carousel/CarouselImage";
 import Clips from "./Clips";
 import GlobalContext from "context/GlobalContext";
 import { IDiscoverMovie } from "../../../types/api/discover";
-import { IVideo } from "types/api/videos";
+import { IVideos } from "types/api/videos";
 import MovieInfo from "./MovieInfo";
 import ProgressiveBar from "./ProgressiveBar";
 import dynamic from "next/dynamic";
+import useCarouselAnimations from "./useCarouselAnimations";
 
 const VideoModal = dynamic(() => import("../../molecules/VideoModal"), {
   ssr: false,
@@ -27,7 +28,7 @@ const VideoModal = dynamic(() => import("../../molecules/VideoModal"), {
 
 interface ICarouselProps {
   carouselData?: IDiscoverMovie[];
-  videos?: IVideo;
+  videos?: IVideos;
   localImages?: boolean;
   disableAutoSlide?: boolean;
   autoSlideDuration?: number;
@@ -51,46 +52,11 @@ export default function Carousel({
   textAnimControls,
 }: ICarouselProps): ReactElement {
   const { routes } = useContext(GlobalContext);
-
-  // Carousel Slide
-  const [isTimerPaused, setTimerConfig] = useState(false);
-
-  // Carousel Image
-  const imageRef = useRef<HTMLDivElement>(null);
-
-  // Modal
+  const { isTimerPaused, imageRef } = useCarouselAnimations();
   const [modalOpen, setModalOpen] = useState({
     open: false,
     initialIndex: 0,
   });
-
-  useEffect(() => {
-    function addEventListeners() {
-      if (image) {
-        image.addEventListener("mouseover", pauseAutoSlide);
-        image.addEventListener("mouseleave", resumeAutoSlide);
-      }
-    }
-
-    function removeEventListeners() {
-      if (image) {
-        image.removeEventListener("mouseover", pauseAutoSlide);
-        image.removeEventListener("mouseleave", resumeAutoSlide);
-      }
-    }
-
-    const image = imageRef.current;
-    addEventListeners();
-
-    return () => {
-      removeEventListeners();
-    };
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [imageRef.current]);
-
-  const pauseAutoSlide = () => setTimerConfig(true),
-    resumeAutoSlide = () => setTimerConfig(false);
 
   function onClipClicked(_videoIndex: number) {
     setModalOpen({ open: true, initialIndex: _videoIndex });

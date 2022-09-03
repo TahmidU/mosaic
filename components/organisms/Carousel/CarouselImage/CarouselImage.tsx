@@ -1,9 +1,9 @@
-import { AnimatePresence, motion } from "framer-motion";
 import { ImageStyle, ImageWrapper, LinearGradient } from "./styles";
 import { ReactElement, Ref } from "react";
 
+import { AnimatePresence } from "framer-motion";
 import { Links } from "utils";
-import { carouselImageAnimVariant } from "./animation-variants";
+import { carouselImageAnimVariant } from "./animationVariants";
 
 interface ICarouselImageProps {
   imageURL: string;

@@ -1,6 +1,5 @@
-import { SearchMovie, SearchTV, SearchType } from "types/search";
-
 import { GetServerSideProps } from "next";
+import { SearchType } from "types/search";
 import axios from "axios";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {

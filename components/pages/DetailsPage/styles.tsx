@@ -1,6 +1,4 @@
-import CastCard from "components/molecules/CastCard";
-import HorizontalList from "components/molecules/HorizontalList";
-import MediaCard from "components/molecules/MediaCard";
+import DetailsCard from "components/organisms/DetailsCard";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -53,6 +51,10 @@ export const ExtraDetailSection = styled.div`
     > div:first-child > p:last-child {
       ${({ theme }) => theme.fonts.main.medium};
     }
+
+    > div:first-child {
+      margin: 0.125rem 0 3rem 0;
+    }
   }
 
   @media only screen and (max-width: 500px) {
@@ -63,129 +65,9 @@ export const ExtraDetailSection = styled.div`
 `;
 ExtraDetailSection.displayName = "ExtraDetailSection";
 
-export const HorizontalListStyle = styled(HorizontalList)`
-  display: block;
-
-  > h1:first-child {
-    ${({ theme }) => theme.fonts.main.bigger};
-  }
-
-  > div:last-child {
-    height: 390px;
-
-    > div:first-child {
-      > div:first-child {
-        left: 0;
-      }
-
-      > div:last-child {
-        right: 0;
-      }
-    }
-  }
-`;
-HorizontalListStyle.displayName = "HorizontalListStyle";
-
-export const CastHorizontalList = styled(HorizontalListStyle)`
-  > div:last-child {
-    height: 390px;
-
-    > div:first-child {
-      max-height: 390px;
-
-      > div:nth-child(2) {
-        max-height: 390px;
-      }
-    }
-  }
-`;
-CastHorizontalList.displayName = "CastHorizontalList";
-
-export const MediaHorizontalList = styled(HorizontalListStyle)`
-  > div:last-child {
-    height: fit-content;
-
-    > div:first-child {
-      max-height: fit-content;
-
-      > div:nth-child(2) {
-        max-height: fit-content;
-        padding: 1.5rem 0;
-      }
-
-      > div:first-child,
-      > div:last-child {
-        top: 35%;
-      }
-    }
-  }
-`;
-MediaHorizontalList.displayName = "MediaHorizontalList";
-
-export const CastListWrapper = styled.div`
-  display: inline-block;
-  width: calc(100% / 7);
-
-  > div {
-    margin: 0 auto;
-  }
-
-  @media only screen and (max-width: 1729px) {
-    width: calc(100% / 5);
-  }
-
-  @media only screen and (max-width: 1400px) {
-    width: calc(100% / 3);
-  }
-
-  @media only screen and (max-width: 600px) {
-    width: calc(100% / 2);
-  }
-`;
-CastListWrapper.displayName = "CastListWrapper";
-
-export const CastCardStyle = styled(CastCard)`
-  cursor: unset;
-
-  span {
-    white-space: normal;
-  }
-`;
-CastCardStyle.displayName = "CastCardStyle";
-
-export const MediaListWrapper = styled.div`
-  display: inline-block;
-  width: calc(100% / 2);
-
-  > div {
-    margin: 0 auto;
-  }
-
-  @media only screen and (max-width: 1372px) {
-    width: calc(100% / 1);
-  }
-
+export const DetailsCardStyle = styled(DetailsCard)`
   @media only screen and (max-width: 1200px) {
-    width: calc(100% / 2);
-  }
-
-  @media only screen and (max-width: 924px) {
-    width: calc(100% / 1);
+    margin: 0;
   }
 `;
-MediaListWrapper.displayName = "MediaListWrapper";
-
-export const MediaCardStyle = styled(MediaCard)`
-  width: 100%;
-  cursor: pointer;
-  :hover {
-    background-color: ${({ theme }) => theme.cGrey.alpha(0.2).toString()};
-  }
-
-  @media only screen and (max-width: 426px) {
-    p {
-      ${({ theme }) => theme.fonts.main.big};
-    }
-  }
-`;
-MediaCardStyle.displayName = "MediaCardStyle";
+DetailsCardStyle.displayName = "DetailsCardStyle";

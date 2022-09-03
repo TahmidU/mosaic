@@ -1,6 +1,6 @@
-import { CardStyle } from "./styles";
+import { Container, ImageWrapper, MovieImage, StarRatingStyle } from "./styles";
+
 import { ReactElement } from "react";
-import StarRating from "../StarRating";
 
 interface IMovieCardProps {
   className?: string;
@@ -20,15 +20,22 @@ export default function MovieCard({
   onClick,
 }: IMovieCardProps): ReactElement {
   return (
-    <CardStyle
-      variant="vertical_image"
-      className={className}
-      src={src}
-      onClick={onClick}
-    >
-      <span>{movieTitle}</span>
-      <StarRating rating={review || 0} />
-      <span>{movieReleaseDate}</span>
-    </CardStyle>
+    <Container className={className} onClick={onClick}>
+      <ImageWrapper>
+        <MovieImage
+          alt={movieTitle}
+          src={src}
+          width={150}
+          height={225}
+          layout="responsive"
+        />
+      </ImageWrapper>
+
+      <div>
+        <span>{movieTitle}</span>
+        <StarRatingStyle rating={review || 0} />
+        <span>{movieReleaseDate}</span>
+      </div>
+    </Container>
   );
 }

@@ -12,7 +12,7 @@ import {
 } from "./styles";
 import { ReactElement, useEffect, useRef, useState } from "react";
 
-import { ContainerAnimVariant } from "./animation-variants";
+import { ContainerAnimVariant } from "./animationVariants";
 
 type Variant =
   | "right"

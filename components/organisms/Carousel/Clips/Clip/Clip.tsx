@@ -1,8 +1,8 @@
 import { Container, ImageContainer } from "./styles";
-import { ReactElement, useState } from "react";
 
 import Image from "next/image";
 import { Links } from "utils";
+import { ReactElement } from "react";
 
 interface IClipProps {
   YTKey: string;

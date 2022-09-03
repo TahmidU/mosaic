@@ -1,7 +1,7 @@
 import { ReactElement, useEffect } from "react";
 
 import { Bar } from "./styles";
-import { progressiveBarAnimVariant } from "./animation-variants";
+import { progressiveBarAnimVariant } from "./animationVariants";
 import { useAnimation } from "framer-motion";
 
 interface IProgressiveBarProps {

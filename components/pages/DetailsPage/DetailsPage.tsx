@@ -1,36 +1,32 @@
 import {
-  CastCardStyle,
-  CastHorizontalList,
-  CastListWrapper,
   Container,
+  DetailsCardStyle,
   ExtraDetailSection,
-  MediaCardStyle,
-  MediaHorizontalList,
-  MediaListWrapper,
   ShortDetailSection,
 } from "./styles";
-import { IVideo, IVideoResult } from "types/api/videos";
 import { ReactElement, useContext, useEffect, useState } from "react";
 
+import CastList from "components/organisms/CastList";
 import GlobalContext from "context/GlobalContext";
 import { IMovieDetails } from "types/movie";
 import { ITVDetails } from "types/tv";
-import { Links } from "utils";
-import MovieDetails from "components/organisms/MovieDetails";
+import { IVideos } from "types/api/videos";
+import MediaList from "components/organisms/MediaList";
+import { MediaType } from "types/tv_movies";
 import VideoModal from "components/molecules/VideoModal";
 import { useRouter } from "next/router";
 
 interface IDetailsPageProps {
-  movieDetails?: IMovieDetails;
-  tvDetails?: ITVDetails;
+  details?: IMovieDetails & ITVDetails;
+  mediaType: MediaType;
 }
 
 export default function DetailsPage({
-  movieDetails,
-  tvDetails,
+  details,
+  mediaType,
 }: IDetailsPageProps): ReactElement {
   const { globalRequests } = useContext(GlobalContext);
-  const [videoData, setVideoData] = useState<IVideo>();
+  const [videoData, setVideoData] = useState<IVideos>();
   const [modal, setModal] = useState({
     open: false,
     initialIndex: 0,
@@ -46,14 +42,12 @@ export default function DetailsPage({
           Number(id),
           router.route === "/movie/[id]" ? "movies" : "tv"
         )
-        .then((data: IVideo) => {
+        .then((data: IVideos) => {
           setVideoData(data);
         });
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  const details = movieDetails ? movieDetails : tvDetails;
 
   if (!details) return <></>;
 
@@ -61,7 +55,7 @@ export default function DetailsPage({
     <>
       <Container>
         <ShortDetailSection>
-          <MovieDetails movieDetails={movieDetails} tvDetails={tvDetails} />
+          <DetailsCardStyle details={details} mediaType={mediaType} />
         </ShortDetailSection>
         <ExtraDetailSection>
           <div>
@@ -69,28 +63,9 @@ export default function DetailsPage({
             <p>{details.overview}</p>
           </div>
 
-          <CastHorizontalList title="Cast">
-            {details.credits?.cast.map((_actor, index) => (
-              <CastListWrapper key={index}>
-                <CastCardStyle person={_actor} />
-              </CastListWrapper>
-            ))}
-          </CastHorizontalList>
+          <CastList movieDetails={details} />
 
-          <MediaHorizontalList title="Media">
-            {videoData &&
-              videoData.results.map((_video, index) => (
-                <MediaListWrapper key={index}>
-                  <MediaCardStyle
-                    title={_video.name}
-                    src={`${Links.youtubeThumbnailURL}${_video.key}/hqdefault.jpg`}
-                    onClick={() =>
-                      setModal({ open: true, initialIndex: index })
-                    }
-                  />
-                </MediaListWrapper>
-              ))}
-          </MediaHorizontalList>
+          <MediaList {...{ setModal, videoData }} />
         </ExtraDetailSection>
       </Container>
       <VideoModal

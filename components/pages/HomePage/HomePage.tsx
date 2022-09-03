@@ -6,27 +6,18 @@ import {
 } from "./styles";
 import useExploreList, { ExploreMovies, ExploreTVs } from "./useExploreList";
 
+import Carousel from "components/organisms/Carousel";
 import { Element } from "react-scroll";
 import { IDiscoverMovie } from "types/api/discover";
-import { IVideo } from "types/api/videos";
 import { ReactElement } from "react";
 import ScrollDownBtn from "components/molecules/ScrollDownBtn";
-import dynamic from "next/dynamic";
-
-const Carousel = dynamic(() => import("components/organisms/Carousel"), {
-  ssr: false,
-});
 
 interface IHomePageProps {
   carouselData: IDiscoverMovie[];
-  videos?: IVideo;
-  onPageChange?: (step: number) => void;
 }
 
 export default function HomePage({
   carouselData,
-  videos,
-  onPageChange,
 }: IHomePageProps): ReactElement {
   const {
     exploreMoviesList,
@@ -38,11 +29,7 @@ export default function HomePage({
   return (
     <Container>
       <HeroSection>
-        <Carousel
-          carouselData={carouselData}
-          videos={videos}
-          onPageChange={onPageChange}
-        />
+        <Carousel carouselData={carouselData} />
 
         <ScrollDownContainer>
           <ScrollDownBtn to="ContentSection" />
@@ -60,14 +47,16 @@ export default function HomePage({
           onSubTitleClick={(subTitle: ExploreMovies) =>
             exploreMovieSelect(subTitle)
           }
-          movies={exploreMoviesList}
+          movies={exploreMoviesList.list}
+          loading={exploreMoviesList.loading}
         />
 
         <MovieListStyle
           title="Explore TV Shows"
           subListTitles={[ExploreTVs.ON_AIR, ExploreTVs.POPULAR]}
           onSubTitleClick={(subTitle: ExploreTVs) => exploreTVSelect(subTitle)}
-          movies={exploreTVsList}
+          movies={exploreTVsList.list}
+          loading={exploreTVsList.loading}
           type="tv"
         />
       </Element>

@@ -4,10 +4,10 @@ import {
   Footer,
   Header,
   LinkBtn,
-  MovieSearchResult,
   ResultsContainer,
+  SearchResult,
 } from "./styles";
-import { SearchResult, SearchType } from "types/search";
+import { ISearch, SearchType } from "types/search";
 
 import { ReactElement } from "react";
 import dynamic from "next/dynamic";
@@ -20,7 +20,7 @@ const Pagination = dynamic(() => import("components/atoms/Pagination"), {
 });
 
 interface ISearchPageProps {
-  searchData: SearchResult;
+  searchData: ISearch;
   type: SearchType;
 }
 
@@ -29,7 +29,7 @@ export default function SearchPage({
   type,
 }: ISearchPageProps): ReactElement {
   const { generateDetailsURL } = useRoutes();
-  const { getInitialPage, onPageChange } = usePagination();
+  const { onPageChange, page } = usePagination();
 
   const isMobile = useMediaQuery({
     query: "(max-width: 768px)",
@@ -46,10 +46,10 @@ export default function SearchPage({
       </Header>
       <ResultsContainer>
         {searchData ? (
-          searchData.results.map((_result, index) => {
+          searchData.results.map((_result: any, index) => {
             return (
               <LinkBtn key={index} href={generateDetailsURL(_result.id, type)}>
-                <MovieSearchResult
+                <SearchResult
                   title={_result.name || _result.title}
                   src={_result.poster_path}
                   desc={_result.overview}
@@ -66,7 +66,7 @@ export default function SearchPage({
       <Footer>
         {searchData && (
           <Pagination
-            initialPage={getInitialPage()}
+            page={page}
             total={totalPages}
             color="red"
             radius="lg"

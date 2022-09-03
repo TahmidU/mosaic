@@ -12,7 +12,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   return {
     props: {
-      movieDetails: movieDetailsResults.data,
+      details: movieDetailsResults.data,
+      mediaType: "movie",
     },
   };
 };

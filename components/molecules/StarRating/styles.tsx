@@ -1,4 +1,3 @@
-import Star from "./Star";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -7,8 +6,9 @@ export const Container = styled.div`
   grid-template-areas: "stars . rating";
   grid-template-columns: 65% 5% 30%;
   max-width: 8rem;
+  width: 100%;
   height: auto;
-  align-items: center;
+  align-items: baseline;
 
   > span:last-child {
     grid-area: rating;
@@ -24,8 +24,23 @@ export const StarWrapper = styled.div`
 `;
 StarWrapper.displayName = "StarWrapper";
 
-export const StarStyle = styled(Star)`
+const starStrokeURL = "url('/star_rating.png');";
+export const StarStroke = styled.div`
+  background-image: ${starStrokeURL};
+  background-size: cover;
+  width: 100%;
+  height: 16px;
+`;
+StarStroke.displayName = "StarStroke";
+
+const maskURL = "url('/star_rating_mask.png');";
+export const StarGradient = styled.div<{ rating: number }>`
+  background: ${({ rating }) =>
+    `linear-gradient(to right, #FD1C1C ${rating}%, transparent ${rating}%);`};
+  mask-image: ${maskURL};
+  -webkit-mask-image: ${maskURL};
+  mask-size: cover;
   width: 100%;
   height: 100%;
 `;
-StarStyle.displayName = "StarStyle";
+StarGradient.displayName = "StarGradient";

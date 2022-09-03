@@ -5,7 +5,7 @@ import Image from "next/image";
 import { ReactElement } from "react";
 import StarRating from "../StarRating";
 
-interface IMovieSearchCardProps {
+interface ISearchCardProps {
   title: string;
   desc: string;
   releaseDate: string;
@@ -14,14 +14,14 @@ interface IMovieSearchCardProps {
   className?: string;
 }
 
-export default function MovieSearchCard({
+export default function SearchCard({
   title,
   desc,
   releaseDate,
   rating,
   src,
   className,
-}: IMovieSearchCardProps): ReactElement {
+}: ISearchCardProps): ReactElement {
   return (
     <Container className={className}>
       <div>

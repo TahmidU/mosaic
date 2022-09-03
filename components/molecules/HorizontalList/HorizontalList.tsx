@@ -4,33 +4,35 @@ import {
   List,
   ListAnim,
   ListWrapper,
-  LoadingContainer,
   RightSlideBtn,
   SubListStyle,
 } from "./styles";
 import { ReactElement, ReactNode, useRef } from "react";
 
 import { AnimatePresence } from "framer-motion";
-import { Loader } from "@mantine/core";
 
-interface IHorizontalListProps<T> {
+interface IHorizontalListProps {
   title: string;
-  subListTitles?: T[];
+  subListTitles?: string[];
   children?: ReactNode;
-  onSubTitleClick?: (title: T) => void;
+  onSubTitleClick?: (title: string) => void;
   className?: string;
   loading?: boolean;
+  loadingElements?: ReactElement<any, any>;
 }
 
-export default function HorizontalList<T>({
+export default function HorizontalList({
   title,
   subListTitles,
   children,
   onSubTitleClick = () => {},
   className,
   loading,
-}: IHorizontalListProps<T>): ReactElement {
+  loadingElements,
+}: IHorizontalListProps): ReactElement {
   const ListRef = useRef<HTMLDivElement>(null);
+
+  const LoadingElements = () => (loadingElements ? loadingElements : <></>);
 
   function slideRight() {
     if (ListRef.current) {
@@ -69,23 +71,16 @@ export default function HorizontalList<T>({
       {subListTitles && (
         <SubListStyle
           options={subListTitles}
-          onChange={(_selected: any) => onSubTitleClick(_selected as T)}
+          onChange={(_selected: string) => onSubTitleClick(_selected)}
         />
       )}
       <ListWrapper>
         {loading ? (
-          <AnimatePresence>
-            <LoadingContainer
-              key="modal"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 1.25 }}
-            >
-              <Loader size={120} color="red" variant="dots" />
-              <span>Loading</span>
-            </LoadingContainer>
-          </AnimatePresence>
+          !loadingElements ? (
+            <></>
+          ) : (
+            <LoadingElements />
+          )
         ) : (
           <AnimatePresence>
             <ListAnim

@@ -33,7 +33,7 @@ export const NavbarContainer = styled.div`
     align-items: center;
     width: 100%;
 
-    > svg {
+    > a:first-child > svg {
       width: 165px;
       height: auto;
       margin: 0 3rem 0 1.25rem;
@@ -64,3 +64,9 @@ export const SearchInputStyle = styled(SearchInput)`
   margin-right: 2rem;
 `;
 SearchInputStyle.displayName = "SearchInputStyle";
+
+export const LinkBtn = styled.a`
+  width: fit-content;
+  height: fit-content;
+`;
+LinkBtn.displayName = "LinkBtn";

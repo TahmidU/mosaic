@@ -12,7 +12,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   return {
     props: {
-      tvDetails: tvDetailsResults.data,
+      details: tvDetailsResults.data,
+      type: "tv",
     },
   };
 };
