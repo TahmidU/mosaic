@@ -1,4 +1,4 @@
-import React, { HTMLInputTypeAttribute, KeyboardEvent } from "react";
+import React, { KeyboardEvent } from "react";
 import { cleanup, fireEvent, render, screen } from "utils/test-config";
 
 import Input from ".";
