@@ -17,6 +17,7 @@ interface IInputProps {
   prefix?: ReactElement<any, any>;
   type?: HTMLInputTypeAttribute;
   className?: string;
+  testId?: string;
 }
 
 export default function Input({
@@ -28,6 +29,7 @@ export default function Input({
   prefix,
   type = "text",
   className,
+  testId = "Input",
 }: IInputProps): ReactElement {
   const PostfixNode = () => (postfix ? postfix : <></>),
     PrefixNode = () => (prefix ? prefix : <></>);
@@ -39,9 +41,10 @@ export default function Input({
 
   if (variant === "stateful") {
     return (
-      <Container className={className}>
+      <Container data-testid={testId} className={className}>
         <PrefixNode />
         <InputStyle
+          data-testid={`${testId}-Input`}
           value={value}
           onChange={onHandleChange}
           onKeyDown={onKeyDown}
@@ -53,9 +56,14 @@ export default function Input({
   }
 
   return (
-    <Container className={className}>
+    <Container data-testid={testId} className={className}>
       <PrefixNode />
-      <InputStyle onChange={onHandleChange} onKeyDown={onKeyDown} type={type} />
+      <InputStyle
+        data-testid={`${testId}-Input`}
+        onChange={onHandleChange}
+        onKeyDown={onKeyDown}
+        type={type}
+      />
       <PostfixNode />
     </Container>
   );
