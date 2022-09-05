@@ -8,7 +8,6 @@ import renderer from "react-test-renderer";
 
 describe("ProgressiveCircle", () => {
   test("Show state light theme styling", async () => {
-    // Given
     const width = 30,
       height = 30,
       radius = 30,
@@ -16,7 +15,6 @@ describe("ProgressiveCircle", () => {
       circumference = Math.ceil(2 * Math.PI * radius),
       lightTheme = getTheme("light");
 
-    // When
     const { getByTestId } = render(
       <ProgressiveCircle
         show
@@ -27,7 +25,6 @@ describe("ProgressiveCircle", () => {
       />
     );
 
-    // Then
     await new Promise((r) => setTimeout(r, 1800));
 
     expect(getByTestId("ProgressiveCircleContainer")).toHaveStyleRule(
@@ -74,7 +71,6 @@ describe("ProgressiveCircle", () => {
   });
 
   test("Hide state light theme styling", async () => {
-    // Given
     const width = 30,
       height = 30,
       radius = 30,
@@ -83,7 +79,6 @@ describe("ProgressiveCircle", () => {
       strokeDashoffset = circumference,
       lightTheme = getTheme("light");
 
-    // When
     const { getByTestId } = render(
       <ProgressiveCircle
         show
@@ -105,9 +100,7 @@ describe("ProgressiveCircle", () => {
         />
       </TestThemeProvider>
     );
-    const tree = rendered.toJSON();
 
-    // Then
     await new Promise((r) => setTimeout(r, 1800));
 
     expect(getByTestId("ProgressiveCircleContainer")).toHaveStyleRule(
@@ -156,14 +149,12 @@ describe("ProgressiveCircle", () => {
     );
   });
 
-  test("Snapshot wait", async () => {
-    // Given
+  test("Snapshot after animation complete (wait 1.8s)", async () => {
     const width = 30,
       height = 30,
       radius = 30,
       strokeWidth = 4;
 
-    // When
     const rendered = renderer.create(
       <TestThemeProvider>
         <ProgressiveCircle
@@ -176,19 +167,16 @@ describe("ProgressiveCircle", () => {
     );
     const tree = rendered.toJSON();
 
-    // Then
     await new Promise((r) => setTimeout(r, 1800));
     expect(tree).toMatchSnapshot();
   });
 
-  test("Snapshot non-wait", () => {
-    // Given
+  test("Snapshot initial state", () => {
     const width = 30,
       height = 30,
       radius = 30,
       strokeWidth = 4;
 
-    // When
     const rendered = renderer.create(
       <TestThemeProvider>
         <ProgressiveCircle
@@ -201,7 +189,6 @@ describe("ProgressiveCircle", () => {
     );
     const tree = rendered.toJSON();
 
-    // Then
     expect(tree).toMatchSnapshot();
   });
 });
