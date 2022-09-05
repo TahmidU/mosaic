@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ProgressiveCircle Snapshot non-wait 1`] = `
+exports[`ProgressiveCircle Snapshot after animation complete (wait 1.8s) 1`] = `
 .c0 {
   position: absolute;
   width: 30px;
@@ -39,7 +39,7 @@ exports[`ProgressiveCircle Snapshot non-wait 1`] = `
 </svg>
 `;
 
-exports[`ProgressiveCircle Snapshot wait 1`] = `
+exports[`ProgressiveCircle Snapshot initial state 1`] = `
 .c0 {
   position: absolute;
   width: 30px;
