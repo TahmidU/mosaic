@@ -1,4 +1,4 @@
-import { cleanup, fireEvent, render, screen } from "utils/test-config";
+import { cleanup, render, screen } from "utils/test-config";
 
 import ExternalLink from ".";
 import React from "react";
