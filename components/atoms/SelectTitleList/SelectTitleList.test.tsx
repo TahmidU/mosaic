@@ -8,6 +8,8 @@ import { removeAllSpaces } from "utils/TestUtils";
 afterEach(cleanup);
 
 describe("SelectTitleList", () => {
+  const lightTheme = getTheme("light");
+
   test("Title selection", () => {
     const expectedTitles = ["Popular", "Latest", "Upcoming"];
     const expectedSelectedTitle = expectedTitles[1];
@@ -37,6 +39,13 @@ describe("SelectTitleList", () => {
   test("Correct styling", () => {
     const titles = ["Popular", "Latest", "Upcoming"];
 
+    const expectedLatestTitleStyle = `color: ${removeAllSpaces(
+      lightTheme.text
+    )};`;
+    const expectedPopularTitleStyle = `color: ${removeAllSpaces(
+      lightTheme.cRed.alpha(0.65).toString()
+    )};`;
+
     render(
       <SelectTitleList
         options={titles}
@@ -46,11 +55,7 @@ describe("SelectTitleList", () => {
       />
     );
 
-    expect(screen.getByText(titles[1])).toHaveStyle(`
-    color: ${removeAllSpaces(getTheme("light").text)};
-`);
-    expect(screen.getByText(titles[0])).toHaveStyle(`
-color: ${removeAllSpaces(getTheme("light").cRed.alpha(0.65).toString())};
-`);
+    expect(screen.getByText(titles[1])).toHaveStyle(expectedLatestTitleStyle);
+    expect(screen.getByText(titles[0])).toHaveStyle(expectedPopularTitleStyle);
   });
 });

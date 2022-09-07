@@ -24,12 +24,13 @@ describe("CastCard", () => {
 
   test("Name bold styling", () => {
     const expectedFakePerson = fakePerson;
+    const expectedNameStyle = `font-weight: bold;`;
 
     render(<CastCard person={expectedFakePerson} customImageSrc />);
 
-    expect(screen.getByText(expectedFakePerson.name)).toHaveStyle(`
-        font-weight: bold;
-    `);
+    expect(screen.getByText(expectedFakePerson.name)).toHaveStyle(
+      expectedNameStyle
+    );
   });
 
   test("Fake person playing roles greater than 3. Only show 3", () => {
