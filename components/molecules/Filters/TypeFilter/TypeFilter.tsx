@@ -1,7 +1,7 @@
 import { CheckboxStyle, Container, FilterWrapper } from "./styles";
-import { IFilter, SearchType } from "types/search";
 
 import { ReactElement } from "react";
+import { SearchType } from "types/search";
 
 interface ITypeFilterProps {
   className?: string;
@@ -19,6 +19,7 @@ export default function TypeFilter({
       <span>Type:</span>
       <FilterWrapper>
         <CheckboxStyle
+          testId="MovieCheckbox"
           isSelected={selected === "movie"}
           onClick={() => setType("movie")}
         >
@@ -29,6 +30,7 @@ export default function TypeFilter({
         <CheckboxStyle
           isSelected={selected === "tv"}
           onClick={() => setType("tv")}
+          testId="TVCheckbox"
         >
           <span>TV</span>
         </CheckboxStyle>
