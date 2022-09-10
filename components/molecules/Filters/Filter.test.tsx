@@ -1,39 +1,28 @@
 import { cleanup, fireEvent, render, screen } from "utils/test-config";
 
+import { BaseRouter } from "next/dist/shared/lib/router/router";
 import Filter from "./Filters";
+import { NextRouter } from "next/router";
 import React from "react";
-import { UrlObject } from "url";
+import { RouterContext } from "next/dist/shared/lib/router-context";
 import getTheme from "resources/themes";
 import { removeAllSpaces } from "utils/TestUtils";
-import useFilters from "./useFilters";
 
 afterEach(cleanup);
 
-//jest.spyOn(useFilters, "getQueryFromURL");
-
-/*
-jest.mock("./useFilters", () => {
-  return {
-    filters: {
-      type: "movie",
-    },
-    setType: jest.fn(),
-    getQueryFromURL: jest.fn(),
-  };
-});*/
+jest.mock("next/router");
 
 describe("Filter", () => {
   const lightTheme = getTheme("light");
 
-  test("TypeFilter, initial state", () => {
-    /*jest.mock("./useFilters", () => ({
-      useFilters: jest.fn(() => ({
-        filters: {
-          type: "movie",
-        },
-        setType: jest.fn(),
-      })),
-    }));*/
+  test("TypeFilter, movie select type", () => {
+    const router: any = {
+      route: "/search",
+      pathname: "/search",
+      query: { type: "movie" },
+      asPath: "/search",
+      basePath: "/search",
+    };
 
     const expectedSelectedStyle = `
         border-color: ${removeAllSpaces(lightTheme.cRed.alpha(0.1).toString())};
@@ -53,7 +42,11 @@ describe("Filter", () => {
         padding: 0.425rem 1rem;
     `;
 
-    render(<Filter />);
+    render(
+      <RouterContext.Provider value={router}>
+        <Filter />
+      </RouterContext.Provider>
+    );
 
     const movieCheckbox = screen.getByTestId("MovieCheckbox");
     const tvCheckbox = screen.getByTestId("TVCheckbox");
@@ -62,7 +55,37 @@ describe("Filter", () => {
     expect(tvCheckbox).toHaveStyle(expectedNotSelectedStyle);
   });
 
+  test("TypeFilter, type click", () => {
+    const router: any = {
+      route: "/search",
+      pathname: "/search",
+      query: { type: "movie" },
+      asPath: "/search",
+      basePath: "/search",
+      replace: jest.fn(),
+    };
+
+    render(
+      <RouterContext.Provider value={router}>
+        <Filter />
+      </RouterContext.Provider>
+    );
+
+    const tvCheckbox = screen.getByTestId("TVCheckbox");
+
+    fireEvent.click(tvCheckbox);
+    expect(router.replace).toBeCalledTimes(1);
+  });
+
   test("TypeFilter, select TV type", () => {
+    const router: any = {
+      route: "/search",
+      pathname: "/search",
+      query: { type: "tv" },
+      asPath: "/search",
+      basePath: "/search",
+    };
+
     const expectedSelectedStyle = `
         border-color: ${removeAllSpaces(lightTheme.cRed.alpha(0.1).toString())};
         background-color: ${removeAllSpaces(
@@ -81,12 +104,15 @@ describe("Filter", () => {
         padding: 0.425rem 1rem;
     `;
 
-    render(<Filter />);
+    render(
+      <RouterContext.Provider value={router}>
+        <Filter />
+      </RouterContext.Provider>
+    );
 
     const movieCheckbox = screen.getByTestId("MovieCheckbox");
     const tvCheckbox = screen.getByTestId("TVCheckbox");
 
-    fireEvent.click(tvCheckbox);
     expect(movieCheckbox).toHaveStyle(expectedNotSelectedStyle);
     expect(tvCheckbox).toHaveStyle(expectedSelectedStyle);
   });
