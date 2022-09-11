@@ -19,6 +19,7 @@ interface IHorizontalListProps {
   className?: string;
   loading?: boolean;
   loadingElements?: ReactElement<any, any>;
+  testId?: string;
 }
 
 export default function HorizontalList({
@@ -29,6 +30,7 @@ export default function HorizontalList({
   className,
   loading,
   loadingElements,
+  testId = "HorizontalList",
 }: IHorizontalListProps): ReactElement {
   const ListRef = useRef<HTMLDivElement>(null);
 
@@ -66,7 +68,7 @@ export default function HorizontalList({
   }
 
   return (
-    <Container className={className}>
+    <Container className={className} test-dataid={testId}>
       <h1>{title}</h1>
       {subListTitles && (
         <SubListStyle
@@ -91,7 +93,9 @@ export default function HorizontalList({
               transition={{ duration: 1.25 }}
             >
               <LeftSlideBtn variant="circleSimpleLeft" onClick={slideLeft} />
-              <List ref={ListRef}>{children}</List>
+              <List ref={ListRef} test-dataid={`${testId}-List`}>
+                {children}
+              </List>
               <RightSlideBtn variant="circleSimpleRight" onClick={slideRight} />
             </ListAnim>
           </AnimatePresence>
