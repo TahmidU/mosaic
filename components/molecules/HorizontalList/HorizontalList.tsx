@@ -7,9 +7,10 @@ import {
   RightSlideBtn,
   SubListStyle,
 } from "./styles";
-import { ReactElement, ReactNode, useRef } from "react";
+import { ReactElement, ReactNode } from "react";
 
 import { AnimatePresence } from "framer-motion";
+import useListElements from "./useListElements";
 
 interface IHorizontalListProps {
   title: string;
@@ -32,40 +33,9 @@ export default function HorizontalList({
   loadingElements,
   testId = "HorizontalList",
 }: IHorizontalListProps): ReactElement {
-  const ListRef = useRef<HTMLDivElement>(null);
+  const { listReference, slideLeft, slideRight } = useListElements();
 
   const LoadingElements = () => (loadingElements ? loadingElements : <></>);
-
-  function slideRight() {
-    if (ListRef.current) {
-      const list = ListRef.current;
-
-      const scrollAmount =
-        list.scrollWidth !== list.scrollLeft + list.offsetWidth
-          ? list.scrollLeft + list.offsetWidth
-          : 0;
-      list.scrollTo({
-        left: scrollAmount,
-        behavior: "smooth",
-      });
-    }
-  }
-
-  function slideLeft() {
-    if (ListRef.current) {
-      const list = ListRef.current;
-
-      const scrollAmount =
-        list.scrollLeft !== 0
-          ? list.scrollLeft - list.offsetWidth
-          : list.scrollWidth;
-
-      list.scrollTo({
-        left: scrollAmount,
-        behavior: "smooth",
-      });
-    }
-  }
 
   return (
     <Container className={className} test-dataid={testId}>
@@ -93,7 +63,7 @@ export default function HorizontalList({
               transition={{ duration: 1.25 }}
             >
               <LeftSlideBtn variant="circleSimpleLeft" onClick={slideLeft} />
-              <List ref={ListRef} test-dataid={`${testId}-List`}>
+              <List ref={listReference} test-dataid={`${testId}-List`}>
                 {children}
               </List>
               <RightSlideBtn variant="circleSimpleRight" onClick={slideRight} />
