@@ -6,17 +6,6 @@ import * as useListElements from "./useListElements";
 
 afterEach(cleanup);
 
-/*
-const slideRightMock = jest.fn();
-const slideLeftMock = jest.fn();
-jest.mock("./useListElements", () => ({
-  __esModule: true,
-  default: () => ({
-    slideLeft: slideLeftMock,
-    slideRight: slideRightMock,
-  }),
-}));*/
-
 describe("HorizontalList", () => {
   test("Title props", () => {
     const expectedTitle = "Horizontal Title";
