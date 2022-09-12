@@ -29,7 +29,7 @@ interface ISlideButtonProps {
   variant?: Variant;
   strokeWidth?: number;
   onClick?: any;
-  dataTestId?: string;
+  testId?: string;
 }
 
 export default function SlideButton({
@@ -37,7 +37,7 @@ export default function SlideButton({
   strokeWidth = 1,
   className,
   onClick = () => {},
-  dataTestId = "",
+  testId = "SlideButton",
 }: ISlideButtonProps): ReactElement {
   const [showCircleAnim, setShowCircleAnim] = useState(false);
   const [containerSize, setContainerSize] = useState({
@@ -76,7 +76,7 @@ export default function SlideButton({
     return (
       <MobileContainer
         onClick={onClick}
-        data-testid={dataTestId}
+        data-testid={testId}
         className={className}
       >
         {variant === "simpleLeft" && <LeftMobileArrow />}
@@ -90,7 +90,7 @@ export default function SlideButton({
       <TransparentContainer
         className={className}
         onClick={onClick}
-        data-testid={dataTestId}
+        data-testid={testId}
       >
         {variant === "transparentLeft" && <LeftArrow />}
         {variant === "transparentRight" && <RightArrow />}
@@ -103,7 +103,7 @@ export default function SlideButton({
       <CircleSimpleContainer
         className={className}
         onClick={onClick}
-        data-testid={dataTestId}
+        data-testid={testId}
       >
         {variant === "circleSimpleLeft" && <AiOutlineLeft />}
         {variant === "circleSimpleRight" && <AiOutlineRight />}
@@ -121,7 +121,7 @@ export default function SlideButton({
       onMouseEnter={() => setShowCircleAnim(true)}
       onMouseLeave={() => setShowCircleAnim(false)}
       onClick={onClick}
-      data-testid={dataTestId}
+      data-testid={testId}
     >
       {variant === "left" && <LeftArrow />}
       {variant === "right" && <RightArrow />}

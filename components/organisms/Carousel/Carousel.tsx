@@ -74,7 +74,7 @@ export default function Carousel({
             }
           />
           <PrevBtn
-            dataTestId="CarouselPrevBtn"
+            testId="CarouselPrevBtn"
             variant="left"
             strokeWidth={3}
             onClick={() => handlePageDirectionChange(-1)}
@@ -109,7 +109,7 @@ export default function Carousel({
             })}
           </StepsContainer>
           <NextBtn
-            dataTestId="CarouselNextBtn"
+            testId="CarouselNextBtn"
             variant="right"
             strokeWidth={3}
             onClick={() => handlePageDirectionChange(1)}
