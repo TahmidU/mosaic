@@ -1,16 +1,12 @@
 import { cleanup, fireEvent, render, screen } from "utils/test-config";
 
-import { BaseRouter } from "next/dist/shared/lib/router/router";
 import Filter from "./Filters";
-import { NextRouter } from "next/router";
 import React from "react";
 import { RouterContext } from "next/dist/shared/lib/router-context";
 import getTheme from "resources/themes";
 import { removeAllSpaces } from "utils/TestUtils";
 
 afterEach(cleanup);
-
-jest.mock("next/router");
 
 describe("Filter", () => {
   const lightTheme = getTheme("light");
