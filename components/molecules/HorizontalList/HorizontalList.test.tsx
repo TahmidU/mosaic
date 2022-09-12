@@ -2,8 +2,20 @@ import { cleanup, fireEvent, render, screen } from "utils/test-config";
 
 import HorizontalList from "./HorizontalList";
 import React from "react";
+import * as useListElements from "./useListElements";
 
 afterEach(cleanup);
+
+/*
+const slideRightMock = jest.fn();
+const slideLeftMock = jest.fn();
+jest.mock("./useListElements", () => ({
+  __esModule: true,
+  default: () => ({
+    slideLeft: slideLeftMock,
+    slideRight: slideRightMock,
+  }),
+}));*/
 
 describe("HorizontalList", () => {
   test("Title props", () => {
@@ -59,7 +71,49 @@ describe("HorizontalList", () => {
     });
   });
 
-  test("Next button click", () => {});
+  test("Next button click", async () => {
+    const RightBtnTestId = "HorizontalList-RightBtn";
 
-  test("Previous button click", () => {});
+    const slideRightMock = jest.fn();
+    jest.spyOn(useListElements, "default").mockReturnValue({
+      ...jest.requireActual("./useListElements"),
+      slideLeft: jest.fn(),
+      slideRight: slideRightMock,
+    });
+
+    render(
+      <HorizontalList title="">
+        {Array.from(Array(10).keys()).map((_elm, index) => (
+          <span key={index}>{index}</span>
+        ))}
+      </HorizontalList>
+    );
+
+    const rightBtn = screen.getByTestId(RightBtnTestId);
+    fireEvent.click(rightBtn);
+    expect(slideRightMock).toBeCalled();
+  });
+
+  test("Previous button click", () => {
+    const LeftBtnTestId = "HorizontalList-LeftBtn";
+
+    const slideLeftMock = jest.fn();
+    jest.spyOn(useListElements, "default").mockReturnValue({
+      ...jest.requireActual("./useListElements"),
+      slideLeft: slideLeftMock,
+      slideRight: jest.fn(),
+    });
+
+    render(
+      <HorizontalList title="">
+        {Array.from(Array(10).keys()).map((_elm, index) => (
+          <span key={index}>{index}</span>
+        ))}
+      </HorizontalList>
+    );
+
+    const leftBtn = screen.getByTestId(LeftBtnTestId);
+    fireEvent.click(leftBtn);
+    expect(slideLeftMock).toBeCalled();
+  });
 });

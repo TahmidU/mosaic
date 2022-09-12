@@ -44,7 +44,7 @@ export default function MobileCarousel({
     <Container>
       <Frame>
         <PrevBtn
-          dataTestId="MobileCarouselPrevBtn"
+          testId="MobileCarouselPrevBtn"
           variant="simpleLeft"
           onClick={() => handlePageDirectionChange(-1)}
         />
@@ -60,7 +60,7 @@ export default function MobileCarousel({
           />
         </ImageContainer>
         <NextBtn
-          dataTestId="MobileCarouselNextBtn"
+          testId="MobileCarouselNextBtn"
           variant="simpleRight"
           onClick={() => handlePageDirectionChange(1)}
         />

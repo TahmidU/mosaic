@@ -38,7 +38,7 @@ export default function HorizontalList({
   const LoadingElements = () => (loadingElements ? loadingElements : <></>);
 
   return (
-    <Container className={className} test-dataid={testId}>
+    <Container className={className} data-testid={testId}>
       <h1>{title}</h1>
       {subListTitles && (
         <SubListStyle
@@ -62,11 +62,19 @@ export default function HorizontalList({
               exit={{ opacity: 0 }}
               transition={{ duration: 1.25 }}
             >
-              <LeftSlideBtn variant="circleSimpleLeft" onClick={slideLeft} />
-              <List ref={listReference} test-dataid={`${testId}-List`}>
+              <LeftSlideBtn
+                variant="circleSimpleLeft"
+                onClick={slideLeft}
+                testId={`${testId}-LeftBtn`}
+              />
+              <List ref={listReference} data-testid={`${testId}-List`}>
                 {children}
               </List>
-              <RightSlideBtn variant="circleSimpleRight" onClick={slideRight} />
+              <RightSlideBtn
+                variant="circleSimpleRight"
+                onClick={slideRight}
+                testId={`${testId}-RightBtn`}
+              />
             </ListAnim>
           </AnimatePresence>
         )}
