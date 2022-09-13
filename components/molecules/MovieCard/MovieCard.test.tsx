@@ -28,7 +28,7 @@ describe("MovieCard", () => {
     expect(screen.getByText(expectedTitle)).toHaveStyle(expectedTitleStyle);
   });
 
-  test("Description style", () => {});
+  test("Review style", () => {});
 
   test("Release date style", () => {});
 
