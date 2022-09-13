@@ -21,7 +21,7 @@ describe("MovieCard", () => {
         movieTitle={expectedTitle}
         src="https://via.placeholder.com/220x330/000000?text=FooBar"
         review={5.0}
-        movieReleaseDate={"2022/01/01"}
+        movieReleaseDate={"01/01/2022"}
       />
     );
 
@@ -30,7 +30,7 @@ describe("MovieCard", () => {
 
   test("Review style", () => {
     const review = 5.0;
-    const expectReview = `${((review / 10) * 5).toFixed(2)}/5`;
+    const expectedReview = `${((review / 10) * 5).toFixed(2)}/5`;
     const expectedReviewStyle = `
         ${removeAllSpaces(lightTheme.fonts.main.regular)}
     `;
@@ -40,14 +40,36 @@ describe("MovieCard", () => {
         movieTitle="Foo"
         src="https://via.placeholder.com/220x330/000000?text=FooBar"
         review={review}
-        movieReleaseDate={"2022/01/01"}
+        movieReleaseDate={"01/01/2022"}
       />
     );
 
-    expect(screen.getByText(expectReview)).toHaveStyle(expectedReviewStyle);
+    expect(screen.getByText(expectedReview)).toHaveStyle(expectedReviewStyle);
   });
 
-  test("Release date style", () => {});
+  test("Release date style", () => {
+    const expectedReleaseDate = "01/01/2022";
+    const expectedReleaseDateStyle = `
+          font-weight: 100;
+          ${removeAllSpaces(lightTheme.fonts.tertiary.small)}
+          color: ${removeAllSpaces(
+            lightTheme.cAlmostBlack.alpha(0.7).toString()
+          )};
+    `;
+
+    render(
+      <MovieCard
+        movieTitle="Foo"
+        src="https://via.placeholder.com/220x330/000000?text=FooBar"
+        review={5.0}
+        movieReleaseDate={expectedReleaseDate}
+      />
+    );
+
+    expect(screen.getByText(expectedReleaseDate)).toHaveStyle(
+      expectedReleaseDateStyle
+    );
+  });
 
   test("onClick", () => {
     const expectedTitle = "NewTitle";
@@ -58,7 +80,7 @@ describe("MovieCard", () => {
         movieTitle={expectedTitle}
         src="https://via.placeholder.com/220x330/000000?text=FooBar"
         review={5.0}
-        movieReleaseDate={"2022/01/01"}
+        movieReleaseDate={"01/01/2022"}
         onClick={onClickMock}
       />
     );

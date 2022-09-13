@@ -26,7 +26,7 @@ export const Container = styled(Card)`
     > span:last-child {
       ${({ theme }) => theme.fonts.tertiary.small};
       font-weight: 100;
-      color: ${({ theme }) => theme.cAlmostBlack.alpha(0.7)};
+      color: ${({ theme }) => theme.cAlmostBlack.alpha(0.7).toString()};
     }
   }
 `;
