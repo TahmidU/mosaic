@@ -73,4 +73,20 @@ describe("SearchCard", () => {
       expectedReleaseDateStyle
     );
   });
+
+  test("Description style", () => {
+    const expectedDesc = "This is a description.";
+
+    render(
+      <SearchCard
+        title="Foo"
+        src="https://via.placeholder.com/220x330/000000?text=FooBar"
+        rating={5.0}
+        desc={expectedDesc}
+        releaseDate={"01/01/2022"}
+      />
+    );
+
+    screen.getByText(expectedDesc);
+  });
 });
