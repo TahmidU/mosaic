@@ -35,7 +35,7 @@ export const Container = styled(Card)`
       > span:first-child {
         margin-right: 1rem;
         ${({ theme }) => theme.fonts.main.regular};
-        color: ${({ theme }) => theme.cAlmostBlack.alpha(0.7)};
+        color: ${({ theme }) => theme.cAlmostBlack.alpha(0.7).toString()};
         font-weight: 100;
       }
     }
