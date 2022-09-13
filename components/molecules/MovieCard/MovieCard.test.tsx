@@ -6,7 +6,11 @@ import React from "react";
 afterEach(cleanup);
 
 describe("MovieCard", () => {
-  test("Title, description and release date", () => {});
+  test("Title style", () => {});
+
+  test("Description style", () => {});
+
+  test("Release date style", () => {});
 
   test("onClick", () => {});
 });
