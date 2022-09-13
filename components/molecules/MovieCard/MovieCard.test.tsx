@@ -28,7 +28,24 @@ describe("MovieCard", () => {
     expect(screen.getByText(expectedTitle)).toHaveStyle(expectedTitleStyle);
   });
 
-  test("Review style", () => {});
+  test("Review style", () => {
+    const review = 5.0;
+    const expectReview = `${((review / 10) * 5).toFixed(2)}/5`;
+    const expectedReviewStyle = `
+        ${removeAllSpaces(lightTheme.fonts.main.regular)}
+    `;
+
+    render(
+      <MovieCard
+        movieTitle="Foo"
+        src="https://via.placeholder.com/220x330/000000?text=FooBar"
+        review={review}
+        movieReleaseDate={"2022/01/01"}
+      />
+    );
+
+    expect(screen.getByText(expectReview)).toHaveStyle(expectedReviewStyle);
+  });
 
   test("Release date style", () => {});
 
