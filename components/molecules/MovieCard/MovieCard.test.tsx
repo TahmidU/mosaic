@@ -32,5 +32,21 @@ describe("MovieCard", () => {
 
   test("Release date style", () => {});
 
-  test("onClick", () => {});
+  test("onClick", () => {
+    const expectedTitle = "NewTitle";
+    const onClickMock = jest.fn();
+
+    render(
+      <MovieCard
+        movieTitle={expectedTitle}
+        src="https://via.placeholder.com/220x330/000000?text=FooBar"
+        review={5.0}
+        movieReleaseDate={"2022/01/01"}
+        onClick={onClickMock}
+      />
+    );
+
+    fireEvent.click(screen.getByText(expectedTitle, { selector: "span" }));
+    expect(onClickMock).toBeCalledTimes(1);
+  });
 });
