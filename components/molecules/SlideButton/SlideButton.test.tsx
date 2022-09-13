@@ -46,6 +46,4 @@ describe("SlideButton", () => {
     fireEvent.click(screen.getByTestId(slideButtonId));
     expect(onClickMock).toBeCalledTimes(1);
   });
-
-  test("Default variant, animation style", () => {});
 });
