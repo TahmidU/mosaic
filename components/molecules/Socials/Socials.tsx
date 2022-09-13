@@ -34,6 +34,7 @@ export default function Socials({ links }: ISocialsProps): ReactElement {
               ? `${Links.instagramURL}${_link.href}`
               : `${Links.twitterURL}${_link.href}`
           }
+          testId={`${_link.variant}-${_index}`}
         >
           {_link.variant === "external" ? (
             <FaExternalLinkAlt />
