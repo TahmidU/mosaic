@@ -8,7 +8,7 @@ import { removeAllSpaces } from "utils/TestUtils";
 describe("MediaCard", () => {
   const lightTheme = getTheme("light");
 
-  test("Title", () => {
+  test("Title style", () => {
     const expectedTitle = "TestTitle";
     const expectedTitleStyle = `
         text-align: start;
