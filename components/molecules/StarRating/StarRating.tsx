@@ -5,20 +5,25 @@ import { ReactElement } from "react";
 interface IStarRatingProps {
   className?: string;
   rating: number;
+  testId?: string;
 }
 
 export default function StarRating({
   className,
   rating,
+  testId = "StarRating",
 }: IStarRatingProps): ReactElement {
   const ratingPercentage = rating * 10;
   const starRating = (rating / 10) * 5;
 
   return (
-    <Container className={className}>
+    <Container data-testid={testId} className={className}>
       <StarWrapper>
         <StarStroke>
-          <StarGradient rating={ratingPercentage}></StarGradient>
+          <StarGradient
+            data-testid={`${testId}-StarsGradient`}
+            rating={ratingPercentage}
+          />
         </StarStroke>
       </StarWrapper>
 
