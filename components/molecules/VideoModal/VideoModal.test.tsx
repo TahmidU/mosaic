@@ -4,16 +4,18 @@ import React from "react";
 import VideoModal from "./VideoModal";
 import getTheme from "resources/themes";
 
-let container: any = null;
-beforeEach(() => {
-  // setup a DOM element as a render target
-  container = document.createElement("div");
-  document.body.appendChild(container);
-});
-
 afterEach(cleanup);
 
 describe("VideoModal", () => {
+  let main: any = null;
+  beforeEach(() => {
+    // setup a DOM element as a render target
+    main = document.createElement("main");
+    const portalContainer = document.createElement("div");
+    portalContainer.id = "modalPortal";
+    document.body.appendChild(portalContainer);
+  });
+
   const lightTheme = getTheme("light");
   const fakeVideos = {
     id: 0,
@@ -33,29 +35,25 @@ describe("VideoModal", () => {
     ],
   };
 
-  test("Close button test", () => {
-    const setModalOpenMock = jest.fn();
+  test("Close button", () => {
     const closeBtnTestId = "VideoModal-CloseBtn";
-    const expectedSetterCalledWith = (prev: any) => ({
-      initialIndex: 0,
-      open: false,
-    });
 
-    render(
-      <>
-        <div id="modalPortal"></div>
-
-        <VideoModal
-          modalOpen={{ open: true, initialIndex: 0 }}
-          setModalOpen={setModalOpenMock}
-          videos={fakeVideos}
-        />
-      </>
+    const expectedModalOpenResult = { open: false };
+    const setModalOpenMock = jest.fn((fn: any) =>
+      expect(fn()).toEqual(expectedModalOpenResult)
     );
 
-    //expect(setModalOpenMock).toHaveBeenCalledTimes(1);
+    render(
+      <VideoModal
+        modalOpen={{ open: true, initialIndex: 0 }}
+        setModalOpen={setModalOpenMock}
+        videos={fakeVideos}
+      />,
+      { container: document.body.appendChild(main) }
+    );
+
     fireEvent.click(screen.getByTestId(closeBtnTestId));
-    expect(setModalOpenMock).toHaveBeenCalledWith(expectedSetterCalledWith);
+    expect(setModalOpenMock).toBeCalledTimes(1);
   });
 
   test("Next button", () => {});
