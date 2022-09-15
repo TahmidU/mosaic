@@ -13,9 +13,12 @@ import { ITVDetails } from "types/tv";
 import { IVideos } from "types/api/videos";
 import MediaList from "components/organisms/MediaList";
 import { MediaType } from "types/tv_movies";
-import VideoModal from "components/molecules/VideoModal";
 import { useRouter } from "next/router";
+import dynamic from "next/dynamic";
 
+const VideoModal = dynamic(() => import("components/molecules/VideoModal"), {
+  ssr: false,
+});
 interface IDetailsPageProps {
   details?: IMovieDetails & ITVDetails;
   mediaType: MediaType;

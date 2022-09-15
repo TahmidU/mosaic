@@ -26,12 +26,14 @@ interface IVideoModalProps {
     SetStateAction<{ open: boolean; initialIndex: number }>
   >;
   videos?: IVideos;
+  testId?: string;
 }
 
 export default function VideoModal({
   modalOpen,
   setModalOpen,
   videos,
+  testId = "VideoModal",
 }: IVideoModalProps): ReactElement {
   const [videoIndex, setVideoIndex] = useState(0);
 
@@ -40,10 +42,12 @@ export default function VideoModal({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [modalOpen.open]);
 
+  const closeModal = () => setModalOpen((prev) => ({ ...prev, open: false }));
+
   if (!modalOpen.open || !videos) return <></>;
 
   return (
-    <ClientPortal selector="#modalPortal">
+    <ClientPortal data-testid={testId} selector="#modalPortal">
       <Overlay />
       <Container>
         <LeftBtn
@@ -71,9 +75,7 @@ export default function VideoModal({
             );
           }}
         />
-        <CloseBtn
-          onClick={() => setModalOpen((prev) => ({ ...prev, open: false }))}
-        >
+        <CloseBtn data-testid={`${testId}-CloseBtn`} onClick={closeModal}>
           <GrClose />
         </CloseBtn>
       </Container>

@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
 interface IClientPortal {
@@ -6,5 +7,15 @@ interface IClientPortal {
 }
 
 export default function ClientPortal({ children, selector }: IClientPortal) {
-  return createPortal(children, document.querySelector(selector));
+  const ref = useRef();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    ref.current = document.querySelector(selector);
+
+    setMounted(true);
+  }, [selector]);
+
+  // @ts-ignore
+  return mounted ? createPortal(children, ref.current) : null;
 }
