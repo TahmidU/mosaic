@@ -26,12 +26,14 @@ interface IVideoModalProps {
     SetStateAction<{ open: boolean; initialIndex: number }>
   >;
   videos?: IVideos;
+  testId?: string;
 }
 
 export default function VideoModal({
   modalOpen,
   setModalOpen,
   videos,
+  testId = "VideoModal",
 }: IVideoModalProps): ReactElement {
   const [videoIndex, setVideoIndex] = useState(0);
 
@@ -42,17 +44,22 @@ export default function VideoModal({
 
   if (!modalOpen.open || !videos) return <></>;
 
+  const closeModal = () => setModalOpen((prev) => ({ ...prev, open: false }));
+  const prevVideo = () => {
+    setVideoIndex((prev) => (prev > 0 ? prev - 1 : videos.results.length - 1));
+  };
+  const nextVideo = () => {
+    setVideoIndex((prev) => (prev < videos.results.length - 1 ? prev + 1 : 0));
+  };
+
   return (
-    <ClientPortal selector="#modalPortal">
+    <ClientPortal data-testid={testId} selector="#modalPortal">
       <Overlay />
       <Container>
         <LeftBtn
+          testId={`${testId}-PrevBtn`}
           variant="transparentLeft"
-          onClick={() => {
-            setVideoIndex((prev) =>
-              prev > 0 ? prev - 1 : videos.results.length - 1
-            );
-          }}
+          onClick={prevVideo}
         />
         <VideoContainer>
           <Frame
@@ -64,16 +71,11 @@ export default function VideoModal({
           />
         </VideoContainer>
         <RightBtn
+          testId={`${testId}-NextBtn`}
           variant="transparentRight"
-          onClick={() => {
-            setVideoIndex((prev) =>
-              prev < videos.results.length - 1 ? prev + 1 : 0
-            );
-          }}
+          onClick={nextVideo}
         />
-        <CloseBtn
-          onClick={() => setModalOpen((prev) => ({ ...prev, open: false }))}
-        >
+        <CloseBtn data-testid={`${testId}-CloseBtn`} onClick={closeModal}>
           <GrClose />
         </CloseBtn>
       </Container>
