@@ -42,22 +42,21 @@ export default function VideoModal({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [modalOpen.open]);
 
-  const closeModal = () => setModalOpen((prev) => ({ ...prev, open: false }));
-
   if (!modalOpen.open || !videos) return <></>;
+
+  const closeModal = () => setModalOpen((prev) => ({ ...prev, open: false }));
+  const prevVideo = () => {
+    setVideoIndex((prev) => (prev > 0 ? prev - 1 : videos.results.length - 1));
+  };
+  const nextVideo = () => {
+    setVideoIndex((prev) => (prev < videos.results.length - 1 ? prev + 1 : 0));
+  };
 
   return (
     <ClientPortal data-testid={testId} selector="#modalPortal">
       <Overlay />
       <Container>
-        <LeftBtn
-          variant="transparentLeft"
-          onClick={() => {
-            setVideoIndex((prev) =>
-              prev > 0 ? prev - 1 : videos.results.length - 1
-            );
-          }}
-        />
+        <LeftBtn variant="transparentLeft" onClick={prevVideo} />
         <VideoContainer>
           <Frame
             src={`${Links.youtubeVideoURL}${videos.results[videoIndex].key}`}
@@ -67,14 +66,7 @@ export default function VideoModal({
             allowFullScreen
           />
         </VideoContainer>
-        <RightBtn
-          variant="transparentRight"
-          onClick={() => {
-            setVideoIndex((prev) =>
-              prev < videos.results.length - 1 ? prev + 1 : 0
-            );
-          }}
-        />
+        <RightBtn variant="transparentRight" onClick={nextVideo} />
         <CloseBtn data-testid={`${testId}-CloseBtn`} onClick={closeModal}>
           <GrClose />
         </CloseBtn>
