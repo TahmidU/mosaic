@@ -56,7 +56,11 @@ export default function VideoModal({
     <ClientPortal data-testid={testId} selector="#modalPortal">
       <Overlay />
       <Container>
-        <LeftBtn variant="transparentLeft" onClick={prevVideo} />
+        <LeftBtn
+          testId={`${testId}-PrevBtn`}
+          variant="transparentLeft"
+          onClick={prevVideo}
+        />
         <VideoContainer>
           <Frame
             src={`${Links.youtubeVideoURL}${videos.results[videoIndex].key}`}
@@ -66,7 +70,11 @@ export default function VideoModal({
             allowFullScreen
           />
         </VideoContainer>
-        <RightBtn variant="transparentRight" onClick={nextVideo} />
+        <RightBtn
+          testId={`${testId}-NextBtn`}
+          variant="transparentRight"
+          onClick={nextVideo}
+        />
         <CloseBtn data-testid={`${testId}-CloseBtn`} onClick={closeModal}>
           <GrClose />
         </CloseBtn>

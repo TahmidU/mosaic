@@ -30,7 +30,19 @@ describe("VideoModal", () => {
         type: "type",
         official: true,
         published_at: "published_at",
-        id: "id",
+        id: "1",
+      },
+      {
+        iso_639_1: "iso_639_1",
+        iso_3166_1: "iso_3166_1",
+        name: "name",
+        key: "key",
+        site: "site",
+        size: 0,
+        type: "type",
+        official: true,
+        published_at: "published_at",
+        id: "2",
       },
     ],
   };
@@ -56,9 +68,41 @@ describe("VideoModal", () => {
     expect(setModalOpenMock).toBeCalledTimes(1);
   });
 
-  test("Next button", () => {});
+  test("Next button", () => {
+    const nextBtnTestId = "VideoModal-NextBtn";
 
-  test("Previous button", () => {});
+    const setVideoIndexMock = jest.fn();
+    jest.spyOn(React, "useState").mockReturnValueOnce([0, setVideoIndexMock]);
 
-  test("Video div appearance", () => {});
+    render(
+      <VideoModal
+        modalOpen={{ open: true, initialIndex: 0 }}
+        setModalOpen={jest.fn()}
+        videos={fakeVideos}
+      />,
+      { container: document.body.appendChild(main) }
+    );
+
+    fireEvent.click(screen.getByTestId(nextBtnTestId));
+    expect(setVideoIndexMock).toBeCalled();
+  });
+
+  test("Previous button", () => {
+    const prevBtnTestId = "VideoModal-PrevBtn";
+
+    const setVideoIndexMock = jest.fn();
+    jest.spyOn(React, "useState").mockReturnValueOnce([0, setVideoIndexMock]);
+
+    render(
+      <VideoModal
+        modalOpen={{ open: true, initialIndex: 0 }}
+        setModalOpen={jest.fn()}
+        videos={fakeVideos}
+      />,
+      { container: document.body.appendChild(main) }
+    );
+
+    fireEvent.click(screen.getByTestId(prevBtnTestId));
+    expect(setVideoIndexMock).toBeCalled();
+  });
 });
