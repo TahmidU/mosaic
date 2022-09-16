@@ -36,20 +36,27 @@ describe("Carousel", () => {
     screen.getByText(expectedDate, { exact: false });
   });
 
-  /*
   test("Correct number of StepStatus components", () => {
     // Given
     const data = FakeDiscoverMovie;
 
     // When
-    const { getAllByTestId } = render(
-      <Carousel carouselData={data} localImages disableAutoSlide />
+    render(
+      <Carousel
+        carouselData={data}
+        page={0}
+        direction={0}
+        handlePageDirectionChange={() => {}}
+        handlePageChange={() => {}}
+        disableAutoSlide
+      />
     );
 
     // Then
-    expect(getAllByTestId("StepStatusIndicator").length).toBe(3);
+    expect(screen.getAllByTestId("StepStatusIndicator").length).toBe(3);
   });
 
+  /*
   test("Change slide", async () => {
     // Given
     const data = FakeDiscoverMovie,
