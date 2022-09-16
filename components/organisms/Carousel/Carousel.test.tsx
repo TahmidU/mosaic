@@ -1,19 +1,14 @@
 import "jest-styled-components";
 
-import { cleanup, fireEvent, render } from "utils/test-config";
+import { cleanup, fireEvent, render, screen } from "utils/test-config";
 
 import Carousel from "./Carousel";
-import { FakeDiscoverMovie } from "../../../resources/TestResources/DiscoverMovie";
+import { FakeDiscoverMovie } from "resources/TestResources/DiscoverMovie";
 import React from "react";
 import { TextUtils } from "utils";
 
 afterEach(cleanup);
 
-describe("Carousel", () => {
-  test("nothing", () => {});
-});
-
-/*
 describe("Carousel", () => {
   test("Title, description, and date", () => {
     // Given
@@ -21,19 +16,27 @@ describe("Carousel", () => {
       target = data[0],
       expectedTitle = target.title,
       expectedDesc = target.overview,
-      expectedDate = TextUtils.dateFormatter(target.release_date);
+      expectedDate = TextUtils.dateFormatter(target.release_date) as string;
 
     // When
-    const { getByText, getAllByTestId, getByTestId } = render(
-      <Carousel carouselData={data} localImages disableAutoSlide />
+    render(
+      <Carousel
+        carouselData={data}
+        page={0}
+        direction={0}
+        handlePageDirectionChange={() => {}}
+        handlePageChange={() => {}}
+        disableAutoSlide
+      />
     );
 
     // Then
-    getByText(expectedTitle);
-    getByText(expectedDesc);
-    getByText(expectedDate, { exact: false });
+    screen.getByText(expectedTitle);
+    screen.getByText(expectedDesc);
+    screen.getByText(expectedDate, { exact: false });
   });
 
+  /*
   test("Correct number of StepStatus components", () => {
     // Given
     const data = FakeDiscoverMovie;
@@ -146,6 +149,5 @@ describe("Carousel", () => {
     await new Promise((r) => setTimeout(r, 1000));
 
     getByText(expectedTitle);
-  });
+  });*/
 });
-*/
