@@ -49,6 +49,8 @@ export default function Carousel({
     toPage - page < 0 ? setPage([toPage, -1]) : setPage([toPage, 1]);
   }
 
+  console.log(isMobile);
+
   return (
     <>
       {isMobile ? (

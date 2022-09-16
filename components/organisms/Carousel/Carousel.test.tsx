@@ -2,61 +2,52 @@ import "jest-styled-components";
 
 import { cleanup, fireEvent, render, screen } from "utils/test-config";
 
-import Carousel from "./Carousel";
+import Carousel from "./index";
 import { FakeDiscoverMovie } from "resources/TestResources/DiscoverMovie";
 import React from "react";
 import { TextUtils } from "utils";
 
+import * as mq from "react-responsive";
+
 afterEach(cleanup);
 
-describe("Carousel", () => {
-  test("Title, description, and date", () => {
-    // Given
+describe("Desktop Carousel", () => {
+  let useMediaQueryMock: any = null;
+  beforeAll(() => {
+    useMediaQueryMock = jest.spyOn(mq, "useMediaQuery");
+    useMediaQueryMock.mockReturnValue(false);
+  });
+
+  afterAll(() => {
+    useMediaQueryMock.mockRestore();
+  });
+
+  test("Title, description, and date", async () => {
     const data = FakeDiscoverMovie,
       target = data[0],
       expectedTitle = target.title,
       expectedDesc = target.overview,
       expectedDate = TextUtils.dateFormatter(target.release_date) as string;
 
-    // When
-    render(
-      <Carousel
-        carouselData={data}
-        page={0}
-        direction={0}
-        handlePageDirectionChange={() => {}}
-        handlePageChange={() => {}}
-        disableAutoSlide
-      />
-    );
+    render(<Carousel carouselData={data} />);
 
-    // Then
+    await new Promise((r) => setTimeout(r, 1000));
+
     screen.getByText(expectedTitle);
     screen.getByText(expectedDesc);
     screen.getByText(expectedDate, { exact: false });
   });
 
-  test("Correct number of StepStatus components", () => {
-    // Given
+  test("Correct number of StepStatus components", async () => {
     const data = FakeDiscoverMovie;
 
-    // When
-    render(
-      <Carousel
-        carouselData={data}
-        page={0}
-        direction={0}
-        handlePageDirectionChange={() => {}}
-        handlePageChange={() => {}}
-        disableAutoSlide
-      />
-    );
+    render(<Carousel carouselData={data} />);
 
-    // Then
+    await new Promise((r) => setTimeout(r, 1000));
+
     expect(screen.getAllByTestId("StepStatusIndicator").length).toBe(3);
   });
 
-  /*
   test("Change slide", async () => {
     // Given
     const data = FakeDiscoverMovie,
@@ -64,18 +55,19 @@ describe("Carousel", () => {
       expectedTitle = target.title;
 
     // When
-    const { getByTestId, getByText } = render(
-      <Carousel carouselData={data} localImages disableAutoSlide />
-    );
-
-    // Then
-    fireEvent.click(getByTestId("CarouselNextBtn"));
+    render(<Carousel carouselData={data} />);
 
     await new Promise((r) => setTimeout(r, 1000));
 
-    getByText(expectedTitle);
+    // Then
+    fireEvent.click(screen.getByTestId("CarouselNextBtn"));
+
+    await new Promise((r) => setTimeout(r, 1000));
+
+    screen.getByText(expectedTitle);
   });
 
+  /*
   test("Change slide auto", async () => {
     // Given
     const data = FakeDiscoverMovie,
@@ -157,4 +149,32 @@ describe("Carousel", () => {
 
     getByText(expectedTitle);
   });*/
+});
+
+describe("Mobile Carousel", () => {
+  let useMediaQueryMock: any = null;
+  beforeAll(() => {
+    useMediaQueryMock = jest.spyOn(mq, "useMediaQuery");
+    useMediaQueryMock.mockReturnValue(true);
+  });
+
+  afterAll(() => {
+    useMediaQueryMock.mockRestore();
+  });
+
+  test("Mobile title, description, and date", async () => {
+    const data = FakeDiscoverMovie,
+      target = data[0],
+      expectedTitle = target.title,
+      expectedDesc = target.overview,
+      expectedDate = TextUtils.dateFormatter(target.release_date) as string;
+
+    render(<Carousel carouselData={data} />);
+
+    await new Promise((r) => setTimeout(r, 1000));
+
+    screen.getByText(expectedTitle);
+    screen.getByText(expectedDesc);
+    screen.getByText(expectedDate, { exact: false });
+  });
 });
