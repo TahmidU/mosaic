@@ -17,7 +17,6 @@ import { IDiscoverMovie } from "types/api/discover";
 
 interface IMobileCarouselProps {
   carouselData?: IDiscoverMovie[];
-  localImages?: boolean;
   page: number;
   direction: number;
   handlePageDirectionChange: (direction: 1 | -1) => void;
@@ -27,7 +26,6 @@ interface IMobileCarouselProps {
 
 export default function MobileCarousel({
   carouselData,
-  localImages,
   page,
   direction,
   handlePageDirectionChange,
@@ -55,7 +53,6 @@ export default function MobileCarousel({
             direction={direction}
             imageURL={carouselData[page]?.backdrop_path}
             currentPage={page}
-            local={localImages}
             handlePageChange={handlePageDirectionChange}
           />
         </ImageContainer>

@@ -10,6 +10,8 @@ import useVideoInfoCache from "./useCarouselVideoCache";
 
 interface ICarouselProps {
   carouselData?: IDiscoverMovie[];
+  desktopAutoSlideDuration?: number;
+  desktopDisableAutoSlide?: boolean;
   startPage?: number;
 }
 
@@ -19,6 +21,8 @@ export const carouselMediaQuery = {
 
 export default function Carousel({
   carouselData = [],
+  desktopAutoSlideDuration = undefined,
+  desktopDisableAutoSlide = false,
   startPage = 0,
 }: ICarouselProps): ReactElement {
   const [[page, direction], setPage] = useState([startPage, 0]);
@@ -49,6 +53,8 @@ export default function Carousel({
     toPage - page < 0 ? setPage([toPage, -1]) : setPage([toPage, 1]);
   }
 
+  console.log(isMobile);
+
   return (
     <>
       {isMobile ? (
@@ -69,6 +75,8 @@ export default function Carousel({
           page={page}
           direction={direction}
           textAnimControls={textAnimControls}
+          autoSlideDuration={desktopAutoSlideDuration}
+          disableAutoSlide={desktopDisableAutoSlide}
         />
       )}
     </>

@@ -29,7 +29,6 @@ const VideoModal = dynamic(() => import("../../molecules/VideoModal"), {
 interface ICarouselProps {
   carouselData?: IDiscoverMovie[];
   videos?: IVideos;
-  localImages?: boolean;
   disableAutoSlide?: boolean;
   autoSlideDuration?: number;
   page: number;
@@ -42,7 +41,6 @@ interface ICarouselProps {
 export default function Carousel({
   carouselData = [],
   videos,
-  localImages = false,
   disableAutoSlide = false,
   autoSlideDuration = 15,
   page,
@@ -86,7 +84,6 @@ export default function Carousel({
               direction={direction}
               imageURL={carouselData[page].backdrop_path}
               currentPage={page}
-              local={localImages}
               handlePageChange={handlePageDirectionChange}
             />
 

@@ -9,7 +9,7 @@ const payload: IPayload = {
 export default payload;
 
 export const Basic = (args: any) => (
-  <Carousel carouselData={FakeDiscoverMovie} localImages {...args} />
+  <Carousel carouselData={FakeDiscoverMovie} {...args} />
 );
 Basic.args = {};
 Basic.parameters = { controls: { include: [] } };
