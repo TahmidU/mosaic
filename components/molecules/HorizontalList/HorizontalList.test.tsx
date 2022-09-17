@@ -1,8 +1,9 @@
+import * as useListElements from "./useListElements";
+
 import { cleanup, fireEvent, render, screen } from "utils/test-config";
 
 import HorizontalList from "./HorizontalList";
 import React from "react";
-import * as useListElements from "./useListElements";
 
 afterEach(cleanup);
 
@@ -104,5 +105,29 @@ describe("HorizontalList", () => {
     const leftBtn = screen.getByTestId(LeftBtnTestId);
     fireEvent.click(leftBtn);
     expect(slideLeftMock).toBeCalled();
+  });
+
+  test("Sub list title selection", async () => {
+    const subTitles = ["ST1", "ST2", "ST3"];
+    const expectedSubTitle = subTitles[1];
+    const onSubTitleClickMock = jest.fn((val: string) =>
+      expect(val).toEqual(expectedSubTitle)
+    );
+
+    render(
+      <HorizontalList
+        title="Test"
+        subListTitles={subTitles}
+        onSubTitleClick={onSubTitleClickMock}
+        loading={false}
+      >
+        {Array.from(Array(10).keys()).map((_elm, index) => (
+          <span key={index}>{index}</span>
+        ))}
+      </HorizontalList>
+    );
+
+    await new Promise((r) => setTimeout(r, 1000));
+    fireEvent.click(screen.getByText(expectedSubTitle));
   });
 });
