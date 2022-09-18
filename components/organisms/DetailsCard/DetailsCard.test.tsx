@@ -127,7 +127,41 @@ describe("DetailsCard", () => {
     screen.getByText(expectedNumberOfEpisodes);
   });
 
-  test("Providers movie", () => {});
+  test("Providers movie purchase and stream", () => {
+    const expectedPlacesToPurchase =
+      fakeMovieData["watch/providers"]?.results?.GB?.buy || [];
+    const expectedPlacesToWatchOnStream =
+      fakeMovieData["watch/providers"]?.results?.GB?.flatrate || [];
 
-  test("Providers TV", () => {});
+    render(
+      <DetailsCard
+        mediaType="movie"
+        details={fakeMovieData as IMovieDetails & ITVDetails}
+      />
+    );
+
+    expectedPlacesToPurchase.forEach((_placeToPurchase) => {
+      screen.getByText(_placeToPurchase.provider_name);
+    });
+
+    expectedPlacesToWatchOnStream.forEach((_placeToWatchOnStream) => {
+      screen.getByText(_placeToWatchOnStream.provider_name);
+    });
+  });
+
+  test("Providers TV stream", () => {
+    const expectedPlacesToWatchOnStream =
+      fakeTVData["watch/providers"]?.results?.GB?.flatrate || [];
+
+    render(
+      <DetailsCard
+        mediaType="tv"
+        details={fakeTVData as IMovieDetails & ITVDetails}
+      />
+    );
+
+    expectedPlacesToWatchOnStream.forEach((_placeToWatchOnStream) => {
+      screen.getByText(_placeToWatchOnStream.provider_name);
+    });
+  });
 });
