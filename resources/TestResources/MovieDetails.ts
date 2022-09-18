@@ -1,7 +1,7 @@
 import { IMovieDetails } from "types/movie";
 
 //https://api.themoviedb.org/3/movie/453395?api_key=API_KEY&language=en-US&append_to_response=external_ids,credits,watch/providers
-export const FakeMovieData: IMovieDetails = {
+export const fakeMovieData: IMovieDetails = {
   adult: false,
   backdrop_path: "/wcKFYIiVDvRURrzglV9kGu7fpfY.jpg",
   belongs_to_collection: {

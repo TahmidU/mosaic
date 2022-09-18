@@ -13,6 +13,7 @@ export function shortenRuntime(runtimeMins?: number) {
 
 const MathUtils = {
   mod,
+  shortenRuntime,
 };
 
 export default MathUtils;
