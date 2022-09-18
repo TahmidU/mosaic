@@ -1,6 +1,6 @@
 import { ITVDetails } from "types/tv";
 
-export const FakeTVData: ITVDetails = {
+export const fakeTVData: ITVDetails = {
   adult: false,
   backdrop_path: "/vfWdZYGR5505zrCdgTHteFyARu3.jpg",
   created_by: [
