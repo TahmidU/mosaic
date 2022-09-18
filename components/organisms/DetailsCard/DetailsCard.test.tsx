@@ -7,6 +7,7 @@ import { ITVDetails } from "types/tv";
 import React from "react";
 import { fakeMovieData } from "resources/TestResources/MovieDetails";
 import { fakeTVData } from "resources/TestResources/TVDetails";
+import { findInCrewNamesByJob, numberWithCommas } from "utils/TextUtils";
 
 afterEach(cleanup);
 
@@ -84,9 +85,47 @@ describe("DetailsCard", () => {
     screen.getByText(expectedLanguage, { exact: true, selector: "span" });
   });
 
-  test("Additional details movie", () => {});
+  test("Additional details movie", () => {
+    const expectedDirectors = findInCrewNamesByJob(
+      fakeMovieData?.credits?.crew,
+      "Director"
+    ) as string;
+    const expectedWriters = findInCrewNamesByJob(
+      fakeMovieData?.credits?.crew,
+      "Writer"
+    ) as string;
+    const expectedBudget = `$${numberWithCommas(fakeMovieData.budget)}`;
+    const expectedRevenue = `$${numberWithCommas(fakeMovieData.revenue)}`;
 
-  test("Additional details TV", () => {});
+    render(
+      <DetailsCard
+        mediaType="movie"
+        details={fakeMovieData as IMovieDetails & ITVDetails}
+      />
+    );
+
+    screen.getByText(expectedDirectors);
+    screen.getByText(expectedWriters);
+    screen.getByText(expectedBudget);
+    screen.getByText(expectedRevenue);
+  });
+
+  test("Additional details TV", () => {
+    const expectedType = fakeTVData.type;
+    const expectedNumberOfSeasons = fakeTVData.number_of_seasons;
+    const expectedNumberOfEpisodes = fakeTVData.number_of_episodes;
+
+    render(
+      <DetailsCard
+        mediaType="tv"
+        details={fakeTVData as IMovieDetails & ITVDetails}
+      />
+    );
+
+    screen.getByText(expectedType);
+    screen.getByText(expectedNumberOfSeasons);
+    screen.getByText(expectedNumberOfEpisodes);
+  });
 
   test("Providers movie", () => {});
 
