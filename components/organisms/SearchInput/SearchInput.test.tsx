@@ -77,7 +77,7 @@ describe("MobileSearchInput", () => {
     useMediaQueryMock.mockRestore();
   });
 
-  test("Search Menu open and close", () => {
+  test("Search menu open and close", async () => {
     const router: any = {
       route: "/search",
       pathname: "/search",
@@ -86,15 +86,25 @@ describe("MobileSearchInput", () => {
       basePath: "/search",
     };
 
-    const expectedSearchStr = "searchMockString";
-
     render(
       <RouterContext.Provider value={router}>
         <SearchInput />
       </RouterContext.Provider>
     );
 
-    screen.getByTestId("MobileSearchInput-SearchIcon");
+    const searchIconOpen = screen.getByTestId("MobileSearchInput-SearchIcon");
+
+    fireEvent.click(searchIconOpen);
+    await new Promise((r) => setTimeout(r, 1000));
+
+    screen.getByTestId("FullScreenSearchMenu");
+
+    const closeIcon = screen.getByTestId("FullScreenSearchMenu-CloseBtn");
+    fireEvent.click(closeIcon);
+
+    await new Promise((r) => setTimeout(r, 1000));
+
+    expect(screen.getByTestId("FullScreenSearchMenu")).not.toBeVisible();
   });
 
   test("Search on icon click", () => {});
