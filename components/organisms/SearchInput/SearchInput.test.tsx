@@ -1,6 +1,6 @@
 import { cleanup, fireEvent, render, screen } from "utils/test-config";
 
-import SearchInput from "./SearchInput";
+import SearchInput from "./index";
 import React from "react";
 import { RouterContext } from "next/dist/shared/lib/router-context";
 
@@ -11,28 +11,38 @@ afterEach(cleanup);
 
 describe("SearchInput", () => {
   let useMediaQueryMock: any = null;
+  let useRoutesMock: any = null;
+  let useStateTextMock: any = null;
+  let setTextMock: any = jest.fn();
   beforeAll(() => {
+    const expectedSearchStr = "searchMockString";
+
     useMediaQueryMock = jest.spyOn(useMediaQuery, "useMediaQuery");
     useMediaQueryMock.mockReturnValue(false);
+
+    useStateTextMock = jest
+      .spyOn(React, "useState")
+      .mockReturnValueOnce([expectedSearchStr, setTextMock]);
+
+    const goToSearchPageMock: any = jest.fn((search?: string, type?: any) => {
+      expect(search).toEqual(expectedSearchStr);
+    });
+    useRoutesMock = jest.spyOn(useRoutes, "default").mockReturnValue({
+      ...jest.requireActual("hooks/useRoutes"),
+      goToSearchPage: goToSearchPageMock,
+    });
   });
 
   afterAll(() => {
     useMediaQueryMock.mockRestore();
-  });
-
-  const expectedSearchStr = "searchMockString";
-  const goToSearchPageMock: any = jest.fn((search?: string, type?: any) => {
-    expect(search).toEqual(expectedSearchStr);
-  });
-  jest.spyOn(useRoutes, "default").mockReturnValue({
-    ...jest.requireActual("hooks/useRoutes"),
-    goToSearchPage: goToSearchPageMock,
+    useStateTextMock.mockRestore();
+    useRoutesMock.mockRestore();
   });
 
   test("On search, click icon", async () => {
     const searchIconTestId = "SearchInput-SearchIcon";
 
-    render(<SearchInput text={expectedSearchStr} setText={() => {}} />);
+    render(<SearchInput />);
     await new Promise((r) => setTimeout(r, 1000));
 
     const searchIcon = screen.getByTestId(searchIconTestId);
@@ -44,7 +54,7 @@ describe("SearchInput", () => {
     const enterKey = "Enter",
       enterCharCode = 13;
 
-    render(<SearchInput text={expectedSearchStr} setText={() => {}} />);
+    render(<SearchInput />);
     await new Promise((r) => setTimeout(r, 1000));
 
     const inputElement = screen.getByTestId(searchInputTestId);
@@ -67,7 +77,25 @@ describe("MobileSearchInput", () => {
     useMediaQueryMock.mockRestore();
   });
 
-  test("Search Menu open and close", () => {});
+  test("Search Menu open and close", () => {
+    const router: any = {
+      route: "/search",
+      pathname: "/search",
+      query: { type: undefined },
+      asPath: "/search",
+      basePath: "/search",
+    };
+
+    const expectedSearchStr = "searchMockString";
+
+    render(
+      <RouterContext.Provider value={router}>
+        <SearchInput />
+      </RouterContext.Provider>
+    );
+
+    screen.getByTestId("MobileSearchInput-SearchIcon");
+  });
 
   test("Search on icon click", () => {});
 

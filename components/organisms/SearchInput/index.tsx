@@ -19,6 +19,8 @@ export default function SearchInput({
     query: "(max-width: 768px)",
   });
 
+  console.log(isMobile);
+
   if (isMobile) {
     return (
       <MobileSearchInput

@@ -19,6 +19,7 @@ interface IFullScreenSearchMenuProps {
   isMenuOpen: boolean;
   setSearchText: Dispatch<SetStateAction<string>>;
   searchText: string;
+  testId?: string;
 }
 
 const SearchIcon = (props: any) => (
@@ -30,6 +31,7 @@ export default function FullScreenSearchMenu({
   isMenuOpen,
   setSearchText,
   searchText,
+  testId = "FullScreenSearchMenu",
 }: IFullScreenSearchMenuProps): ReactElement {
   const {
     onHandleMenuKeyDown,
@@ -45,12 +47,14 @@ export default function FullScreenSearchMenu({
       initial={"close"}
       animate={isMenuOpen ? "open" : "close"}
       transition={{ ease: "easeIn", duration: 0.5 }}
+      data-testid={testId}
     >
       <OptionsWrapper>
         <Header>
           <div></div>
           <span>Search {"&"} Filter</span>
           <CloseBtn
+            data-testid={`${testId}-CloseBtn`}
             onClick={() => {
               setMenuOpen(false), cancelFilters();
             }}
