@@ -1,6 +1,5 @@
 import * as useMediaQuery from "react-responsive";
 import * as useRoutes from "hooks/useRoutes";
-import * as useSearch from "./MobileSearchInput/FullScreenSearchMenu/useSearch";
 
 import { cleanup, fireEvent, render, screen } from "utils/test-config";
 
@@ -15,7 +14,7 @@ describe("SearchInput", () => {
   let useRoutesMock: any = null;
   let useStateTextMock: any = null;
   let setTextMock: any = jest.fn();
-  beforeAll(() => {
+  beforeEach(() => {
     const expectedSearchStr = "searchMockString";
 
     useMediaQueryMock = jest.spyOn(useMediaQuery, "useMediaQuery");
@@ -34,7 +33,7 @@ describe("SearchInput", () => {
     });
   });
 
-  afterAll(() => {
+  afterEach(() => {
     useMediaQueryMock.mockRestore();
     useStateTextMock.mockRestore();
     useRoutesMock.mockRestore();
@@ -69,31 +68,21 @@ describe("SearchInput", () => {
 
 describe("MobileSearchInput", () => {
   let useMediaQueryMock: any = null;
-  let useRoutesMock: any = null;
   let useStateTextMock: any = null;
-  beforeAll(() => {
-    const expectedSearchStr = "searchMockString";
 
+  const expectedSearchStr = "searchMockString";
+  beforeEach(() => {
     useMediaQueryMock = jest.spyOn(useMediaQuery, "useMediaQuery");
     useMediaQueryMock.mockReturnValue(true);
 
     useStateTextMock = jest
       .spyOn(React, "useState")
       .mockReturnValueOnce([expectedSearchStr, jest.fn()]);
-
-    const goToSearchPageMock: any = jest.fn((search?: string, type?: any) => {
-      expect(search).toEqual(expectedSearchStr);
-    });
-    useRoutesMock = jest.spyOn(useRoutes, "default").mockReturnValue({
-      ...jest.requireActual("hooks/useRoutes"),
-      goToSearchPage: goToSearchPageMock,
-    });
   });
 
-  afterAll(() => {
+  afterEach(() => {
     useMediaQueryMock.mockRestore();
     useStateTextMock.mockRestore();
-    useRoutesMock.mockRestore();
   });
 
   test("Search menu open and close", async () => {
@@ -126,7 +115,7 @@ describe("MobileSearchInput", () => {
     expect(screen.getByTestId("FullScreenSearchMenu")).not.toBeVisible();
   });
 
-  test("Search on icon click", () => {
+  test("Search on enter key", () => {
     const router: any = {
       route: "/search",
       pathname: "/search",
@@ -139,7 +128,13 @@ describe("MobileSearchInput", () => {
     const enterKey = "Enter",
       enterCharCode = 13;
 
-    const searchIconTestId = "FullScreenSearchMenu-SearchIcon";
+    const goToSearchPageMock: any = jest.fn((search?: string, type?: any) => {
+      expect(search).toEqual(expectedSearchStr);
+    });
+    const useRoutesMock = jest.spyOn(useRoutes, "default").mockReturnValue({
+      ...jest.requireActual("hooks/useRoutes"),
+      goToSearchPage: goToSearchPageMock,
+    });
 
     render(
       <RouterContext.Provider value={router}>
@@ -154,10 +149,94 @@ describe("MobileSearchInput", () => {
       charCode: enterCharCode,
     });
 
-    fireEvent.click(screen.getByTestId(searchIconTestId));
+    useRoutesMock.mockRestore();
   });
 
-  test("Movie search", () => {});
+  test("Search on icon click", () => {
+    const router: any = {
+      route: "/search",
+      pathname: "/search",
+      query: { type: undefined },
+      asPath: "/search",
+      basePath: "/search",
+    };
 
-  test("TV search", () => {});
+    const searchIconTestId = "FullScreenSearchMenu-SearchIcon";
+
+    const goToSearchPageMock: any = jest.fn((search?: string, type?: any) => {
+      expect(search).toEqual(expectedSearchStr);
+    });
+    const useRoutesMock = jest.spyOn(useRoutes, "default").mockReturnValue({
+      ...jest.requireActual("hooks/useRoutes"),
+      goToSearchPage: goToSearchPageMock,
+    });
+
+    render(
+      <RouterContext.Provider value={router}>
+        <SearchInput />
+      </RouterContext.Provider>
+    );
+
+    fireEvent.click(screen.getByTestId(searchIconTestId));
+
+    useRoutesMock.mockRestore();
+  });
+
+  test("Movie search", () => {
+    const expectedType = "movie";
+
+    const router: any = {
+      route: "/search",
+      pathname: "/search",
+      query: { type: expectedType },
+      asPath: "/search",
+      basePath: "/search",
+    };
+
+    const goToSearchPageMock: any = jest.fn((search?: string, type?: any) => {
+      expect(search).toEqual(expectedSearchStr);
+      expect(type).toEqual(expectedType);
+    });
+    const useRoutesMock = jest.spyOn(useRoutes, "default").mockReturnValue({
+      ...jest.requireActual("hooks/useRoutes"),
+      goToSearchPage: goToSearchPageMock,
+    });
+
+    render(
+      <RouterContext.Provider value={router}>
+        <SearchInput />
+      </RouterContext.Provider>
+    );
+
+    useRoutesMock.mockRestore();
+  });
+
+  test("TV search", () => {
+    const expectedType = "tv";
+
+    const router: any = {
+      route: "/search",
+      pathname: "/search",
+      query: { type: expectedType },
+      asPath: "/search",
+      basePath: "/search",
+    };
+
+    const goToSearchPageMock: any = jest.fn((search?: string, type?: any) => {
+      expect(search).toEqual(expectedSearchStr);
+      expect(type).toEqual(expectedType);
+    });
+    const useRoutesMock = jest.spyOn(useRoutes, "default").mockReturnValue({
+      ...jest.requireActual("hooks/useRoutes"),
+      goToSearchPage: goToSearchPageMock,
+    });
+
+    render(
+      <RouterContext.Provider value={router}>
+        <SearchInput />
+      </RouterContext.Provider>
+    );
+
+    useRoutesMock.mockRestore();
+  });
 });
