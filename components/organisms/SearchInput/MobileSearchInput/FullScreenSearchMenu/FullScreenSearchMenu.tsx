@@ -23,7 +23,7 @@ interface IFullScreenSearchMenuProps {
 }
 
 const SearchIcon = (props: any) => (
-  <SearchIconStyling onClick={props.onClick} />
+  <SearchIconStyling onClick={props.onClick} data-testid={props.testId} />
 );
 
 export default function FullScreenSearchMenu({
@@ -68,7 +68,13 @@ export default function FullScreenSearchMenu({
           value={searchText}
           onTextChange={setSearchText}
           onKeyDown={onHandleMenuKeyDown}
-          postfix={<SearchIcon onClick={onHandleMenuClickSearch} />}
+          testId={`${testId}-SearchInput`}
+          postfix={
+            <SearchIcon
+              onClick={onHandleMenuClickSearch}
+              testId={`${testId}-SearchIcon`}
+            />
+          }
         />
 
         <MobileContainer>

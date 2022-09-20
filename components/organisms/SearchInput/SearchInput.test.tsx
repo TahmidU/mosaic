@@ -1,11 +1,12 @@
-import { cleanup, fireEvent, render, screen } from "utils/test-config";
-
-import SearchInput from "./index";
-import React from "react";
-import { RouterContext } from "next/dist/shared/lib/router-context";
-
 import * as useMediaQuery from "react-responsive";
 import * as useRoutes from "hooks/useRoutes";
+import * as useSearch from "./MobileSearchInput/FullScreenSearchMenu/useSearch";
+
+import { cleanup, fireEvent, render, screen } from "utils/test-config";
+
+import React from "react";
+import { RouterContext } from "next/dist/shared/lib/router-context";
+import SearchInput from "./index";
 
 afterEach(cleanup);
 
@@ -68,13 +69,31 @@ describe("SearchInput", () => {
 
 describe("MobileSearchInput", () => {
   let useMediaQueryMock: any = null;
+  let useRoutesMock: any = null;
+  let useStateTextMock: any = null;
   beforeAll(() => {
+    const expectedSearchStr = "searchMockString";
+
     useMediaQueryMock = jest.spyOn(useMediaQuery, "useMediaQuery");
     useMediaQueryMock.mockReturnValue(true);
+
+    useStateTextMock = jest
+      .spyOn(React, "useState")
+      .mockReturnValueOnce([expectedSearchStr, jest.fn()]);
+
+    const goToSearchPageMock: any = jest.fn((search?: string, type?: any) => {
+      expect(search).toEqual(expectedSearchStr);
+    });
+    useRoutesMock = jest.spyOn(useRoutes, "default").mockReturnValue({
+      ...jest.requireActual("hooks/useRoutes"),
+      goToSearchPage: goToSearchPageMock,
+    });
   });
 
   afterAll(() => {
     useMediaQueryMock.mockRestore();
+    useStateTextMock.mockRestore();
+    useRoutesMock.mockRestore();
   });
 
   test("Search menu open and close", async () => {
@@ -107,7 +126,36 @@ describe("MobileSearchInput", () => {
     expect(screen.getByTestId("FullScreenSearchMenu")).not.toBeVisible();
   });
 
-  test("Search on icon click", () => {});
+  test("Search on icon click", () => {
+    const router: any = {
+      route: "/search",
+      pathname: "/search",
+      query: { type: undefined },
+      asPath: "/search",
+      basePath: "/search",
+    };
+
+    const searchInputTestId = "FullScreenSearchMenu-SearchInput";
+    const enterKey = "Enter",
+      enterCharCode = 13;
+
+    const searchIconTestId = "FullScreenSearchMenu-SearchIcon";
+
+    render(
+      <RouterContext.Provider value={router}>
+        <SearchInput />
+      </RouterContext.Provider>
+    );
+
+    const inputElement = screen.getByTestId(searchInputTestId);
+    fireEvent.keyDown(inputElement, {
+      key: enterKey,
+      code: enterKey,
+      charCode: enterCharCode,
+    });
+
+    fireEvent.click(screen.getByTestId(searchIconTestId));
+  });
 
   test("Movie search", () => {});
 
