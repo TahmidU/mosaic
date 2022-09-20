@@ -30,7 +30,7 @@ export function findInCrewNamesByJob(crew?: ICrew[], job?: string) {
 
   const foundCrew = crew
     .filter((_person) => _person.job === job)
-    .map((_director) => _director.name);
+    .map((_person) => _person.name);
 
   return foundCrew.length > 0 ? foundCrew.join(", ") : "";
 }

@@ -1,4 +1,5 @@
 import { TextUtils } from ".";
+import { fakeMovieData } from "resources/TestResources/MovieDetails";
 
 describe("TextUtils", () => {
   describe("fontImportancePlacer", () => {
@@ -65,7 +66,49 @@ describe("TextUtils", () => {
     });
   });
 
-  describe("findInCrewNamesByJob", () => {});
+  describe("findInCrewNamesByJob", () => {
+    test("Get writers", () => {
+      const job = "Writer";
+
+      const expectedNumOfWriters = 1;
+
+      const result = TextUtils.findInCrewNamesByJob(
+        fakeMovieData.credits?.crew,
+        job
+      ) as string;
+      const resultLength = result.split(",").length;
+
+      expect(resultLength).toEqual(expectedNumOfWriters);
+    });
+
+    test("Get directors", () => {
+      const job = "Directors";
+
+      const expectedNumOfDirectors = 1;
+
+      const result = TextUtils.findInCrewNamesByJob(
+        fakeMovieData.credits?.crew,
+        job
+      ) as string;
+      const resultLength = result.split(",").length;
+
+      expect(resultLength).toEqual(expectedNumOfDirectors);
+    });
+
+    test("Get vfx artists", () => {
+      const job = "VFX Artist";
+
+      const expectedNumOfVFXArtists = 5;
+
+      const result = TextUtils.findInCrewNamesByJob(
+        fakeMovieData.credits?.crew,
+        job
+      ) as string;
+      const resultLength = result.split(",").length;
+
+      expect(resultLength).toEqual(expectedNumOfVFXArtists);
+    });
+  });
 
   describe("numberWithCommas", () => {
     test("Add commas to number, short number", () => {
