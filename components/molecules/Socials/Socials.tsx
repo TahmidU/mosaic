@@ -14,11 +14,11 @@ interface ISocialsProps {
   links: { variant: SocialTypes; href: string }[];
 }
 
-const AllowedSocialTypes = ["external", "facebook", "instagram", "twitter"];
+const allowedSocialTypes = ["external", "facebook", "instagram", "twitter"];
 
 export default function Socials({ links }: ISocialsProps): ReactElement {
   const supportedLinks = links.filter((_link) =>
-    AllowedSocialTypes.includes(_link.variant)
+    allowedSocialTypes.includes(_link.variant)
   );
 
   return (
