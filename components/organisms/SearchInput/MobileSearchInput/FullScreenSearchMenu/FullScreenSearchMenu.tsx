@@ -19,10 +19,11 @@ interface IFullScreenSearchMenuProps {
   isMenuOpen: boolean;
   setSearchText: Dispatch<SetStateAction<string>>;
   searchText: string;
+  testId?: string;
 }
 
 const SearchIcon = (props: any) => (
-  <SearchIconStyling onClick={props.onClick} />
+  <SearchIconStyling onClick={props.onClick} data-testid={props.testId} />
 );
 
 export default function FullScreenSearchMenu({
@@ -30,6 +31,7 @@ export default function FullScreenSearchMenu({
   isMenuOpen,
   setSearchText,
   searchText,
+  testId = "FullScreenSearchMenu",
 }: IFullScreenSearchMenuProps): ReactElement {
   const {
     onHandleMenuKeyDown,
@@ -45,12 +47,14 @@ export default function FullScreenSearchMenu({
       initial={"close"}
       animate={isMenuOpen ? "open" : "close"}
       transition={{ ease: "easeIn", duration: 0.5 }}
+      data-testid={testId}
     >
       <OptionsWrapper>
         <Header>
           <div></div>
           <span>Search {"&"} Filter</span>
           <CloseBtn
+            data-testid={`${testId}-CloseBtn`}
             onClick={() => {
               setMenuOpen(false), cancelFilters();
             }}
@@ -64,7 +68,13 @@ export default function FullScreenSearchMenu({
           value={searchText}
           onTextChange={setSearchText}
           onKeyDown={onHandleMenuKeyDown}
-          postfix={<SearchIcon onClick={onHandleMenuClickSearch} />}
+          testId={`${testId}-SearchInput`}
+          postfix={
+            <SearchIcon
+              onClick={onHandleMenuClickSearch}
+              testId={`${testId}-SearchIcon`}
+            />
+          }
         />
 
         <MobileContainer>
