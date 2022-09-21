@@ -25,5 +25,32 @@ describe("MathUtils", () => {
     });
   });
 
-  describe("shortenRuntime", () => {});
+  describe("shortenRuntime", () => {
+    test("Hours and minutes", () => {
+      const expectedResult = "1hrs 11mins";
+      const minutes = 71;
+
+      const result = MathUtils.shortenRuntime(minutes);
+
+      expect(result).toEqual(expectedResult);
+    });
+
+    test("Factor of hour", () => {
+      const expectedResult = "2hrs 0mins";
+      const minutes = 120;
+
+      const result = MathUtils.shortenRuntime(minutes);
+
+      expect(result).toEqual(expectedResult);
+    });
+
+    test("Less than an hour", () => {
+      const expectedResult = "0hrs 40mins";
+      const minutes = 40;
+
+      const result = MathUtils.shortenRuntime(minutes);
+
+      expect(result).toEqual(expectedResult);
+    });
+  });
 });
