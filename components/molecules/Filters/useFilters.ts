@@ -1,7 +1,6 @@
 import { IFilter, SearchType } from "types/search";
 import { useEffect, useState } from "react";
 
-import { filterQuery } from "utils/RoutingUtils";
 import { useRouter } from "next/router";
 
 export default function useFilters() {
@@ -27,14 +26,11 @@ export default function useFilters() {
   function setType(type: SearchType) {
     router.replace({
       pathname: "/search",
-      query: filterQuery(
-        {
-          ...router.query,
-          type: type,
-          page: 1,
-        },
-        router.query
-      ),
+      query: {
+        ...router.query,
+        type: type,
+        page: 1,
+      },
     });
   }
 
