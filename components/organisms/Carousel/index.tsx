@@ -44,7 +44,7 @@ export default function Carousel({
 
   function handlePageDirectionChange(direction: 1 | -1) {
     setPage(([_page, _direction]) => [
-      MathUtils.mod(_page + direction, carouselData.length),
+      MathUtils.modCycle(_page + direction, carouselData.length),
       direction,
     ]);
   }
