@@ -1,4 +1,4 @@
-export function mod(n: number, m: number) {
+export function modCycle(n: number, m: number) {
   return ((n % m) + m) % m;
 }
 
@@ -12,7 +12,7 @@ export function shortenRuntime(runtimeMins?: number) {
 }
 
 const MathUtils = {
-  mod,
+  modCycle,
   shortenRuntime,
 };
 
