@@ -1,6 +1,6 @@
-import { filterQuery } from "utils/RoutingUtils";
-import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+
+import { useRouter } from "next/router";
 
 export default function usePagination() {
   const router = useRouter();
@@ -28,7 +28,7 @@ export default function usePagination() {
   function pushToURL(page: number) {
     router.replace({
       pathname: "/search",
-      query: filterQuery({ ...router.query, page: page }, router.query),
+      query: { ...router.query, page: page },
     });
   }
 
