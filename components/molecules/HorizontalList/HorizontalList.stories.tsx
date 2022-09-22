@@ -16,7 +16,7 @@ enum RandomEnum {
   FOOBAR = "FooBar",
 }
 
-export const CardWrapper = styled.div`
+const CardWrapper = styled.div`
   display: inline-block;
   width: calc((100%) / 5);
   > div {
