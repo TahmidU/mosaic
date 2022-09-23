@@ -16,6 +16,9 @@ import { MediaType } from "types/tv_movies";
 import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
 
+const ClientPortal = dynamic(() => import("components/atoms/ClientPortal"), {
+  ssr: false,
+});
 const VideoModal = dynamic(() => import("components/molecules/VideoModal"), {
   ssr: false,
 });
@@ -71,11 +74,13 @@ export default function DetailsPage({
           <MediaList {...{ setModal, videoData }} />
         </ExtraDetailSection>
       </Container>
-      <VideoModal
-        modalOpen={modal}
-        setModalOpen={setModal}
-        videos={videoData}
-      />
+      <ClientPortal selector="#modalPortal">
+        <VideoModal
+          modalOpen={modal}
+          setModalOpen={setModal}
+          videos={videoData}
+        />
+      </ClientPortal>
     </>
   );
 }

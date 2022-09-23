@@ -2,13 +2,12 @@ import { cleanup, fireEvent, render, screen } from "utils/test-config";
 
 import React from "react";
 import VideoModal from "./VideoModal";
-import getTheme from "resources/themes";
 
 afterEach(cleanup);
 
 describe("VideoModal", () => {
   let main: any = null;
-  beforeEach(() => {
+  beforeAll(() => {
     // setup a DOM element as a render target
     main = document.createElement("main");
     const portalContainer = document.createElement("div");
@@ -16,7 +15,6 @@ describe("VideoModal", () => {
     document.body.appendChild(portalContainer);
   });
 
-  const lightTheme = getTheme("light");
   const fakeVideos = {
     id: 0,
     results: [

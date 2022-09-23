@@ -53,7 +53,7 @@ export default function VideoModal({
   };
 
   return (
-    <ClientPortal data-testid={testId} selector="#modalPortal">
+    <div data-testid={testId}>
       <Overlay />
       <Container>
         <LeftBtn
@@ -79,6 +79,6 @@ export default function VideoModal({
           <GrClose />
         </CloseBtn>
       </Container>
-    </ClientPortal>
+    </div>
   );
 }

@@ -13,9 +13,16 @@ afterEach(cleanup);
 
 describe("Desktop Carousel", () => {
   let useMediaQueryMock: any = null;
+  let main: any = null;
   beforeAll(() => {
     useMediaQueryMock = jest.spyOn(mq, "useMediaQuery");
     useMediaQueryMock.mockReturnValue(false);
+
+    // setup a DOM element as a render target
+    main = document.createElement("main");
+    const portalContainer = document.createElement("div");
+    portalContainer.id = "modalPortal";
+    document.body.appendChild(portalContainer);
   });
 
   afterAll(() => {
@@ -29,7 +36,9 @@ describe("Desktop Carousel", () => {
       expectedDesc = target.overview,
       expectedDate = TextUtils.dateFormatter(target.release_date) as string;
 
-    render(<Carousel carouselData={data} desktopDisableAutoSlide />);
+    render(<Carousel carouselData={data} desktopDisableAutoSlide />, {
+      container: document.body.appendChild(main),
+    });
 
     await new Promise((r) => setTimeout(r, 1000));
     screen.getByText(expectedTitle);
@@ -40,7 +49,9 @@ describe("Desktop Carousel", () => {
   test("Correct number of StepStatus components", async () => {
     const data = FakeDiscoverMovie;
 
-    render(<Carousel carouselData={data} desktopDisableAutoSlide />);
+    render(<Carousel carouselData={data} desktopDisableAutoSlide />, {
+      container: document.body.appendChild(main),
+    });
 
     await new Promise((r) => setTimeout(r, 1000));
     expect(screen.getAllByTestId("StepStatusIndicator").length).toBe(3);
@@ -51,7 +62,9 @@ describe("Desktop Carousel", () => {
       target = data[1],
       expectedTitle = target.title;
 
-    render(<Carousel carouselData={data} desktopAutoSlideDuration={0.7} />);
+    render(<Carousel carouselData={data} desktopAutoSlideDuration={0.7} />, {
+      container: document.body.appendChild(main),
+    });
 
     await new Promise((r) => setTimeout(r, 1000));
     screen.getByText(expectedTitle);
@@ -62,7 +75,9 @@ describe("Desktop Carousel", () => {
       target = data[2],
       expectedTitle = target.title;
 
-    render(<Carousel carouselData={data} desktopDisableAutoSlide />);
+    render(<Carousel carouselData={data} desktopDisableAutoSlide />, {
+      container: document.body.appendChild(main),
+    });
 
     fireEvent.click(screen.getByTestId("CarouselPrevBtn"));
     await new Promise((r) => setTimeout(r, 1000));
@@ -74,7 +89,9 @@ describe("Desktop Carousel", () => {
       target = data[0],
       expectedTitle = target.title;
 
-    render(<Carousel carouselData={data} desktopDisableAutoSlide />);
+    render(<Carousel carouselData={data} desktopDisableAutoSlide />, {
+      container: document.body.appendChild(main),
+    });
 
     const nextBtn = screen.getByTestId("CarouselNextBtn");
     for (let i = 0; i < data.length; i++) {
@@ -90,7 +107,9 @@ describe("Desktop Carousel", () => {
       target = data[1],
       expectedTitle = target.title;
 
-    render(<Carousel carouselData={data} desktopDisableAutoSlide />);
+    render(<Carousel carouselData={data} desktopDisableAutoSlide />, {
+      container: document.body.appendChild(main),
+    });
 
     fireEvent.click(screen.getAllByTestId("StepStatusIndicator")[1]);
     await new Promise((r) => setTimeout(r, 1000));

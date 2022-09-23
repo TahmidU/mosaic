@@ -22,6 +22,9 @@ import ProgressiveBar from "./ProgressiveBar";
 import dynamic from "next/dynamic";
 import useCarouselAnimations from "./useCarouselAnimations";
 
+const ClientPortal = dynamic(() => import("components/atoms/ClientPortal"), {
+  ssr: false,
+});
 const VideoModal = dynamic(() => import("../../molecules/VideoModal"), {
   ssr: false,
 });
@@ -128,11 +131,14 @@ export default function Carousel({
           }}
         />
       </Container>
-      <VideoModal
-        modalOpen={modalOpen}
-        setModalOpen={setModalOpen}
-        videos={videos}
-      />
+
+      <ClientPortal selector="#modalPortal">
+        <VideoModal
+          modalOpen={modalOpen}
+          setModalOpen={setModalOpen}
+          videos={videos}
+        />
+      </ClientPortal>
     </>
   );
 }
