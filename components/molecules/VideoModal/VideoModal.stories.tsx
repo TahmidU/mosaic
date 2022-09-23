@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { fakeVideos } from "resources/TestResources/Videos";
+import { fakeVideos } from "resources/testResources/Videos";
 import { IPayload } from "types/story";
 import VideoModal from "./VideoModal";
 

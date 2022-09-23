@@ -1,7 +1,7 @@
 import DetailsCard from "./DetailsCard";
 import { IPayload } from "types/story";
-import { fakeMovieData } from "resources/TestResources/MovieDetails";
-import { fakeTVData } from "resources/TestResources/TVDetails";
+import { fakeMovieData } from "resources/testResources/MovieDetails";
+import { fakeTVData } from "resources/testResources/TVDetails";
 
 const payload: IPayload = {
   title: "ORGANISMS/DetailsCard",

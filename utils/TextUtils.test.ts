@@ -1,5 +1,5 @@
 import { TextUtils } from ".";
-import { fakeMovieData } from "resources/TestResources/MovieDetails";
+import { fakeMovieData } from "resources/testResources/MovieDetails";
 
 describe("TextUtils", () => {
   describe("fontImportancePlacer", () => {

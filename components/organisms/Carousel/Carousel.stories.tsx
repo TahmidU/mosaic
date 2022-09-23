@@ -1,5 +1,5 @@
 import Carousel from ".";
-import { FakeDiscoverMovie } from "resources/TestResources/DiscoverMovie";
+import { FakeDiscoverMovie } from "resources/testResources/DiscoverMovie";
 import { IPayload } from "types/story";
 
 const payload: IPayload = {

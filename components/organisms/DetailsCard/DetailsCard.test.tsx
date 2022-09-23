@@ -5,8 +5,8 @@ import DetailsCard from "./DetailsCard";
 import { IMovieDetails } from "types/movie";
 import { ITVDetails } from "types/tv";
 import React from "react";
-import { fakeMovieData } from "resources/TestResources/MovieDetails";
-import { fakeTVData } from "resources/TestResources/TVDetails";
+import { fakeMovieData } from "resources/testResources/MovieDetails";
+import { fakeTVData } from "resources/testResources/TVDetails";
 import { findInCrewNamesByJob, numberWithCommas } from "utils/TextUtils";
 
 afterEach(cleanup);
