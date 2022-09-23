@@ -1,6 +1,6 @@
 import Clips from "./Clips";
 import { IPayload } from "types/story";
-import { fakeVideos } from "resources/testResources/Videos";
+import { fakeVideos } from "resources/test_resources/Videos";
 
 const payload: IPayload = {
   title: "MOLECULES/Clips",

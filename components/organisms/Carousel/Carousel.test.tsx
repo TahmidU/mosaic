@@ -5,7 +5,7 @@ import * as mq from "react-responsive";
 import { cleanup, fireEvent, render, screen } from "utils/test-config";
 
 import Carousel from "./index";
-import { FakeDiscoverMovie } from "resources/testResources/DiscoverMovie";
+import { FakeDiscoverMovie } from "resources/test_resources/DiscoverMovie";
 import React from "react";
 import { TextUtils } from "utils";
 
