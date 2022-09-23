@@ -39,6 +39,7 @@ interface ICarouselProps {
   handlePageDirectionChange: (direction: 1 | -1) => void;
   handlePageChange: (toPage: number) => void;
   textAnimControls?: AnimationControls;
+  fullImageURL?: boolean;
 }
 
 export default function Carousel({
@@ -51,6 +52,7 @@ export default function Carousel({
   handlePageDirectionChange,
   handlePageChange,
   textAnimControls,
+  fullImageURL = false,
 }: ICarouselProps): ReactElement {
   const { routes } = useContext(GlobalContext);
   const { isTimerPaused, imageRef } = useCarouselAnimations();
@@ -84,6 +86,7 @@ export default function Carousel({
             onClick={() => routes?.goToDetails(carouselData[page].id)}
           >
             <CarouselImage
+              fullImageURL={fullImageURL}
               direction={direction}
               imageURL={carouselData[page].backdrop_path}
               currentPage={page}
