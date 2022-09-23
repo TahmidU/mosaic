@@ -5,9 +5,9 @@ import * as mq from "react-responsive";
 import { cleanup, fireEvent, render, screen } from "utils/test-config";
 
 import Carousel from "./index";
-import { FakeDiscoverMovie } from "resources/test_resources/DiscoverMovie";
 import React from "react";
 import { TextUtils } from "utils";
+import { fakeDiscoverMovie } from "resources/test_resources/DiscoverMovie";
 
 afterEach(cleanup);
 
@@ -30,7 +30,7 @@ describe("Desktop Carousel", () => {
   });
 
   test("Title, description, and date", async () => {
-    const data = FakeDiscoverMovie,
+    const data = fakeDiscoverMovie,
       target = data[0],
       expectedTitle = target.title,
       expectedDesc = target.overview,
@@ -47,7 +47,7 @@ describe("Desktop Carousel", () => {
   });
 
   test("Correct number of StepStatus components", async () => {
-    const data = FakeDiscoverMovie;
+    const data = fakeDiscoverMovie;
 
     render(<Carousel carouselData={data} desktopDisableAutoSlide />, {
       container: document.body.appendChild(main),
@@ -58,7 +58,7 @@ describe("Desktop Carousel", () => {
   });
 
   test("Change slide auto", async () => {
-    const data = FakeDiscoverMovie,
+    const data = fakeDiscoverMovie,
       target = data[1],
       expectedTitle = target.title;
 
@@ -71,7 +71,7 @@ describe("Desktop Carousel", () => {
   });
 
   test("Click prev from start", async () => {
-    const data = FakeDiscoverMovie,
+    const data = fakeDiscoverMovie,
       target = data[2],
       expectedTitle = target.title;
 
@@ -85,7 +85,7 @@ describe("Desktop Carousel", () => {
   });
 
   test("Click next from end", async () => {
-    const data = FakeDiscoverMovie,
+    const data = fakeDiscoverMovie,
       target = data[0],
       expectedTitle = target.title;
 
@@ -103,7 +103,7 @@ describe("Desktop Carousel", () => {
   });
 
   test("Click StepStatus to change slide", async () => {
-    const data = FakeDiscoverMovie,
+    const data = fakeDiscoverMovie,
       target = data[1],
       expectedTitle = target.title;
 
@@ -129,7 +129,7 @@ describe("Mobile Carousel", () => {
   });
 
   test("Mobile title, description, and date", async () => {
-    const data = FakeDiscoverMovie,
+    const data = fakeDiscoverMovie,
       target = data[0],
       expectedTitle = target.title,
       expectedDesc = target.overview,
@@ -145,7 +145,7 @@ describe("Mobile Carousel", () => {
   });
 
   test("Mobile Correct number of StepStatus components", async () => {
-    const data = FakeDiscoverMovie;
+    const data = fakeDiscoverMovie;
 
     render(<Carousel carouselData={data} desktopDisableAutoSlide />);
 
@@ -154,7 +154,7 @@ describe("Mobile Carousel", () => {
   });
 
   test("Mobile Click prev from start", async () => {
-    const data = FakeDiscoverMovie,
+    const data = fakeDiscoverMovie,
       target = data[2],
       expectedTitle = target.title;
 
@@ -166,7 +166,7 @@ describe("Mobile Carousel", () => {
   });
 
   test("Mobile Click next from end", async () => {
-    const data = FakeDiscoverMovie,
+    const data = fakeDiscoverMovie,
       target = data[0],
       expectedTitle = target.title;
 
@@ -182,7 +182,7 @@ describe("Mobile Carousel", () => {
   });
 
   test("Mobile Click StepStatus to change slide", async () => {
-    const data = FakeDiscoverMovie,
+    const data = fakeDiscoverMovie,
       target = data[1],
       expectedTitle = target.title;
 
