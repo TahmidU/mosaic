@@ -1,6 +1,6 @@
 import CastCard from "./CastCard";
 import { IPayload } from "types/story";
-import { fakeMovieData } from "resources/testResources/MovieDetails";
+import { fakeMovieData } from "../../../resources/testResources/MovieDetails";
 
 const payload: IPayload = {
   title: "MOLECULES/CastCard",
