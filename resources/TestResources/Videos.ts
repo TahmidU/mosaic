@@ -1,6 +1,6 @@
 import { IVideos } from "types/api/videos";
 
-export const FakeVideos: IVideos = {
+export const fakeVideos: IVideos = {
   id: 453395,
   results: [
     {

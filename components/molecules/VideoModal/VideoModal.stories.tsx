@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FakeVideos } from "resources/TestResources/Videos";
+import { fakeVideos } from "resources/TestResources/Videos";
 import { IPayload } from "types/story";
 import VideoModal from "./VideoModal";
 
@@ -9,7 +9,7 @@ const payload: IPayload = {
 };
 export default payload;
 
-export const Basic = (args: any) => {
+export const Basic = () => {
   const [isOpen, setOpen] = useState({ open: false, initialIndex: 0 });
   return (
     <>
@@ -19,13 +19,14 @@ export const Basic = (args: any) => {
         </button>
       )}
       <VideoModal
-        videos={FakeVideos}
+        videos={fakeVideos}
         modalOpen={isOpen}
         setModalOpen={setOpen}
       />
     </>
   );
 };
+Basic.args = {};
 Basic.parameters = {
   controls: {
     include: [],
