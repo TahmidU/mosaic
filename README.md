@@ -13,6 +13,8 @@
 </p>
 <br>
 
+***All links in the README redirect the current tab, it does not create a new tab.***
+
 <!-- Table of Contents -->
 
 ## Table of contents
