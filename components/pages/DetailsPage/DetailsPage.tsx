@@ -13,8 +13,8 @@ import { ITVDetails } from "types/tv";
 import { IVideos } from "types/api/videos";
 import MediaList from "components/organisms/MediaList";
 import { MediaType } from "types/tv_movies";
-import { useRouter } from "next/router";
 import dynamic from "next/dynamic";
+import { useRouter } from "next/router";
 
 const ClientPortal = dynamic(() => import("components/atoms/ClientPortal"), {
   ssr: false,
@@ -69,7 +69,7 @@ export default function DetailsPage({
             <p>{details.overview}</p>
           </div>
 
-          <CastList movieDetails={details} />
+          <CastList details={details} />
 
           <MediaList {...{ setModal, videoData }} />
         </ExtraDetailSection>
