@@ -7,8 +7,8 @@
   <p align="center">
     A movie and TV show catalog web-app
     <br />
-    <a href="">Demo (Preview - Develop branch)</a> |
-    <a href="">Demo (Production - Main branch)</a>
+    <a href="https://mosaic-git-develop-tahmidu.vercel.app/">Demo (Preview - Develop branch)</a> |
+    <a href="https://mosaic-delta.vercel.app/">Demo (Production - Main branch)</a>
   </p>
 </p>
 <br>
@@ -49,6 +49,8 @@ MOVIE_DB_API_KEY = {You need your own API key}
 **Make sure you run `yarn` to install the necessary dependencies for the project.**
 
 To run the local development server use `yarn dev`. To run Storybook use `yarn storybook`. To run all the Jest React Testing Library tests run `yarn jest`.
+
+Alternatively, you can click on one of the demos above without needing to setup anything. The webapp is deployed on Vercel.
 
 ## Tools & tech
 
