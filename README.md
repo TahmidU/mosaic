@@ -15,22 +15,52 @@
 
 <!-- Table of Contents -->
 
-## Table of Contents
+## Table of contents
 
-- [Table of Contents](#table-of-contents)
-- [About the Project](#about-the-project)
-- [Installation & Running Project](#installation--running-project)
-- [Tools & Tech](#tools--tech)
+- [About the project](#about-the-project)
+- [Installation & running project](#installation--running-project)
+- [Tools & tech](#tools--tech)
 - [Testing](#testing)
 - [License](#license)
 
-## About the Project
+## About the project
 
-## Installation & Running Project
+This is a web app built for my portfolio. It is a web app that allows you to explore and search through catalogs of movies and TV shows. It is powered by a third-party API: <a href="https://developers.themoviedb.org/3/getting-started/introduction">TMDB</a>, which makes all this possible.
 
-## Tools & Tech
+### Design principle
+
+The design principle that this project followed was <a href="https://andela.com/insights/structuring-your-react-application-atomic-design-principles/">The Atomic Design Principle</a>. Components were broken down into atoms, molecules, organisms, and pages to make components cleaner and re-usable.
+
+As for API calls, I have decided that the best route is to make pages do the API calls and pass the data down through props or via context. This makes testing atoms, molecules and organisms easier as I do not need to mock API calls. Faking data for tests also becomes easier, this way I could control how exactly I want the data to look like and therefore see how the components would react.
+
+## Installation & running project
+
+### Prerequisites to run locally
+
+To run the web app locally you **must** create an `.env.local` file at the root of the project. It **must** contain the following variables:
+```
+MOVIE_DB_WEB_URL = https://api.themoviedb.org/3
+MOVIE_DB_API_KEY = {You need your own API key}
+```
+`MOVIE_DB_API_KEY` has not been provided. You can request an API key for free via TMDB's <a href="https://developers.themoviedb.org/3/getting-started/introduction">online form</a>. You **must** create an account to request an API key from TMDB.
+
+### Running locally
+
+**Make sure you run `yarn` to install the necessary dependencies for the project.**
+
+To run the local development server use `yarn dev`. To run Storybook use `yarn storybook`. To run all the Jest React Testing Library tests run `yarn jest`.
+
+## Tools & tech
+
+Framework: NextJS (React Framework) <br/>
+Language: Typescript, Javascript, HTML, CSS <br/> 
+Notable Libraries: Storybook, Framer Motion, Styled-Components, Jest, React Testing Library, Axios <br/>
 
 ## Testing
+
+The only testing that was done for this project was unit and intergration testing via React Testing Library. Components that were too trivial, or not too dissimilar from a previously tested component or a component which mainly used third-party libraries where not tested.
+
+Very soon, I will be adding Cypress testing.
 
 ## License
 
