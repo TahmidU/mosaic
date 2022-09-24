@@ -1,34 +1,37 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<!-- Project Logo -->
+<br />
+<p align="center">
+  <img src="./public/logo/logo.svg" alt="Logo" width="80" height="80">
+  <h3 align="center">Mosaic</h3>
 
-## Getting Started
+  <p align="center">
+    A movie and TV show catalog web-app
+    <br />
+    <a href="">Demo (Preview - Develop branch)</a> |
+    <a href="">Demo (Production - Main branch)</a>
+  </p>
+</p>
+<br>
 
-First, run the development server:
+<!-- Table of Contents -->
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## Table of Contents
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- [Table of Contents](#table-of-contents)
+- [About the Project](#about-the-project)
+- [Installation & Running Project](#installation--running-project)
+- [Tools & Tech](#tools--tech)
+- [Testing](#testing)
+- [License](#license)
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## About the Project
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## Installation & Running Project
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Tools & Tech
 
-## Learn More
+## Testing
 
-To learn more about Next.js, take a look at the following resources:
+## License
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Distributed under the MIT License. See `LICENSE` for more information.
