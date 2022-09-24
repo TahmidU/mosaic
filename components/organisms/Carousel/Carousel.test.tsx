@@ -1,146 +1,195 @@
 import "jest-styled-components";
 
-import { cleanup, fireEvent, render } from "utils/test-config";
+import * as mq from "react-responsive";
 
-import Carousel from "./Carousel";
-import { FakeDiscoverMovie } from "../../../resources/TestResources/DiscoverMovie";
+import { cleanup, fireEvent, render, screen } from "utils/test-config";
+
+import Carousel from "./index";
 import React from "react";
 import { TextUtils } from "utils";
+import { fakeDiscoverMovie } from "resources/test_resources/DiscoverMovie";
 
 afterEach(cleanup);
-/*
-describe("Carousel", () => {
-  test("Title, description, and date", () => {
-    // Given
-    const data = FakeDiscoverMovie,
+
+describe("Desktop Carousel", () => {
+  let useMediaQueryMock: any = null;
+  let main: any = null;
+  beforeAll(() => {
+    useMediaQueryMock = jest.spyOn(mq, "useMediaQuery");
+    useMediaQueryMock.mockReturnValue(false);
+
+    // setup a DOM element as a render target
+    main = document.createElement("main");
+    const portalContainer = document.createElement("div");
+    portalContainer.id = "modalPortal";
+    document.body.appendChild(portalContainer);
+  });
+
+  afterAll(() => {
+    useMediaQueryMock.mockRestore();
+  });
+
+  test("Title, description, and date", async () => {
+    const data = fakeDiscoverMovie,
       target = data[0],
       expectedTitle = target.title,
       expectedDesc = target.overview,
-      expectedDate = TextUtils.dateFormatter(target.release_date);
+      expectedDate = TextUtils.dateFormatter(target.release_date) as string;
 
-    // When
-    const { getByText, getAllByTestId, getByTestId } = render(
-      <Carousel carouselData={data} localImages disableAutoSlide />
-    );
-
-    // Then
-    getByText(expectedTitle);
-    getByText(expectedDesc);
-    getByText(expectedDate, { exact: false });
-  });
-
-  test("Correct number of StepStatus components", () => {
-    // Given
-    const data = FakeDiscoverMovie;
-
-    // When
-    const { getAllByTestId } = render(
-      <Carousel carouselData={data} localImages disableAutoSlide />
-    );
-
-    // Then
-    expect(getAllByTestId("StepStatusIndicator").length).toBe(3);
-  });
-
-  test("Change slide", async () => {
-    // Given
-    const data = FakeDiscoverMovie,
-      target = data[1],
-      expectedTitle = target.title;
-
-    // When
-    const { getByTestId, getByText } = render(
-      <Carousel carouselData={data} localImages disableAutoSlide />
-    );
-
-    // Then
-    fireEvent.click(getByTestId("CarouselNextBtn"));
+    render(<Carousel carouselData={data} desktopDisableAutoSlide />, {
+      container: document.body.appendChild(main),
+    });
 
     await new Promise((r) => setTimeout(r, 1000));
+    screen.getByText(expectedTitle);
+    screen.getByText(expectedDesc);
+    screen.getByText(expectedDate, { exact: false });
+  });
 
-    getByText(expectedTitle);
+  test("Correct number of StepStatus components", async () => {
+    const data = fakeDiscoverMovie;
+
+    render(<Carousel carouselData={data} desktopDisableAutoSlide />, {
+      container: document.body.appendChild(main),
+    });
+
+    await new Promise((r) => setTimeout(r, 1000));
+    expect(screen.getAllByTestId("StepStatusIndicator").length).toBe(3);
   });
 
   test("Change slide auto", async () => {
-    // Given
-    const data = FakeDiscoverMovie,
+    const data = fakeDiscoverMovie,
       target = data[1],
       expectedTitle = target.title;
 
-    // When Then
-    const { getByText } = render(
-      <Carousel
-        carouselData={data}
-        localImages
-        autoSlideDuration={1}
-        autoSlideCallback={() => {
-          getByText(expectedTitle);
-        }}
-      />
-    );
+    render(<Carousel carouselData={data} desktopAutoSlideDuration={0.7} />, {
+      container: document.body.appendChild(main),
+    });
 
     await new Promise((r) => setTimeout(r, 1000));
+    screen.getByText(expectedTitle);
   });
 
   test("Click prev from start", async () => {
-    // Given
-    const data = FakeDiscoverMovie,
+    const data = fakeDiscoverMovie,
       target = data[2],
       expectedTitle = target.title;
 
-    // When
-    const { getByTestId, getByText } = render(
-      <Carousel carouselData={data} localImages disableAutoSlide />
-    );
+    render(<Carousel carouselData={data} desktopDisableAutoSlide />, {
+      container: document.body.appendChild(main),
+    });
 
-    // Then
-    fireEvent.click(getByTestId("CarouselPrevBtn"));
-
+    fireEvent.click(screen.getByTestId("CarouselPrevBtn"));
     await new Promise((r) => setTimeout(r, 1000));
-
-    getByText(expectedTitle);
+    screen.getByText(expectedTitle);
   });
 
   test("Click next from end", async () => {
-    // Given
-    const data = FakeDiscoverMovie,
+    const data = fakeDiscoverMovie,
       target = data[0],
       expectedTitle = target.title;
 
-    // When
-    const { getByTestId, getByText } = render(
-      <Carousel
-        carouselData={data}
-        localImages
-        disableAutoSlide
-        startPage={2}
-      />
-    );
+    render(<Carousel carouselData={data} desktopDisableAutoSlide />, {
+      container: document.body.appendChild(main),
+    });
 
-    // Then
-    fireEvent.click(getByTestId("CarouselNextBtn"));
+    const nextBtn = screen.getByTestId("CarouselNextBtn");
+    for (let i = 0; i < data.length; i++) {
+      fireEvent.click(nextBtn);
+    }
 
     await new Promise((r) => setTimeout(r, 1000));
-
-    getByText(expectedTitle);
+    screen.getByText(expectedTitle);
   });
 
   test("Click StepStatus to change slide", async () => {
-    // Given
-    const data = FakeDiscoverMovie,
+    const data = fakeDiscoverMovie,
       target = data[1],
       expectedTitle = target.title;
 
-    // When
-    const { getByTestId, getByText, getAllByTestId } = render(
-      <Carousel carouselData={data} localImages disableAutoSlide />
-    );
+    render(<Carousel carouselData={data} desktopDisableAutoSlide />, {
+      container: document.body.appendChild(main),
+    });
 
-    // Then
-    fireEvent.click(getAllByTestId("StepStatusIndicator")[1]);
+    fireEvent.click(screen.getAllByTestId("StepStatusIndicator")[1]);
     await new Promise((r) => setTimeout(r, 1000));
-
-    getByText(expectedTitle);
+    screen.getByText(expectedTitle);
   });
 });
-*/
+
+describe("Mobile Carousel", () => {
+  let useMediaQueryMock: any = null;
+  beforeAll(() => {
+    useMediaQueryMock = jest.spyOn(mq, "useMediaQuery");
+    useMediaQueryMock.mockReturnValue(true);
+  });
+
+  afterAll(() => {
+    useMediaQueryMock.mockRestore();
+  });
+
+  test("Mobile title, description, and date", async () => {
+    const data = fakeDiscoverMovie,
+      target = data[0],
+      expectedTitle = target.title,
+      expectedDesc = target.overview,
+      expectedDate = TextUtils.dateFormatter(target.release_date) as string;
+
+    render(<Carousel carouselData={data} />);
+
+    await new Promise((r) => setTimeout(r, 1000));
+
+    screen.getByText(expectedTitle);
+    screen.getByText(expectedDesc);
+    screen.getByText(expectedDate, { exact: false });
+  });
+
+  test("Mobile Correct number of StepStatus components", async () => {
+    const data = fakeDiscoverMovie;
+
+    render(<Carousel carouselData={data} desktopDisableAutoSlide />);
+
+    await new Promise((r) => setTimeout(r, 1000));
+    expect(screen.getAllByTestId("StepStatusIndicator").length).toBe(3);
+  });
+
+  test("Mobile Click prev from start", async () => {
+    const data = fakeDiscoverMovie,
+      target = data[2],
+      expectedTitle = target.title;
+
+    render(<Carousel carouselData={data} desktopDisableAutoSlide />);
+
+    fireEvent.click(screen.getByTestId("MobileCarouselPrevBtn"));
+    await new Promise((r) => setTimeout(r, 1000));
+    screen.getByText(expectedTitle);
+  });
+
+  test("Mobile Click next from end", async () => {
+    const data = fakeDiscoverMovie,
+      target = data[0],
+      expectedTitle = target.title;
+
+    render(<Carousel carouselData={data} desktopDisableAutoSlide />);
+
+    const nextBtn = screen.getByTestId("MobileCarouselNextBtn");
+    for (let i = 0; i < data.length; i++) {
+      fireEvent.click(nextBtn);
+    }
+
+    await new Promise((r) => setTimeout(r, 1000));
+    screen.getByText(expectedTitle);
+  });
+
+  test("Mobile Click StepStatus to change slide", async () => {
+    const data = fakeDiscoverMovie,
+      target = data[1],
+      expectedTitle = target.title;
+
+    render(<Carousel carouselData={data} desktopDisableAutoSlide />);
+
+    fireEvent.click(screen.getAllByTestId("StepStatusIndicator")[1]);
+    await new Promise((r) => setTimeout(r, 1000));
+    screen.getByText(expectedTitle);
+  });
+});

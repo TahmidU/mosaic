@@ -7,16 +7,33 @@ import { render } from "utils/test-config";
 import renderer from "react-test-renderer";
 
 describe("ProgressiveCircle", () => {
-  test("Show state light theme styling", async () => {
-    // Given
+  const lightTheme = getTheme("light");
+
+  test("Show state styling", async () => {
     const width = 30,
       height = 30,
       radius = 30,
       strokeWidth = 4,
-      circumference = Math.ceil(2 * Math.PI * radius),
-      lightTheme = getTheme("light");
+      circumference = Math.ceil(2 * Math.PI * radius);
 
-    // When
+    const expectedStrokeDashoffset = "0";
+
+    const expectedContainerStyle = `
+      position: absolute;
+      width: ${width}px;
+      height: ${height}px;
+      transform: rotate(-90deg);
+      overflow: visible;
+    `;
+
+    const expectedAnimCircleStyle = `
+      position: absolute;
+      stroke: ${lightTheme.almostBlack};
+      stroke-width: ${strokeWidth};
+      stroke-dasharray: ${circumference};
+      stroke-linecap: round;
+    `;
+
     const { getByTestId } = render(
       <ProgressiveCircle
         show
@@ -27,66 +44,47 @@ describe("ProgressiveCircle", () => {
       />
     );
 
-    // Then
-    await new Promise((r) => setTimeout(r, 1800));
+    await new Promise((r) => setTimeout(r, 2000));
 
-    expect(getByTestId("ProgressiveCircleContainer")).toHaveStyleRule(
-      "position",
-      "absolute"
-    );
-    expect(getByTestId("ProgressiveCircleContainer")).toHaveStyleRule(
-      "width",
-      `${width}px`
-    );
-    expect(getByTestId("ProgressiveCircleContainer")).toHaveStyleRule(
-      "height",
-      `${height}px`
-    );
-    expect(getByTestId("ProgressiveCircleContainer")).toHaveStyleRule(
-      "transform",
-      "rotate(-90deg)"
-    );
-    expect(getByTestId("ProgressiveCircleContainer")).toHaveStyleRule(
-      "overflow",
-      "visible"
-    );
+    const container = getByTestId("ProgressiveCircleContainer");
+    const circle = getByTestId("ProgressiveCircleAnimatedCircle");
 
-    expect(getByTestId("ProgressiveCircleAnimatedCircle")).toHaveStyleRule(
-      "position",
-      "absolute"
-    );
-    expect(getByTestId("ProgressiveCircleAnimatedCircle")).toHaveStyleRule(
-      "stroke",
-      lightTheme.almostBlack
-    );
-    expect(getByTestId("ProgressiveCircleAnimatedCircle")).toHaveStyleRule(
-      "stroke-width",
-      `${strokeWidth}`
-    );
-    expect(getByTestId("ProgressiveCircleAnimatedCircle")).toHaveStyleRule(
-      "stroke-dasharray",
-      `${circumference}`
-    );
-    expect(getByTestId("ProgressiveCircleAnimatedCircle")).toHaveStyleRule(
-      "stroke-linecap",
-      "round"
+    expect(container).toHaveStyle(expectedContainerStyle);
+    expect(circle).toHaveStyle(expectedAnimCircleStyle);
+    // For some reason jest can't get stroke-dashoffset using toHaveStyle()
+    expect(circle.getAttribute("stroke-dashoffset")).toEqual(
+      expectedStrokeDashoffset
     );
   });
 
-  test("Hide state light theme styling", async () => {
-    // Given
+  test("Hide state styling", async () => {
     const width = 30,
       height = 30,
       radius = 30,
       strokeWidth = 4,
-      circumference = Math.ceil(2 * Math.PI * radius),
-      strokeDashoffset = circumference,
-      lightTheme = getTheme("light");
+      circumference = Math.ceil(2 * Math.PI * radius);
 
-    // When
+    const expectedStrokeDashoffset = `${circumference}`;
+
+    const expectedContainerStyle = `
+      position: absolute;
+      width: ${width}px;
+      height: ${height}px;
+      transform: rotate(-90deg);
+      overflow: visible;
+    `;
+
+    const expectedAnimCircleStyle = `
+      position: absolute;
+      stroke: ${lightTheme.almostBlack};
+      stroke-width: ${strokeWidth};
+      stroke-dasharray: ${circumference};
+      stroke-linecap: round;
+    `;
+
     const { getByTestId } = render(
       <ProgressiveCircle
-        show
+        show={false}
         width={width}
         height={height}
         radius={radius}
@@ -94,76 +92,25 @@ describe("ProgressiveCircle", () => {
       />
     );
 
-    const rendered = renderer.create(
-      <TestThemeProvider>
-        <ProgressiveCircle
-          show
-          width={width}
-          height={height}
-          radius={radius}
-          strokeWidth={strokeWidth}
-        />
-      </TestThemeProvider>
-    );
-    const tree = rendered.toJSON();
+    await new Promise((r) => setTimeout(r, 2000));
 
-    // Then
-    await new Promise((r) => setTimeout(r, 1800));
+    const container = getByTestId("ProgressiveCircleContainer");
+    const circle = getByTestId("ProgressiveCircleAnimatedCircle");
 
-    expect(getByTestId("ProgressiveCircleContainer")).toHaveStyleRule(
-      "position",
-      "absolute"
-    );
-    expect(getByTestId("ProgressiveCircleContainer")).toHaveStyleRule(
-      "width",
-      `${width}px`
-    );
-    expect(getByTestId("ProgressiveCircleContainer")).toHaveStyleRule(
-      "height",
-      `${height}px`
-    );
-    expect(getByTestId("ProgressiveCircleContainer")).toHaveStyleRule(
-      "transform",
-      "rotate(-90deg)"
-    );
-    expect(getByTestId("ProgressiveCircleContainer")).toHaveStyleRule(
-      "overflow",
-      "visible"
-    );
-
-    expect(getByTestId("ProgressiveCircleAnimatedCircle")).toHaveStyleRule(
-      "position",
-      "absolute"
-    );
-    expect(getByTestId("ProgressiveCircleAnimatedCircle")).toHaveStyleRule(
-      "stroke",
-      lightTheme.almostBlack
-    );
-    expect(getByTestId("ProgressiveCircleAnimatedCircle")).toHaveStyleRule(
-      "stroke-width",
-      `${strokeWidth}`
-    );
-    expect(getByTestId("ProgressiveCircleAnimatedCircle")).toHaveStyleRule(
-      "stroke-dasharray",
-      `${circumference}`
-    );
-    expect(rendered.root.findByType("circle").props.strokeDashoffset).toBe(
-      strokeDashoffset
-    ); //toHaveStyleRule does not recognise stroke-dashoffset
-    expect(getByTestId("ProgressiveCircleAnimatedCircle")).toHaveStyleRule(
-      "stroke-linecap",
-      "round"
+    expect(container).toHaveStyle(expectedContainerStyle);
+    expect(circle).toHaveStyle(expectedAnimCircleStyle);
+    // For some reason jest can't get stroke-dashoffset using toHaveStyle()
+    expect(circle.getAttribute("stroke-dashoffset")).toEqual(
+      expectedStrokeDashoffset
     );
   });
 
-  test("Snapshot wait", async () => {
-    // Given
+  test("Snapshot after animation complete (wait 2s)", async () => {
     const width = 30,
       height = 30,
       radius = 30,
       strokeWidth = 4;
 
-    // When
     const rendered = renderer.create(
       <TestThemeProvider>
         <ProgressiveCircle
@@ -176,19 +123,16 @@ describe("ProgressiveCircle", () => {
     );
     const tree = rendered.toJSON();
 
-    // Then
-    await new Promise((r) => setTimeout(r, 1800));
+    await new Promise((r) => setTimeout(r, 2000));
     expect(tree).toMatchSnapshot();
   });
 
-  test("Snapshot non-wait", () => {
-    // Given
+  test("Snapshot initial state", () => {
     const width = 30,
       height = 30,
       radius = 30,
       strokeWidth = 4;
 
-    // When
     const rendered = renderer.create(
       <TestThemeProvider>
         <ProgressiveCircle
@@ -201,7 +145,6 @@ describe("ProgressiveCircle", () => {
     );
     const tree = rendered.toJSON();
 
-    // Then
     expect(tree).toMatchSnapshot();
   });
 });

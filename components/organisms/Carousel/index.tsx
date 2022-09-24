@@ -2,6 +2,7 @@ import { DesktopCarouselStyle, MobileCarouselStyle } from "./styles";
 import { ReactElement, useEffect, useState } from "react";
 
 import { IDiscoverMovie } from "types/api/discover";
+import { IVideos } from "types/api/videos";
 import { MathUtils } from "utils";
 import { textAnimVariant } from "./MovieInfo/animationVariants";
 import { useAnimation } from "framer-motion";
@@ -10,7 +11,11 @@ import useVideoInfoCache from "./useCarouselVideoCache";
 
 interface ICarouselProps {
   carouselData?: IDiscoverMovie[];
+  desktopAutoSlideDuration?: number;
+  desktopDisableAutoSlide?: boolean;
   startPage?: number;
+  fullImageURL?: boolean;
+  customVideos?: IVideos[];
 }
 
 export const carouselMediaQuery = {
@@ -19,7 +24,11 @@ export const carouselMediaQuery = {
 
 export default function Carousel({
   carouselData = [],
+  desktopAutoSlideDuration = undefined,
+  desktopDisableAutoSlide = false,
   startPage = 0,
+  fullImageURL = false,
+  customVideos = undefined,
 }: ICarouselProps): ReactElement {
   const [[page, direction], setPage] = useState([startPage, 0]);
   const { currentVideos, onPageChange } = useVideoInfoCache();
@@ -40,7 +49,7 @@ export default function Carousel({
 
   function handlePageDirectionChange(direction: 1 | -1) {
     setPage(([_page, _direction]) => [
-      MathUtils.mod(_page + direction, carouselData.length),
+      MathUtils.modCycle(_page + direction, carouselData.length),
       direction,
     ]);
   }
@@ -59,16 +68,20 @@ export default function Carousel({
           handlePageDirectionChange={handlePageDirectionChange}
           handlePageChange={handlePageChange}
           textAnimControls={textAnimControls}
+          fullImageURL={fullImageURL}
         />
       ) : (
         <DesktopCarouselStyle
           carouselData={carouselData}
-          videos={currentVideos}
+          videos={customVideos ? customVideos[page] : currentVideos}
           handlePageDirectionChange={handlePageDirectionChange}
           handlePageChange={handlePageChange}
           page={page}
           direction={direction}
           textAnimControls={textAnimControls}
+          autoSlideDuration={desktopAutoSlideDuration}
+          disableAutoSlide={desktopDisableAutoSlide}
+          fullImageURL={fullImageURL}
         />
       )}
     </>

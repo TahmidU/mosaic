@@ -1,4 +1,3 @@
-import { AllowedSocialTypes } from "utils/TypeCheckUtils";
 import { BsFacebook } from "react-icons/bs";
 import { BsInstagram } from "react-icons/bs";
 import { BsTwitter } from "react-icons/bs";
@@ -15,9 +14,11 @@ interface ISocialsProps {
   links: { variant: SocialTypes; href: string }[];
 }
 
+const allowedSocialTypes = ["external", "facebook", "instagram", "twitter"];
+
 export default function Socials({ links }: ISocialsProps): ReactElement {
   const supportedLinks = links.filter((_link) =>
-    AllowedSocialTypes.includes(_link.variant)
+    allowedSocialTypes.includes(_link.variant)
   );
 
   return (
@@ -34,6 +35,7 @@ export default function Socials({ links }: ISocialsProps): ReactElement {
               ? `${Links.instagramURL}${_link.href}`
               : `${Links.twitterURL}${_link.href}`
           }
+          testId={`${_link.variant}-${_index}`}
         >
           {_link.variant === "external" ? (
             <FaExternalLinkAlt />

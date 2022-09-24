@@ -8,16 +8,20 @@ interface ISearchBtnProp {
   onTextChange?: (text: string) => void;
   text: string;
   setText: Dispatch<SetStateAction<string>>;
-
+  testId?: string;
   className?: string;
 }
 
 const SearchIcon = (props: any) => (
-  <SearchIconStyling onClick={props.onClick} />
+  <SearchIconStyling
+    data-testid={`${props.testId}-SearchIcon`}
+    onClick={props.onClick}
+  />
 );
 export default function SearchInput({
   text,
   setText,
+  testId = "SearchInput",
   className,
 }: ISearchBtnProp): ReactElement {
   const { goToSearchPage } = useRoutes();
@@ -34,12 +38,13 @@ export default function SearchInput({
   };
   return (
     <Input
+      testId={testId}
       variant="stateful"
       value={text}
       className={className}
       onTextChange={setText}
       onKeyDown={onHandleKeyDown}
-      postfix={<SearchIcon onClick={onHandleClickSearch} />}
+      postfix={<SearchIcon onClick={onHandleClickSearch} testId={testId} />}
     />
   );
 }

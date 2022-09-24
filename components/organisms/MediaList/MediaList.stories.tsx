@@ -1,5 +1,6 @@
 import { IPayload } from "types/story";
 import MediaList from "./MediaList";
+import { fakeVideos } from "resources/test_resources/Videos";
 
 const payload: IPayload = {
   title: "ORGANISMS/MediaList",
@@ -7,5 +8,12 @@ const payload: IPayload = {
 };
 export default payload;
 
-export const Basic = (args: any) => <MediaList {...args} />;
+export const Basic = (args: any) => (
+  <MediaList videoData={fakeVideos} {...args} />
+);
 Basic.args = {};
+Basic.parameters = {
+  controls: {
+    include: [],
+  },
+};

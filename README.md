@@ -1,34 +1,71 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<!-- Project Logo -->
+<br />
+<p align="center">
+  <img src="./public/logo/logo.svg" alt="Logo" width="80" height="80">
+  <h3 align="center">Mosaic</h3>
 
-## Getting Started
+  <p align="center">
+    A movie and TV show catalog web-app
+    <br />
+    <a href="https://mosaic-git-develop-tahmidu.vercel.app/" target=”_blank” rel="noopener noreferrer">Demo (Preview - Develop branch)</a> |
+    <a href="https://mosaic-delta.vercel.app/" target=”_blank” rel="noopener noreferrer">Demo (Production - Main branch)</a>
+  </p>
+</p>
+<br>
 
-First, run the development server:
+***All links in the README redirect the current tab, it does not create a new tab.***
 
-```bash
-npm run dev
-# or
-yarn dev
+<!-- Table of Contents -->
+
+## Table of contents
+
+- [About the project](#about-the-project)
+- [Installation & running project](#installation--running-project)
+- [Tools & tech](#tools--tech)
+- [Testing](#testing)
+- [License](#license)
+
+## About the project
+
+This is a web app built for my portfolio. It is a web app that allows you to explore and search through catalogs of movies and TV shows. It is powered by a third-party API: <a href="https://developers.themoviedb.org/3/getting-started/introduction" target=”_blank” rel="noopener noreferrer">TMDB</a>, which makes all this possible.
+
+### Design principle
+
+The design principle that this project followed was <a href="https://andela.com/insights/structuring-your-react-application-atomic-design-principles/" target=”_blank” rel="noopener noreferrer">The Atomic Design Principle</a>. Components were broken down into atoms, molecules, organisms, and pages to make components cleaner and re-usable.
+
+As for API calls, I have decided that the best route is to make pages do the API calls and pass the data down through props or via context. This makes testing atoms, molecules and organisms easier as I do not need to mock API calls. Faking data for tests also becomes easier, this way I could control how exactly I want the data to look like and therefore see how the components would react.
+
+## Installation & running project
+
+### Prerequisites to run locally
+
+To run the web app locally you **must** create an `.env.local` file at the root of the project. It **must** contain the following variables:
 ```
+MOVIE_DB_WEB_URL = https://api.themoviedb.org/3
+MOVIE_DB_API_KEY = {You need your own API key}
+```
+`MOVIE_DB_API_KEY` has not been provided. You can request an API key for free via TMDB's <a href="https://developers.themoviedb.org/3/getting-started/introduction" target=”_blank” rel="noopener noreferrer">online form</a>. You **must** create an account to request an API key from TMDB.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Running locally
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+**Make sure you run `yarn` to install the necessary dependencies for the project.**
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+To run the local development server use `yarn dev`. To run Storybook use `yarn storybook`. To run all the Jest React Testing Library tests run `yarn jest`.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Alternatively, you can click on one of the demos above without needing to setup anything. The webapp is deployed on Vercel.
 
-## Learn More
+## Tools & tech
 
-To learn more about Next.js, take a look at the following resources:
+Framework: NextJS (React Framework) <br/>
+Language: Typescript, Javascript, HTML, CSS <br/> 
+Notable Libraries: Storybook, Framer Motion, Styled-Components, Jest, React Testing Library, Axios <br/>
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Testing
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+The only testing that was done for this project was unit and intergration testing via React Testing Library. Components that were too trivial, or not too dissimilar from a previously tested component or a component which mainly used third-party libraries where not tested.
 
-## Deploy on Vercel
+Very soon, I will be adding Cypress testing.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## License
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Distributed under the MIT License. See `LICENSE` for more information.

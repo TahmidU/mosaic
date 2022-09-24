@@ -10,7 +10,7 @@ interface ICarouselImageProps {
   direction: number;
   currentPage: number;
   handlePageChange: (direction: 1 | -1, clicked: boolean) => void;
-  local?: boolean;
+  fullImageURL?: boolean;
   ref?: Ref<HTMLDivElement>;
 }
 
@@ -19,7 +19,7 @@ export default function CarouselImage({
   direction,
   currentPage = 0,
   handlePageChange,
-  local = false,
+  fullImageURL = false,
   ref,
 }: ICarouselImageProps): ReactElement {
   const swipeConfidenceThreshold = 10000;
@@ -61,14 +61,10 @@ export default function CarouselImage({
         <ImageStyle
           data-testid="CarouselImageImage"
           src={
-            local
-              ? require("" + imageURL)
-              : `${Links.tmdbImageURL}w1280${imageURL}`
+            fullImageURL ? imageURL : `${Links.tmdbImageURL}w1280${imageURL}`
           }
           blurDataURL={
-            local
-              ? require("" + imageURL)
-              : `${Links.tmdbImageURL}w300${imageURL}`
+            fullImageURL ? imageURL : `${Links.tmdbImageURL}w300${imageURL}`
           }
           placeholder="blur"
           width={1280}

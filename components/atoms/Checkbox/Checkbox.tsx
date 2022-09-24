@@ -7,6 +7,7 @@ interface ICheckboxProps {
   onClick?: () => void;
   isSelected: boolean;
   className?: string;
+  testId?: string;
 }
 
 export default function Checkbox({
@@ -14,9 +15,15 @@ export default function Checkbox({
   onClick,
   isSelected,
   className,
+  testId = "Checkbox",
 }: ICheckboxProps): ReactElement {
   return (
-    <Container className={className} isSelected={isSelected} onClick={onClick}>
+    <Container
+      data-testid={testId}
+      className={className}
+      isSelected={isSelected}
+      onClick={onClick}
+    >
       {children}
     </Container>
   );

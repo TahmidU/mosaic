@@ -17,22 +17,22 @@ import { IDiscoverMovie } from "types/api/discover";
 
 interface IMobileCarouselProps {
   carouselData?: IDiscoverMovie[];
-  localImages?: boolean;
   page: number;
   direction: number;
   handlePageDirectionChange: (direction: 1 | -1) => void;
   handlePageChange: (toPage: number) => void;
   textAnimControls?: AnimationControls;
+  fullImageURL?: boolean;
 }
 
 export default function MobileCarousel({
   carouselData,
-  localImages,
   page,
   direction,
   handlePageDirectionChange,
   handlePageChange,
   textAnimControls,
+  fullImageURL = false,
 }: IMobileCarouselProps): ReactElement {
   const { routes } = useContext(GlobalContext);
 
@@ -44,7 +44,7 @@ export default function MobileCarousel({
     <Container>
       <Frame>
         <PrevBtn
-          dataTestId="MobileCarouselPrevBtn"
+          testId="MobileCarouselPrevBtn"
           variant="simpleLeft"
           onClick={() => handlePageDirectionChange(-1)}
         />
@@ -55,12 +55,12 @@ export default function MobileCarousel({
             direction={direction}
             imageURL={carouselData[page]?.backdrop_path}
             currentPage={page}
-            local={localImages}
             handlePageChange={handlePageDirectionChange}
+            fullImageURL={fullImageURL}
           />
         </ImageContainer>
         <NextBtn
-          dataTestId="MobileCarouselNextBtn"
+          testId="MobileCarouselNextBtn"
           variant="simpleRight"
           onClick={() => handlePageDirectionChange(1)}
         />

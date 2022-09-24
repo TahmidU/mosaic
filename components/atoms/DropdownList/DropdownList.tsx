@@ -21,6 +21,7 @@ interface IDropdownListProps {
   selectedIndex: number;
   setSelectedIndex: Dispatch<SetStateAction<number>>;
   className?: string;
+  testId?: string;
 }
 
 export default function DropdownList({
@@ -29,6 +30,7 @@ export default function DropdownList({
   setSelectedIndex,
   onChange = () => {},
   className,
+  testId = "DropdownList",
 }: IDropdownListProps): ReactElement {
   const [isOpen, setOpen] = useState(false);
   const dropdownRef = useRef<null | HTMLDivElement>(null);
@@ -59,7 +61,12 @@ export default function DropdownList({
   }, [handleClickOut]);
 
   return (
-    <Container ref={dropdownRef} className={className} isOpen={isOpen}>
+    <Container
+      ref={dropdownRef}
+      data-testid={testId}
+      className={className}
+      isOpen={isOpen}
+    >
       <DropdownButton onClick={toggleDropdownMenu} isOpen={isOpen}>
         <p>{options[selectedIndex]}</p>
         <DownIcon />

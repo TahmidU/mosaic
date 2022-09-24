@@ -6,19 +6,25 @@ import { ReactElement } from "react";
 
 interface ICastCardProps {
   person: ICast;
+  customImageSrc?: boolean;
   className?: string;
 }
 
 export default function CastCard({
   person,
+  customImageSrc = false,
   className,
 }: ICastCardProps): ReactElement {
   return (
     <Container className={className}>
       <ImageWrapper>
         <CastImage
-          alt={person.original_name}
-          src={`${Links.tmdbImageURL}original${person.profile_path}` || ""}
+          alt={person.name}
+          src={
+            customImageSrc
+              ? person.profile_path || ""
+              : `${Links.tmdbImageURL}original${person.profile_path}` || ""
+          }
           width={150}
           height={225}
           layout="responsive"

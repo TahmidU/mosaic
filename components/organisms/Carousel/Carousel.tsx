@@ -22,6 +22,9 @@ import ProgressiveBar from "./ProgressiveBar";
 import dynamic from "next/dynamic";
 import useCarouselAnimations from "./useCarouselAnimations";
 
+const ClientPortal = dynamic(() => import("components/atoms/ClientPortal"), {
+  ssr: false,
+});
 const VideoModal = dynamic(() => import("../../molecules/VideoModal"), {
   ssr: false,
 });
@@ -29,7 +32,6 @@ const VideoModal = dynamic(() => import("../../molecules/VideoModal"), {
 interface ICarouselProps {
   carouselData?: IDiscoverMovie[];
   videos?: IVideos;
-  localImages?: boolean;
   disableAutoSlide?: boolean;
   autoSlideDuration?: number;
   page: number;
@@ -37,12 +39,12 @@ interface ICarouselProps {
   handlePageDirectionChange: (direction: 1 | -1) => void;
   handlePageChange: (toPage: number) => void;
   textAnimControls?: AnimationControls;
+  fullImageURL?: boolean;
 }
 
 export default function Carousel({
   carouselData = [],
   videos,
-  localImages = false,
   disableAutoSlide = false,
   autoSlideDuration = 15,
   page,
@@ -50,6 +52,7 @@ export default function Carousel({
   handlePageDirectionChange,
   handlePageChange,
   textAnimControls,
+  fullImageURL = false,
 }: ICarouselProps): ReactElement {
   const { routes } = useContext(GlobalContext);
   const { isTimerPaused, imageRef } = useCarouselAnimations();
@@ -74,7 +77,7 @@ export default function Carousel({
             }
           />
           <PrevBtn
-            dataTestId="CarouselPrevBtn"
+            testId="CarouselPrevBtn"
             variant="left"
             strokeWidth={3}
             onClick={() => handlePageDirectionChange(-1)}
@@ -83,10 +86,10 @@ export default function Carousel({
             onClick={() => routes?.goToDetails(carouselData[page].id)}
           >
             <CarouselImage
+              fullImageURL={fullImageURL}
               direction={direction}
               imageURL={carouselData[page].backdrop_path}
               currentPage={page}
-              local={localImages}
               handlePageChange={handlePageDirectionChange}
             />
 
@@ -109,7 +112,7 @@ export default function Carousel({
             })}
           </StepsContainer>
           <NextBtn
-            dataTestId="CarouselNextBtn"
+            testId="CarouselNextBtn"
             variant="right"
             strokeWidth={3}
             onClick={() => handlePageDirectionChange(1)}
@@ -131,11 +134,14 @@ export default function Carousel({
           }}
         />
       </Container>
-      <VideoModal
-        modalOpen={modalOpen}
-        setModalOpen={setModalOpen}
-        videos={videos}
-      />
+
+      <ClientPortal selector="#modalPortal">
+        <VideoModal
+          modalOpen={modalOpen}
+          setModalOpen={setModalOpen}
+          videos={videos}
+        />
+      </ClientPortal>
     </>
   );
 }
