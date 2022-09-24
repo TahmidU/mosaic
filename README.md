@@ -7,8 +7,8 @@
   <p align="center">
     A movie and TV show catalog web-app
     <br />
-    <a href="https://mosaic-git-develop-tahmidu.vercel.app/">Demo (Preview - Develop branch)</a> |
-    <a href="https://mosaic-delta.vercel.app/">Demo (Production - Main branch)</a>
+    <a href="https://mosaic-git-develop-tahmidu.vercel.app/" target=”_blank”>Demo (Preview - Develop branch)</a> |
+    <a href="https://mosaic-delta.vercel.app/" target=”_blank”>Demo (Production - Main branch)</a>
   </p>
 </p>
 <br>
@@ -25,11 +25,11 @@
 
 ## About the project
 
-This is a web app built for my portfolio. It is a web app that allows you to explore and search through catalogs of movies and TV shows. It is powered by a third-party API: <a href="https://developers.themoviedb.org/3/getting-started/introduction">TMDB</a>, which makes all this possible.
+This is a web app built for my portfolio. It is a web app that allows you to explore and search through catalogs of movies and TV shows. It is powered by a third-party API: <a href="https://developers.themoviedb.org/3/getting-started/introduction" target=”_blank”>TMDB</a>, which makes all this possible.
 
 ### Design principle
 
-The design principle that this project followed was <a href="https://andela.com/insights/structuring-your-react-application-atomic-design-principles/">The Atomic Design Principle</a>. Components were broken down into atoms, molecules, organisms, and pages to make components cleaner and re-usable.
+The design principle that this project followed was <a href="https://andela.com/insights/structuring-your-react-application-atomic-design-principles/" target=”_blank”>The Atomic Design Principle</a>. Components were broken down into atoms, molecules, organisms, and pages to make components cleaner and re-usable.
 
 As for API calls, I have decided that the best route is to make pages do the API calls and pass the data down through props or via context. This makes testing atoms, molecules and organisms easier as I do not need to mock API calls. Faking data for tests also becomes easier, this way I could control how exactly I want the data to look like and therefore see how the components would react.
 
@@ -42,7 +42,7 @@ To run the web app locally you **must** create an `.env.local` file at the root 
 MOVIE_DB_WEB_URL = https://api.themoviedb.org/3
 MOVIE_DB_API_KEY = {You need your own API key}
 ```
-`MOVIE_DB_API_KEY` has not been provided. You can request an API key for free via TMDB's <a href="https://developers.themoviedb.org/3/getting-started/introduction">online form</a>. You **must** create an account to request an API key from TMDB.
+`MOVIE_DB_API_KEY` has not been provided. You can request an API key for free via TMDB's <a href="https://developers.themoviedb.org/3/getting-started/introduction" target=”_blank”>online form</a>. You **must** create an account to request an API key from TMDB.
 
 ### Running locally
 
