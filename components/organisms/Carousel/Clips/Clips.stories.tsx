@@ -1,5 +1,6 @@
 import Clips from "./Clips";
 import { IPayload } from "types/story";
+import { fakeVideos } from "resources/test_resources/Videos";
 
 const payload: IPayload = {
   title: "MOLECULES/Clips",
@@ -7,5 +8,8 @@ const payload: IPayload = {
 };
 export default payload;
 
-export const Basic = () => <Clips onClipClickedCallback={() => {}} />;
+export const Basic = (args: any) => <Clips videos={fakeVideos} {...args} />;
 Basic.args = {};
+Basic.parameters = {
+  controls: { include: ["onClipClickedCallback"] },
+};

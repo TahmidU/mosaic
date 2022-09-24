@@ -5,8 +5,6 @@ import { useRouter } from "next/router";
 export default function useRoutes() {
   const router = useRouter();
 
-  console.log(router.query);
-
   const homePageURL = "/";
 
   const generateDetailsURL = (id: number, type: MediaType = "movie") =>

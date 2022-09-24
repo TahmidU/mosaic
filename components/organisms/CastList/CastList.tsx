@@ -5,17 +5,17 @@ import { ITVDetails } from "types/tv";
 import { ReactElement } from "react";
 
 interface ICastListProps {
-  movieDetails: IMovieDetails | ITVDetails;
+  details: IMovieDetails | ITVDetails;
   className?: string;
 }
 
 export default function CastList({
-  movieDetails,
+  details,
   className,
 }: ICastListProps): ReactElement {
   return (
     <CastHorizontalList title="Cast" className={className}>
-      {movieDetails.credits?.cast.map((_actor, index) => (
+      {details.credits?.cast.map((_actor, index) => (
         <CastListWrapper key={index}>
           <CastCardStyle person={_actor} />
         </CastListWrapper>

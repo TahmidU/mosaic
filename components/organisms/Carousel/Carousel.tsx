@@ -22,6 +22,9 @@ import ProgressiveBar from "./ProgressiveBar";
 import dynamic from "next/dynamic";
 import useCarouselAnimations from "./useCarouselAnimations";
 
+const ClientPortal = dynamic(() => import("components/atoms/ClientPortal"), {
+  ssr: false,
+});
 const VideoModal = dynamic(() => import("../../molecules/VideoModal"), {
   ssr: false,
 });
@@ -36,6 +39,7 @@ interface ICarouselProps {
   handlePageDirectionChange: (direction: 1 | -1) => void;
   handlePageChange: (toPage: number) => void;
   textAnimControls?: AnimationControls;
+  fullImageURL?: boolean;
 }
 
 export default function Carousel({
@@ -48,6 +52,7 @@ export default function Carousel({
   handlePageDirectionChange,
   handlePageChange,
   textAnimControls,
+  fullImageURL = false,
 }: ICarouselProps): ReactElement {
   const { routes } = useContext(GlobalContext);
   const { isTimerPaused, imageRef } = useCarouselAnimations();
@@ -81,6 +86,7 @@ export default function Carousel({
             onClick={() => routes?.goToDetails(carouselData[page].id)}
           >
             <CarouselImage
+              fullImageURL={fullImageURL}
               direction={direction}
               imageURL={carouselData[page].backdrop_path}
               currentPage={page}
@@ -128,11 +134,14 @@ export default function Carousel({
           }}
         />
       </Container>
-      <VideoModal
-        modalOpen={modalOpen}
-        setModalOpen={setModalOpen}
-        videos={videos}
-      />
+
+      <ClientPortal selector="#modalPortal">
+        <VideoModal
+          modalOpen={modalOpen}
+          setModalOpen={setModalOpen}
+          videos={videos}
+        />
+      </ClientPortal>
     </>
   );
 }

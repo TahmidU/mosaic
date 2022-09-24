@@ -22,6 +22,7 @@ interface IMobileCarouselProps {
   handlePageDirectionChange: (direction: 1 | -1) => void;
   handlePageChange: (toPage: number) => void;
   textAnimControls?: AnimationControls;
+  fullImageURL?: boolean;
 }
 
 export default function MobileCarousel({
@@ -31,6 +32,7 @@ export default function MobileCarousel({
   handlePageDirectionChange,
   handlePageChange,
   textAnimControls,
+  fullImageURL = false,
 }: IMobileCarouselProps): ReactElement {
   const { routes } = useContext(GlobalContext);
 
@@ -54,6 +56,7 @@ export default function MobileCarousel({
             imageURL={carouselData[page]?.backdrop_path}
             currentPage={page}
             handlePageChange={handlePageDirectionChange}
+            fullImageURL={fullImageURL}
           />
         </ImageContainer>
         <NextBtn

@@ -15,6 +15,10 @@ export const TextStyle = styled(motion.div)`
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
   > span:nth-child(2) {

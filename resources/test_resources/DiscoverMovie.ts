@@ -1,6 +1,6 @@
 import { IDiscoverMovie } from "types/api/discover";
 
-export const FakeDiscoverMovie: IDiscoverMovie[] = [
+export const fakeDiscoverMovie: IDiscoverMovie[] = [
   {
     adult: false,
     backdrop_path: "https://via.placeholder.com/220x330/000000",
