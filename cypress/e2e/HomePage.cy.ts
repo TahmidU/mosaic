@@ -22,6 +22,20 @@ describe("Home page", () => {
       cy.get("span").contains(_val);
     });
   });
+
+  describe("Carousel", () => {
+    it("Next slide", () => {});
+
+    it("Next slide, cycle back to start", () => {});
+
+    it("Prev slide, cycle to end", () => {});
+
+    it("Prev slide", () => {});
+
+    it("Slide indicator", () => {});
+
+    it("Review", () => {});
+  });
 });
 
 // Prevent TypeScript from reading file as legacy script
