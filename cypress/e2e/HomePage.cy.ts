@@ -1,6 +1,6 @@
 describe("Home page", () => {
   it("Basic structure", () => {
-    cy.viewport("macbook-16");
+    // Expects
     const expectedSubTitleExploreMovies = [
       "In Theatres",
       "Popular",
@@ -8,15 +8,36 @@ describe("Home page", () => {
     ];
     const expectedSubTitleExploreTV = ["On Air", "Popular"];
 
+    // Setup
+    cy.viewport("macbook-16");
+    const getMoviesIntercept = "getMovies",
+      getExploreIntercept = "getExplore";
+
+    cy.intercept({
+      method: "GET",
+      url: "/api/movies/**",
+      hostname: "localhost",
+    }).as(getMoviesIntercept);
+
+    cy.intercept({
+      method: "GET",
+      url: "/api/explore/**",
+      hostname: "localhost",
+    }).as(getExploreIntercept);
+
+    // Result
     cy.visit("http://localhost:3000/");
 
+    cy.wait(`@${getMoviesIntercept}`);
     cy.get("span").contains("Trailers & Clips");
 
+    cy.get(`@${getExploreIntercept}`);
     cy.get("h1").contains("Explore Movies");
     expectedSubTitleExploreMovies.forEach((_val) => {
       cy.get("span").contains(_val);
     });
 
+    cy.get(`@${getExploreIntercept}`);
     cy.get("h1").contains("Explore TV Shows");
     expectedSubTitleExploreTV.forEach((_val) => {
       cy.get("span").contains(_val);
@@ -24,17 +45,29 @@ describe("Home page", () => {
   });
 
   describe("Carousel", () => {
-    it("Next slide", () => {});
+    it("Next slide", () => {
+      cy.viewport("macbook-16");
+    });
 
-    it("Next slide, cycle back to start", () => {});
+    it("Next slide, cycle back to start", () => {
+      cy.viewport("macbook-16");
+    });
 
-    it("Prev slide, cycle to end", () => {});
+    it("Prev slide, cycle to end", () => {
+      cy.viewport("macbook-16");
+    });
 
-    it("Prev slide", () => {});
+    it("Prev slide", () => {
+      cy.viewport("macbook-16");
+    });
 
-    it("Slide indicator", () => {});
+    it("Slide indicator", () => {
+      cy.viewport("macbook-16");
+    });
 
-    it("Review", () => {});
+    it("Review", () => {
+      cy.viewport("macbook-16");
+    });
   });
 });
 
