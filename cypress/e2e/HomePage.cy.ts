@@ -46,7 +46,32 @@ describe("Home page", () => {
 
   describe("Carousel", () => {
     it("Next slide", () => {
+      // Expects
+      const nextBtnId = '[data-testid="CarouselNextBtn"]';
+      const titleId = '[data-testid="CarouselTitle"]';
+
+      // Setup
       cy.viewport("macbook-16");
+      const getMoviesIntercept = "getMovies";
+
+      cy.intercept({
+        method: "GET",
+        url: "/api/movies/**",
+        hostname: "localhost",
+      }).as(getMoviesIntercept);
+
+      // Results
+      cy.visit("http://localhost:3000/");
+
+      cy.wait(`@${getMoviesIntercept}`);
+
+      let firstTitle: string;
+      cy.get(titleId).then(($span) => {
+        firstTitle = $span.text();
+        cy.get(nextBtnId).click();
+        // Wait for slide change
+        cy.wait(1000).then(() => expect(firstTitle).to.not.equal($span.text()));
+      });
     });
 
     it("Next slide, cycle back to start", () => {
