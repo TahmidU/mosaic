@@ -106,11 +106,63 @@ describe("Home page", () => {
     });
 
     it("Prev slide, cycle to end", () => {
+      // Expects
+      const prevBtnId = '[data-testid="CarouselPrevBtn"]';
+      const titleId = '[data-testid="CarouselTitle"]';
+
+      // Setup
       cy.viewport("macbook-16");
+      const getMoviesIntercept = "getMovies";
+
+      cy.intercept({
+        method: "GET",
+        url: "/api/movies/**",
+        hostname: "localhost",
+      }).as(getMoviesIntercept);
+
+      // Results
+      cy.visit("http://localhost:3000/");
+
+      cy.wait(`@${getMoviesIntercept}`);
+
+      let firstTitle: string;
+      cy.get(titleId).then(($span) => {
+        firstTitle = $span.text();
+        for (let i = 0; i < 10; i++) {
+          cy.get(prevBtnId).click();
+        }
+        // Wait for slide change
+        cy.wait(1000).then(() => expect(firstTitle).to.equal($span.text()));
+      });
     });
 
     it("Prev slide", () => {
+      // Expects
+      const prevBtnId = '[data-testid="CarouselPrevBtn"]';
+      const titleId = '[data-testid="CarouselTitle"]';
+
+      // Setup
       cy.viewport("macbook-16");
+      const getMoviesIntercept = "getMovies";
+
+      cy.intercept({
+        method: "GET",
+        url: "/api/movies/**",
+        hostname: "localhost",
+      }).as(getMoviesIntercept);
+
+      // Results
+      cy.visit("http://localhost:3000/");
+
+      cy.wait(`@${getMoviesIntercept}`);
+
+      let firstTitle: string;
+      cy.get(titleId).then(($span) => {
+        firstTitle = $span.text();
+        cy.get(prevBtnId).click();
+        // Wait for slide change
+        cy.wait(1000).then(() => expect(firstTitle).to.not.equal($span.text()));
+      });
     });
 
     it("Slide indicator", () => {
