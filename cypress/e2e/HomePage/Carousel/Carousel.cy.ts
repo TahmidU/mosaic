@@ -180,7 +180,8 @@ describe("Carousel", () => {
 
   it("Carousel videos", () => {
     // Expects
-    const clipsId = '[data-testid="ClipsResults"]';
+    const clipsResultsId = '[data-testid="ClipsResults"]';
+    const clipId = '[data-testid="Clip"]';
 
     // Setup
     cy.viewport("macbook-16");
@@ -195,15 +196,41 @@ describe("Carousel", () => {
     // Results
     cy.visit("http://localhost:3000/");
 
-    cy.get(clipsId)
+    cy.get(clipsResultsId)
       .invoke("text")
       .then(($resultsText) => {
         expect($resultsText).to.match(new RegExp(/Results: \d/gm));
+
+        const expectedResultsNum = $resultsText.split(" ")[1];
+
+        cy.get(clipId).should("have.length", Number(expectedResultsNum));
       });
   });
 
   it("Video modal pop-up", () => {
+    // Expects
+    const clipId = '[data-testid="Clip"]';
+    const videoModalId = '[data-testid="VideoModal"]';
+
+    // Setup
     cy.viewport("macbook-16");
+    const getMoviesIntercept = "getMovies";
+
+    cy.intercept({
+      method: "GET",
+      url: "/api/movies/**",
+      hostname: "localhost",
+    }).as(getMoviesIntercept);
+
+    // Results
+    cy.visit("http://localhost:3000/");
+
+    cy.get(clipId).then(($clips) => {
+      const clip = $clips[0];
+      clip.click();
+
+      cy.get(videoModalId);
+    });
   });
 });
 export {};
