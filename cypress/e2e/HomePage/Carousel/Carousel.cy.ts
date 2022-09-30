@@ -156,8 +156,7 @@ describe("Carousel", () => {
 
   it("Review", () => {
     // Expects
-    const titleId = '[data-testid="CarouselTitle"]';
-    const reviewContainerId = '[class="CircularProgressbar-text"]';
+    const reviewContainerClass = '[class="CircularProgressbar-text"]';
 
     // Setup
     cy.viewport("macbook-16");
@@ -174,9 +173,37 @@ describe("Carousel", () => {
 
     cy.wait(`@${getMoviesIntercept}`);
 
-    cy.get(reviewContainerId).then(($text) => {
+    cy.get(reviewContainerClass).then(($text) => {
       expect($text.text()).to.match(new RegExp(/^\d{0,2}(\.\d{1,2})?[%]$/g));
     });
+  });
+
+  it("Carousel videos", () => {
+    // Expects
+    const clipsId = '[data-testid="ClipsResults"]';
+
+    // Setup
+    cy.viewport("macbook-16");
+    const getMoviesIntercept = "getMovies";
+
+    cy.intercept({
+      method: "GET",
+      url: "/api/movies/**",
+      hostname: "localhost",
+    }).as(getMoviesIntercept);
+
+    // Results
+    cy.visit("http://localhost:3000/");
+
+    cy.get(clipsId)
+      .invoke("text")
+      .then(($resultsText) => {
+        expect($resultsText).to.match(new RegExp(/Results: \d/gm));
+      });
+  });
+
+  it("Video modal pop-up", () => {
+    cy.viewport("macbook-16");
   });
 });
 export {};
