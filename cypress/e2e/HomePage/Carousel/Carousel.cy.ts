@@ -119,7 +119,7 @@ describe("Carousel", () => {
     });
   });
 
-  it("Slide indicator", () => {
+  it("Slide indicator click", () => {
     // Expects
     const titleId = '[data-testid="CarouselTitle"]';
     const stepId = '[data-testid="StepStatusIndicator"]';
