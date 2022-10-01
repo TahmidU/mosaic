@@ -157,6 +157,7 @@ describe("Carousel", () => {
   it("Review", () => {
     // Expects
     const reviewContainerClass = '[class="CircularProgressbar-text"]';
+    const expectedReviewDataRegex = /^\d{0,2}(\.\d{1,2})?[%]$/g;
 
     // Setup
     cy.viewport("macbook-16");
@@ -174,7 +175,7 @@ describe("Carousel", () => {
     cy.wait(`@${getMoviesIntercept}`);
 
     cy.get(reviewContainerClass).then(($text) => {
-      expect($text.text()).to.match(new RegExp(/^\d{0,2}(\.\d{1,2})?[%]$/g));
+      expect($text.text()).to.match(new RegExp(expectedReviewDataRegex));
     });
   });
 
@@ -182,6 +183,7 @@ describe("Carousel", () => {
     // Expects
     const clipsResultsId = '[data-testid="ClipsResults"]';
     const clipId = '[data-testid="Clip"]';
+    const expectedResultsRegex = /Results: \d/gm;
 
     // Setup
     cy.viewport("macbook-16");
@@ -199,7 +201,7 @@ describe("Carousel", () => {
     cy.get(clipsResultsId)
       .invoke("text")
       .then(($resultsText) => {
-        expect($resultsText).to.match(new RegExp(/Results: \d/gm));
+        expect($resultsText).to.match(new RegExp(expectedResultsRegex));
 
         const expectedResultsNum = $resultsText.split(" ")[1];
 
