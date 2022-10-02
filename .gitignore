@@ -10,6 +10,7 @@
 
 # Cypress testing
 /cypress/videos
+/cypress/screenshots
 
 # next.js
 /.next/
