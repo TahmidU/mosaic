@@ -27,10 +27,10 @@ describe("MovieList", () => {
             "be.visible"
           );
         }
-        cy.get(nextBtnId).click();
+        //cy.get(nextBtnId).click();
         for (let i = 5; i < 11; i++) {
           cy.get(`[href="${$elms[i].getAttribute("href")}"]`).should(
-            "be.visible"
+            "not.be.visible"
           );
         }
       });
