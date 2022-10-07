@@ -31,13 +31,13 @@ describe("Home page", () => {
     cy.wait(`@${getMoviesIntercept}`);
     cy.get("span").contains("Trailers & Clips");
 
-    cy.get(`@${getExploreIntercept}`);
+    cy.wait(`@${getExploreIntercept}`);
     cy.get("h1").contains("Explore Movies");
     expectedSubTitleExploreMovies.forEach((_val) => {
       cy.get("span").contains(_val);
     });
 
-    cy.get(`@${getExploreIntercept}`);
+    cy.wait(`@${getExploreIntercept}`);
     cy.get("h1").contains("Explore TV Shows");
     expectedSubTitleExploreTV.forEach((_val) => {
       cy.get("span").contains(_val);
