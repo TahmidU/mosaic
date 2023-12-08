@@ -19,6 +19,7 @@ interface IMovieListProps {
   className?: string;
   loading?: boolean;
   type?: "tv" | "movie";
+  testId?: string;
 }
 
 const LoadingList = (props: any) => (
@@ -39,11 +40,13 @@ export default function MovieList({
   className,
   loading = false,
   type = "movie",
+  testId = "MovieList",
 }: IMovieListProps): ReactElement {
   const { generateDetailsURL } = useRoutes();
 
   return (
     <HorizontalList
+      testId={testId}
       title={title}
       subListTitles={subListTitles}
       onSubTitleClick={onSubTitleClick}

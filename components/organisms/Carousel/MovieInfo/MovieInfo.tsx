@@ -25,7 +25,7 @@ export default function MovieInfo({
       variants={textAnimVariant}
       animate={animationControls}
     >
-      <span>{title}</span>
+      <span data-testid="CarouselTitle">{title}</span>
       <span>{desc}</span>
       <span>RELEASE DATE: {TextUtils.dateFormatter(releaseDate)}</span>
     </TextStyle>

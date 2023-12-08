@@ -23,7 +23,9 @@ export default function Clips({
     <Container>
       <div>
         <span>Trailers {"&"} Clips</span>
-        <span>Result: {videos?.results.length}</span>
+        <span data-testid="ClipsResults">
+          Results: {videos?.results.length}
+        </span>
       </div>
       <Content>
         {!loading ? (

@@ -49,6 +49,7 @@ export default function HomePage({
           }
           movies={exploreMoviesList.list}
           loading={exploreMoviesList.loading}
+          testId="HomePageMovieList"
         />
 
         <MovieListStyle
@@ -58,6 +59,7 @@ export default function HomePage({
           movies={exploreTVsList.list}
           loading={exploreTVsList.loading}
           type="tv"
+          testId="HomePageTVList"
         />
       </Element>
     </Container>

@@ -18,7 +18,7 @@ export default function Clip({
   onClick,
 }: IClipProps): ReactElement {
   return (
-    <Container onClick={onClick}>
+    <Container testId="Clip" onClick={onClick}>
       <ImageContainer>
         <Image
           src={`${Links.youtubeThumbnailURL}${YTKey}/mqdefault.jpg`}

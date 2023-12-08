@@ -15,7 +15,6 @@ import {
   useState,
 } from "react";
 
-import ClientPortal from "components/atoms/ClientPortal";
 import { GrClose } from "react-icons/gr";
 import { IVideos } from "types/api/videos";
 import { Links } from "utils";

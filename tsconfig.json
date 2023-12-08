@@ -14,13 +14,21 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "baseUrl": "."
+    "baseUrl": ".",
+    "types": ["jest", "@types/testing-library__jest-dom"]
   },
+  "typeAcquisition": { "include": ["jest"] },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
     "components/organisms/Navbar/Navbar.test.tsx"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules",
+    "cypress",
+    "__mocks__",
+    "/email-server",
+    "cypress.config.ts"
+  ]
 }
